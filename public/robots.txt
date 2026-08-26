@@ -1,0 +1,6 @@
+# Robots.txt for Rushmitha Varshini Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://rushmithavarshini.netlify.app/sitemap.xml
