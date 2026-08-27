@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, Check, Copy, MessageSquare, Sparkles, MessageCircle } from 'lucide-react';
+import { Send, Mail, MapPin, Check, Copy, MessageSquare, AlertCircle, Loader2, MessageCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import emailjs from '@emailjs/browser';
+
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = 'service_d3hltdr';
+const EMAILJS_TEMPLATE_ID = 'template_ky9hp1n';
+const EMAILJS_PUBLIC_KEY = 'o8zb1rwfXfZDa112F';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [copied, setCopied] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const email = 'Rushmithavarshini33@gmail.com';
-  const whatsappNumber = '+61 434 455 126';
   const location = 'Melbourne, Victoria, Australia';
 
   const handleCopyEmail = () => {
@@ -17,58 +24,68 @@ export default function ContactSection() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.message) return;
+    if (!formData.name || !formData.email || !formData.message) {
+      setErrorMsg('Please fill in all required fields (Name, Email, Message).');
+      return;
+    }
 
-    setSubmitted(true);
-    
-    // Confetti celebration effect
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#25D366', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b']
+    setSending(true);
+    setErrorMsg('');
+    setSuccess(false);
+
+    // Dynamic timestamp formatted nicely
+    const currentTimestamp = new Date().toLocaleString('en-AU', {
+      dateStyle: 'medium',
+      timeStyle: 'short',
+      timeZone: 'Australia/Melbourne'
     });
 
-    // Format all filled data into clean, structured WhatsApp text message
-    const formattedMessage = `*New Portfolio Inquiry for Rushmitha Varshini*
+    const templateParams = {
+      name: formData.name,
+      from_name: formData.name,
+      email: formData.email,
+      from_email: formData.email,
+      reply_to: formData.email,
+      title: formData.subject || 'Portfolio Collaboration Inquiry',
+      subject: formData.subject || 'Portfolio Collaboration Inquiry',
+      message: formData.message,
+      time: currentTimestamp,
+      to_email: 'Rushmithavarshini33@gmail.com'
+    };
 
-👤 *Name:* ${formData.name}
-📧 *Email:* ${formData.email || 'Not provided'}
-📌 *Subject:* ${formData.subject || 'Design & Engineering Collaboration'}
-
-💬 *Message:*
-${formData.message}
-
-───────────────
-_Sent directly from Portfolio Website_`;
-
-    const whatsappUrl = `https://wa.me/61434455126?text=${encodeURIComponent(formattedMessage)}`;
-
-    // Optional background Netlify Form sync if deployed
     try {
-      const netlifyBody = new URLSearchParams({
-        'form-name': 'contact',
-        ...formData
-      }).toString();
+      // 1. Send email via EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: netlifyBody
-      }).catch(() => {});
-    } catch (err) {}
+      // Trigger celebration confetti
+      confetti({
+        particleCount: 90,
+        spread: 75,
+        origin: { y: 0.6 },
+        colors: ['#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#38bdf8']
+      });
 
-    // Open WhatsApp directly in a new tab with the pre-filled message
-    setTimeout(() => {
-      window.open(whatsappUrl, '_blank');
-    }, 450);
-
-    setTimeout(() => {
-      setSubmitted(false);
+      setSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+
+      // Auto-hide success message after 7 seconds
+      setTimeout(() => setSuccess(false), 7000);
+    } catch (err) {
+      console.error('EmailJS Error:', err);
+      // Fallback: offer direct mailto if network or template mismatch occurs
+      setErrorMsg(
+        err?.text || 'Failed to send message via email service. You can also reach out directly to Rushmithavarshini33@gmail.com'
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -98,69 +115,10 @@ _Sent directly from Portfolio Website_`;
               I am open to full-time engineering & design roles, contract collaborations, and consulting opportunities.
             </p>
 
-            {/* WhatsApp Direct Card */}
-            <div style={{
-              background: 'rgba(16, 185, 129, 0.1)',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
-              borderRadius: '12px',
-              padding: '16px 20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: '16px'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '10px',
-                  background: 'rgba(16, 185, 129, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#10b981'
-                }}>
-                  <MessageCircle size={20} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-emerald)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>WhatsApp Direct</div>
-                  <a 
-                    href={`https://wa.me/61434455126?text=${encodeURIComponent("Hi Rushmitha, I saw your portfolio and would like to connect!")}`}
-                    target="_blank" 
-                    rel="noreferrer"
-                    style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '1rem', textDecoration: 'none' }}
-                  >
-                    WhatsApp
-                  </a>
-                </div>
-              </div>
-
-              <a
-                href={`https://wa.me/61434455126?text=${encodeURIComponent("Hi Rushmitha, I saw your portfolio and would like to connect!")}`}
-                target="_blank" 
-                rel="noreferrer"
-                style={{
-                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                  color: '#ffffff',
-                  padding: '8px 14px',
-                  borderRadius: '8px',
-                  fontWeight: 700,
-                  fontSize: '0.8rem',
-                  textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  boxShadow: '0 2px 10px rgba(37, 211, 102, 0.3)'
-                }}
-              >
-                <span>Chat</span>
-              </a>
-            </div>
-
             {/* Email Card with Copy button */}
             <div style={{
-              background: 'var(--bg-surface-elevated)',
-              border: '1px solid var(--border-subtle)',
+              background: 'rgba(139, 92, 246, 0.1)',
+              border: '1px solid rgba(139, 92, 246, 0.3)',
               borderRadius: '12px',
               padding: '16px 20px',
               display: 'flex',
@@ -168,23 +126,29 @@ _Sent directly from Portfolio Website_`;
               justifyContent: 'space-between',
               marginBottom: '16px'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', overflow: 'hidden' }}>
                 <div style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '10px',
-                  background: 'rgba(124, 58, 237, 0.15)',
-                  border: '1px solid rgba(124, 58, 237, 0.3)',
+                  background: 'rgba(139, 92, 246, 0.2)',
+                  border: '1px solid rgba(139, 92, 246, 0.35)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--color-primary)'
+                  color: 'var(--color-primary)',
+                  flexShrink: 0
                 }}>
-                  <Mail size={18} />
+                  <Mail size={19} />
                 </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</div>
-                  <div style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.875rem' }}>{email}</div>
+                <div style={{ overflow: 'hidden' }}>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email Direct</div>
+                  <a
+                    href={`mailto:${email}`}
+                    style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', wordBreak: 'break-all' }}
+                  >
+                    {email}
+                  </a>
                 </div>
               </div>
 
@@ -201,12 +165,67 @@ _Sent directly from Portfolio Website_`;
                   fontWeight: 600,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px'
+                  gap: '6px',
+                  flexShrink: 0
                 }}
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}
                 <span>{copied ? 'Copied' : 'Copy'}</span>
               </button>
+            </div>
+
+            {/* WhatsApp Direct Card */}
+            <div style={{
+              background: 'rgba(16, 185, 129, 0.08)',
+              border: '1px solid rgba(16, 185, 129, 0.25)',
+              borderRadius: '12px',
+              padding: '16px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '16px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: 'rgba(16, 185, 129, 0.18)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#10b981',
+                  flexShrink: 0
+                }}>
+                  <MessageCircle size={20} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--color-emerald)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>WhatsApp Direct</div>
+                  <div style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.9rem' }}>+61 434 455 126</div>
+                </div>
+              </div>
+
+              <a
+                href={`https://wa.me/61434455126?text=${encodeURIComponent("Hi Rushmitha, I saw your portfolio and would like to connect!")}`}
+                target="_blank" 
+                rel="noreferrer"
+                style={{
+                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                  color: '#ffffff',
+                  padding: '7px 14px',
+                  borderRadius: '8px',
+                  fontWeight: 700,
+                  fontSize: '0.8rem',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  boxShadow: '0 2px 10px rgba(37, 211, 102, 0.25)',
+                  flexShrink: 0
+                }}
+              >
+                <span>Chat</span>
+              </a>
             </div>
 
             {/* Location Card */}
@@ -220,53 +239,92 @@ _Sent directly from Portfolio Website_`;
               gap: '12px'
             }}>
               <div style={{
-                width: '38px',
-                height: '38px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '10px',
                 background: 'rgba(2, 132, 199, 0.12)',
                 border: '1px solid rgba(2, 132, 199, 0.3)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--color-secondary)'
+                color: 'var(--color-secondary)',
+                flexShrink: 0
               }}>
-                <MapPin size={18} />
+                <MapPin size={19} />
               </div>
               <div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-secondary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Location</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--color-secondary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Location</div>
                 <div style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.925rem' }}>{location}</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Interactive Form Card */}
+        {/* Interactive Form Card -> Sends Direct Email via EmailJS */}
         <div className="glass-card" style={{ padding: '32px' }}>
           <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <MessageSquare size={18} style={{ color: '#25D366' }} />
-            Send a Direct Message
+            <Mail size={20} style={{ color: 'var(--color-primary)' }} />
+            Send a Direct Email
           </h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '24px' }}>
-            Fill out the details below — submitting will format your inquiry and connect directly to my WhatsApp.
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '20px' }}>
+            Fill out the form below to send an email inquiry directly to <strong>Rushmithavarshini33@gmail.com</strong>.
           </p>
+
+          {/* Success Banner */}
+          {success && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '14px 18px',
+              borderRadius: '10px',
+              background: 'rgba(16, 185, 129, 0.15)',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+              color: '#34d399',
+              fontSize: '0.9rem',
+              marginBottom: '18px'
+            }}>
+              <Check size={20} style={{ flexShrink: 0 }} />
+              <div>
+                <strong>Message Sent Successfully!</strong>
+                <div style={{ fontSize: '0.8rem', opacity: 0.9 }}>Thank you for reaching out. Rushmitha will get back to you shortly.</div>
+              </div>
+            </div>
+          )}
+
+          {/* Error Banner */}
+          {errorMsg && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '14px 18px',
+              borderRadius: '10px',
+              background: 'rgba(239, 68, 68, 0.15)',
+              border: '1px solid rgba(239, 68, 68, 0.4)',
+              color: '#f87171',
+              fontSize: '0.88rem',
+              marginBottom: '18px'
+            }}>
+              <AlertCircle size={20} style={{ flexShrink: 0 }} />
+              <div>{errorMsg}</div>
+            </div>
+          )}
 
           <form 
             name="contact" 
-            method="POST" 
-            data-netlify="true" 
             onSubmit={handleSubmit}
             style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
           >
-            <input type="hidden" name="form-name" value="contact" />
-
             <div>
               <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: 600 }}>
-                Your Name
+                Your Name <span style={{ color: '#ef4444' }}>*</span>
               </label>
               <input
                 type="text"
                 name="name"
                 required
+                disabled={sending}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. Alex Morgan"
@@ -285,12 +343,13 @@ _Sent directly from Portfolio Website_`;
 
             <div>
               <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: 600 }}>
-                Email Address
+                Email Address <span style={{ color: '#ef4444' }}>*</span>
               </label>
               <input
                 type="email"
                 name="email"
                 required
+                disabled={sending}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="alex@company.com"
@@ -314,9 +373,10 @@ _Sent directly from Portfolio Website_`;
               <input
                 type="text"
                 name="subject"
+                disabled={sending}
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                placeholder="e.g. Design Collaboration / Opportunity"
+                placeholder="e.g. UI/UX Design Collaboration / Role Opportunity"
                 style={{
                   width: '100%',
                   padding: '12px 16px',
@@ -332,15 +392,16 @@ _Sent directly from Portfolio Website_`;
 
             <div>
               <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: 600 }}>
-                Your Message
+                Your Message <span style={{ color: '#ef4444' }}>*</span>
               </label>
               <textarea
                 name="message"
                 required
                 rows={4}
+                disabled={sending}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Tell me about your project, timeline, or position..."
+                placeholder="Tell me about your project, requirements, timeline, or position..."
                 style={{
                   width: '100%',
                   padding: '12px 16px',
@@ -357,6 +418,7 @@ _Sent directly from Portfolio Website_`;
 
             <button
               type="submit"
+              disabled={sending}
               style={{
                 width: '100%',
                 display: 'flex',
@@ -364,27 +426,33 @@ _Sent directly from Portfolio Website_`;
                 justifyContent: 'center',
                 gap: '10px',
                 padding: '14px',
-                marginTop: '8px',
+                marginTop: '6px',
                 fontSize: '1rem',
                 fontWeight: 700,
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)',
                 color: '#ffffff',
                 border: '1px solid rgba(255, 255, 255, 0.25)',
-                boxShadow: '0 6px 25px rgba(37, 211, 102, 0.45)',
-                cursor: 'pointer',
+                boxShadow: '0 6px 25px rgba(139, 92, 246, 0.45)',
+                cursor: sending ? 'not-allowed' : 'pointer',
+                opacity: sending ? 0.75 : 1,
                 transition: 'all 0.25s ease'
               }}
             >
-              {submitted ? (
+              {sending ? (
+                <>
+                  <Loader2 size={18} className="animate-spin" />
+                  <span>Sending Message...</span>
+                </>
+              ) : success ? (
                 <>
                   <Check size={18} />
-                  <span>Connecting to WhatsApp...</span>
+                  <span>Message Sent!</span>
                 </>
               ) : (
                 <>
-                  <MessageCircle size={18} />
-                  <span>Send Directly to WhatsApp</span>
+                  <Send size={18} />
+                  <span>Send Email</span>
                 </>
               )}
             </button>
@@ -395,7 +463,7 @@ _Sent directly from Portfolio Website_`;
               textAlign: 'center',
               marginTop: '4px'
             }}>
-              Formats your details and connects directly to <strong>Rushmitha on WhatsApp</strong>
+              Delivered securely to <strong>rushmithavarshini33@gmail.com</strong>
             </div>
           </form>
         </div>
@@ -403,3 +471,4 @@ _Sent directly from Portfolio Website_`;
     </section>
   );
 }
+
