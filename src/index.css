@@ -22,6 +22,32 @@
   --glow-cyan: 0 0 35px rgba(6, 182, 212, 0.25);
 }
 
+/* Dynamic Designer Accent Themes (Dark Mode) */
+[data-accent="violet"] {
+  --color-primary: #8b5cf6;
+  --color-secondary: #06b6d4;
+  --border-glow: rgba(139, 92, 246, 0.4);
+  --glow-violet: 0 0 35px rgba(139, 92, 246, 0.3);
+}
+[data-accent="cyan"] {
+  --color-primary: #06b6d4;
+  --color-secondary: #3b82f6;
+  --border-glow: rgba(6, 182, 212, 0.4);
+  --glow-violet: 0 0 35px rgba(6, 182, 212, 0.3);
+}
+[data-accent="emerald"] {
+  --color-primary: #10b981;
+  --color-secondary: #06b6d4;
+  --border-glow: rgba(16, 185, 129, 0.4);
+  --glow-violet: 0 0 35px rgba(16, 185, 129, 0.3);
+}
+[data-accent="rose"] {
+  --color-primary: #f43f5e;
+  --color-secondary: #f59e0b;
+  --border-glow: rgba(244, 63, 94, 0.4);
+  --glow-violet: 0 0 35px rgba(244, 63, 94, 0.3);
+}
+
 [data-theme="light"] {
   --bg-dark: #f8fafc;
   --bg-surface: rgba(255, 255, 255, 0.96);
@@ -40,6 +66,28 @@
   
   --glow-violet: 0 10px 30px rgba(109, 40, 217, 0.12);
   --glow-cyan: 0 10px 30px rgba(2, 132, 199, 0.12);
+}
+
+/* Dynamic Designer Accent Themes (Light Mode) */
+[data-theme="light"][data-accent="violet"] {
+  --color-primary: #6d28d9;
+  --color-secondary: #0284c7;
+  --border-glow: rgba(109, 40, 217, 0.4);
+}
+[data-theme="light"][data-accent="cyan"] {
+  --color-primary: #0284c7;
+  --color-secondary: #2563eb;
+  --border-glow: rgba(2, 132, 199, 0.4);
+}
+[data-theme="light"][data-accent="emerald"] {
+  --color-primary: #047857;
+  --color-secondary: #0284c7;
+  --border-glow: rgba(4, 120, 87, 0.4);
+}
+[data-theme="light"][data-accent="rose"] {
+  --color-primary: #e11d48;
+  --color-secondary: #d97706;
+  --border-glow: rgba(225, 29, 72, 0.4);
 }
 
 *, *::before, *::after {
@@ -176,21 +224,16 @@ body {
 
 /* Glassmorphism Navigation Bar */
 .glass-nav {
-  position: fixed;
-  top: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
   display: flex;
   align-items: center;
   gap: 1.5rem;
   padding: 0.65rem 1.85rem;
-  background: rgba(13, 17, 26, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 17, 26, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 .glass-nav button {
@@ -350,18 +393,22 @@ body {
 
 /* Light mode Glass Nav */
 [data-theme="light"] .glass-nav {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border: 1px solid rgba(15, 23, 42, 0.15) !important;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  color: #ffffff !important;
 }
 
 [data-theme="light"] .glass-nav button {
-  color: #334155 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 [data-theme="light"] .glass-nav button:hover {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 /* Light mode Glass Cards */
@@ -539,6 +586,72 @@ body {
   font-weight: 600 !important;
 }
 
+/* Badges for Figma and PDF Actions */
+.btn-figma-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #34d399;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-figma-badge:hover {
+  background: rgba(16, 185, 129, 0.28);
+  transform: translateY(-1px);
+}
+
+.btn-pdf-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #f87171;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-pdf-badge:hover {
+  background: rgba(239, 68, 68, 0.26);
+  transform: translateY(-1px);
+}
+
+/* Light Mode Overrides for Figma & PDF Buttons */
+[data-theme="light"] .btn-figma-badge {
+  background: #ecfdf5 !important;
+  border: 1.5px solid #059669 !important;
+  color: #047857 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 1px 4px rgba(5, 150, 105, 0.15) !important;
+}
+[data-theme="light"] .btn-figma-badge:hover {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+[data-theme="light"] .btn-pdf-badge {
+  background: #fef2f2 !important;
+  border: 1.5px solid #dc2626 !important;
+  color: #b91c1c !important;
+  font-weight: 800 !important;
+  box-shadow: 0 1px 4px rgba(220, 38, 38, 0.15) !important;
+}
+[data-theme="light"] .btn-pdf-badge:hover {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+}
+
 /* Projects specifics in Light Mode */
 [data-theme="light"] #projects button[style*="background: rgba(255, 255, 255, 0.05)"] {
   background: #ffffff !important;
@@ -553,18 +666,11 @@ body {
   color: #6d28d9 !important;
 }
 
-[data-theme="light"] #projects [style*="background: rgba(7, 9, 14, 0.8)"],
-[data-theme="light"] #projects [style*="background: rgba(7, 9, 14, 0.85)"] {
+[data-theme="light"] [style*="background: rgba(7, 9, 14, 0.8)"],
+[data-theme="light"] [style*="background: rgba(7, 9, 14, 0.85)"] {
   background: rgba(255, 255, 255, 0.95) !important;
   border: 1px solid rgba(15, 23, 42, 0.18) !important;
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1) !important;
-}
-
-[data-theme="light"] #projects [style*="color: #38bdf8"],
-[data-theme="light"] #projects [style*="color: #818cf8"],
-[data-theme="light"] #projects [style*="color: #34d399"] {
-  color: #0f172a !important;
-  font-weight: 700 !important;
 }
 
 /* Light mode Scrolly Overlay cards */
@@ -586,7 +692,8 @@ body {
 
 /* Light mode modal popup */
 [data-theme="light"] [style*="background: rgb(13, 17, 26)"],
-[data-theme="light"] [style*="background: #0d111a"] {
+[data-theme="light"] [style*="background: #0d111a"],
+[data-theme="light"] [style*="background: rgba(13, 17, 26"] {
   background: #ffffff !important;
   border-color: rgba(15, 23, 42, 0.15) !important;
   box-shadow: 0 25px 70px rgba(15, 23, 42, 0.22) !important;

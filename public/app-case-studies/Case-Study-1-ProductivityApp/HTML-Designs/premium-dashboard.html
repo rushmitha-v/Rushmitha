@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FocusMate — Premium Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1020; --panel:#111831; --panel2:#0e1428;
+    --line:rgba(255,255,255,.07);
+    --txt:#e7ecf7; --mut:#8a94ad;
+    --blue:#4f8cff; --violet:#8b5cf6; --green:#2dd4a7; --amber:#fbbf24;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:
+      radial-gradient(900px 500px at 85% -10%,rgba(79,140,255,.14),transparent),
+      radial-gradient(700px 400px at -10% 110%,rgba(139,92,246,.12),transparent),
+      var(--bg);
+    color:var(--txt);min-height:100vh;display:flex}
+
+  /* ===== Sidebar ===== */
+  aside{width:236px;background:var(--panel2);border-right:1px solid var(--line);padding:26px 18px;display:flex;flex-direction:column;gap:6px}
+  .logo{font-family:'Sora';font-weight:800;font-size:1.25rem;margin-bottom:28px;letter-spacing:-.02em}
+  .logo span{color:var(--blue)}
+  .nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;color:var(--mut);cursor:pointer;font-size:.9rem;font-weight:500;transition:.22s}
+  .nav-item:hover{background:rgba(255,255,255,.05);color:#fff}
+  .nav-item.on{background:linear-gradient(135deg,rgba(79,140,255,.18),rgba(139,92,246,.16));color:#fff;border:1px solid rgba(79,140,255,.3)}
+  .nav-item i{width:20px;text-align:center;font-style:normal}
+  .side-card{margin-top:auto;background:linear-gradient(145deg,#182347,#131c3a);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .side-card b{font-family:'Sora';display:block;margin-bottom:6px}
+  .side-card p{font-size:.75rem;color:var(--mut);line-height:1.5}
+  .side-btn{margin-top:10px;width:100%;border:0;border-radius:10px;padding:9px;font-weight:600;font-size:.78rem;cursor:pointer;color:#fff;
+    background:linear-gradient(135deg,var(--blue),var(--violet))}
+
+  /* ===== Main ===== */
+  main{flex:1;padding:30px 36px;max-width:1100px}
+  header.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+  h1.h{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em}
+  p.sub{color:var(--mut);font-size:.85rem;margin-top:3px}
+  .avatar{display:flex;align-items:center;gap:10px}
+  .av-img{width:42px;height:42px;border-radius:50%;background:conic-gradient(from 40deg,var(--blue),var(--violet),var(--green));display:grid;place-items:center;font-weight:700;font-family:'Sora'}
+  .lvl{background:rgba(45,212,167,.15);color:var(--green);font-size:.68rem;font-weight:700;padding:4px 9px;border-radius:99px;border:1px solid rgba(45,212,167,.35)}
+
+  /* stats row */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px;position:relative;overflow:hidden;transition:.25s}
+  .stat:hover{transform:translateY(-4px);border-color:rgba(79,140,255,.4);box-shadow:0 16px 34px rgba(0,0,0,.35)}
+  .stat::after{content:'';position:absolute;inset:auto -30% -55% auto;width:120px;height:120px;border-radius:50%;background:var(--glow,rgba(79,140,255,.12))}
+  .stat small{color:var(--mut);font-size:.74rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+  .stat b{display:block;font-family:'Sora';font-size:1.65rem;margin-top:6px;letter-spacing:-.02em}
+  .stat em{font-style:normal;font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
+  .up{background:rgba(45,212,167,.15);color:var(--green)} .dn{background:rgba(251,113,133,.15);color:#fb7185}
+
+  /* timer + chart grid */
+  .grid{display:grid;grid-template-columns:380px 1fr;gap:18px;margin-bottom:24px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px}
+  .card h3{font-family:'Sora';font-size:.95rem;margin-bottom:4px}
+  .card .cap{color:var(--mut);font-size:.76rem;margin-bottom:16px}
+
+  /* ring timer */
+  .ring-wrap{position:relative;width:230px;height:230px;margin:6px auto 14px}
+  svg.ring{transform:rotate(-90deg)}
+  .ring circle{fill:none;stroke-width:13;stroke-linecap:round}
+  .ring .trk{stroke:rgba(255,255,255,.08)}
+  .ring .val{stroke:url(#g1);stroke-dasharray:641;stroke-dashoffset:641;transition:stroke-dashoffset 1s linear}
+  .ring-center{position:absolute;inset:0;display:grid;place-items:center}
+  #clock{font-family:'Sora';font-weight:800;font-size:2.7rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .ring-center small{color:var(--mut);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+  .modes{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
+  .mode{border:1px solid var(--line);background:transparent;color:var(--mut);border-radius:99px;padding:7px 16px;font-size:.76rem;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter'}
+  .mode.on{background:rgba(79,140,255,.16);color:#fff;border-color:rgba(79,140,255,.45)}
+  .ctl{display:flex;gap:10px}
+  .btn-p{flex:1;border:0;border-radius:13px;padding:13px;font-weight:700;font-size:.86rem;color:#fff;cursor:pointer;font-family:'Inter';
+    background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 10px 24px rgba(79,140,255,.35);transition:.22s}
+  .btn-p:hover{transform:translateY(-2px)}
+  .btn-s{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--txt);border-radius:13px;padding:13px 18px;cursor:pointer;transition:.2s}
+  .btn-s:hover{background:rgba(255,255,255,.09)}
+
+  /* bar chart */
+  .bars{display:flex;align-items:flex-end;gap:14px;height:190px;padding-top:10px}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+  .bar i{width:100%;max-width:38px;border-radius:9px 9px 4px 4px;background:linear-gradient(180deg,var(--blue),rgba(139,92,246,.35));transition:.5s cubic-bezier(.2,.9,.3,1.2)}
+  .bar:hover i{filter:brightness(1.25)}
+  .bar span{font-size:.68rem;color:var(--mut)}
+  .bar b{font-size:.66rem;color:#fff;opacity:0;transition:.25s}
+  .bar:hover b{opacity:.9}
+
+  /* sessions list */
+  .sess{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line)}
+  .sess:last-child{border:0}
+  .dot{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:.95rem;background:rgba(79,140,255,.14)}
+  .sess div{flex:1} .sess b{font-size:.86rem;font-weight:600;display:block}
+  .sess small{color:var(--mut);font-size:.73rem}
+  .tagx{font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:99px}
+  .done{background:rgba(45,212,167,.14);color:var(--green)} .live{background:rgba(251,191,36,.14);color:var(--amber)}
+
+  @media(max-width:1080px){aside{display:none}.stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<aside>
+  <div class="logo">⚡ Focus<span>Mate</span></div>
+  <div class="nav-item on"><i>◎</i> Dashboard</div>
+  <div class="nav-item"><i>⏱</i> Focus Sessions</div>
+  <div class="nav-item"><i>👥</i> Partners</div>
+  <div class="nav-item"><i>📊</i> Analytics</div>
+  <div class="nav-item"><i>🏆</i> Achievements</div>
+  <div class="nav-item"><i>⚙️</i> Settings</div>
+  <div class="side-card">
+    <b>🔥 Streak: 12 days</b>
+    <p>Your longest streak yet! One session today keeps it alive.</p>
+    <button class="side-btn" onclick="start()">Start now →</button>
+  </div>
+</aside>
+
+<main>
+  <header class="top">
+    <div>
+      <h1 class="h">Good evening, Alex 👋</h1>
+      <p class="sub">Tuesday · You're 40% toward today's goal of 5 sessions</p>
+    </div>
+    <div class="avatar">
+      <span class="lvl">LEVEL 7 · FOCUSED</span>
+      <div class="av-img">A</div>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat" style="--glow:rgba(79,140,255,.14)"><small>Sessions today</small><b>2 / 5</b></div>
+    <div class="stat" style="--glow:rgba(45,212,167,.14)"><small>Focus time</small><b>3h 42m <em class="up">↑ 18%</em></b></div>
+    <div class="stat" style="--glow:rgba(139,92,246,.14)"><small>Avg session</small><b>47 min <em class="up">↑ 6%</em></b></div>
+    <div class="stat" style="--glow:rgba(251,191,36,.12)"><small>Partner sync</small><b>94% <em class="dn">↓ 2%</em></b></div>
+  </section>
+
+  <div class="grid">
+    <!-- TIMER -->
+    <div class="card">
+      <h3>Deep Focus Session</h3>
+      <p class="cap">Paired with <b style="color:#fff">@maria</b> — she's in focus mode too 🟢</p>
+      <div class="ring-wrap">
+        <svg class="ring" width="230" height="230">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#8b5cf6"/>
+          </linearGradient></defs>
+          <circle class="trk" cx="115" cy="115" r="102"/>
+          <circle class="val" id="arc" cx="115" cy="115" r="102"/>
+        </svg>
+        <div class="ring-center"><div style="text-align:center"><small id="phase">Remaining</small><br><span id="clock">25:00</span></div></div>
+      </div>
+      <div class="modes">
+        <button class="mode on" data-m="25">Pomodoro 25</button>
+        <button class="mode" data-m="45">Deep 45</button>
+        <button class="mode" data-m="90">Flow 90</button>
+      </div>
+      <div class="ctl">
+        <button class="btn-p" id="go" onclick="start()">▶ Start session</button>
+        <button class="btn-s" onclick="reset()">↺</button>
+      </div>
+    </div>
+
+    <!-- WEEK CHART -->
+    <div class="card">
+      <h3>Focus hours — this week</h3>
+      <p class="cap">Hover a day for details · Goal: 3h/day</p>
+      <div class="bars" id="bars"></div>
+    </div>
+  </div>
+
+  <!-- SESSIONS -->
+  <div class="card">
+    <h3>Recent accomplishments</h3>
+    <p class="cap">Shared automatically with your accountability partner</p>
+    <div class="sess"><div class="dot">🧩</div><div><b>Finished API refactoring</b><small>Pomodoro 25 · 2 rounds · with @maria</small></div><span class="tagx done">✓ Done</span></div>
+    <div class="sess"><div class="dot">🧪</div><div><b>Wrote unit tests — auth module</b><small>Deep 45 · solo</small></div><span class="tagx done">✓ Done</span></div>
+    <div class="sess"><div class="dot">📝</div><div><b>Drafting design doc v2</b><small>Flow 90 · in progress</small></div><span class="tagx live">● Live</span></div>
+  </div>
+</main>
+
+<script>
+/* ---- bar chart ---- */
+const days=[['Mon',2.5],['Tue',3.1],['Wed',1.8],['Thu',3.4],['Fri',2.9],['Sat',3.8],['Sun',2.2]];
+const bars=document.getElementById('bars');
+days.forEach(([d,h])=>{
+  const el=document.createElement('div');el.className='bar';
+  el.innerHTML=`<b>${h}h</b><i style="height:${h/4*100}%"></i><span>${d}</span>`;
+  bars.appendChild(el);
+});
+requestAnimationFrame(()=>document.querySelectorAll('.bar i').forEach(i=>i.style.opacity=.95));
+
+/* ---- timer ---- */
+let total=25*60,left=total,tick=null;
+const arc=document.getElementById('arc'),C=2*Math.PI*102;
+arc.style.strokeDasharray=C;
+function draw(){
+  const m=String(Math.floor(left/60)).padStart(2,'0'),s=String(left%60).padStart(2,'0');
+  document.getElementById('clock').textContent=`${m}:${s}`;
+  arc.style.strokeDashoffset=C*(1-left/total);
+}
+function start(){
+  if(tick)return; document.getElementById('go').textContent='❚❚ Pause';
+  tick=setInterval(()=>{if(left>0){left--;draw()}else{clearInterval(tick);tick=null}},1000);
+}
+function reset(){clearInterval(tick);tick=null;left=total;draw();document.getElementById('go').textContent='▶ Start session'}
+document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  total=b.dataset.m*60;reset();
+});
+draw();
+</script>
+</body>
+</html>

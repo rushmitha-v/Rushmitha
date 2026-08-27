@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WavePlay — Now Playing</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0b0d14;--card:#131624;--line:rgba(255,255,255,.08);--txt:#eef0fa;--mut:#7c84a3;
+    --vio:#8b5cf6;--cyan:#22d3ee;--pnk:#ec4899}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:radial-gradient(600px 400px at 80% -10%,rgba(139,92,246,.2),transparent),
+    radial-gradient(500px 350px at 0% 110%,rgba(34,211,238,.1),transparent),var(--bg);
+    color:var(--txt);min-height:100vh;display:flex;justify-content:center;padding:30px 16px}
+  .app{width:400px;max-width:100%}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+  .brand{font-family:'Sora';font-weight:800;font-size:.95rem;color:var(--mut)}
+  .brand b{color:#fff}
+  .timer-chip{font-size:.72rem;font-weight:700;color:var(--mut);border:1px solid var(--line);padding:8px 14px;border-radius:99px;cursor:pointer;transition:.2s}
+  .timer-chip:hover{color:#fff;border-color:var(--vio)}
+
+  /* art */
+  .art{width:250px;height:250px;margin:0 auto 26px;border-radius:28px;position:relative;display:grid;place-items:center;
+    background:linear-gradient(140deg,#2a1b54,#151a3d 60%,#0e3a4a);box-shadow:0 30px 70px rgba(139,92,246,.35);
+    animation:breathe 5s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.03)}}
+  .art i{font-style:normal;font-size:4.6rem;filter:drop-shadow(0 12px 24px rgba(0,0,0,.5))}
+  .type-badge{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);
+    font-size:.62rem;font-weight:800;letter-spacing:.1em;padding:6px 12px;border-radius:99px;color:#c4b5fd}
+
+  .meta{text-align:center;margin-bottom:20px}
+  .meta h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.01em;margin-bottom:5px}
+  .meta p{color:var(--mut);font-size:.84rem}
+
+  /* waveform */
+  .wave{display:flex;align-items:center;gap:3px;height:56px;margin:0 6px 8px}
+  .w{flex:1;border-radius:99px;background:rgba(255,255,255,.14);position:relative;overflow:hidden;cursor:pointer;transition:.15s}
+  .w::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--vio),var(--cyan));
+    transform-origin:bottom;transform:scaleY(0);transition:.3s}
+  .w.past{background:linear-gradient(90deg,var(--vio),var(--cyan));opacity:.95}
+  .w.past::after{transform:scaleY(1)}
+  .w.playing{animation:eq 0.9s ease-in-out infinite}
+  .w.playing::after{transform:scaleY(1)}
+  @keyframes eq{0%,100%{height:38%}50%{height:100%}}
+  .times{display:flex;justify-content:space-between;color:var(--mut);font-size:.72rem;font-weight:600;margin-bottom:18px;font-variant-numeric:tabular-nums}
+
+  /* controls */
+  .ctl{display:flex;align-items:center;justify-content:center;gap:26px;margin-bottom:20px}
+  .cbtn{width:52px;height:52px;border-radius:50%;border:0;background:transparent;color:var(--txt);font-size:1.15rem;cursor:pointer;transition:.2s}
+  .cbtn:hover{background:rgba(255,255,255,.07)}
+  .play{width:74px;height:74px;border-radius:50%;border:0;font-size:1.5rem;color:#fff;cursor:pointer;
+    background:linear-gradient(135deg,var(--vio),var(--pnk));box-shadow:0 16px 36px rgba(139,92,246,.45);transition:.22s}
+  .play:hover{transform:scale(1.07)}
+  .skip i{font-style:normal}
+
+  /* speed chip + row */
+  .row{display:flex;justify-content:center;gap:10px;margin-bottom:26px}
+  .chip{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--txt);font-family:'Sora';font-weight:700;
+    font-size:.8rem;padding:10px 18px;border-radius:99px;cursor:pointer;transition:.2s}
+  .chip:hover{border-color:var(--vio)}
+  .chip.on{background:linear-gradient(135deg,var(--vio),var(--pnk));border-color:transparent;box-shadow:0 10px 24px rgba(139,92,246,.35)}
+  .pop{animation:pop .3s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes pop{50%{transform:scale(1.18)}}
+
+  /* queue */
+  .q-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .q-head h3{font-family:'Sora';font-size:.95rem}
+  .q-head small{color:var(--mut);font-size:.7rem}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:6px 14px;margin-bottom:40px}
+  .qi{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid var(--line)}
+  .qi:last-child{border:0}
+  .qi .thumb{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:1.1rem;flex-shrink:0}
+  .t1{background:linear-gradient(135deg,#2a1b54,#4c1d95)} .t2{background:linear-gradient(135deg,#164e63,#0e7490)} .t3{background:linear-gradient(135deg,#4c1d95,#be185d)}
+  .qi div{flex:1;min-width:0}
+  .qi b{font-size:.82rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .qi small{color:var(--mut);font-size:.7rem}
+  .qi em{font-style:normal;font-size:.62rem;font-weight:800;padding:4px 9px;border-radius:99px;flex-shrink:0}
+  .pod{background:rgba(139,92,246,.15);color:#c4b5fd} .mus{background:rgba(34,211,238,.13);color:#67e8f9}
+  .qi.now b{color:var(--cyan)}
+  .bars-eq{display:flex;gap:2px;align-items:flex-end;height:16px;flex-shrink:0}
+  .bars-eq i{width:3px;background:var(--cyan);border-radius:2px;animation:eq 0.8s ease-in-out infinite}
+  .bars-eq i:nth-child(2){animation-delay:.2s}.bars-eq i:nth-child(3){animation-delay:.4s}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand">🌊 Wave<b>Play</b></div>
+    <div class="timer-chip" onclick="sleep()">🌙 Sleep timer</div>
+  </div>
+
+  <div class="art"><span class="type-badge">🎙️ PODCAST · EP 142</span><i>🎧</i></div>
+
+  <div class="meta">
+    <h1>The Design of Everyday Commutes</h1>
+    <p>Design Decoded · 38 min left · saved position ✓</p>
+  </div>
+
+  <div class="wave" id="wave"></div>
+  <div class="times"><span>12:04</span><span>-26:12</span></div>
+
+  <div class="ctl">
+    <button class="cbtn">⏮</button>
+    <button class="cbtn">⏪</button>
+    <button class="play" id="pl" onclick="toggle()">❚❚</button>
+    <button class="cbtn">⏩</button>
+    <button class="cbtn">⏭</button>
+  </div>
+
+  <div class="row">
+    <button class="chip on" id="spd" onclick="speed()">1.5×</button>
+    <button class="chip">🔊 Chapters</button>
+    <button class="chip">⭐ Save</button>
+  </div>
+
+  <div class="q-head"><h3>Up next · Smart queue</h3><small>podcast → music auto-mix</small></div>
+  <div class="q">
+    <div class="qi now">
+      <div class="thumb t1">🎙️</div>
+      <div><b>The Design of Everyday Commutes</b><small>Design Decoded · 38 min left</small></div>
+      <div class="bars-eq"><i></i><i></i><i></i></div>
+    </div>
+    <div class="qi">
+      <div class="thumb t2">🎙️</div>
+      <div><b>Why cities sound better at night</b><small>Urban Ear · 24 min · starts at 1.5× too</small></div>
+      <em class="pod">PODCAST</em>
+    </div>
+    <div class="qi">
+      <div class="thumb t3">🎵</div>
+      <div><b>Lo-fi Metro Evenings</b><small>Playlist · 52 songs · resumes at #17</small></div>
+      <em class="mus">MUSIC</em>
+    </div>
+  </div>
+</div>
+<script>
+/* waveform */
+const wave=document.getElementById('wave');
+const heights=[30,45,60,40,75,55,85,65,50,90,70,58,80,62,45,72,88,54,66,78,48,60,84,56,70,42,64,76,52,68];
+heights.forEach((h,i)=>{
+  const b=document.createElement('div');b.className='w'+(i<12?' past':i===12?' playing':'');
+  b.style.height=h+'%';b.onclick=()=>{document.querySelectorAll('.w').forEach((x,j)=>{x.classList.toggle('past',j<=i);x.classList.toggle('playing',j===i+1)})};
+  wave.appendChild(b);
+});
+let playing=true;
+function toggle(){
+  playing=!playing;
+  document.getElementById('pl').textContent=playing?'❚❚':'▶';
+  document.querySelectorAll('.w.playing, .bars-eq i').forEach(el=>el.style.animationPlayState=playing?'running':'paused');
+}
+const speeds=['1×','1.25×','1.5×','1.75×','2×'];let si=2;
+function speed(){
+  si=(si+1)%speeds.length;
+  const c=document.getElementById('spd');
+  c.textContent=speeds[si]+'×';
+  c.classList.remove('pop');void c.offsetWidth;c.classList.add('pop');
+}
+function sleep(){alert('🌙 Sleep timer: playback will fade out in 20 minutes')}
+</script>
+</body>
+</html>

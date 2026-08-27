@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Accessibility is a Design Problem — Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="cs-nav__logo" aria-label="Home"><span>R</span>ushmitha</a>
+    <ul class="cs-nav__links">
+      <li><a href="../index.html">Work</a></li>
+      <li><a href="../demos/design-system.html">Design System</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">moon</button>
+  </nav>
+  <article class="page-wrapper" style="max-width:720px;">
+    <header class="cs-hero" style="padding-bottom:1rem;">
+      <span class="cs-hero__badge">Accessibility</span>
+      <h1 class="cs-hero__title" style="font-size:clamp(1.8rem,4vw,2.8rem);">Why Accessibility is a Design Problem, Not Just an Engineering One</h1>
+      <p class="cs-hero__subtitle">August 2026 · 6 min read</p>
+    </header>
+
+    <section class="cs-section">
+      <p class="cs-section__text">There's a common pattern in product teams: designers create the "ideal" visual design, then engineers add accessibility as a compliance checkbox at the end. ARIA labels here, alt text there, maybe a skip link. This approach produces technically compliant but experientially poor interfaces.</p>
+      <p class="cs-section__text">Accessibility is a design problem. It requires understanding how different users perceive, navigate, and interact with your interface — and making intentional design decisions to accommodate those differences.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">Contrast is a Design Decision</h3>
+      <p class="cs-section__text">When I design a color palette, I test every combination for WCAG contrast ratios before committing to it. Not after. The primary color (#8B5CF6 on dark backgrounds) was chosen partly because it meets 4.5:1 contrast against the background — that's not a happy accident, it's a design constraint.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">Keyboard Navigation Needs Visual Design</h3>
+      <p class="cs-section__text">A visible focus indicator isn't just an engineering addition — it needs to be designed. Our 2px solid primary-color focus ring was a conscious decision: thick enough to be visible, colored to be distinctive, positioned to not obscure content. Engineers implemented it, but design defined it.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">Screen Readers Reveal Architecture Flaws</h3>
+      <p class="cs-section__text">When I navigated my portfolio with VoiceOver for the first time, the heading structure exposed a disorganized page. Screen readers don't see your beautiful layout — they see your HTML structure. If your heading hierarchy doesn't make sense when read linearly, your information architecture has problems that visual design can't hide.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">Reduced Motion is Empathy in Code</h3>
+      <p class="cs-section__text">Some users experience motion sickness, vestibular disorders, or anxiety from animations. The <code>prefers-reduced-motion</code> media query isn't a nice-to-have — it's a fundamental respect for user diversity. Every animation in this portfolio is gracefully degraded when this preference is detected.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">The Business Case</h3>
+      <p class="cs-section__text">Beyond the moral imperative, accessible design is better design. High contrast improves readability for everyone. Clear heading hierarchy improves SEO. Keyboard navigation improves power-user efficiency. Focus management improves form completion rates. Accessibility doesn't limit design — it elevates it.</p>
+
+      <div class="cs-callout cs-callout--success">
+        <strong>Bottom Line:</strong> My portfolio explicitly documents its accessibility implementation — not because accessibility is a feature, but because it's evidence of design maturity.
+      </div>
+    </section>
+
+    <div style="margin-top:2rem;"><a href="index.html" class="btn btn--secondary">← Back to Blog</a></div>
+  </article>
+  <footer class="cs-footer"><p>&copy; 2026 Rushmitha Varshini</p></footer>
+  <script>
+    function toggleTheme(){const h=document.documentElement,n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);}
+    (function(){const s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiteSphere — Kitchen Partner Dashboard (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#fff7f1;color:#231a12}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 36px;border-bottom:1px solid #f4e9e1;background:#fff}
+.brand{font-family:'Sora';font-weight:800;font-size:1.1rem}
+.brand span{color:#ff6b2c}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px 36px 0}
+.kpi{background:#fff;border:1px solid #f4e9e1;border-radius:16px;padding:18px}
+.kpi small{font-size:.66rem;color:#8d8177;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.kpi b{display:block;font-family:'Sora';font-size:1.55rem;margin-top:6px}
+.kpi em{font-style:normal;font-size:.64rem;font-weight:800;padding:3px 8px;border-radius:99px;margin-left:6px}
+.u{background:#eafaf1;color:#1c7a4e}.d{background:#fef3f2;color:#c0392b}
+.wrap{max-width:1300px;margin:0 auto;padding:24px 36px}
+h1{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em;margin-bottom:24px}
+.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.card{background:#fff;border:1px solid #f4e9e1;border-radius:18px;padding:20px}
+.card h3{font-family:'Sora';font-size:.9rem;margin-bottom:16px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:.62rem;color:#8d8177;text-transform:uppercase;letter-spacing:.08em;padding:0 0 10px;font-weight:700}
+td{padding:11px 0;border-top:1px solid #f4e9e1;font-size:.82rem}
+.sbadge{font-size:.6rem;font-weight:800;padding:4px 9px;border-radius:99px}
+.sp{background:#eafaf1;color:#1c7a4e}.sd{background:#fff3ec;color:#e05a17}.sc{background:#fef3f2;color:#c0392b}
+.tabs{display:flex;gap:4px;background:#faf5f0;border-radius:10px;padding:4px;margin-bottom:14px}
+.tb{flex:1;text-align:center;padding:9px 0;font-size:.74rem;font-weight:700;color:#8d8177;border-radius:8px;cursor:pointer;transition:.2s;font-family:'Inter'}
+.tb.on{background:#ff6b2c;color:#fff}
+.heat{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.hc{aspect-ratio:1;border-radius:8px;background:#f0e5dc;transition:.2s;cursor:pointer}
+.hc:hover{transform:scale(1.1)}
+.orders{display:flex;flex-direction:column;gap:9px}
+.or{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:13px;background:#faf5f0;transition:.2s}
+.or:hover{background:#fff3ec}
+.or i{font-style:normal;width:36px;height:36px;border-radius:11px;background:#fff3ec;display:grid;place-items:center;font-size:1rem;flex-shrink:0}
+.or b{font-size:.8rem;display:block}
+.or small{color:#8d8177;font-size:.7rem}
+.or span{margin-left:auto;font-family:'Sora';font-weight:800;font-size:.78rem}
+</style></head>
+<body>
+<div class="top">
+  <div class="brand">Bite<span>Sphere</span> <small style="color:#8d8177;font-weight:500">KITCHEN</small></div>
+  <div style="font-size:.78rem;color:#8d8177">Trattoria Moderna · Manager view</div>
+</div>
+<div class="kpi-row">
+  <div class="kpi"><small>Orders today</small><b>34 <em class="u">↑ 3</em></b></div>
+  <div class="kpi"><small>Revenue</small><b>₹14,800 <em class="u">↑ 18%</em></b></div>
+  <div class="kpi"><small>Avg prep time</small><b>16 min <em class="d">↓ 2</em></b></div>
+  <div class="kpi"><small>Rating</small><b>4.8 ★ <em class="u">steady</em></b></div>
+</div>
+<div class="wrap">
+  <h1>Kitchen command center 🍳</h1>
+  <div class="grid2">
+    <div class="card">
+      <h3>Orders by hour (today)</h3>
+      <div class="heat" id="heat"></div>
+    </div>
+    <div class="card">
+      <h3>Live queue</h3>
+      <div class="orders">
+        <div class="or"><i>🍝</i><div><b>#1247</b><small>Truffle Pasta + Burrata</small></div><span>₹780</span></div>
+        <div class="or"><i>🍕</i><div><b>#1248</b><small>Margherita + Garlic knots</small></div><span>₹540</span></div>
+        <div class="or"><i>🥗</i><div><b>#1249</b><small>Burrata Caprese</small></div><span>₹360</span></div>
+        <div class="or"><i>🍝</i><div><b>#1250</b><small>Ragu + Tiramisu</small></div><span>₹800</span></div>
+      </div>
+    </div>
+    <div class="card" style="grid-column:1/-1">
+      <h3>Menu performance (this week)</h3>
+      <div class="tabs">
+        <button class="tb on">Revenue</button><button class="tb">Orders</button><button class="tb">Rating</button>
+      </div>
+      <table>
+        <tr><th>Item</th><th>Orders</th><th>Revenue</th><th>Avg rating</th><th>Margin</th></tr>
+        <tr><td><b>Truffle Mushroom Pasta</b></td><td>87</td><td>₹36,540</td><td>4.9 ★</td><td>68%</td></tr>
+        <tr><td><b>Burrata Caprese</b></td><td>62</td><td>₹22,320</td><td>4.8 ★</td><td>72%</td></tr>
+        <tr><td><b>Slow-Braised Ragu</b></td><td>41</td><td>₹21,320</td><td>4.7 ★</td><td>58%</td></tr>
+        <tr><td><b>Tiramisu</b></td><td>55</td><td>₹15,400</td><td>4.9 ★</td><td>78%</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+const heat=document.getElementById('heat');
+const vals=[12,34,56,78,89,67,23,45,78,89,90,56,34,12,5,2,1,0,0,0,0,0,0,0];
+vals.forEach(v=>{
+  const c=document.createElement('div');c.className='hc';
+  const o=0.15+v/90*0.85;c.style.background=`rgba(255,107,44,${o.toFixed(2)})`;
+  c.title=v+' orders';heat.appendChild(c);
+});
+</script>
+</body></html>

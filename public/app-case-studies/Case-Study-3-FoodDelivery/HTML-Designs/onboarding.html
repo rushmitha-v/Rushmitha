@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiteSphere — Get Started</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#fff7f1;color:#231a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw;background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 30px 70px rgba(35,26,18,.15)}
+.hero{background:linear-gradient(135deg,#ff6b2c,#ff9558);padding:34px 28px 28px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'🍛';position:absolute;font-size:5rem;right:-16px;bottom:-20px;opacity:.2;transform:rotate(-12deg)}
+.hero::before{content:'🍜';position:absolute;font-size:3.4rem;left:-10px;top:16px;opacity:.2;transform:rotate(10deg)}
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:22px}
+.dots i{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.4)}
+.dots i.on{width:24px;background:#fff}
+h1{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em;margin-bottom:8px}
+.hero p{font-size:.85rem;opacity:.9}
+.body{padding:26px 26px 30px}
+.lbl{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#8d8177;font-weight:800;margin-bottom:12px}
+.opts{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.opt{display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:16px;border:1.5px solid #f0e5dc;cursor:pointer;transition:.22s}
+.opt:hover{border-color:#ffb25e;transform:translateY(-2px)}
+.opt.on{border-color:#ff6b2c;background:#fff3ec}
+.opt i{font-style:normal;font-size:1.3rem}
+.opt b{font-size:.88rem;display:block}
+.opt small{color:#8d8177;font-size:.73rem}
+.opt>div{flex:1}
+.btn{width:100%;border:0;border-radius:16px;padding:16px;font-family:'Sora';font-weight:800;color:#fff;font-size:.95rem;cursor:pointer;background:linear-gradient(135deg,#ff6b2c,#ff9558);box-shadow:0 14px 30px rgba(255,107,44,.35);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+.foot{margin-top:14px;text-align:center;font-size:.74rem;color:#8d8177}
+.foot b{color:#ff6b2c}
+</style></head>
+<body>
+<div class="card">
+  <div class="hero">
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+    <h1>Hungry for local? 🍽️</h1>
+    <p>Independent kitchens, fair commissions, real flavor</p>
+  </div>
+  <div class="body">
+    <div class="lbl">Pick your food mood</div>
+    <div class="opts">
+      <div class="opt on"><i>🍛</i><div><b>Comfort classics</b><small>Biryani, thalis, burgers done right</small></div></div>
+      <div class="opt"><i>🥗</i><div><b>Healthy & fresh</b><small>Bowls, salads, plant-based picks</small></div></div>
+      <div class="opt"><i>冒险</i><div><b>Adventurous</b><small>Korean, Ethiopian, fusion — surprise me</small></div></div>
+    </div>
+    <button class="btn" onclick="alert('📍 Finding kitchens within 5 km of you…')">Use my location →</button>
+    <div class="foot">Delivering in <b>Indiranagar</b> · change anytime</div>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));o.classList.add('on')});
+</script>
+</body></html>

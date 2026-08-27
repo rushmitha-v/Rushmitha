@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FocusMate — Team Dashboard (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0b1020;color:#eef2fb}
+.top{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid rgba(255,255,255,.07)}
+.brand{font-family:'Sora';font-weight:800;font-size:1.15rem}
+.brand span{color:#4f8cff}
+.pill{font-size:.72rem;color:#8a94ad;border:1px solid rgba(255,255,255,.1);padding:7px 14px;border-radius:99px}
+.wrap{max-width:1200px;margin:0 auto;padding:30px 40px}
+h1{font-family:'Sora';font-size:1.6rem;letter-spacing:-.02em;margin-bottom:6px}
+p.sub{color:#8a94ad;margin-bottom:26px;font-size:.9rem}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+.kpi{background:#141c3a;border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:20px}
+.kpi small{color:#8a94ad;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.kpi b{display:block;font-family:'Sora';font-size:1.7rem;margin-top:8px}
+.kpi em{font-style:normal;font-size:.68rem;font-weight:800;padding:3px 9px;border-radius:99px;margin-left:7px}
+.u{background:rgba(45,212,167,.13);color:#2dd4a7}.d{background:rgba(251,113,133,.13);color:#fb7185}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.card{background:#141c3a;border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:22px}
+.card h3{font-family:'Sora';font-size:.95rem;margin-bottom:16px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:.66rem;color:#8a94ad;text-transform:uppercase;letter-spacing:.08em;padding:0 0 12px;font-weight:700}
+td{padding:12px 0;border-top:1px solid rgba(255,255,255,.05);font-size:.84rem}
+.uav{width:32px;height:32px;border-radius:10px;display:inline-grid;place-items:center;font-weight:800;font-size:.72rem;font-family:'Sora';margin-right:9px;vertical-align:middle}
+.st{font-size:.66rem;font-weight:800;padding:4px 10px;border-radius:99px}
+.live{background:rgba(45,212,167,.13);color:#2dd4a7}
+.idle{background:rgba(255,255,255,.06);color:#8a94ad}
+.brk{background:rgba(251,191,36,.13);color:#fbbf24}
+.bars{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:6px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.bar i{width:100%;border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,#4f8cff,rgba(139,92,246,.3))}
+.bar span{font-size:.62rem;color:#8a94ad}
+</style></head>
+<body>
+<div class="top">
+  <div class="brand">⚡Focus<span>Mate</span> <span style="font-size:.6rem;color:#8a94ad;font-weight:500">TEAMS</span></div>
+  <div class="pill">Acme Design Team · 24 members</div>
+</div>
+<div class="wrap">
+  <h1>Team focus health 📈</h1>
+  <p class="sub">Anonymous, aggregate data — built for trust, not surveillance</p>
+
+  <div class="kpis">
+    <div class="kpi"><small>Team focus today</small><b>41h <em class="u">↑ 12%</em></b></div>
+    <div class="kpi"><small>Sessions started</small><b>38 <em class="u">↑ 8%</em></b></div>
+    <div class="kpi"><small>Avg session</small><b>52 min <em class="u">↑ 4%</em></b></div>
+    <div class="kpi"><small>After-hours load</small><b>6% <em class="d">↓ 2%</em></b></div>
+  </div>
+
+  <div class="cols">
+    <div class="card">
+      <h3>Focus hours — last 7 days</h3>
+      <div class="bars">
+        <div class="bar"><i style="height:55%"></i><span>Mon</span></div>
+        <div class="bar"><i style="height:72%"></i><span>Tue</span></div>
+        <div class="bar"><i style="height:64%"></i><span>Wed</span></div>
+        <div class="bar"><i style="height:88%"></i><span>Thu</span></div>
+        <div class="bar"><i style="height:78%"></i><span>Fri</span></div>
+        <div class="bar"><i style="height:22%"></i><span>Sat</span></div>
+        <div class="bar"><i style="height:14%"></i><span>Sun</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Live now</h3>
+      <table>
+        <tr><th>Member</th><th>Session</th><th>Status</th></tr>
+        <tr><td><span class="uav" style="background:linear-gradient(135deg,#4f8cff,#8b5cf6)">MK</span>Maria K.</td><td>Deep 45 · w/ Alex</td><td><span class="st live">● FOCUSED</span></td></tr>
+        <tr><td><span class="uav" style="background:linear-gradient(135deg,#2dd4a7,#38bdf8)">JT</span>Jonas T.</td><td>Pomodoro 25</td><td><span class="st brk">☕ BREAK</span></td></tr>
+        <tr><td><span class="uav" style="background:linear-gradient(135deg,#fbbf24,#fb7185)">PR</span>Priya R.</td><td>Flow 90 · solo</td><td><span class="st live">● FOCUSED</span></td></tr>
+        <tr><td><span class="uav" style="background:rgba(255,255,255,.1)">SA</span>Sam A.</td><td>—</td><td><span class="st idle">IDLE</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+</body></html>

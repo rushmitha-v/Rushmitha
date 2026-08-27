@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitPulse — Nutrition Log</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0a0f0d;color:#eafcf2;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.4rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8fa89b;font-size:.82rem;margin-bottom:18px}
+.macro{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.m{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 10px;text-align:center}
+.m small{color:#8fa89b;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;display:block}
+.m b{display:block;font-family:'Sora';font-size:1.2rem;margin-top:4px}
+.m .t{font-size:.7rem;color:#8fa89b;margin-top:2px}
+.p{color:#22e07a}.c{color:#34d399}.f{color:#fbbf24}
+.meals{display:flex;flex-direction:column;gap:12px}
+.meal{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.mh b{font-size:.88rem}
+.mh small{color:#8fa89b;font-size:.7rem}
+.item{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:1px dashed rgba(255,255,255,.06)}
+.item:first-child{border:0}
+.item i{font-style:normal;font-size:1.1rem;flex-shrink:0}
+.item div{flex:1}
+.item b{font-size:.8rem;display:block}
+.item small{color:#8fa89b;font-size:.68rem;display:block}
+.qty{margin-left:auto;font-family:'Sora';font-weight:700;font-size:.75rem;color:#fff;background:rgba(255,255,255,.08);padding:4px 10px;border-radius:99px}
+.add{width:100%;margin-top:8px;border:1px dashed rgba(34,224,122,.5);color:#22e07a;border-radius:12px;padding:12px;font-family:'Inter';font-weight:700;font-size:.78rem;background:transparent;cursor:pointer;transition:.2s}
+.add:hover{background:rgba(34,224,122,.1)}
+</style></head>
+<body>
+<div class="app">
+  <h1>Today's nutrition 🍽️</h1>
+  <p class="sub">2,340 / 2,600 kcal · Protein goal nearly hit</p>
+
+  <div class="macro">
+    <div class="m"><small>Calories</small><b>2,340</b><div class="t">2,600 target</div></div>
+    <div class="m p"><small>Protein</small><b>168g</b><div class="t">170g goal</div></div>
+    <div class="m c"><small>Carbs</small><b>245g</b><div class="t">260g</div></div>
+    <div class="m f"><small>Fat</small><b>78g</b><div class="t">85g</div></div>
+  </div>
+
+  <div class="meals">
+    <div class="meal">
+      <div class="mh"><b>🌅 Breakfast</b><small>520 kcal · 38g P</small></div>
+      <div class="item"><i>🥚</i><div><b>3 eggs + spinach</b><small>24g protein</small></div><span class="qty">18g P</span></div>
+      <div class="item"><i>🍞</i><div><b>Sourdough toast</b><small>Complex carbs</small></div><span class="qty">28g C</span></div>
+      <div class="item"><i>🥑</i><div><b>½ avocado</b><small>Healthy fats</small></div><span class="qty">11g F</span></div>
+    </div>
+    <div class="meal">
+      <div class="mh"><b>🌮 Lunch</b><small>780 kcal · 52g P</small></div>
+      <div class="item"><i>🍗</i><div><b>Chicken breast 180g</b><small>Lean protein</small></div><span class="qty">42g P</span></div>
+      <div class="item"><i>🍚</i><div><b>Brown rice 150g</b><small>Carb source</small></div><span class="qty">52g C</span></div>
+      <div class="item"><i>🥦</i><div><b>Broccoli + olive oil</b><small>Micros + fats</small></div><span class="qty">14g F</span></div>
+    </div>
+    <div class="meal">
+      <div class="mh"><b>🍎 Pre-workout</b><small>240 kcal · 18g P</small></div>
+      <div class="item"><i>🥤</i><div><b>Whey isolate</b><small>Fast digesting</small></div><span class="qty">24g P</span></div>
+      <div class="item"><i>🍌</i><div><b>Banana</b><small>Quick energy</small></div><span class="qty">27g C</span></div>
+    </div>
+    <button class="add">+ Add meal / snack</button>
+  </div>
+</div>
+</body></html>

@@ -1,78 +1,120 @@
-import React, { useState } from 'react';
-import { FolderGit2, ExternalLink, Sparkles, Layers, ArrowUpRight, Play, Eye, Maximize2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { 
+  FolderGit2, 
+  ExternalLink, 
+  Sparkles, 
+  Play, 
+  FileText, 
+  Download, 
+  BookOpen, 
+  CheckCircle2, 
+  Eye, 
+  X,
+  Palette,
+  Compass,
+  Layers,
+  Box,
+  Sliders,
+  ShieldCheck
+} from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [showFigmaEmbed, setShowFigmaEmbed] = useState(true);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [modalViewMode, setModalViewMode] = useState('html'); // 'html', 'pdf'
+  const { triggerConfetti } = useTheme();
 
-  const figmaEmbedUrl = "https://embed.figma.com/design/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&embed-host=share";
-  const figmaDesignUrl = "https://www.figma.com/design/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&m=dev&t=UjdJPDZ7aVl0iAOd-1";
-  const figmaProtoUrl = "https://www.figma.com/proto/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&t=UjdJPDZ7aVl0iAOd-1";
+  useEffect(() => {
+    if (selectedItem) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedItem]);
 
-  const projects = [
+  // Selected Engineering & Industrial Systems (No Figma links)
+  const engineeringProjects = [
     {
+      id: 'hydra-core',
+      num: 'HMI',
       title: 'HYDRA-CORE v3.1: Industrial HMI & Telemetry System',
-      category: 'Industrial UX / Figma Design',
-      image: '/projects/hydraulics_hmi.jpg',
-      badge: 'GEE KAY VEE HYDRAULICS',
+      category: 'Industrial UX / Engineering',
+      tagColor: '#06b6d4',
       badgeColor: '#06b6d4',
-      figmaDesign: figmaDesignUrl,
-      figmaProto: figmaProtoUrl,
-      description: 'High-precision operator control interface designed for heavy industrial hydraulic machinery. Translates complex pressure, flow rate, and temperature telemetry into ergonomic visual components.',
-      details: [
-        'Designed touch-optimized layouts adhering to industrial lighting and glare conditions.',
+      image: '/projects/hydraulics_hmi.jpg',
+      htmlUrl: '/industrial-case-studies/case-study-1.html',
+      pdfUrl: '/case-studies/pdf/08-hydra-core.pdf',
+      pdfName: '08-hydra-core.pdf',
+      summary: 'High-precision operator control interface designed for heavy industrial hydraulic machinery, telemetry monitoring, and safety operations at GEE KAY VEE HYDRAULICS.',
+      highlights: [
+        'Designed touch-optimized layouts adhering to industrial plant lighting and glare.',
         'Created emergency alert indicators reducing operator response times by 35%.',
         'Built a scalable design system in Figma with 150+ reusable components and states.'
       ],
-      tags: ['Figma', 'UX Research', 'Industrial HMI', 'Ergonomics', 'Design Systems']
+      tags: ['Industrial HMI', 'Figma Tokens', 'Ergonomics', 'Design System', 'Telemetry']
     },
     {
+      id: 'strata-analytics',
+      num: 'ENG',
       title: 'StrataAnalytics: Enterprise Intelligence Platform',
       category: 'Full-Stack Web & Data Visualization',
-      image: '/projects/analytics_dashboard.jpg',
-      badge: 'Cognizant & Full-Stack',
+      tagColor: '#8b5cf6',
       badgeColor: '#8b5cf6',
-      figmaDesign: figmaDesignUrl,
-      figmaProto: figmaProtoUrl,
-      description: 'Enterprise data visualization suite engineered with React.js and Python. Provides real-time revenue analytics, user cohort analysis, and interactive data filtering over MySQL databases.',
-      details: [
-        'Implemented responsive, accessible React dashboard components with smooth micro-interactions.',
+      image: '/projects/analytics_dashboard.jpg',
+      htmlUrl: '/industrial-case-studies/case-study-2.html',
+      pdfUrl: '/case-studies/pdf/09-strata-analytics.pdf',
+      pdfName: '09-strata-analytics.pdf',
+      summary: 'Enterprise data visualization suite engineered with React.js and Python at Cognizant. Provides real-time revenue analytics and automated database querying.',
+      highlights: [
+        'Implemented accessible React dashboard components with smooth keyframe animations.',
         'Integrated Python data processing pipelines to generate automated summary metrics.',
-        'Structured optimized MySQL database schemas supporting rapid telemetry querying.'
+        'Structured optimized MySQL database schemas supporting rapid querying.'
       ],
-      tags: ['React.js', 'Python', 'MySQL', 'Data Visualization', 'REST APIs']
+      tags: ['React.js', 'Python', 'MySQL', 'REST APIs', 'Data Visualization']
     },
     {
+      id: 'meditate-ux',
+      num: 'HFI',
       title: 'Meditate UX: Usability Research & Mobile Showcase',
       category: 'Certified Usability Analyst (HFI)',
-      image: '/projects/usability_study.jpg',
-      badge: 'HFI Certified Case Study',
+      tagColor: '#10b981',
       badgeColor: '#10b981',
-      figmaDesign: figmaDesignUrl,
-      figmaProto: figmaProtoUrl,
-      description: 'Complete user experience redesign backed by formal usability testing and cognitive walkthroughs. Features wireframe user flows, design system tokens, and high-fidelity mobile prototype screens.',
-      details: [
+      image: '/projects/usability_study.jpg',
+      htmlUrl: '/industrial-case-studies/case-study-3.html',
+      pdfUrl: '/case-studies/pdf/10-meditate-ux.pdf',
+      pdfName: '10-meditate-ux.pdf',
+      summary: 'Complete user experience redesign backed by formal usability testing and cognitive walkthroughs based on Human Factors International (HFI) heuristics.',
+      highlights: [
         'Conducted usability testing sessions achieving a 94% task completion rate.',
-        'Created design guidelines covering typography (Montserrat), contrast ratios, and dark mode palette.',
-        'Delivered high-fidelity Figma prototypes with micro-interactions and smooth transitions.'
+        'Created design guidelines covering typography, contrast ratios, and dark mode palette.',
+        'Delivered high-fidelity Figma prototypes with micro-interactions and transitions.'
       ],
-      tags: ['Usability Testing', 'Figma', 'Wireframing', 'HFI Heuristics', 'Design System']
+      tags: ['Usability Testing', 'Figma', 'HFI Heuristics', 'Design System']
     }
   ];
+
+  const openModal = (item, defaultMode = 'html') => {
+    setSelectedItem(item);
+    setModalViewMode(item.htmlUrl ? defaultMode : 'pdf');
+  };
 
   return (
     <section id="projects" className="portfolio-section">
       <div className="section-badge">
         <FolderGit2 size={14} />
-        Featured Portfolio
+        Featured Works &amp; Figma Blueprints
       </div>
-      <h2 className="section-title">Selected Design & Engineering Works</h2>
+      <h2 className="section-title">Design Engineering &amp; Figma Blueprints</h2>
       <p className="section-subtitle">
-        Explore a curated collection of industrial interfaces, web applications, and live interactive Figma design systems.
+        Explore interactive Figma workspaces for both the entire portfolio build architecture and live UI project prototypes, alongside the standalone 500+ component design system and engineering platforms.
       </p>
 
       {/* ===================================================================== */}
-      {/* Interactive Live Figma Workspace Embed Card                           */}
+      {/* Figma Workspace 1: Portfolio Build Process & Master Design System (0-1)*/}
       {/* ===================================================================== */}
       <div 
         className="glass-card" 
@@ -80,8 +122,8 @@ export default function ProjectsSection() {
           width: '100%',
           maxWidth: '1200px',
           padding: '28px',
-          marginBottom: '40px',
-          border: '1px solid rgba(139, 92, 246, 0.35)',
+          marginBottom: '36px',
+          border: '1px solid rgba(139, 92, 246, 0.4)',
           background: 'linear-gradient(145deg, rgba(14, 18, 27, 0.95), rgba(7, 9, 14, 0.98))'
         }}
       >
@@ -91,38 +133,315 @@ export default function ProjectsSection() {
           justifyContent: 'space-between',
           alignItems: 'center',
           gap: '16px',
-          marginBottom: '20px'
+          marginBottom: '18px'
         }}>
           <div>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              padding: '3px 10px',
+              padding: '4px 12px',
               borderRadius: '9999px',
-              background: 'rgba(139, 92, 246, 0.15)',
-              border: '1px solid rgba(139, 92, 246, 0.35)',
+              background: 'rgba(139, 92, 246, 0.18)',
+              border: '1px solid rgba(139, 92, 246, 0.4)',
               color: '#c4b5fd',
               fontSize: '0.75rem',
               fontWeight: 700,
               textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              marginBottom: '6px'
+              letterSpacing: '0.06em',
+              marginBottom: '8px'
             }}>
-              <Sparkles size={12} />
-              <span>Live Interactive Workspace</span>
+              <Palette size={13} />
+              <span>Master Portfolio Design System &amp; Build Process</span>
             </div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>
-              Rushmitha Varshini — Official Figma Projects
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>
+              Portfolio Build Process &amp; Architecture (Node 0-1)
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', margin: '4px 0 0 0' }}>
-              Interact directly with the live canvas below, zoom in to inspect design tokens, or launch full prototype mode.
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: '4px 0 0 0' }}>
+              Complete architecture, layout tokens, typography scales, wireframes, and responsive component library engineered for this portfolio.
             </p>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
             <a
-              href={figmaProtoUrl}
+              href="https://www.figma.com/proto/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=0-1&t=UjdJPDZ7aVl0iAOd-1"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+                color: '#ffffff',
+                fontSize: '0.84rem',
+                fontWeight: 700,
+                textDecoration: 'none',
+                boxShadow: '0 4px 15px rgba(139, 92, 246, 0.35)'
+              }}
+            >
+              <Play size={13} fill="#ffffff" />
+              <span>Launch Prototype (0-1)</span>
+            </a>
+
+            <a
+              href="https://www.figma.com/design/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=0-1&m=dev&t=UjdJPDZ7aVl0iAOd-1"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary"
+              style={{ padding: '8px 16px', fontSize: '0.84rem' }}
+            >
+              <span>Inspect Node 0-1</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        {/* Live Responsive Figma Embed Frame */}
+        <div style={{
+          position: 'relative',
+          width: '100%',
+          paddingTop: '52%',
+          borderRadius: '14px',
+          overflow: 'hidden',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+          background: '#090d16',
+          boxShadow: '0 12px 35px rgba(0, 0, 0, 0.6)'
+        }}>
+          <iframe
+            title="Portfolio Build Process - Figma Node 0-1"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              border: 'none'
+            }}
+            src="https://embed.figma.com/proto/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=0-1&embed-host=share"
+            allowFullScreen
+          />
+        </div>
+      </div>
+
+      {/* ===================================================================== */}
+      {/* Dedicated Standalone Live Design System View (500+ Components)        */}
+      {/* ===================================================================== */}
+      <div 
+        className="glass-card" 
+        style={{
+          width: '100%',
+          maxWidth: '1200px',
+          padding: '28px',
+          marginBottom: '36px',
+          border: '1px solid rgba(56, 189, 248, 0.4)',
+          background: 'linear-gradient(145deg, rgba(14, 18, 27, 0.95), rgba(7, 9, 14, 0.98))'
+        }}
+      >
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '16px',
+          marginBottom: '18px'
+        }}>
+          <div>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '4px 12px',
+              borderRadius: '9999px',
+              background: 'rgba(56, 189, 248, 0.15)',
+              border: '1px solid rgba(56, 189, 248, 0.4)',
+              color: '#38bdf8',
+              fontSize: '0.75rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.06em',
+              marginBottom: '8px'
+            }}>
+              <Box size={13} />
+              <span>Interactive Component Library · 523+ Tokens &amp; Variants</span>
+            </div>
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>
+              Master Design System &amp; Live Component Explorer
+            </h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: '4px 0 0 0' }}>
+              Direct interactive playground showcasing Foundation tokens (Colors, Typography, Spacing, Shadows, Radius, Glass) and Navigation, Buttons, Cards, Gauges &amp; Form elements.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <a
+              href="/industrial-case-studies/demos/design-system.html"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 18px',
+                borderRadius: '9999px',
+                background: 'linear-gradient(135deg, #0284c7, #38bdf8)',
+                color: '#ffffff',
+                fontSize: '0.84rem',
+                fontWeight: 700,
+                textDecoration: 'none',
+                boxShadow: '0 4px 15px rgba(2, 132, 199, 0.35)'
+              }}
+            >
+              <Eye size={14} />
+              <span>Open Fullscreen Design System</span>
+            </a>
+
+            <a
+              href="/case-studies/pdf/12-design-system-spec.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary"
+              style={{ padding: '8px 16px', fontSize: '0.84rem', gap: '6px' }}
+            >
+              <FileText size={14} style={{ color: '#ef4444' }} />
+              <span>Design System Spec (PDF)</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Feature Highlights Bar */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+          gap: '12px',
+          marginBottom: '18px'
+        }}>
+          {[
+            { label: 'Components', val: '523+ Elements', icon: Box, color: '#38bdf8' },
+            { label: 'Foundations', val: '68 Core Tokens', icon: Sliders, color: '#8b5cf6' },
+            { label: 'Accessibility', val: 'WCAG AAA Compliant', icon: ShieldCheck, color: '#10b981' },
+            { label: 'Theming', val: 'Dual Light/Dark Modes', icon: Palette, color: '#f59e0b' }
+          ].map((stat, sIdx) => {
+            const IconComp = stat.icon;
+            return (
+              <div 
+                key={sIdx}
+                style={{
+                  padding: '12px 14px',
+                  borderRadius: '10px',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid var(--border-subtle)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+              >
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
+                  background: `${stat.color}1f`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: stat.color,
+                  flexShrink: 0
+                }}>
+                  <IconComp size={16} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    {stat.label}
+                  </div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                    {stat.val}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Live Interactive Design System Iframe Frame */}
+        <div style={{
+          position: 'relative',
+          width: '100%',
+          height: '620px',
+          borderRadius: '14px',
+          overflow: 'hidden',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+          background: '#090d16',
+          boxShadow: '0 12px 35px rgba(0, 0, 0, 0.6)'
+        }}>
+          <iframe
+            title="Interactive Design System Explorer"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              border: 'none',
+              background: '#090d16'
+            }}
+            src="/industrial-case-studies/demos/design-system.html"
+          />
+        </div>
+      </div>
+
+      {/* ===================================================================== */}
+      {/* Figma Workspace 2: UI Projects & Interactive Prototype Canvas (41-229) */}
+      {/* ===================================================================== */}
+      <div 
+        className="glass-card" 
+        style={{
+          width: '100%',
+          maxWidth: '1200px',
+          padding: '28px',
+          marginBottom: '40px',
+          border: '1px solid rgba(6, 182, 212, 0.35)',
+          background: 'linear-gradient(145deg, rgba(14, 18, 27, 0.95), rgba(7, 9, 14, 0.98))'
+        }}
+      >
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '16px',
+          marginBottom: '18px'
+        }}>
+          <div>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '4px 12px',
+              borderRadius: '9999px',
+              background: 'rgba(6, 182, 212, 0.15)',
+              border: '1px solid rgba(6, 182, 212, 0.35)',
+              color: '#67e8f9',
+              fontSize: '0.75rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.06em',
+              marginBottom: '8px'
+            }}>
+              <Compass size={13} />
+              <span>UI Projects &amp; Interactive Screen Prototypes</span>
+            </div>
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>
+              UI Projects &amp; Screen Flows (Node 41-229)
+            </h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', margin: '4px 0 0 0' }}>
+              High-fidelity screen layouts, interactive user journeys, and component token variants for FinFlow, Verdé, Pulse, Nimbus, and Wanderlust.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <a
+              href="https://www.figma.com/proto/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&t=UjdJPDZ7aVl0iAOd-1"
               target="_blank"
               rel="noreferrer"
               style={{
@@ -133,25 +452,24 @@ export default function ProjectsSection() {
                 borderRadius: '9999px',
                 background: 'linear-gradient(135deg, #10b981, #059669)',
                 color: '#ffffff',
-                fontSize: '0.85rem',
+                fontSize: '0.84rem',
                 fontWeight: 700,
                 textDecoration: 'none',
-                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)',
-                transition: 'transform 0.2s ease'
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)'
               }}
             >
-              <Play size={14} fill="#ffffff" />
-              <span>Launch Prototype</span>
+              <Play size={13} fill="#ffffff" />
+              <span>Launch Prototype (41-229)</span>
             </a>
 
             <a
-              href={figmaDesignUrl}
+              href="https://www.figma.com/design/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&m=dev&t=UjdJPDZ7aVl0iAOd-1"
               target="_blank"
               rel="noreferrer"
               className="btn-secondary"
-              style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+              style={{ padding: '8px 16px', fontSize: '0.84rem' }}
             >
-              <span>Open in Figma</span>
+              <span>Inspect Node 41-229</span>
               <ExternalLink size={14} />
             </a>
           </div>
@@ -161,7 +479,7 @@ export default function ProjectsSection() {
         <div style={{
           position: 'relative',
           width: '100%',
-          paddingTop: '56.25%', // 16:9 Aspect Ratio
+          paddingTop: '52%',
           borderRadius: '14px',
           overflow: 'hidden',
           border: '1px solid rgba(255, 255, 255, 0.12)',
@@ -169,7 +487,7 @@ export default function ProjectsSection() {
           boxShadow: '0 12px 35px rgba(0, 0, 0, 0.6)'
         }}>
           <iframe
-            title="Rushmitha Varshini - Figma Projects Canvas"
+            title="UI Projects - Figma Node 41-229"
             style={{
               position: 'absolute',
               top: 0,
@@ -178,285 +496,409 @@ export default function ProjectsSection() {
               height: '100%',
               border: 'none'
             }}
-            src={figmaEmbedUrl}
+            src="https://embed.figma.com/design/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&embed-host=share"
             allowFullScreen
           />
         </div>
       </div>
 
       {/* ===================================================================== */}
-      {/* Projects Grid                                                         */}
+      {/* Engineering & Industrial Systems Grid (Without Figma buttons)         */}
       {/* ===================================================================== */}
+      <div style={{ width: '100%', maxWidth: '1200px', marginBottom: '14px' }}>
+        <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-main)', margin: '0 0 6px 0' }}>
+          Industrial &amp; Full-Stack Systems
+        </h3>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', margin: 0 }}>
+          Production systems engineered for manufacturing telemetry, enterprise analytics, and usability benchmarks.
+        </p>
+      </div>
+
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-        gap: '28px',
+        gap: '26px',
         maxWidth: '1200px',
         width: '100%'
       }}>
-        {projects.map((project, index) => (
+        {engineeringProjects.map((item) => (
           <div 
-            key={index}
+            key={item.id}
             className="glass-card"
             style={{
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              borderTop: `3px solid ${item.tagColor}`,
+              padding: 0
             }}
-            onClick={() => setSelectedProject(project)}
+            onClick={() => openModal(item, 'html')}
           >
-            {/* Image Preview Container with Hover Zoom */}
+            {/* Visual Cover Header */}
             <div style={{
               position: 'relative',
               width: '100%',
-              aspectRatio: '16/9',
+              height: '180px',
               overflow: 'hidden',
-              background: '#0e121b'
+              background: `linear-gradient(135deg, ${item.tagColor}33, rgba(14,18,27,0.95))`
             }}>
-              <img 
-                src={project.image} 
-                alt={`${project.title} - ${project.category} designed by Rushmitha Varshini`}
+              <img
+                src={item.image}
+                alt={`${item.title} preview`}
                 loading="lazy"
-                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  transition: 'transform 0.5s ease'
+                  objectPosition: 'top center',
+                  transition: 'transform 0.4s ease'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1.0)'}
               />
+              
+              {/* Floating Badges */}
               <div style={{
                 position: 'absolute',
                 top: '12px',
                 left: '12px',
-                padding: '4px 10px',
-                borderRadius: '9999px',
-                background: 'rgba(7, 9, 14, 0.85)',
-                backdropFilter: 'blur(8px)',
-                border: `1px solid ${project.badgeColor}66`,
-                color: project.badgeColor,
-                fontSize: '0.75rem',
-                fontWeight: 600
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}>
-                {project.badge}
+                <span style={{
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 800,
+                  fontSize: '0.75rem',
+                  color: '#ffffff',
+                  background: item.tagColor,
+                  padding: '3px 10px',
+                  borderRadius: '9999px',
+                  letterSpacing: '0.06em',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.5)'
+                }}>
+                  {item.num}
+                </span>
+
+                <span style={{
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  background: 'rgba(7, 9, 14, 0.75)',
+                  backdropFilter: 'blur(6px)',
+                  padding: '3px 10px',
+                  borderRadius: '9999px',
+                  border: '1px solid rgba(255,255,255,0.15)'
+                }}>
+                  {item.category}
+                </span>
               </div>
             </div>
 
-            {/* Content Body */}
-            <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
+            {/* Card Content Body */}
+            <div style={{ padding: '20px 22px 16px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
               <div>
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  {project.category}
-                </span>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)', marginTop: '4px', marginBottom: '12px' }}>
-                  {project.title}
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-main)', margin: '0 0 8px 0', lineHeight: 1.3 }}>
+                  {item.title}
                 </h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '20px' }}>
-                  {project.description}
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '14px' }}>
+                  {item.summary}
                 </p>
-              </div>
 
-              <div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '18px' }}>
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="tag-badge" style={{ fontSize: '0.75rem', padding: '2px 8px' }}>
-                      {tag}
-                    </span>
+                {/* Key Highlights */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '7px', marginBottom: '16px' }}>
+                  {item.highlights.slice(0, 2).map((hl, hIdx) => (
+                    <div key={hIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.8rem', color: 'var(--text-dim)' }}>
+                      <CheckCircle2 size={13} style={{ color: item.tagColor, flexShrink: 0, marginTop: '2px' }} />
+                      <span>{hl}</span>
+                    </div>
                   ))}
                 </div>
-
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <button 
-                    className="btn-secondary"
-                    style={{ flex: 1, justifyContent: 'center', fontSize: '0.85rem', padding: '10px' }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedProject(project);
-                    }}
-                  >
-                    <span>View Details</span>
-                    <ArrowUpRight size={14} />
-                  </button>
-
-                  <a
-                    href={project.figmaProto}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                      padding: '10px 14px',
-                      borderRadius: '10px',
-                      background: 'rgba(139, 92, 246, 0.15)',
-                      border: '1px solid rgba(139, 92, 246, 0.35)',
-                      color: '#c4b5fd',
-                      fontSize: '0.82rem',
-                      fontWeight: 600,
-                      textDecoration: 'none'
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Play size={12} fill="#c4b5fd" />
-                    <span>Prototype</span>
-                  </a>
-                </div>
               </div>
+
+              {/* Tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 'auto' }}>
+                {item.tags.map((tag, tIdx) => (
+                  <span key={tIdx} className="tag-badge" style={{ fontSize: '0.72rem', padding: '2px 8px' }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Interactive Action Bar (Only View Details & PDF) */}
+            <div style={{
+              padding: '12px 20px',
+              background: 'rgba(0, 0, 0, 0.22)',
+              borderTop: '1px solid var(--border-subtle)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '8px'
+            }}>
+              <button
+                className="btn-primary"
+                style={{
+                  fontSize: '0.8rem',
+                  padding: '7px 14px',
+                  borderRadius: '8px',
+                  flex: 1,
+                  justifyContent: 'center'
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openModal(item, 'html');
+                }}
+              >
+                <Eye size={13} />
+                <span>View Details</span>
+              </button>
+
+              <a
+                href={item.pdfUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-pdf-badge"
+                title={`Open official ${item.pdfName}`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <FileText size={13} />
+                <span>PDF</span>
+              </a>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Modal for detailed case view */}
-      {selectedProject && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'rgba(0, 0, 0, 0.85)',
-          backdropFilter: 'blur(12px)',
-          zIndex: 200,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '24px'
-        }} onClick={() => setSelectedProject(null)}>
+      {/* Top-Level Portal Modal Pop-Up Viewer */}
+      {selectedItem && typeof document !== 'undefined' && createPortal(
+        <div 
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.88)',
+            backdropFilter: 'blur(16px)',
+            zIndex: 999999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '16px'
+          }} 
+          onClick={() => setSelectedItem(null)}
+        >
           <div 
             className="glass-card" 
             style={{ 
-              maxWidth: '780px', 
+              maxWidth: '1080px', 
               width: '100%', 
-              maxHeight: '90vh', 
-              overflowY: 'auto', 
-              padding: '32px',
-              border: '1px solid rgba(139, 92, 246, 0.4)'
+              height: '92vh', 
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden', 
+              border: `1.5px solid ${selectedItem.tagColor}`,
+              boxShadow: '0 25px 80px rgba(0, 0, 0, 0.95)',
+              padding: 0
             }} 
             onClick={(e) => e.stopPropagation()}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+            {/* Modal Header & Tab Navigation */}
+            <div style={{
+              padding: '14px 20px',
+              background: 'rgba(13, 17, 26, 0.95)',
+              borderBottom: '1px solid var(--border-subtle)',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
               <div>
-                <span style={{ fontSize: '0.8rem', color: selectedProject.badgeColor, fontWeight: 700 }}>
-                  {selectedProject.badge}
-                </span>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-main)', marginTop: '4px' }}>
-                  {selectedProject.title}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    color: '#ffffff',
+                    background: selectedItem.tagColor,
+                    padding: '2px 8px',
+                    borderRadius: '9999px'
+                  }}>
+                    {selectedItem.num}
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: selectedItem.badgeColor, fontWeight: 700 }}>
+                    {selectedItem.category}
+                  </span>
+                </div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-main)', margin: '2px 0 0 0' }}>
+                  {selectedItem.title}
                 </h3>
               </div>
-              <button 
-                onClick={() => setSelectedProject(null)}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: 'none',
-                  color: 'var(--text-main)',
-                  borderRadius: '50%',
-                  width: '32px',
-                  height: '32px',
-                  cursor: 'pointer',
-                  fontSize: '1.2rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                ✕
-              </button>
+
+              {/* View Mode Switcher */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <button
+                  onClick={() => setModalViewMode('html')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    padding: '6px 12px',
+                    borderRadius: '8px',
+                    background: modalViewMode === 'html' ? 'rgba(139, 92, 246, 0.3)' : 'rgba(255, 255, 255, 0.05)',
+                    border: modalViewMode === 'html' ? '1px solid #8b5cf6' : '1px solid var(--border-subtle)',
+                    color: modalViewMode === 'html' ? '#ffffff' : 'var(--text-muted)',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <BookOpen size={13} />
+                  <span>Interactive Case Study</span>
+                </button>
+
+                <button
+                  onClick={() => setModalViewMode('pdf')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    padding: '6px 12px',
+                    borderRadius: '8px',
+                    background: modalViewMode === 'pdf' ? 'rgba(239, 68, 68, 0.25)' : 'rgba(255, 255, 255, 0.05)',
+                    border: modalViewMode === 'pdf' ? '1px solid #ef4444' : '1px solid var(--border-subtle)',
+                    color: modalViewMode === 'pdf' ? '#ffffff' : 'var(--text-muted)',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <FileText size={13} />
+                  <span>{selectedItem.pdfName}</span>
+                </button>
+
+                {/* Direct Open in New Tab */}
+                <a
+                  href={modalViewMode === 'html' ? selectedItem.htmlUrl : selectedItem.pdfUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Open in Fullscreen Tab"
+                  style={{
+                    padding: '6px',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    color: 'var(--text-main)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textDecoration: 'none'
+                  }}
+                >
+                  <ExternalLink size={16} />
+                </a>
+
+                {/* Close Modal Button */}
+                <button 
+                  onClick={() => setSelectedItem(null)}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: 'none',
+                    color: 'var(--text-main)',
+                    borderRadius: '50%',
+                    width: '30px',
+                    height: '30px',
+                    cursor: 'pointer',
+                    fontSize: '1.1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginLeft: '4px'
+                  }}
+                >
+                  <X size={16} />
+                </button>
+              </div>
             </div>
 
-            <img 
-              src={selectedProject.image} 
-              alt={selectedProject.title} 
-              style={{ width: '100%', borderRadius: '12px', marginBottom: '20px', border: '1px solid var(--border-subtle)' }} 
-            />
+            {/* Modal Body: Active View Render */}
+            <div style={{ flex: 1, position: 'relative', width: '100%', height: '100%', background: '#090d16' }}>
+              {modalViewMode === 'html' && (
+                <iframe
+                  title={`${selectedItem.title} - Interactive Case Study`}
+                  src={selectedItem.htmlUrl}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                    background: '#ffffff'
+                  }}
+                />
+              )}
 
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '20px' }}>
-              {selectedProject.description}
-            </p>
-
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '12px' }}>
-              Key Accomplishments & Architecture:
-            </h4>
-
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
-              {selectedProject.details.map((detail, dIdx) => (
-                <li key={dIdx} style={{ display: 'flex', gap: '10px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                  <span style={{ color: selectedProject.badgeColor }}>✦</span>
-                  <span>{detail}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
-              {selectedProject.tags.map((t, idx) => (
-                <span key={idx} className="tag-badge">{t}</span>
-              ))}
+              {modalViewMode === 'pdf' && (
+                <iframe
+                  title={`${selectedItem.title} - PDF Document`}
+                  src={selectedItem.pdfUrl}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                    background: '#1e293b'
+                  }}
+                />
+              )}
             </div>
 
-            {/* Direct Figma Action Triggers */}
+            {/* Modal Footer Quick Actions */}
             <div style={{
+              padding: '12px 20px',
+              background: 'rgba(13, 17, 26, 0.95)',
+              borderTop: '1px solid var(--border-subtle)',
               display: 'flex',
-              gap: '12px',
               flexWrap: 'wrap',
-              marginBottom: '20px',
-              padding: '16px',
-              background: 'rgba(139, 92, 246, 0.08)',
-              borderRadius: '12px',
-              border: '1px solid rgba(139, 92, 246, 0.25)'
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '12px'
             }}>
-              <a
-                href={selectedProject.figmaProto || figmaProtoUrl}
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  flex: 1,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  padding: '12px 18px',
-                  borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #10b981, #059669)',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  fontSize: '0.9rem',
-                  textDecoration: 'none',
-                  boxShadow: '0 4px 14px rgba(16, 185, 129, 0.35)'
-                }}
-              >
-                <Play size={16} fill="#ffffff" />
-                <span>Launch Figma Prototype</span>
-              </a>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                Showing document: <strong style={{ color: 'var(--text-main)' }}>{selectedItem.pdfName}</strong>
+              </div>
 
-              <a
-                href={selectedProject.figmaDesign || figmaDesignUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-secondary"
-                style={{
-                  flex: 1,
-                  justifyContent: 'center',
-                  padding: '12px 18px',
-                  fontSize: '0.9rem'
-                }}
-              >
-                <span>Inspect in Figma</span>
-                <ExternalLink size={16} />
-              </a>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <a
+                  href={selectedItem.pdfUrl}
+                  download={selectedItem.pdfName}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 14px',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid var(--border-subtle)',
+                    color: 'var(--text-main)',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    textDecoration: 'none'
+                  }}
+                >
+                  <Download size={13} />
+                  <span>Download {selectedItem.num} PDF</span>
+                </a>
+
+                <button
+                  className="btn-secondary"
+                  style={{ padding: '6px 14px', fontSize: '0.8rem' }}
+                  onClick={() => setSelectedItem(null)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
-
-            <button 
-              className="btn-primary" 
-              style={{ width: '100%', justifyContent: 'center' }}
-              onClick={() => setSelectedProject(null)}
-            >
-              Close Details
-            </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
 }
-

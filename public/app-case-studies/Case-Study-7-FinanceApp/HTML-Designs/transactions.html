@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Transactions</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8a94ad;font-size:.82rem;margin-bottom:18px}
+.search{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px 16px;margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.search i{font-style:normal;color:#8a94ad;font-size:1.1rem}
+.search input{flex:1;background:transparent;border:0;color:#fff;font-size:.88rem;outline:none}
+.filters{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;padding-bottom:4px}
+.filters::-webkit-scrollbar{display:none}
+.f{flex:0 0 auto;padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:#8a94ad;font-size:.72rem;font-weight:600;cursor:pointer;transition:.2s}
+.f.on{background:#2dd4a7;border-color:#2dd4a7;color:#04140b}
+.tx{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.tx:last-child{margin:0}
+.tx i{font-style:normal;font-size:1.3rem;flex-shrink:0}
+.tx div{flex:1;min-width:0}
+.tx b{font-size:.85rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx small{color:#8a94ad;font-size:.68rem;display:block}
+.tx em{margin-left:auto;font-style:normal;font-family:'Sora';font-weight:700;font-size:.82rem}
+.tx.em-p{color:#fb7185}.tx.em-i{color:#2dd4a7}
+.tag{font-size:.6rem;font-weight:800;padding:3px 8px;border-radius:99px;margin-top:4px;display:inline-block}
+.tag-a{background:rgba(251,113,133,.15);color:#fb7185}
+.tag-m{background:rgba(34,212,167,.15);color:#2dd4a7}
+</style></head>
+<body>
+<div class="app">
+  <h1>Transactions 💳</h1>
+  <p class="sub">₹24,580 spent this month · 84 transactions</p>
+  <div class="search"><i>🔍</i><input type="text" placeholder="Search swiggy, uber, rent..."></div>
+  <div class="filters">
+    <div class="f on">All</div><div class="f">🍜 Food</div><div class="f">🚕 Transport</div><div class="f">🛍️ Shopping</div><div class="f">💊 Health</div><div class="f">💰 Income</div>
+  </div>
+  <div class="tx"><i>🍜</i><div><b>Swiggy · Biryani</b><small>Food delivery · 12 min ago</small></div><em class="em-p">−₹340</em><span class="tag tag-a">Auto</span></div>
+  <div class="tx"><i>🚕</i><div><b>Uber · Home to Office</b><small>Transport · 1 hr ago</small></div><em class="em-p">−₹180</em><span class="tag tag-a">Auto</span></div>
+  <div class="tx"><i>☕</i><div><b>Starbucks</b><small>Coffee · 3 hrs ago</small></div><em class="em-p">−₹290</em><span class="tag tag-a">Auto</span></div>
+  <div class="tx"><i>💰</i><div><b>Salary Credit</b><small>Monthly salary · 2 days ago</small></div><em class="em-i">+₹45,000</em><span class="tag tag-m">Auto</span></div>
+  <div class="tx"><i>🏠</i><div><b>Rent Payment</b><small>Housing · 5 days ago</small></div><em class="em-p">−₹18,000</em><span class="tag tag-a">Auto</span></div>
+</div>
+<script>
+document.querySelectorAll('.f').forEach(f=>f.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('on'));f.classList.add('on')});
+</script>
+</body></html>

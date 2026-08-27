@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wanderly — Plan your escape</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1b2733;--mut:#7d8fa1;--sky:#0ea5e9;--sun:#f97316;--card:#fff;--line:#e8eef4;--bg:#f4f9fc}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:var(--bg);color:var(--ink);min-height:100vh;display:flex;justify-content:center;padding:30px 16px}
+  .app{width:410px;max-width:100%}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .brand{font-family:'Sora';font-weight:800;font-size:1.08rem}
+  .brand b{background:linear-gradient(135deg,var(--sky),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .av-set{display:flex}
+  .av{width:32px;height:32px;border-radius:50%;border:2.5px solid #fff;margin-left:-9px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.7rem;font-family:'Sora'}
+  .a1{background:#0ea5e9}.a2{background:#f97316}.a3{background:#22b573}.a4{background:#8b5cf6}
+
+  h1.h{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em;line-height:1.2;margin-bottom:6px}
+  p.sub{color:var(--mut);font-size:.85rem;margin-bottom:20px}
+
+  /* hero trip card */
+  .hero{border-radius:24px;overflow:hidden;position:relative;margin-bottom:18px;box-shadow:0 24px 50px rgba(14,165,233,.25);cursor:pointer;transition:.3s}
+  .hero:hover{transform:translateY(-5px)}
+  .hero-bg{height:190px;background:
+      linear-gradient(160deg,rgba(11,42,66,.15),rgba(11,42,66,.55)),
+      linear-gradient(120deg,#0ea5e9,#38bdf8 40%,#fbbf24 75%,#f97316);
+    position:relative;overflow:hidden}
+  .hero-bg::after{content:'⛰️';position:absolute;font-size:6rem;right:16px;bottom:-14px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.25))}
+  .hero-bg::before{content:'☁️';position:absolute;font-size:2.2rem;left:24px;top:26px;opacity:.85;animation:drift 9s ease-in-out infinite}
+  @keyframes drift{50%{transform:translateX(16px)}}
+  .chip{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);color:var(--ink);font-size:.66rem;font-weight:800;
+    padding:6px 12px;border-radius:99px;letter-spacing:.06em}
+  .hero-body{background:#fff;padding:16px 18px 18px}
+  .hero-body h2{font-family:'Sora';font-size:1.18rem;margin-bottom:4px}
+  .hero-body small{color:var(--mut);font-size:.78rem}
+  .hrow{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+  .hchip{background:#f0f7fb;color:#4a6a82;font-size:.66rem;font-weight:700;padding:5px 11px;border-radius:99px}
+  .hchip.money{background:#fff3e8;color:#d96a1e}
+
+  /* vibe picker */
+  .sec-t{display:flex;justify-content:space-between;align-items:center;margin:22px 0 13px}
+  .sec-t h3{font-family:'Sora';font-size:.98rem}
+  .vibes{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-bottom:6px}
+  .vibe{height:104px;border-radius:18px;position:relative;overflow:hidden;cursor:pointer;transition:.25s;border:2.5px solid transparent}
+  .vibe:hover{transform:translateY(-4px) rotate(-1deg)}
+  .vibe.on{border-color:var(--sun);box-shadow:0 14px 30px rgba(249,115,22,.3)}
+  .vb1{background:linear-gradient(140deg,#34d399,#0ea5e9)} .vb2{background:linear-gradient(140deg,#f97316,#ef4444)}
+  .vb3{background:linear-gradient(140deg,#8b5cf6,#ec4899)} .vb4{background:linear-gradient(140deg,#fbbf24,#84cc16)}
+  .vibe span{position:absolute;bottom:10px;left:12px;color:#fff;font-family:'Sora';font-weight:800;font-size:.85rem;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+  .vibe i{position:absolute;top:10px;right:11px;font-style:normal;font-size:1.3rem;filter:drop-shadow(0 4px 8px rgba(0,0,0,.3))}
+
+  /* itinerary preview */
+  .itin{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+  .itin-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .itin-head b{font-family:'Sora';font-size:.92rem}
+  .edit{font-size:.72rem;font-weight:700;color:var(--sky);text-decoration:none}
+  .t-item{display:flex;gap:12px;padding:9px 0;align-items:flex-start}
+  .t-time{font-size:.68rem;font-weight:800;color:var(--sky);width:44px;flex-shrink:0;padding-top:3px}
+  .t-dot{width:26px;height:26px;border-radius:9px;background:#f0f7fb;display:grid;place-items:center;font-size:.8rem;flex-shrink:0}
+  .t-item div b{font-size:.82rem;display:block}
+  .t-item small{color:var(--mut);font-size:.71rem}
+  .t-cost{margin-left:auto;font-size:.74rem;font-weight:800;color:var(--ink);padding-top:3px}
+
+  /* budget */
+  .budget{background:linear-gradient(135deg,#123247,#0b2233);border-radius:20px;padding:20px;color:#fff;margin-bottom:14px}
+  .budget small{color:#9fc3d8;font-size:.7rem;letter-spacing:.1em;font-weight:700}
+  .b-row{display:flex;align-items:flex-end;gap:8px;margin:8px 0 14px}
+  .b-row b{font-family:'Sora';font-size:2rem;letter-spacing:-.02em}
+  .b-row span{color:#9fc3d8;font-size:.78rem;padding-bottom:5px}
+  .b-bar{height:9px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+  .b-fill{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#fbbf24,#f97316);border-radius:99px;transition:width 1.3s ease}
+  .b-legend{display:flex;justify-content:space-between;margin-top:9px;font-size:.68rem;color:#9fc3d8}
+
+  .cta{width:100%;border:0;border-radius:16px;padding:16px;font-family:'Sora';font-weight:800;font-size:.92rem;color:#fff;cursor:pointer;
+    background:linear-gradient(135deg,var(--sky),var(--sun));box-shadow:0 16px 34px rgba(14,165,233,.35);transition:.22s}
+  .cta:hover{transform:translateY(-3px)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand">🧭 Wander<b>ly</b></div>
+    <div class="av-set"><div class="av a1">K</div><div class="av a2">R</div><div class="av a3">S</div><div class="av a4">+3</div></div>
+  </div>
+
+  <h1 class="h">Coorg weekend, sorted ✨</h1>
+  <p class="sub">Aug 29–31 · 5 friends voted · 92% excitement on Option B</p>
+
+  <div class="hero">
+    <div class="hero-bg"><span class="chip">OPTION B · WINNING 🏆</span></div>
+    <div class="hero-body">
+      <h2>Coorg Coffee Estate Escape</h2>
+      <small>3 days · 4.9★ · waterfalls + plantation stay + campfire</small>
+      <div class="hrow">
+        <span class="hchip">🌧️ Light rain — carry jackets</span>
+        <span class="hchip money">₹4,800 / person all-in</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-t"><h3>Pick your vibe</h3><a href="#">Why 3 options? ℹ️</a></div>
+  <div class="vibes">
+    <div class="vibe vb1 on"><i>🌿</i><span>Chill nature</span></div>
+    <div class="vibe vb2"><i>🧗</i><span>Adventure</span></div>
+    <div class="vibe vb3"><i>🏙️</i><span>City lights</span></div>
+    <div class="vibe vb4"><i>🍜</i><span>Food trail</span></div>
+  </div>
+
+  <div class="budget">
+    <small>TRIP BUDGET · 5 PEOPLE</small>
+    <div class="b-row"><b>₹24,000</b><span>total · ₹4,800 each</span></div>
+    <div class="b-bar"><div class="b-fill" data-w="68%"></div></div>
+    <div class="b-legend"><span>🏠 Stay 42%</span><span>🚗 Travel 26%</span><span>🍜 Food 22%</span><span>🎟️ Fun 10%</span></div>
+  </div>
+
+  <div class="itin">
+    <div class="itin-head"><b>Day 1 · Friday evening</b><a class="edit" href="#">Swap ✏️</a></div>
+    <div class="t-item"><span class="t-time">6:30 PM</span><span class="t-dot">🚗</span><div><b>Scenic drive from Bangalore</b><small>Cab booked · 5h with 1 stop</small></div><span class="t-cost">₹1,200/pp</span></div>
+    <div class="t-item"><span class="t-time">11:30 PM</span><span class="t-dot">🏡</span><div><b>Check-in: coffee estate homestay</b><small>2 rooms · balcony view · bonfire</small></div><span class="t-cost">₹2,000/pp</span></div>
+    <div class="t-item"><span class="t-time">—</span><span class="t-dot">🔥</span><div><b>Midnight campfire + maggi</b><small>Optional · voted 5/5 by group</small></div><span class="t-cost">₹150/pp</span></div>
+  </div>
+
+  <button class="cta" onclick="book()">Lock itinerary & split costs →</button>
+</div>
+<script>
+requestAnimationFrame(()=>setTimeout(()=>document.querySelector('.b-fill').style.width=document.querySelector('.b-fill').dataset.w,300));
+document.querySelectorAll('.vibe').forEach(v=>v.addEventListener('click',()=>{
+  document.querySelectorAll('.vibe').forEach(x=>x.classList.remove('on'));v.classList.add('on');
+}));
+function book(){alert('🏆 Itinerary locked! Payment links sent to all 5 friends.')}
+</script>
+</body>
+</html>

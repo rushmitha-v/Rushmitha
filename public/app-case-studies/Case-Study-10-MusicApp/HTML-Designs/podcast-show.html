@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WavePlay — Podcast Show</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0b0616;color:#f3effc;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.hero{display:flex;gap:16px;margin-bottom:20px}
+.cover{width:110px;height:110px;border-radius:22px;background:linear-gradient(140deg,#10b981,#84cc16);display:grid;place-items:center;font-size:3rem;flex-shrink:0;box-shadow:0 14px 34px rgba(16,185,129,.35)}
+.hero h1{font-family:'Sora';font-size:1.25rem;letter-spacing:-.02em;line-height:1.25}
+.host{color:#a89fc4;font-size:.72rem;margin-top:6px;display:block}
+.meta2{display:flex;gap:7px;margin-top:11px}
+.mt{font-size:.58rem;font-weight:800;padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#cfc7e8}
+.playall{width:100%;border:0;border-radius:16px;padding:15px;font-family:'Sora';font-weight:800;font-size:.9rem;color:#fff;background:linear-gradient(135deg,#8b5cf6,#22d3ee);cursor:pointer;box-shadow:0 14px 32px rgba(139,92,246,.4);transition:.22s;display:flex;align-items:center;justify-content:center;gap:9px}
+.playall:hover{transform:translateY(-2px)}
+.ephead{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}
+.ephead h2{font-family:'Sora';font-size:.95rem}
+.ephead span{color:#a89fc4;font-size:.68rem;font-weight:700}
+.ep{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:17px;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:.2s}
+.ep:hover{background:rgba(255,255,255,.08)}
+.eptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.eptop small{color:#a89fc4;font-size:.64rem;font-weight:700}
+.newb{font-size:.52rem;font-weight:800;background:#22d3ee;color:#04121e;padding:3px 8px;border-radius:99px}
+.ep b{font-size:.84rem;display:block;line-height:1.4}
+.ep p{color:#8d84ad;font-size:.71rem;line-height:1.55;margin-top:5px}
+.epbot{display:flex;gap:12px;margin-top:9px;font-size:.62rem;color:#6b6486;font-weight:700}
+</style></head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="cover">🎙️</div>
+    <div><h1>The Daily Grind</h1><span class="host">Host: Arjun Mehta · Startup stories from India</span>
+      <div class="meta2"><span class="mt">⭐ 4.9</span><span class="mt">142 episodes</span><span class="mt">WEEKLY · MON</span></div></div>
+  </div>
+  <button class="playall" onclick="alert('▶ Playing newest episode...')">▶ Play latest · Ep 142</button>
+  <div class="ephead"><h2>Episodes</h2><span>Newest first ↓</span></div>
+  <div class="ep"><div class="eptop"><small>EP 142 · TODAY</small><span class="newb">NEW</span></div>
+    <b>How Zerodha's founder thinks about boring money</b>
+    <p>Nithin on why the best fintech products feel invisible — and what most startups get wrong.</p>
+    <div class="epbot"><span>⏱ 38 min</span><span>📴 downloaded</span><span>💬 214</span></div></div>
+  <div class="ep"><div class="eptop"><small>EP 141 · AUG 17</small></div>
+    <b>Designing for Bharat: lessons from 100M users</b>
+    <p>Why low-data mode isn't a feature — it's the product. Real stories from tier-2 India.</p>
+    <div class="epbot"><span>⏱ 45 min</span><span>⬇ download</span><span>💬 189</span></div></div>
+  <div class="ep"><div class="eptop"><small>EP 140 · AUG 10</small></div>
+    <b>The PM who shipped nothing for 6 months</b>
+    <p>A counterintuitive story about research, patience, and one launch that changed everything.</p>
+    <div class="epbot"><span>⏱ 41 min</span><span>⬇ download</span><span>💬 156</span></div></div>
+</div>
+<script>
+document.querySelectorAll('.ep').forEach(e=>e.onclick=()=>alert('▶ Playing episode...'));
+</script>
+</body></html>

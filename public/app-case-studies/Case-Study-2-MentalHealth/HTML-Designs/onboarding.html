@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mindful — Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0f0c29;color:#fff;min-height:100vh;display:grid;place-items:center;padding:24px;overflow:hidden;position:relative}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:f 14s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7c3aed;top:-120px;left:-100px}
+.b2{width:380px;height:380px;background:#ec4899;bottom:-120px;right:-90px;animation-delay:-5s}
+@keyframes f{33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-30px,25px) scale(.95)}}
+.card{width:390px;max-width:94vw;background:rgba(255,255,255,.07);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.14);border-radius:34px;padding:38px 32px;text-align:center;position:relative;z-index:2}
+.dots{display:flex;gap:7px;justify-content:center;margin-bottom:32px}
+.dots i{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.2)}
+.dots i.on{width:26px;background:linear-gradient(90deg,#a78bfa,#ec4899)}
+.lotus{font-size:4rem;display:inline-block;margin-bottom:20px;animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{font-family:'Sora';font-size:1.55rem;letter-spacing:-.02em;line-height:1.3;margin-bottom:12px}
+h1 span{background:linear-gradient(120deg,#a78bfa,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.7;margin-bottom:28px}
+.q{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:700;margin-bottom:14px}
+.opts{display:flex;flex-direction:column;gap:10px;text-align:left;margin-bottom:24px}
+.opt{padding:14px 17px;border-radius:16px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);cursor:pointer;transition:.22s;font-size:.88rem;font-weight:500}
+.opt:hover{border-color:rgba(236,72,153,.55);transform:translateY(-2px)}
+.opt.on{border-color:#ec4899;background:linear-gradient(135deg,rgba(167,139,250,.2),rgba(236,72,153,.15))}
+.btn{width:100%;border:0;border-radius:18px;padding:16px;font-family:'Sora';font-weight:700;font-size:.95rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 14px 32px rgba(139,92,246,.45);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+.priv{margin-top:16px;font-size:.72rem;color:rgba(255,255,255,.5)}
+</style></head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<div class="card">
+  <div class="dots"><i class="on"></i><i></i><i></i></div>
+  <div class="lotus">🪷</div>
+  <h1>What brings you to<br><span>Mindful</span> today?</h1>
+  <p>No wrong answers. You can change this anytime — it just helps us personalize.</p>
+  <div class="q">I'm here to</div>
+  <div class="opts">
+    <div class="opt on">🌿 Reduce everyday stress</div>
+    <div class="opt">😰 Understand my anxiety triggers</div>
+    <div class="opt">😴 Sleep better</div>
+    <div class="opt">💛 Build a gratitude habit</div>
+  </div>
+  <button class="btn">Begin gently →</button>
+  <div class="priv">🔒 Private by design · nothing leaves your device without permission</div>
+</div>
+<script>
+document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));o.classList.add('on')});
+</script>
+</body></html>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Compass, Sparkles } from 'lucide-react';
 import ScrollyOverlay from './ScrollyOverlay';
 
 const TOTAL_FRAMES = 75;
@@ -11,10 +12,14 @@ export default function ScrollyCanvas() {
   const [progress, setProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadPercent, setLoadPercent] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [autoDirection, setAutoDirection] = useState(1); // 1 = forward, -1 = reverse
 
   // Animation frame trackers
   const currentFrameRef = useRef(0);
   const targetFrameRef = useRef(0);
+  const userInteractedRef = useRef(false);
+  const scrollIdleTimerRef = useRef(null);
 
   // 1. Preload 75 frames into memory to guarantee zero flicker
   useEffect(() => {
@@ -28,6 +33,10 @@ export default function ScrollyCanvas() {
 
       img.onload = () => {
         loadedCount++;
+        // Immediately paint frame 0 on the canvas as soon as the first frame loads
+        if (i === 1) {
+          renderFrame(0);
+        }
         setLoadPercent(Math.round((loadedCount / TOTAL_FRAMES) * 100));
         if (loadedCount === TOTAL_FRAMES) {
           setIsLoaded(true);
@@ -74,7 +83,7 @@ export default function ScrollyCanvas() {
       dw = cw;
       dh = cw / imgAspect;
       ox = 0;
-      oy = (ch - dh) * 0.42; // slightly biased towards top so head & eyes remain centered
+      oy = (ch - dh) * 0.42; // push image down so head clears navbar
     } else {
       // Screen is taller than 16:9 (standard desktop monitors, laptops, tablets, mobile)
       dh = ch;
@@ -86,7 +95,7 @@ export default function ScrollyCanvas() {
     ctx.drawImage(img, ox, oy, dw, dh);
   };
 
-  // 3. Scroll tracking across the 500vh container
+  // 3. User Scroll tracking across the 500vh container
   useEffect(() => {
     const handleScroll = () => {
       const container = containerRef.current;
@@ -96,20 +105,88 @@ export default function ScrollyCanvas() {
       const scrollDistance = -rect.top;
       const totalDistance = rect.height - window.innerHeight;
 
+      if (window.scrollY > 20) {
+        userInteractedRef.current = true;
+        setIsAutoPlaying(false);
+      }
+
+      // Clear any existing idle timer
+      if (scrollIdleTimerRef.current) clearTimeout(scrollIdleTimerRef.current);
+
+      // After user stops scrolling for 4 seconds, resume auto-play
+      scrollIdleTimerRef.current = setTimeout(() => {
+        if (window.scrollY <= 10) {
+          userInteractedRef.current = false;
+          setIsAutoPlaying(true);
+        }
+      }, 4000);
+
       if (totalDistance <= 0) return;
 
-      const p = Math.min(Math.max(scrollDistance / totalDistance, 0), 1);
-      setProgress(p);
-      targetFrameRef.current = p * (TOTAL_FRAMES - 1);
+      // When user is actively scrolling, drive frame directly
+      if (userInteractedRef.current || window.scrollY > 10) {
+        const p = Math.min(Math.max(scrollDistance / totalDistance, 0), 1);
+        setProgress(p);
+        targetFrameRef.current = p * (TOTAL_FRAMES - 1);
+      }
+    };
+
+    const handleWheelOrTouch = () => {
+      if (window.scrollY > 15) {
+        userInteractedRef.current = true;
+        setIsAutoPlaying(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('wheel', handleWheelOrTouch, { passive: true });
+    window.addEventListener('touchmove', handleWheelOrTouch, { passive: true });
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleWheelOrTouch);
+      window.removeEventListener('touchmove', handleWheelOrTouch);
+      if (scrollIdleTimerRef.current) clearTimeout(scrollIdleTimerRef.current);
+    };
   }, []);
 
-  // 4. RAF Lerping loop for silky smooth frame advancement
+  // 4. Auto-Play Animation Loop (Plays immediately upon page load)
+  useEffect(() => {
+    let animId;
+    let lastTime = performance.now();
+    const fps = 24;
+    const interval = 1000 / fps;
+
+    const autoLoop = (now) => {
+      const elapsed = now - lastTime;
+
+      if (isAutoPlaying && (!userInteractedRef.current || window.scrollY <= 10)) {
+        if (elapsed >= interval) {
+          lastTime = now - (elapsed % interval);
+
+          // Smooth cinematic progression
+          let nextFrame = targetFrameRef.current + (0.55 * autoDirection);
+          if (nextFrame >= TOTAL_FRAMES - 1) {
+            nextFrame = TOTAL_FRAMES - 1;
+            setAutoDirection(-1); // Ping-pong reverse smoothly
+          } else if (nextFrame <= 0) {
+            nextFrame = 0;
+            setAutoDirection(1); // Ping-pong forward
+          }
+
+          targetFrameRef.current = nextFrame;
+          setProgress(nextFrame / (TOTAL_FRAMES - 1));
+        }
+      }
+
+      animId = requestAnimationFrame(autoLoop);
+    };
+
+    animId = requestAnimationFrame(autoLoop);
+    return () => cancelAnimationFrame(animId);
+  }, [isAutoPlaying, autoDirection]);
+
+  // 5. RAF Lerping loop for silky smooth frame rendering
   useEffect(() => {
     let animId;
 
@@ -126,7 +203,7 @@ export default function ScrollyCanvas() {
     return () => cancelAnimationFrame(animId);
   }, [isLoaded]);
 
-  // 5. Canvas Resize handler
+  // 6. Canvas Resize handler
   useEffect(() => {
     const resize = () => {
       const canvas = canvasRef.current;
@@ -149,9 +226,11 @@ export default function ScrollyCanvas() {
     return () => window.removeEventListener('resize', resize);
   }, [isLoaded]);
 
+
+
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       id="home"
       style={{
         position: 'relative',
@@ -160,7 +239,7 @@ export default function ScrollyCanvas() {
       }}
     >
       {/* Sticky Fullscreen Scrollytelling Viewport */}
-      <div 
+      <div
         style={{
           position: 'sticky',
           top: 0,
@@ -170,6 +249,25 @@ export default function ScrollyCanvas() {
           backgroundColor: '#07090e'
         }}
       >
+        {/* Instant Fallback Hero Image (Zero Black Screen on Initial Refresh) */}
+        <img
+          src="/sequence/frame_001.webp"
+          alt="Rushmitha Varshini Hero"
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: '50% 52%',
+            display: 'block',
+            zIndex: 0
+          }}
+        />
+
         {/* Full-Screen Canvas with Cover Logic */}
         <canvas
           ref={canvasRef}
@@ -178,22 +276,28 @@ export default function ScrollyCanvas() {
             inset: 0,
             width: '100%',
             height: '100%',
-            display: 'block'
+            display: 'block',
+            zIndex: 1
           }}
         />
 
         {/* Ambient Vignette & Gradient Mask for Seamless Text Integration */}
-        <div 
+        <div
           style={{
             position: 'absolute',
             inset: 0,
             background: 'radial-gradient(circle at 50% 50%, transparent 45%, rgba(7, 9, 14, 0.45) 80%, #07090e 100%), linear-gradient(to bottom, rgba(7, 9, 14, 0.3) 0%, transparent 15%, transparent 85%, #07090e 100%)',
-            pointerEvents: 'none'
+            pointerEvents: 'none',
+            zIndex: 2
           }}
         />
 
         {/* Parallax Typography & Section Overlay */}
-        <ScrollyOverlay progress={progress} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 10 }}>
+          <ScrollyOverlay progress={progress} />
+        </div>
+
+
 
         {/* Scroll Progress Bar at Top */}
         <div style={{
@@ -202,22 +306,22 @@ export default function ScrollyCanvas() {
           left: 0,
           height: '3px',
           width: `${progress * 100}%`,
-          background: 'linear-gradient(90deg, #8b5cf6, #38bdf8)',
+          background: 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))',
           zIndex: 20,
           transition: 'width 0.1s linear'
         }} />
 
-        {/* Buffering Indicator */}
+        {/* Minimal Buffering Indicator */}
         {!isLoaded && (
           <div style={{
             position: 'absolute',
-            bottom: '20px',
-            right: '20px',
+            bottom: '24px',
+            right: '24px',
             padding: '6px 14px',
             borderRadius: '9999px',
             background: 'rgba(7, 9, 14, 0.85)',
-            border: '1px solid rgba(139, 92, 246, 0.4)',
-            color: '#c4b5fd',
+            border: '1px solid var(--border-glow)',
+            color: 'var(--text-main)',
             fontSize: '0.75rem',
             zIndex: 30,
             display: 'flex',
@@ -228,11 +332,11 @@ export default function ScrollyCanvas() {
               width: '12px',
               height: '12px',
               borderRadius: '50%',
-              border: '2px solid #8b5cf6',
+              border: '2px solid var(--color-primary)',
               borderTopColor: 'transparent',
               animation: 'spin 0.8s linear infinite'
             }} />
-            <span>Preloading 75 HD frames ({loadPercent}%)</span>
+            <span>Buffering frames ({loadPercent}%)</span>
           </div>
         )}
       </div>

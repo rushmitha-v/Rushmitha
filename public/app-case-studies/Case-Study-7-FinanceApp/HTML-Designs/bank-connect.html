@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Bank Connect</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw;background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:32px 28px}
+.dots{display:flex;gap:7px;justify-content:center;margin-bottom:28px}
+.dots i{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.15)}
+.dots i.on{width:26px;background:linear-gradient(90deg,#2dd4a7,#38bdf8)}
+.icon{font-size:3.8rem;margin-bottom:20px}
+h1{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px}
+h1 span{color:#2dd4a7}
+p{color:#8a94ad;font-size:.9rem;line-height:1.7;margin-bottom:28px}
+.banks{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.b{border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:.22s}
+.b:hover{border-color:rgba(45,212,167,.5);transform:translateY(-2px)}
+.b.on{border-color:#2dd4a7;background:rgba(45,212,167,.1)}
+.b i{font-style:normal;font-size:1.5rem}
+.b b{font-size:.9rem;display:block}
+.b small{color:#8a94ad;font-size:.74rem}
+.btn{width:100%;border:0;border-radius:16px;padding:16px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#04140b;cursor:pointer;background:linear-gradient(135deg,#2dd4a7,#38bdf8);box-shadow:0 14px 30px rgba(45,212,167,.35);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+.note{margin-top:16px;font-size:.72rem;color:#8a94ad;text-align:center}
+</style></head>
+<body>
+<div class="card">
+  <div class="dots"><i class="on"></i><i></i><i></i></div>
+  <span class="icon">🔗</span>
+  <h1>Connect your <span>bank</span></h1>
+  <p>Read-only, secure, takes 30 seconds. We never store your credentials.</p>
+  <div class="banks">
+    <div class="b on"><i>🏦</i><div><b>HDFC Bank</b><small>UPI + NetBanking</small></div></div>
+    <div class="b"><i>🏦</i><div><b>ICICI Bank</b><small>UPI + NetBanking</small></div></div>
+    <div class="b"><i>🏦</i><div><b>SBI</b><small>UPI + NetBanking</small></div></div>
+    <div class="b"><i>🏦</i><div><b>Axis Bank</b><small>UPI + NetBanking</small></div></div>
+  </div>
+  <button class="btn" onclick="alert('🔐 Secure redirect to HDFC...')">Connect HDFC →</button>
+  <div class="note">🔒 256-bit encryption · We only read transactions · Revoke anytime in settings</div>
+</div>
+<script>
+document.querySelectorAll('.b').forEach(b=>b.onclick=()=>{document.querySelectorAll('.b').forEach(x=>x.classList.remove('on'));b.classList.add('on')});
+</script>
+</body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitPulse — Exercise Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0a0f0d;color:#eafcf2;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.4rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8fa89b;font-size:.82rem;margin-bottom:18px}
+.search{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px 16px;margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.search i{font-style:normal;color:#8fa89b;font-size:1.1rem}
+.search input{flex:1;background:transparent;border:0;color:#fff;font-size:.88rem;outline:none}
+.filters{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;padding-bottom:4px}
+.filters::-webkit-scrollbar{display:none}
+.f{flex:0 0 auto;padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:#8fa89b;font-size:.72rem;font-weight:600;cursor:pointer;transition:.2s}
+.f.on{background:#22e07a;border-color:#22e07a;color:#04140b}
+.ex{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:.22s}
+.ex:hover{transform:translateX(4px);border-color:rgba(34,224,122,.35)}
+.ex i{font-style:normal;font-size:1.4rem;flex-shrink:0}
+.ex div{flex:1;min-width:0}
+.ex b{font-size:.85rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{display:flex;gap:10px;margin-top:4px;font-size:.68rem;color:#8fa89b}
+.tag{background:rgba(255,255,255,.06);padding:3px 8px;border-radius:99px;font-size:.6rem;font-weight:700}
+</style></head>
+<body>
+<div class="app">
+  <h1>Exercise library 📚</h1>
+  <p class="sub">400+ movements · video demos · form cues</p>
+  <div class="search"><i>🔍</i><input type="text" placeholder="Search bench press, squat, etc..."></div>
+  <div class="filters">
+    <div class="f on">All</div><div class="f">Chest</div><div class="f">Back</div><div class="f">Legs</div><div class="f">Shoulders</div><div class="f">Arms</div><div class="f">Core</div><div class="f">Cardio</div>
+  </div>
+  <div class="ex"><i>🏋️</i><div><b>Bench Press (Barbell)</b><div class="meta"><span class="tag">Chest</span><span class="tag">Compound</span><span class="tag">Horizontal Push</span></div></div></div>
+  <div class="ex"><i>🏋️</i><div><b>Incline Dumbbell Press</b><div class="meta"><span class="tag">Upper Chest</span><span class="tag">Compound</span><span class="tag">Horizontal Push</span></div></div></div>
+  <div class="ex"><i>🦵</i><div><b>Barbell Back Squat</b><div class="meta"><span class="tag">Quads</span><span class="tag">Compound</span><span class="tag">Knee Dominant</span></div></div></div>
+  <div class="ex"><i>🦵</i><div><b>Romanian Deadlift</b><div class="meta"><span class="tag">Hamstrings</span><span class="tag">Hip Hinge</span><span class="tag">Posterior Chain</span></div></div></div>
+  <div class="ex"><i>🦵</i><div><b>Leg Press</b><div class="meta"><span class="tag">Quads</span><span class="tag">Machine</span><span class="tag">Knee Dominant</span></div></div></div>
+  <div class="ex"><i>🦵</i><div><b>Bulgarian Split Squat</b><div class="meta"><span class="tag">Unilateral</span><span class="tag">Glutes</span><span class="tag">Knee Dominant</span></div></div></div>
+  <div class="ex"><i>🦾</i><div><b>Overhead Press</b><div class="meta"><span class="tag">Shoulders</span><span class="tag">Compound</span><span class="tag">Vertical Push</span></div></div></div>
+  <div class="ex"><i>🦾</i><div><b>Pull-Up</b><div class="meta"><span class="tag">Lats</span><span class="tag">Bodyweight</span><span class="tag">Vertical Pull</span></div></div></div>
+  <div class="ex"><i>🦾</i><div><b>Barbell Row</b><div class="meta"><span class="tag">Back</span><span class="tag">Compound</span><span class="tag">Horizontal Pull</span></div></div></div>
+  <div class="ex"><i>💪</i><div><b>Dips</b><div class="meta"><span class="tag">Triceps</span><span class="tag">Bodyweight</span><span class="tag">Vertical Push</span></div></div></div>
+</div>
+<script>
+document.querySelectorAll('.f').forEach(f=>f.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('on'));f.classList.add('on')});
+</script>
+</body></html>

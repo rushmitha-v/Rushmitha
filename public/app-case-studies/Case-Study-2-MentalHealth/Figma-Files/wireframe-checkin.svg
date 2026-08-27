@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #fff; }
+    .header { color: #000; font-family: Arial; font-size: 20px; font-weight: bold; padding: 20px; border-bottom: 1px solid #ccc; }
+    .mood-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 20px; }
+    .mood-btn { width: 40px; height: 40px; background: #f0f0f0; border: none; border-radius: 50%; cursor: pointer; font-size: 20px; }
+    .mood-btn.selected { background: #3b82f6; color: white; }
+    .intensity { width: 180px; height: 20px; background: #e0e0e0; border-radius: 10px; margin: 10px 0; position: relative; }
+    .intensity-fill { height: 20px; background: #ef4444; border-radius: 10px; width: 70%; position: absolute; left: 0; }
+    .note { color: #666; font-size: 12px; margin: 8px 0; width: 280px; }
+    .btn { background: #3b82f6; color: white; border: none; border-radius: 6px; padding: 10px; width: 100%; font-size: 14px; margin-top: 12px; cursor: pointer; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Header -->
+  <text x="20" y="40" class="header">Mindful</text>
+  <text x="20" y="65" style="color: #666;">Daily Mental Health Check-in</text>
+  
+  <!-- Emoji Grid -->
+  <g transform="translate(40, 110)">
+    <rect class="mood-btn selected">😊</text>
+    <rect class="mood-btn">😐</text>
+    <rect class="mood-btn">😢</text>
+    <rect class="mood-btn">😠</text>
+    <rect class="mood-btn">😴</text>
+  </g>
+  
+  <!-- Intensity -->
+  <rect x="40" y="200" width="280" height="40" class="intensity"/>
+  <div class="intensity-fill"></div>
+  <text x="50" y="230" style="color: #666;">Intensity: 7/10</text>
+  
+  <!-- Note -->
+  <rect x="40" y="260" width="280" height="60" rx="6" fill="#f0f0f0"/>
+  <text x="50" y="290" style="color: #666; font-size: 12px; line-height: 1.4;">Optional: How are you feeling? 
+  "Felt anxious about project meeting"</text>
+  
+  <!-- Buttons -->
+  <rect x="40" y="340" width="280" height="40" class="btn">SAVE MOOD</text>
+  <text x="180" y="370" style="color: #666; margin-left: 20px;">SKIP</text>
+</svg>

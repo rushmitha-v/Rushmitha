@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>UX Case Studies · Rushmitha Varshini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+<style>
+  body{background:#0B1020}
+  .idx-hero{background:radial-gradient(1000px 500px at 20% -10%,rgba(99,102,241,.5),transparent 60%),radial-gradient(900px 500px at 100% 0%,rgba(14,165,165,.4),transparent 55%),#0B1020;color:#fff;text-align:center;padding:96px 28px 84px;position:relative}
+  .idx-hero .tag{display:inline-block;padding:7px 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C7D2FE}
+  .idx-hero h1{font-family:var(--fd);font-size:clamp(2.4rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;margin:22px 0 14px;background:linear-gradient(120deg,#fff 40%,#C7D2FE 75%,#7DD3D3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .idx-hero p{font-size:1.15rem;color:#AEB6CC;max-width:620px;margin:0 auto}
+  .idx-hero .by{margin-top:20px;font-size:.95rem;color:#8B93A8}
+  .idx-hero .by b{color:#fff}
+  .idx-stats{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .idx-stats div .n{font-family:var(--fd);font-size:1.7rem;font-weight:800;color:#fff}
+  .idx-stats div .l{font-size:.8rem;color:#8B93A8;letter-spacing:.05em}
+  .grid{max-width:1120px;margin:-46px auto 0;padding:0 28px 70px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:24px;position:relative;z-index:2}
+  .cs-card{display:flex;flex-direction:column;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:0 18px 44px -20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+  .cs-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -22px rgba(0,0,0,.6)}
+  .cs-card .cover{height:188px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .cs-card .cover img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.98}
+  .cs-card .num{position:absolute;top:14px;left:14px;font-family:var(--fd);font-weight:800;font-size:12px;color:#fff;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);padding:5px 11px;border-radius:999px;letter-spacing:.08em}
+  .cs-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .cs-body .cs-tag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .cs-body h3{font-family:var(--fd);font-size:1.4rem;font-weight:800;letter-spacing:-.02em}
+  .cs-body p{margin:0;color:var(--muted);font-size:.96rem;flex:1}
+  .cs-body .cs-more{font-weight:700;font-size:.92rem;color:var(--accent);margin-top:6px}
+  .idx-foot{text-align:center;color:#8B93A8;font-size:.9rem;padding:0 28px 60px}
+</style>
+</head>
+<body>
+<header class="idx-hero">
+  <span class="tag">UX / UI Portfolio</span>
+  <h1>UX Case Studies</h1>
+  <p>Seven end-to-end product design stories — from problem statement and research through to validated, high-fidelity solutions.</p>
+  <div class="by">Designed &amp; written by <b>Rushmitha Varshini</b> · Designing Engineer &amp; Full-Stack UI/UX Specialist</div>
+  <div class="idx-stats">
+    <div><div class="n">7</div><div class="l">CASE STUDIES</div></div>
+    <div><div class="n">14</div><div class="l">SCREENS</div></div>
+    <div><div class="n">7</div><div class="l">DOMAINS</div></div>
+    <div><div class="n">100%</div><div class="l">PROCESS-LED</div></div>
+  </div>
+</header>
+
+<main class="grid">
+  <a class="cs-card" style="--accent:#3E63F0;--accent2:#0EA5A5" href="01-finflow.html">
+    <div class="cover"><span class="num">01</span><img src="../figma-exports/01-finflow-dashboard.png" alt="FinFlow"/></div>
+    <div class="cs-body"><span class="cs-tag">Fintech · Mobile</span><h3>FinFlow</h3><p>Money management in seconds, not menus — clarity, speed and confidence for mobile banking.</p><span class="cs-more">Read case study →</span></div>
+  </a>
+  <a class="cs-card" style="--accent:#2E7D5B;--accent2:#7DA94C" href="02-verde.html">
+    <div class="cover"><span class="num">02</span><img src="../figma-exports/03-verde-listing.png" alt="Verdé"/></div>
+    <div class="cs-body"><span class="cs-tag">E-commerce · Web + Mobile</span><h3>Verdé</h3><p>Shopping plants sustainably, with confidence — matching people to the right plant for their space.</p><span class="cs-more">Read case study →</span></div>
+  </a>
+  <a class="cs-card" style="--accent:#F0574A;--accent2:#12B5A6" href="03-pulse.html">
+    <div class="cover"><span class="num">03</span><img src="../figma-exports/05-pulse-dashboard.png" alt="Pulse"/></div>
+    <div class="cs-body"><span class="cs-tag">Health &amp; Fitness · Mobile</span><h3>Pulse</h3><p>Turning daily movement into a habit people keep — glanceable progress &amp; forgiving motivation.</p><span class="cs-more">Read case study →</span></div>
+  </a>
+  <a class="cs-card" style="--accent:#6366F1;--accent2:#8B5CF6" href="04-nimbus.html">
+    <div class="cover"><span class="num">04</span><img src="../figma-exports/07-nimbus-desktop.png" alt="Nimbus"/></div>
+    <div class="cs-body"><span class="cs-tag">SaaS · Analytics</span><h3>Nimbus</h3><p>Analytics that answer questions, not just show data — the signal in seconds, no spreadsheet.</p><span class="cs-more">Read case study →</span></div>
+  </a>
+  <a class="cs-card" style="--accent:#0EA5E9;--accent2:#FF7A59" href="05-wanderlust.html">
+    <div class="cover"><span class="num">05</span><img src="../figma-exports/09-wanderlust-explore.png" alt="Wanderlust"/></div>
+    <div class="cs-body"><span class="cs-tag">Travel · Mobile</span><h3>Wanderlust</h3><p>From daydream to booked in a few taps — inspiring discovery and transparent, effortless booking.</p><span class="cs-more">Read case study →</span></div>
+  </a>
+  <a class="cs-card" style="--accent:#F0592B;--accent2:#E4A11B" href="06-nourish.html">
+    <div class="cover"><span class="num">06</span><img src="../figma-exports/11-nourish-home.png" alt="Nourish"/></div>
+    <div class="cs-body"><span class="cs-tag">Food Delivery · Mobile</span><h3>Nourish</h3><p>From craving to checkout without the chaos — decide fast, honest delivery info, frictionless cart.</p><span class="cs-more">Read case study →</span></div>
+  </a>
+  <a class="cs-card" style="--accent:#5B5BF5;--accent2:#8B5CF6" href="07-lumina.html">
+    <div class="cover"><span class="num">07</span><img src="../figma-exports/13-lumina-desktop.png" alt="Lumina"/></div>
+    <div class="cs-body"><span class="cs-tag">E-learning · Web + Mobile</span><h3>Lumina</h3><p>Helping learners actually finish the course — effortless resume, visible progress, motivating momentum.</p><span class="cs-more">Read case study →</span></div>
+  </a>
+</main>
+
+<div class="idx-foot">Each case study covers problem · research · personas · user flows · wireframes · hi-fi prototype · usability testing · results.<br/>© Rushmitha Varshini · UX / UI Design Portfolio</div>
+</body>
+</html>

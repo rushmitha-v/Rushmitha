@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a Scrollytelling Hero with Canvas Frame Scrubbing — Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="cs-nav__logo" aria-label="Home"><span>R</span>ushmitha</a>
+    <ul class="cs-nav__links">
+      <li><a href="../index.html">Work</a></li>
+      <li><a href="../demos/design-system.html">Design System</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">moon</button>
+  </nav>
+  <article class="page-wrapper" style="max-width:720px;">
+    <header class="cs-hero" style="padding-bottom:1rem;">
+      <span class="cs-hero__badge">Creative Development</span>
+      <h1 class="cs-hero__title" style="font-size:clamp(1.8rem,4vw,2.8rem);">Building a Scrollytelling Hero with Canvas Frame Scrubbing</h1>
+      <p class="cs-hero__subtitle">August 2026 · 10 min read</p>
+    </header>
+
+    <section class="cs-section">
+      <p class="cs-section__text">The scrollytelling hero animation on this portfolio replaces a traditional <code>&lt;video&gt;</code> tag with something more interactive and performant: a sequence of 75 WebP images rendered on an HTML5 Canvas, scrubbed by the user's scroll position. Here's how it works.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">Why Not Just Use a Video?</h3>
+      <p class="cs-section__text">Video tags are simple but have critical limitations for scroll-linked interaction: no frame-precise control (you're at the mercy of the browser's buffering), codec compatibility issues across browsers, and inability to pause at exact positions. Canvas gives us pixel-perfect frame control synced to scroll position.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">The Image Sequence Pipeline</h3>
+      <p class="cs-section__text">The animation was originally a 3-second cinematic AI-generated video. I converted it to WebP format using ezgif at 15fps, then split it into 75 individual frames. Each frame is approximately 8KB — totaling ~600KB for the entire sequence. Compare this to the original 15MB video file: a 96% size reduction with better control.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">The RAF Lerp Loop</h3>
+      <p class="cs-section__text">The rendering engine uses <code>requestAnimationFrame</code> with linear interpolation (lerp). When the user scrolls, we calculate a target frame index based on scroll progress (0-1 mapped to frame 0-74). The lerp function smoothly interpolates between the current frame and target frame with a factor of 0.15.</p>
+
+      <div class="cs-code">
+        <div class="cs-code-label">Core Rendering Pattern</div>
+<pre style="margin:0;">
+// Don't render on scroll events — render on every frame
+const render = () => {
+  currentFrame += (targetFrame - currentFrame) * 0.15;
+  const idx = Math.round(currentFrame);
+  if (frames[idx]) {
+    ctx.drawImage(frames[idx], 0, 0, canvas.width, canvas.height);
+  }
+  requestAnimationFrame(render);
+};
+
+// Scroll handler only updates the target
+const onScroll = () => {
+  const progress = -rect.top / (rect.height - window.innerHeight);
+  targetFrame = progress * 74;
+};
+</pre>
+      </div>
+
+      <p class="cs-section__text">The key insight: decouple input from rendering. The scroll handler just updates the target; the RAF loop handles all rendering. This prevents frame drops even during fast or janky scrolling.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">Progressive Preloading</h3>
+      <p class="cs-section__text">All 75 frames are preloaded via JavaScript Image objects before the canvas renders anything. We track load progress and show a loading indicator. Frames are rendered as soon as they load (not waiting for all 75), so the user sees the animation progressively appear.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">The Vignette Overlay</h3>
+      <p class="cs-section__text">A critical detail: the canvas sits behind the content, and a CSS vignette overlay blends the animation edges into the page background color (#07090e). This gradient mask ensures seamless transitions between the animated hero and the content sections below.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">Performance Results</h3>
+      <div class="cs-metrics">
+        <div class="cs-metric"><div class="cs-metric__value">60fps</div><div class="cs-metric__label">Animation Rate</div></div>
+        <div class="cs-metric"><div class="cs-metric__value">~600KB</div><div class="cs-metric__label">Total Asset Size</div></div>
+        <div class="cs-metric"><div class="cs-metric__value">96%</div><div class="cs-metric__label">Size vs Video</div></div>
+        <div class="cs-metric"><div class="cs-metric__value">&lt;3s</div><div class="cs-metric__label">Load on 3G</div></div>
+      </div>
+
+      <div class="cs-callout cs-callout--insight">
+        <strong>Takeaway:</strong> Creative development isn't about using the fanciest library — it's about choosing the right tool for the interaction you want to create, and engineering it with performance as a constraint from day one.
+      </div>
+    </section>
+
+    <div style="margin-top:2rem;"><a href="index.html" class="btn btn--secondary">← Back to Blog</a></div>
+  </article>
+  <footer class="cs-footer"><p>&copy; 2026 Rushmitha Varshini</p></footer>
+  <script>
+    function toggleTheme(){const h=document.documentElement,n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);}
+    (function(){const s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);})();
+  </script>
+</body>
+</html>

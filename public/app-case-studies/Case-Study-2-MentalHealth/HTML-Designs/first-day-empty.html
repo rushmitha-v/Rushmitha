@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mindful — Day One</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:radial-gradient(500px 350px at 50% -10%,rgba(139,92,246,.2),transparent),#0f0c29;color:#fff;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw;text-align:center}
+.seed{font-size:4rem;display:inline-block;margin-bottom:22px;animation:grow 3s ease-in-out infinite}
+@keyframes grow{50%{transform:scale(1.12)}}
+h1{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em;line-height:1.3;margin-bottom:10px}
+h1 span{background:linear-gradient(120deg,#a78bfa,#6ee7b7);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:rgba(255,255,255,.6);font-size:.9rem;line-height:1.75;margin-bottom:30px}
+.steps{display:flex;flex-direction:column;gap:12px;text-align:left;margin-bottom:28px}
+.st{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px}
+.st i{width:38px;height:38px;border-radius:12px;background:rgba(139,92,246,.18);display:grid;place-items:center;font-style:normal;font-size:1rem;flex-shrink:0}
+.st b{font-size:.85rem;display:block}
+.st small{color:rgba(255,255,255,.55);font-size:.72rem}
+.btn{width:100%;border:0;border-radius:18px;padding:16px;font-family:'Sora';font-weight:700;color:#fff;font-size:.95rem;cursor:pointer;background:linear-gradient(135deg,#8b5cf6,#34d399);box-shadow:0 14px 32px rgba(139,92,246,.4);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+.no{margin-top:14px;color:rgba(255,255,255,.45);font-size:.8rem;cursor:pointer}
+</style></head>
+<body>
+<div class="card">
+  <span class="seed">🌱</span>
+  <h1>Every streak starts<br>with a <span>single check-in</span></h1>
+  <p>Your first one takes 30 seconds. That's it. No forms, no history, no judgment.</p>
+  <div class="steps">
+    <div class="st"><i>😊</i><div><b>Tap how you feel</b><small>5 moods, one tap</small></div></div>
+    <div class="st"><i>🎚️</i><div><b>Slide the intensity</b><small>Only if you want to</small></div></div>
+    <div class="st"><i>✨</i><div><b>Get one tiny insight</b><small>Patterns appear after 7 days</small></div></div>
+  </div>
+  <button class="btn">Do my first check-in →</button>
+  <div class="no">Explore the app first</div>
+</div>
+</body></html>

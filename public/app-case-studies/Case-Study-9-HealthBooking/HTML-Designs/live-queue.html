@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediCare+ — Your queue, live</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f2f7f6;--card:#fff;--ink:#122a27;--mut:#6f8a86;--line:#e2ebe9;--teal:#0d9488;--teal2:#14b8a6;--soft:#e6f4f2}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:var(--bg);color:var(--ink);min-height:100vh;display:flex;justify-content:center;padding:30px 16px}
+  .app{width:400px;max-width:100%}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .brand{font-family:'Sora';font-weight:800;font-size:1.05rem}
+  .brand b{color:var(--teal)}
+  .fam{display:flex;gap:6px}
+  .fa{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.72rem;font-family:'Sora';
+    border:2px solid transparent;cursor:pointer;transition:.2s}
+  .fa.on{border-color:var(--teal)}
+  .f1{background:#d8f1ee;color:#0d9488}.f2{background:#fdeeda;color:#c07b1d}.f3{background:#eae4f7;color:#7c5bd6}
+
+  /* visit card */
+  .visit{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:16px;box-shadow:0 18px 40px rgba(13,148,136,.1)}
+  .v-head{background:linear-gradient(135deg,var(--teal),var(--teal2));padding:18px 20px;color:#fff;display:flex;align-items:center;gap:14px}
+  .doc-av{width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:1.5rem;flex-shrink:0}
+  .v-head b{font-family:'Sora';font-size:1rem;display:block}
+  .v-head small{font-size:.74rem;opacity:.9}
+  .verified{margin-left:auto;background:rgba(255,255,255,.2);font-size:.62rem;font-weight:800;padding:5px 10px;border-radius:99px;white-space:nowrap}
+  .queue{padding:22px 20px;text-align:center}
+  .queue small{color:var(--mut);font-size:.68rem;letter-spacing:.16em;font-weight:700;text-transform:uppercase}
+  .token{font-family:'Sora';font-weight:800;font-size:2.7rem;letter-spacing:-.02em;margin:8px 0 2px;color:var(--teal)}
+  .token small{font-size:1.1rem;color:var(--mut);font-weight:700}
+  .eta-pill{display:inline-flex;align-items:center;gap:7px;background:var(--soft);color:var(--teal);font-weight:700;
+    font-size:.8rem;padding:8px 16px;border-radius:99px;margin:8px 0 16px}
+  .eta-pill i{font-style:normal;animation:pulse 1.5s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+  .track{display:flex;align-items:center;gap:6px;padding:0 8px}
+  .tnode{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative}
+  .tnode::before{content:'';position:absolute;top:13px;left:-50%;width:100%;height:3px;background:var(--line)}
+  .tnode:first-child::before{display:none}
+  .tnode.done::before{background:var(--teal)}
+  .tdot{width:26px;height:26px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.7rem;color:#fff;z-index:1;transition:.3s}
+  .tnode.done .tdot{background:var(--teal)}
+  .tnode.now .tdot{background:var(--teal);box-shadow:0 0 0 5px rgba(13,148,136,.18);animation:bob 1.4s infinite}
+  @keyframes bob{50%{transform:translateY(-4px)}}
+  .tnode small{font-size:.62rem;color:var(--mut);font-weight:600;text-align:center}
+
+  /* leave by */
+  .leave{background:#fff8ec;border:1px solid #f3e3c3;border-radius:18px;padding:14px 16px;display:flex;gap:12px;align-items:center;margin-bottom:16px}
+  .leave i{font-style:normal;font-size:1.3rem}
+  .leave b{font-size:.84rem;display:block}
+  .leave small{color:#a08350;font-size:.73rem}
+
+  /* prep reminders */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+  .panel h3{font-family:'Sora';font-size:.92rem;margin-bottom:12px}
+  .pr{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .pr:last-child{border:0}
+  .cb{width:22px;height:22px;border-radius:7px;border:2px solid #c9dad7;display:grid;place-items:center;cursor:pointer;transition:.2s;font-size:.7rem;color:#fff;flex-shrink:0}
+  .cb.on{background:var(--teal);border-color:var(--teal)}
+  .pr div b{font-size:.82rem;display:block}
+  .pr small{color:var(--mut);font-size:.7rem}
+  .pr em{margin-left:auto;font-style:normal;font-size:.64rem;font-weight:700;color:var(--teal);background:var(--soft);padding:4px 9px;border-radius:99px}
+
+  /* next up */
+  .next{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;align-items:center;gap:13px}
+  .next i{width:46px;height:46px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-style:normal;font-size:1.2rem}
+  .next b{font-size:.84rem;display:block}
+  .next small{color:var(--mut);font-size:.72rem}
+  .book{margin-left:auto;border:0;background:var(--teal);color:#fff;font-weight:800;font-size:.74rem;padding:11px 15px;border-radius:12px;cursor:pointer;font-family:'Inter';transition:.2s}
+  .book:hover{background:var(--teal2)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand">🩺 MediCare<b>+</b></div>
+    <div class="fam">
+      <div class="fa f1 on" title="You">ME</div>
+      <div class="fa f2" title="Mom">AM</div>
+      <div class="fa f3" title="Dad">AP</div>
+    </div>
+  </div>
+
+  <div class="visit">
+    <div class="v-head">
+      <div class="doc-av">👩‍⚕️</div>
+      <div><b>Dr. Meera Menon</b><small>Endocrinologist · Diabetes care</small></div>
+      <span class="verified">✔ VERIFIED</span>
+    </div>
+    <div class="queue">
+      <small>LIVE QUEUE · TODAY</small>
+      <div class="token">You're <small>#</small>4</div>
+      <div class="eta-pill"><i>●</i> ~25 min · updated 30s ago</div>
+      <div class="track">
+        <div class="tnode done"><div class="tdot">✓</div><small>Checked in<br>10:02 AM</small></div>
+        <div class="tnode done"><div class="tdot">✓</div><small>Token #3<br>in room</small></div>
+        <div class="tnode now"><div class="tdot">4</div><small>You<br>~10:45 AM</small></div>
+        <div class="tnode"><div class="tdot">5</div><small>Next</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="leave">
+    <i>🚗</i>
+    <div><b>Leave home by 10:35 AM</b><small>18 min drive · arrive 5 min before your turn</small></div>
+  </div>
+
+  <div class="panel">
+    <h3>Before you see the doctor</h3>
+    <div class="pr"><div class="cb on" onclick="this.classList.toggle('on')">✓</div><div><b>Fasting blood sugar test done</b><small>Report uploaded — Dr. Menon can see it</small></div><em>DONE</em></div>
+    <div class="pr"><div class="cb" onclick="this.classList.toggle('on')">✓</div><div><b>Fast from 10 PM tonight</b><small>Water is okay · no morning tea</small></div><em>REMINDER SET</em></div>
+    <div class="pr"><div class="cb" onclick="this.classList.toggle('on')">✓</div><div><b>Carry medicine strips</b><small>Metformin 500mg · current box</small></div></div>
+  </div>
+
+  <div class="next">
+    <i>📅</i>
+    <div><b>Monthly review due Sept 20</b><small>Dr. Menon usually suggests 4-week follow-ups</small></div>
+    <button class="book" onclick="alert('✅ Follow-up booked for Sept 20, 10:00 AM. Reminder + fasting instructions scheduled!')">Book</button>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.fa').forEach(f=>f.onclick=()=>{document.querySelectorAll('.fa').forEach(x=>x.classList.remove('on'));f.classList.add('on')});
+</script>
+</body>
+</html>

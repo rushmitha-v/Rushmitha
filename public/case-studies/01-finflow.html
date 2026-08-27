@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FinFlow — UX Case Study · Rushmitha Varshini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+</head>
+<body style="--accent:#3E63F0; --accent2:#0EA5A5">
+<div class="topbar"><div class="in"><a class="back" href="index.html">← All case studies</a><span class="brand">Fin<b>Flow</b> · UX Case Study</span></div></div>
+
+<header class="hero"><div class="in">
+  <span class="tag">Fintech · Mobile Banking</span>
+  <h1>FinFlow — money management in seconds, not menus</h1>
+  <p class="sub">A mobile banking concept that helps young professionals understand their spending and move money with confidence — without the clutter of a traditional banking app.</p>
+  <div class="meta">
+    <div><div class="k">Role</div><div class="v">UX / UI Designer</div></div>
+    <div><div class="k">Timeline</div><div class="v">6 weeks</div></div>
+    <div><div class="k">Platform</div><div class="v">iOS &amp; Android</div></div>
+    <div><div class="k">Tools</div><div class="v">Figma · FigJam · Maze</div></div>
+  </div>
+</div></header>
+
+<main>
+<section class="blk" id="problem"><div class="wrap">
+  <div class="kicker"><span class="num">01</span><h2>The Problem</h2></div>
+  <p class="lead">People check their balance constantly — but rarely go deeper. Everyday banking apps bury the two things users actually want (understanding spending and sending money) under dense dashboards and multi-step flows.</p>
+  <p>In discovery I audited five leading banking apps and repeatedly saw the same pattern: home screens crammed with promotions, transfers hidden 3–4 taps deep, and spending data locked in separate reports. Users described feeling <strong>anxious and slow</strong> — not in control.</p>
+  <div class="statement">
+    <div class="lbl">Problem statement</div>
+    <p>How might we help young professionals understand their money and act on it in seconds — without feeling overwhelmed?</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">68%</div><div class="l">check balance daily but avoid other features</div></div>
+    <div class="stat"><div class="n">41s</div><div class="l">avg. time to send money (benchmark apps)</div></div>
+    <div class="stat"><div class="n">4+</div><div class="l">taps to reach a transfer</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="goals"><div class="wrap">
+  <div class="kicker"><span class="num">02</span><h2>Goals &amp; Success Metrics</h2></div>
+  <p class="lead">Align the design around clarity, speed and confidence — and define measurable targets to test against.</p>
+  <ul class="insights">
+    <li><span class="ic">◎</span><span><b>Surface what matters first</b>Balance, spending trend and quick actions above the fold.</span></li>
+    <li><span class="ic">⚡</span><span><b>Make transfers effortless</b>Complete a send in under 30 seconds from the home screen.</span></li>
+    <li><span class="ic">✓</span><span><b>Build trust</b>Clear recipients, confirmations and security cues at every step.</span></li>
+  </ul>
+  <p class="small"><strong>Target metrics:</strong> transfer completion &lt; 30s · SUS score &gt; 80 · task success &gt; 90% · spending-insight engagement up.</p>
+</div></section>
+
+<section class="blk" id="research"><div class="wrap">
+  <div class="kicker"><span class="num">03</span><h2>User Research</h2></div>
+  <p class="lead">A mix of qualitative and quantitative methods to understand how people actually manage money on mobile.</p>
+  <div class="tags"><span>12 user interviews</span><span>Survey — 48 respondents</span><span>Competitive audit — 5 apps</span><span>Affinity mapping</span></div>
+  <h3 class="sub">Key findings</h3>
+  <ul class="insights">
+    <li><span class="ic">1</span><span><b>Balance-first, explore-never</b>Users open the app daily just to glance at balance — deeper features feel like effort, so they're ignored.</span></li>
+    <li><span class="ic">2</span><span><b>Transfers feel risky and slow</b>Too many screens and unclear recipients make sending money stressful; people double-check obsessively.</span></li>
+    <li><span class="ic">3</span><span><b>Spending insight is wanted but hidden</b>Everyone valued category breakdowns — but couldn't find them without digging into reports.</span></li>
+    <li><span class="ic">4</span><span><b>Trust is emotional</b>Confirmation screens, security badges and seeing the recipient's name reduce anxiety more than speed alone.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="personas"><div class="wrap">
+  <div class="kicker"><span class="num">04</span><h2>Personas</h2></div>
+  <p class="lead">Two primary personas emerged from the research and guided every design decision.</p>
+  <div class="grid-2">
+    <div class="persona">
+      <div class="top"><div class="avatar">AR</div><div><h4>Aditya Rao</h4><div class="role">27 · Software Engineer · Bengaluru</div></div></div>
+      <p class="quote">"I just want to send my share of rent and see where my money went — I don't want a finance degree."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Split bills &amp; transfer to friends fast</li><li>Track subscriptions and monthly spend</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Cluttered home screens &amp; promos</li><li>Transfers buried behind menus</li></ul></div>
+    </div>
+    <div class="persona">
+      <div class="top"><div class="avatar">MS</div><div><h4>Meera Shah</h4><div class="role">24 · Freelance Designer · Pune</div></div></div>
+      <p class="quote">"My income is different every month, so I really need to see my spending clearly to plan."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Understand spending by category</li><li>Feel in control of variable income</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>No at-a-glance spending insight</li><li>Anxious about sending to wrong person</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="flow"><div class="wrap">
+  <div class="kicker"><span class="num">05</span><h2>User Flow — Send Money</h2></div>
+  <p class="lead">The core flow was re-designed from ~5 screens down to a single, guided screen with a confirmation moment.</p>
+  <div class="flow">
+    <div class="step"><div class="s">START</div><div class="t">Home dashboard</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 1</div><div class="t">Tap “Send”</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 2</div><div class="t">Pick recipient</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 3</div><div class="t">Enter amount</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 4</div><div class="t">Confirm &amp; send</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="s">DONE</div><div class="t">Success ✓</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="wireframes"><div class="wrap">
+  <div class="kicker"><span class="num">06</span><h2>Wireframes</h2></div>
+  <p class="lead">Low-fidelity wireframes tested the layout hierarchy before any visual design — prioritising balance, quick actions and a one-screen send.</p>
+  <div class="wire-row">
+    <div><div class="wf phone">
+      <div class="rowf"><div class="sk bar sm"></div></div>
+      <div class="sk box accent tall"></div>
+      <div class="grid3" style="margin:8px 0"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div class="sk box"></div>
+      <div class="sk bar md"></div><div class="sk bar"></div><div class="sk bar sm"></div>
+    </div><div class="wf-cap">Dashboard — balance + quick actions first</div></div>
+    <div><div class="wf phone">
+      <div class="sk bar sm"></div>
+      <div class="sk box"></div>
+      <div class="sk pill accent" style="margin:14px auto"></div>
+      <div class="grid3" style="margin:10px 0"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div class="grid3"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div class="sk box accent" style="height:44px"></div>
+    </div><div class="wf-cap">Send — single screen with keypad</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="prototype"><div class="wrap">
+  <div class="kicker"><span class="num">07</span><h2>Hi-Fi Design &amp; Prototype</h2></div>
+  <p class="lead">The final interface uses a focused gradient balance card, four one-tap actions, an at-a-glance weekly spend chart, and a single-screen transfer with quick-amount chips.</p>
+  <div class="figure"><div class="shots">
+    <div class="device phone"><img src="../figma-exports/01-finflow-dashboard.png" alt="FinFlow dashboard"/></div>
+    <div class="device phone"><img src="../figma-exports/02-finflow-send-money.png" alt="FinFlow send money"/></div>
+  </div><figcaption>Dashboard &amp; Send Money — high-fidelity screens (built in Figma)</figcaption></div>
+  <h3 class="sub">Key design decisions</h3>
+  <ul class="insights">
+    <li><span class="ic">◆</span><span><b>Gradient balance card</b>Anchors the eye and makes the most-checked info instantly scannable.</span></li>
+    <li><span class="ic">◆</span><span><b>Weekly spend chart on home</b>Brings the hidden insight users wanted to the surface.</span></li>
+    <li><span class="ic">◆</span><span><b>One-screen send + quick amounts</b>Removes steps; the total is echoed on the button to reduce errors.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="testing"><div class="wrap">
+  <div class="kicker"><span class="num">08</span><h2>Usability Testing</h2></div>
+  <p class="lead">Tested the prototype with 6 participants (moderated + unmoderated via Maze) across two core tasks.</p>
+  <p class="small"><strong>Tasks:</strong> (1) “Find how much you spent this week.” (2) “Send $50 to Aarav.”</p>
+  <table class="tbl">
+    <thead><tr><th>Metric</th><th>Target</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>Task success rate</td><td>&gt; 90%</td><td><span class="good">92%</span></td></tr>
+      <tr><td>Avg. time to send money</td><td>&lt; 30s</td><td><span class="good">22s</span></td></tr>
+      <tr><td>System Usability Scale (SUS)</td><td>&gt; 80</td><td><span class="good">86 — “excellent”</span></td></tr>
+      <tr><td>Error / misclick rate</td><td>Low</td><td><span class="good">1 minor</span></td></tr>
+    </tbody>
+  </table>
+  <h3 class="sub">What testing changed</h3>
+  <div class="iter"><span class="tagline">Iteration 1</span><p>Two users hesitated before confirming an amount. → Added <b>quick-amount chips</b> and echoed the <b>total on the Send button</b> for a clear final check.</p></div>
+  <div class="iter"><span class="tagline">Iteration 2</span><p>Recipient selection felt uncertain. → Added an <b>avatar + verified checkmark</b> so users can confirm who they're paying at a glance.</p></div>
+</div></section>
+
+<section class="blk" id="results"><div class="wrap">
+  <div class="kicker"><span class="num">09</span><h2>Results &amp; Impact</h2></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">−46%</div><div class="l">time to send money (41s → 22s)</div></div>
+    <div class="stat"><div class="n">86</div><div class="l">SUS score (“excellent”)</div></div>
+    <div class="stat"><div class="n">92%</div><div class="l">task success rate</div></div>
+    <div class="stat"><div class="n">+3×</div><div class="l">projected spending-insight engagement</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="reflection"><div class="wrap">
+  <div class="kicker"><span class="num">10</span><h2>Reflection &amp; Next Steps</h2></div>
+  <div class="reflect">
+    <p style="margin-top:0">The biggest win came from <strong>removing steps, not adding features</strong> — collapsing the transfer into one confident screen changed how the whole app felt. Testing early with low-fi wireframes saved rework later.</p>
+    <p style="margin-bottom:0"><strong>Next:</strong> biometric confirmation, savings-goal tracking, and shared-expense splitting for the “rent with friends” use case that surfaced repeatedly in interviews.</p>
+  </div>
+  <div class="tags" style="margin-top:22px"><span>UX Research</span><span>Information Architecture</span><span>Interaction Design</span><span>Prototyping</span><span>Usability Testing</span><span>Design Systems</span></div>
+</div></section>
+</main>
+
+<nav class="dots">
+  <a href="#problem" class="on"><span>Problem</span></a><a href="#goals"><span>Goals</span></a><a href="#research"><span>Research</span></a><a href="#personas"><span>Personas</span></a><a href="#flow"><span>User Flow</span></a><a href="#wireframes"><span>Wireframes</span></a><a href="#prototype"><span>Prototype</span></a><a href="#testing"><span>Testing</span></a><a href="#results"><span>Results</span></a><a href="#reflection"><span>Reflection</span></a>
+</nav>
+
+<div class="foot">FinFlow UX Case Study · Designed by <strong>Rushmitha Varshini</strong> · <a href="index.html">← Back to all case studies</a></div>
+
+<script>
+const secs=[...document.querySelectorAll('section.blk')];const dots=[...document.querySelectorAll('.dots a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=secs.indexOf(e.target);dots.forEach(d=>d.classList.remove('on'));if(dots[i])dots[i].classList.add('on');}}),{threshold:.5});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

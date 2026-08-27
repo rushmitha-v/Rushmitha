@@ -1,0 +1,16 @@
+{
+  "color": {
+    "primary": "#8b5cf6",
+    "secondary": "#22d3ee",
+    "accent": "#ec4899",
+    "background": "#0b0d14",
+    "surface": "#131624",
+    "text": "#eef0fa",
+    "muted": "#7c84a3"
+  },
+  "typography": { "family": "Inter / Sora", "display": "Sora Bold", "body": "Inter 14px" },
+  "spacing": { "sm": "8px", "md": "16px", "lg": "26px" },
+  "radius": { "art": "28px", "card": "20px", "chip": "99px" },
+  "motion": { "artBreathe": "5s ease-in-out infinite", "waveEq": "0.9s ease-in-out infinite", "speedPop": "0.3s spring" },
+  "concepts": ["waveform seek", "persistent speed chip", "smart queue podcast→music", "sleep timer fade"]
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitPulse — Active Workout</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0a0f0d;color:#eafcf2;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+h1{font-family:'Sora';font-size:1.2rem;letter-spacing:-.02em}
+.timer{font-family:'Sora';font-variant-numeric:tabular-nums;font-size:1.3rem;font-weight:800;color:#22e07a}
+.card{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:20px;margin-bottom:14px}
+.ex-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.ex-head b{font-size:1.05rem}
+.set-badge{font-size:.64rem;font-weight:800;background:rgba(34,224,122,.15);color:#22e07a;padding:4px 10px;border-radius:99px}
+.set-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.08)}
+.set-row:last-child{border:0}
+.set-n{width:32px;height:32px;border-radius:10px;background:rgba(34,224,122,.14);color:#22e07a;display:grid;place-items:center;font-weight:800;font-size:.74rem;flex-shrink:0}
+.set-row input{flex:1;background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 12px;color:#fff;font-family:'Inter';font-size:.85rem;outline:none}
+.set-row input:focus{border-color:#22e07a;box-shadow:0 0 0 3px rgba(34,224,122,.2)}
+.set-row .done{width:32px;height:32px;border-radius:10px;background:#22e07a;color:#04140b;display:grid;place-items:center;font-weight:800;font-size:.7rem;flex-shrink:0}
+.rest{text-align:center;margin-top:18px}
+.rest-bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:8px}
+.rest-fill{height:100%;width:0;background:linear-gradient(90deg,#fbbf24,#fb7185);border-radius:99px;transition:width 1s linear}
+.rest-t{font-size:.72rem;color:#8fa89b}
+.ctl{display:flex;gap:10px;margin-top:16px}
+.btn{flex:1;border:0;border-radius:14px;padding:16px;font-family:'Sora';font-weight:800;font-size:.9rem;cursor:pointer;transition:.22s}
+.nxt{background:linear-gradient(135deg,#22e07a,#0ea56a);color:#04140b;box-shadow:0 12px 26px rgba(34,224,122,.35)}
+.nxt:hover{transform:translateY(-2px)}
+.skp{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#8fa89b}
+.skp:hover{background:rgba(255,255,255,.08)}
+</style></head>
+<body>
+<div class="app">
+  <div class="top"><h1>Push Day</h1><div class="timer" id="t">12:34</div></div>
+  <div class="card">
+    <div class="ex-head"><b>Bench Press (Barbell)</b><span class="set-badge">Set 3 of 4</span></div>
+    <div class="set-row"><div class="set-n">1</div><input type="number" value="60" placeholder="kg"><div class="done">✓</div></div>
+    <div class="set-row"><div class="set-n">2</div><input type="number" value="65" placeholder="kg"><div class="done">✓</div></div>
+    <div class="set-row"><div class="set-n">3</div><input type="number" value="70" placeholder="kg"><span class="done">✓</span></div>
+    <div class="set-row"><div class="set-n">4</div><input type="number" placeholder="kg"></div>
+    <div class="rest"><div class="rest-bar"><div class="rest-fill" id="rf"></div></div><div class="rest-t">Rest: <span id="rt">180s</span></div></div>
+    <div class="ctl">
+      <button class="btn nxt" onclick="nxt()">Next exercise →</button>
+      <button class="btn skp" onclick="skip()">Skip</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ex-head"><b>Up next: Shoulder Press</b><span class="set-badge">3 sets · 10-12 reps</span></div>
+  </div>
+</div>
+<script>
+let r=180;const rf=document.getElementById('rf'),rt=document.getElementById('rt'),ti=setInterval(()=>{if(r>0){r--;rt.textContent=r+'s';rf.style.width=(1-r/180)*100+'%'}else{clearInterval(ti);rf.style.width='100%'}},1000);
+function nxt(){alert('💪 Exercise logged! Moving to Shoulder Press…')};function skip(){alert('⏭️ Skipped — PR tracking paused for this exercise')}
+document.getElementById('t').textContent='12:'+String(34-Math.floor((180-r)/60)).padStart(2,'0');
+</script>
+</body></html>

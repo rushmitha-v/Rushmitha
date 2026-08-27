@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WavePlay — Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0b0616;color:#f3effc;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.32rem;letter-spacing:-.02em;margin-bottom:14px}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tb{flex:0 0 auto;padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);color:#a89fc4;font-size:.72rem;font-weight:700;cursor:pointer;transition:.2s}
+.tb.on{background:linear-gradient(135deg,#8b5cf6,#22d3ee);border-color:transparent;color:#fff}
+.sec2{font-family:'Sora';font-size:.88rem;margin-bottom:12px}
+.pl{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:17px;padding:12px 14px;margin-bottom:10px;cursor:pointer;transition:.2s}
+.pl:hover{background:rgba(255,255,255,.08);transform:translateX(3px)}
+.art{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;flex-shrink:0;position:relative}
+.a1{background:linear-gradient(140deg,#f97316,#ef4444)}.a2{background:linear-gradient(140deg,#8b5cf6,#6366f1)}.a3{background:linear-gradient(140deg,#0ea5e9,#22d3ee)}.a4{background:linear-gradient(140deg,#10b981,#84cc16)}
+.offchip{position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);font-size:.5rem;font-weight:800;background:#1e1440;border:1px solid rgba(34,211,238,.5);color:#22d3ee;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.pl div{flex:1;min-width:0}
+.pl b{font-size:.84rem;display:block}
+.pl small{color:#a89fc4;font-size:.69rem;display:block;margin-top:3px}
+.dl{margin-left:auto;font-size:.62rem;color:#22d3ee;font-weight:800;text-align:right;white-space:nowrap}
+.dl i{display:block;font-style:normal;font-size:1rem;margin-bottom:3px}
+.storage{margin-top:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:17px;padding:15px 17px}
+.strow{display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:8px}
+.strow b{color:#22d3ee}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.bf{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#8b5cf6,#22d3ee);transition:width 1.2s ease}
+</style></head>
+<body>
+<div class="app">
+  <h1>Your library 🎼</h1>
+  <div class="tabs"><span class="tb on">Playlists</span><span class="tb">Albums</span><span class="tb">Podcasts</span><span class="tb">Downloads</span><span class="tb">Liked</span></div>
+  <div class="sec2">Offline-ready for your commute 📴</div>
+  <div class="pl"><div class="art a1">🔥<span class="offchip">📴 OFFLINE</span></div><div><b>Beast Mode</b><small>24 songs · 82 min · gym staple</small></div><div class="dl"><i>✓</i>Saved</div></div>
+  <div class="pl"><div class="art a2">🎹<span class="offchip">📴 OFFLINE</span></div><div><b>Late Night Code</b><small>31 tracks · focus sessions</small></div><div class="dl"><i>✓</i>Saved</div></div>
+  <div class="pl"><div class="art a3">🌧️</div><div><b>Rainy Window</b><small>28 songs · not downloaded</small></div><div class="dl"><i style="color:#6b6486">⬇</i>310 MB</div></div>
+  <div class="pl"><div class="art a4">🎧</div><div><b>The Daily Grind — Podcast</b><small>12 new episodes · auto-download on</small></div><div class="dl"><i>✓</i>3 new</div></div>
+  <div class="storage">
+    <div class="strow"><span>Offline storage</span><b>1.9 GB of 4 GB used</b></div>
+    <div class="bar"><div class="bf" id="bf"></div></div>
+    <p style="font-size:.66rem;color:#6b6486;margin-top:9px;line-height:1.55">Smart cleanup: songs you skipped 5× will be removed automatically when storage is full.</p>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.tb').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));t.classList.add('on')});
+document.querySelectorAll('.pl').forEach(p=>p.onclick=()=>alert('▶ Opening playlist...'));
+requestAnimationFrame(()=>setTimeout(()=>document.getElementById('bf').style.width='47%',250));
+</script>
+</body></html>

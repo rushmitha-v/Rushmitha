@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiteSphere — Checkout</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#fff7f1;color:#231a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:18px}
+.card{background:#fff;border:1px solid #f4e9e1;border-radius:20px;padding:18px;margin-bottom:14px}
+.card h3{font-family:'Sora';font-size:.88rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.step-n{width:22px;height:22px;border-radius:50%;background:#ff6b2c;color:#fff;font-size:.66rem;display:grid;place-items:center;font-weight:800}
+.ci{display:flex;gap:12px;padding:9px 0;align-items:center}
+.ci .em{width:42px;height:42px;border-radius:12px;background:#fff3ec;display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
+.ci div{flex:1}
+.ci b{font-size:.85rem;display:block}
+.ci small{color:#8d8177;font-size:.72rem}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:24px;height:24px;border-radius:8px;border:1px solid #f0e5dc;background:#fff;cursor:pointer;font-weight:800;color:#ff6b2c}
+.qty span{font-weight:700;font-size:.85rem;min-width:16px;text-align:center}
+.bill{font-size:.8rem;color:#8d8177}
+.bill .r{display:flex;justify-content:space-between;padding:5px 0}
+.bill .r.t{border-top:1px dashed #f0e5dc;margin-top:7px;padding-top:11px;color:#231a12;font-weight:800;font-family:'Sora';font-size:.92rem}
+.save-g{color:#22b573;font-weight:700}
+.support{background:#eafaf1;border:1px solid #c9ecd9;border-radius:12px;padding:11px 14px;font-size:.74rem;color:#1c7a4e;margin-top:11px;display:flex;gap:9px;align-items:center}
+.tip{display:flex;gap:8px;margin-top:10px}
+.tp{flex:1;border:1.5px solid #f0e5dc;border-radius:11px;padding:10px;text-align:center;font-size:.76rem;font-weight:700;cursor:pointer;transition:.2s}
+.tp.on{border-color:#ff6b2c;background:#fff3ec;color:#e05a17}
+.pay{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px dashed #f0e5dc;cursor:pointer}
+.pay:last-child{border:0}
+.pay i{font-style:normal;font-size:1.1rem}
+.pay b{font-size:.83rem;font-weight:600;display:block}
+.pay small{color:#8d8177;font-size:.7rem}
+.radio{margin-left:auto;width:19px;height:19px;border-radius:50%;border:2px solid #d9cbc0;flex-shrink:0}
+.pay.on .radio{border-color:#ff6b2c;background:radial-gradient(circle,#ff6b2c 40%,transparent 45%)}
+.cta{width:100%;border:0;border-radius:16px;padding:17px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#ff6b2c,#ff9558);box-shadow:0 14px 30px rgba(255,107,44,.35);transition:.22s;margin-top:4px}
+.cta:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app">
+  <h1>Almost there 🛒</h1>
+
+  <div class="card">
+    <h3><span class="step-n">1</span> Your order</h3>
+    <div class="ci"><div class="em">🍝</div><div><b>Truffle Mushroom Pasta</b><small>Extra parmesan</small></div><div class="qty"><button onclick="q(this,-1)">−</button><span>1</span><button onclick="q(this,1)">+</button></div></div>
+    <div class="ci"><div class="em">🥗</div><div><b>Burrata Caprese</b><small></small></div><div class="qty"><button onclick="q(this,-1)">−</button><span>1</span><button onclick="q(this,1)">+</button></div></div>
+    <div class="bill" style="margin-top:10px">
+      <div class="r"><span>Item total</span><span>₹780</span></div>
+      <div class="r"><span>Delivery fee</span><span class="save-g">FREE</span></div>
+      <div class="r"><span>Taxes</span><span>₹47</span></div>
+      <div class="r t"><span>To pay</span><span>₹827</span></div>
+    </div>
+    <div class="support">💚 <span>₹690 of this goes directly to Trattoria Moderna — 89% vs 65% on big apps</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="step-n">2</span> Tip your rider</h3>
+    <div class="tip">
+      <div class="tp" onclick="tp(this)">₹20</div>
+      <div class="tp on" onclick="tp(this)">₹30 👍</div>
+      <div class="tp" onclick="tp(this)">₹50</div>
+      <div class="tp" onclick="tp(this)">Custom</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="step-n">3</span> Pay with</h3>
+    <div class="pay on"><i>⚡</i><div><b>UPI — phonepe ····92</b><small>Fastest · 1-tap</small></div><div class="radio"></div></div>
+    <div class="pay"><i>💳</i><div><b>Visa ····4412</b><small>Saved card</small></div><div class="radio"></div></div>
+    <div class="pay"><i>💰</i><div><b>Pay on delivery</b><small>Cash or UPI at door</small></div><div class="radio"></div></div>
+  </div>
+
+  <button class="cta" onclick="alert('✅ Order placed! Chef Marco has been notified. ETA 25 min.')">Place order · ₹857</button>
+</div>
+<script>
+function q(btn,d){const s=btn.parentElement.querySelector('span');let v=+s.textContent+d;if(v>=1)s.textContent=v}
+function tp(el){document.querySelectorAll('.tp').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
+document.querySelectorAll('.pay').forEach(p=>p.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('on'));p.classList.add('on')});
+</script>
+</body></html>

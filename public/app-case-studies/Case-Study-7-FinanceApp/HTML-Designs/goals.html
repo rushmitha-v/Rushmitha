@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Savings Goals</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8a94ad;font-size:.82rem;margin-bottom:18px}
+.goal{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:20px;margin-bottom:14px}
+.g-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.g-head b{font-size:.92rem}
+.g-head small{color:#8a94ad;font-size:.7rem}
+.pbar{height:10px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:8px}
+.pfill{height:100%;border-radius:99px;background:linear-gradient(90deg,#2dd4a7,#38bdf8);width:0;transition:width 1.3s ease}
+.g-foot{display:flex;justify-content:space-between;font-size:.74rem;color:#8a94ad}
+.g-foot b{color:#fff;font-family:'Sora'}
+.add{width:100%;border:1px dashed rgba(45,212,167,.5);color:#2dd4a7;border-radius:14px;padding:14px;font-family:'Inter';font-weight:700;font-size:.8rem;background:transparent;cursor:pointer;transition:.2s;margin-top:8px}
+.add:hover{background:rgba(45,212,167,.1)}
+</style></head>
+<body>
+<div class="app">
+  <h1>Your goals 🎯</h1>
+  <p class="sub">₹42,300 saved · 68% toward targets</p>
+  <div class="goal">
+    <div class="g-head"><b>Royal Enfield Himalayan</b><small>Target: Aug 2025</small></div>
+    <div class="pbar"><div class="pfill" data-w="62%"></div></div>
+    <div class="g-foot"><span>₹1,24,000 / ₹2,00,000</span><span>₹15,000/mo</span></div>
+  </div>
+  <div class="goal">
+    <div class="g-head"><b>Emergency Fund</b><small>3 months expenses</small></div>
+    <div class="pbar"><div class="pfill" data-w="84%"></div></div>
+    <div class="g-foot"><span>₹78,000 / ₹90,000</span><span>Auto ₹5,000/mo</span></div>
+  </div>
+  <div class="goal">
+    <div class="g-head"><b>Europe Trip 2026</b><small>Dream goal</small></div>
+    <div class="pbar"><div class="pfill" data-w="28%"></div></div>
+    <div class="g-foot"><span>₹42,000 / ₹1,50,000</span><span>₹8,000/mo</span></div>
+  </div>
+  <button class="add" onclick="alert('✨ New goal wizard opened!')">+ Add goal</button>
+</div>
+<script>
+requestAnimationFrame(()=>setTimeout(()=>document.querySelectorAll('.pfill').forEach(p=>p.style.width=p.dataset.w),250));
+</script>
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusMate - Productivity App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --fg: #1e293b;
+      --primary: #3b82f6;
+      --secondary: #10b981;
+      --card: #ffffff;
+      --muted: #64748b;
+    }
+    * { font-family: 'Inter', sans-serif; }
+    body { background: var(--bg); color: var(--fg); margin: 0; min-height: 100vh; }
+    .nav { background: var(--card); padding: 1rem 2rem; border-bottom: 1px solid #e2e8f0; }
+    .nav-brand { font-size: 1.5rem; font-weight: 700; color: var(--fg); }
+    .nav-tag { background: #e2e8f0; color: #64748b; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; text-transform: uppercase; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .hero { background: var(--card); border-radius: 16px; padding: 3rem; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .hero-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .hero-subtitle { color: var(--muted); font-size: 1.1rem; }
+    .stat-card { background: var(--card); border-radius: 12px; padding: 2rem; text-align: center; border: 1px solid #e2e8f0; transition: transform 0.2s; }
+    .stat-card:hover { transform: translateY(-4px); }
+    .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+    .stat-label { color: var(--muted); font-size: 0.9rem; }
+    .session-btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; }
+    .session-btn:hover { opacity: 0.9; }
+    .session-btn-secondary { background: var(--secondary); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 1rem; font-weight: 500; cursor: pointer; margin-left: 12px; }
+    .accomplishments { background: var(--card); border-radius: 12px; padding: 2rem; margin-top: 2rem; border: 1px solid #e2e8f0; }
+    .accomplishment-item { padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+    .accomplishment-label { color: var(--muted); font-size: 0.9rem; }
+    .accomplishment-value { color: var(--primary); font-weight: 600; }
+    .progress-bar { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; margin: 1rem 0; }
+    .progress-fill { height: 100%; background: var(--primary); width: 40%; transition: width 0.5s ease; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-brand">FocusMate</div>
+      <span class="nav-tag">Productivity</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1 class="hero-title">Get More Done,<br>Together</h1>
+      <p class="hero-subtile">Accountability partner for remote workers</p>
+      <div style="margin-top: 2rem;">
+        <button class="session-btn">START 25MIN SESSION</button>
+        <button class="session-btn-secondary">45MIN</button>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">/ 5 sessions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">14</div>
+      <div class="stat-label">hrs focused</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">day streak</div>
+    </div>
+  </div>
+
+  <div class="accomplishments">
+    <h3 style="margin-bottom: 1rem;">Recent Accomplishments</h3>
+    <div class="accomplishment-item">
+      <span class="accomplishment-label">Finished API refactoring</span>
+      <span class="accomplishment-value">45 min</span>
+    </div>
+    <div class="accomplishment-item">
+      <span class="accomplishment-label">Wrote unit tests</span>
+      <span class="accomplishment-value">30 min</span>
+    </div>
+    <div class="accomplishment-item">
+      <span class="accomplishment-label">Reviewed PR #47</span>
+      <span class="accomplishment-value">15 min</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem;">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <p style="text-align: center; color: var(--muted);">40% complete today</p>
+  </div>
+</body>
+</html>

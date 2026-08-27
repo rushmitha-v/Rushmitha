@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wanderly — Traveler Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f4f9fc;color:#1b2733;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+.hero{background:linear-gradient(135deg,#0ea5e9,#f97316);border-radius:26px;padding:28px 22px;color:#fff;text-align:center;margin-bottom:16px}
+.av{width:80px;height:80px;border-radius:50%;margin:0 auto 12px;background:rgba(255,255,255,.25);display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.7rem}
+h1{font-family:'Sora';font-size:1.3rem}
+.hero p{font-size:.8rem;opacity:.92;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.s{background:rgba(255,255,255,.2);border-radius:14px;padding:12px 4px}
+.s b{font-family:'Sora';display:block;font-size:1.15rem}
+.s small{font-size:.6rem;opacity:.92}
+.sec{font-family:'Sora';font-size:.9rem;margin:20px 0 12px}
+.list{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(14,165,233,.08)}
+.li{display:flex;align-items:center;gap:13px;padding:15px 17px;border-bottom:1px solid #eef4f8;cursor:pointer;transition:.2s}
+.li:last-child{border:0}.li:hover{background:#f7fbfd}
+.li i{font-style:normal;width:38px;height:38px;border-radius:12px;background:#f0f7fb;display:grid;place-items:center;font-size:1.05rem}
+.li b{font-size:.84rem;font-weight:600;display:block}
+.li small{color:#7d8fa1;font-size:.72rem}
+.ar{margin-left:auto;color:#b0bfca}
+.badge-row{display:flex;gap:10px;margin-bottom:4px}
+.bd{flex:1;background:#fff;border-radius:16px;padding:13px 6px;text-align:center;box-shadow:0 6px 16px rgba(14,165,233,.07);transition:.22s}
+.bd:hover{transform:translateY(-3px)}
+.bd i{font-style:normal;font-size:1.45rem;display:block;margin-bottom:5px}
+.bd small{font-size:.56rem;font-weight:800;color:#5c6c7d}
+</style></head>
+<body>
+<div class="app">
+  <div class="hero"><div class="av">R</div><h1>Ravi Kumar</h1><p>Weekend wanderer · Bengaluru 📍</p>
+    <div class="stats"><div class="s"><b>12</b><small>Trip days</small></div><div class="s"><b>5</b><small>Places</small></div><div class="s"><b>₹18k</b><small>Saved via Wanderly</small></div></div></div>
+  <div class="badge-row">
+    <div class="bd"><i>🌄</i><small>SUNRISE HUNTER</small></div><div class="bd"><i>☕</i><small>CAFFEINE TOURIST</small></div><div class="bd"><i>🧗</i><small>NIGHT TREKKER</small></div>
+  </div>
+  <div class="sec">Upcoming</div>
+  <div class="list"><div class="li"><i>☕</i><div><b>Coorg Coffee Country</b><small>Sep 12–15 · 4 travelers · all booked ✓</small></div><span class="ar">→</span></div></div>
+  <div class="sec">Traveler settings</div>
+  <div class="list">
+    <div class="li"><i>🧭</i><div><b>Vibe preferences</b><small>Nature first, food close second</small></div><span class="ar">→</span></div>
+    <div class="li"><i>👥</i><div><b>Tribe</b><small>The Weekend Squad (4)</small></div><span class="ar">→</span></div>
+    <div class="li"><i>🪪</i><div><b>IDs & documents</b><small>Aadhaar, DL verified ✓</small></div><span class="ar">→</span></div>
+    <div class="li"><i>🔔</i><div><b>Deal alerts</b><small>Weekend deals under ₹5k · push</small></div><span class="ar">→</span></div>
+    <div class="li"><i>🌙</i><div><b>Offline maps</b><small>Auto-download trip areas</small></div><span class="ar">→</span></div>
+  </div>
+</div>
+</body></html>

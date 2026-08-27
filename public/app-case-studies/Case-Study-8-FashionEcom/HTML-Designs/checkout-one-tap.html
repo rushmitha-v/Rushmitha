@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StyleHub — One-Tap Checkout</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#faf7f2;color:#221a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:16px}
+.card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 24px rgba(34,26,18,.08);margin-bottom:12px}
+.sec{display:flex;justify-content:space-between;align-items:center}
+.sec b{font-size:.86rem;display:flex;align-items:center;gap:8px}
+.done{color:#1d8a5f;font-size:.68rem;font-weight:800;background:#e2f3ea;padding:4px 10px;border-radius:99px}
+.sec small{display:block;color:#8d7f70;font-size:.74rem;margin-top:5px}
+.item{display:flex;gap:13px;margin-top:14px;padding-top:14px;border-top:1px solid #f2ede4}
+.thumb{width:54px;height:66px;border-radius:12px;display:grid;place-items:center;font-size:1.6rem;background:#efe9df}
+.item b{font-size:.8rem;display:block}.item small{color:#8d7f70;font-size:.7rem}
+.pr{margin-left:auto;font-family:'Sora';font-weight:800;font-size:.82rem}
+.payopt{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #f2ede4;cursor:pointer}
+.payopt:last-child{border:0}
+.payopt i{font-style:normal;font-size:1.25rem;width:36px;height:36px;background:#faf7f2;border-radius:11px;display:grid;place-items:center}
+.payopt b{font-size:.84rem;display:block}.payopt small{color:#8d7f70;font-size:.7rem}
+.radio{width:20px;height:20px;border-radius:50%;border:2px solid #d8cfc0;margin-left:auto;flex-shrink:0;transition:.2s}
+.payopt.on .radio{border-color:#c9a227;background:radial-gradient(circle,#c9a227 45%,#fff 50%)}
+.total{background:#221a12;color:#fff;border-radius:20px;padding:18px 20px;margin-bottom:14px}
+.trow{display:flex;justify-content:space-between;font-size:.78rem;color:#b8ab98;padding:4px 0}
+.trow.grand{border-top:1px solid rgba(255,255,255,.15);padding-top:10px;margin-top:8px;font-family:'Sora';font-weight:800;font-size:1rem;color:#fff}
+.buy{width:100%;border:0;border-radius:15px;padding:17px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#221a12;background:linear-gradient(135deg,#e3b93f,#c9a227);cursor:pointer;transition:.22s;box-shadow:0 14px 30px rgba(201,162,39,.4)}
+.buy:hover{transform:translateY(-2px)}
+.free{font-size:.64rem;color:#1d8a5f;font-weight:800}
+</style></head>
+<body>
+<div class="app">
+  <h1>Checkout ⚡</h1>
+  <div class="card"><div class="sec"><b>📍 Delivery</b><span class="done">DEFAULT</span></div><small>Home · Ananya Iyer, Indiranagar, Bengaluru 560038</small>
+    <div class="item"><div class="thumb">👕</div><div><b>Linen Casual Shirt</b><small>Size M · Qty 1</small></div><span class="pr">₹1,499</span></div></div>
+  <div class="card"><div class="sec"><b>💳 Payment</b><span class="done">SAVED</span></div>
+    <div style="height:10px"></div>
+    <div class="payopt on"><i>💠</i><div><b>HDFC Credit •••• 4821</b><small>UPI / Cards / COD available</small></div><span class="radio"></span></div>
+    <div class="payopt"><i>🟣</i><div><b>Paytm UPI</b><small>ananya@paytm</small></div><span class="radio"></span></div>
+    <div class="payopt"><i>💵</i><div><b>Cash on Delivery</b><small>+₹49 handling fee</small></div><span class="radio"></span></div>
+  </div>
+  <div class="total">
+    <div class="trow"><span>Item total</span><span>₹1,499</span></div>
+    <div class="trow"><span>Delivery <b class="free">FREE for you ✨</b></span><span>₹0</span></div>
+    <div class="trow grand"><span>To pay</span><span>₹1,499</span></div>
+  </div>
+  <button class="buy" onclick="this.textContent='✅ Order placed! Arrives Thu, Aug 28'">Place order — 1 tap</button>
+</div>
+<script>
+document.querySelectorAll('.payopt').forEach(p=>p.onclick=()=>{document.querySelectorAll('.payopt').forEach(x=>x.classList.remove('on'));p.classList.add('on')});
+</script>
+</body></html>

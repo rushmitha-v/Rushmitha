@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nimbus — UX Case Study · Rushmitha Varshini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+</head>
+<body style="--accent:#6366F1; --accent2:#8B5CF6">
+<div class="topbar"><div class="in"><a class="back" href="index.html">← All case studies</a><span class="brand">Nimbus<b>.</b> · UX Case Study</span></div></div>
+
+<header class="hero"><div class="in">
+  <span class="tag">SaaS · Analytics Dashboard</span>
+  <h1>Nimbus — analytics that answer questions, not just show data</h1>
+  <p class="sub">A B2B dashboard redesign that helps product &amp; ops teams find the signal in seconds — clear KPIs, focused charts and scannable tables instead of a wall of numbers.</p>
+  <div class="meta">
+    <div><div class="k">Role</div><div class="v">Product Designer</div></div>
+    <div><div class="k">Timeline</div><div class="v">7 weeks</div></div>
+    <div><div class="k">Platform</div><div class="v">Web + Responsive</div></div>
+    <div><div class="k">Tools</div><div class="v">Figma · Maze · Dovetail</div></div>
+  </div>
+</div></header>
+
+<main>
+<section class="blk" id="problem"><div class="wrap">
+  <div class="kicker"><span class="num">01</span><h2>The Problem</h2></div>
+  <p class="lead">Analytics tools drown teams in widgets. Users open the dashboard, can't quickly find the metric that matters, and end up <strong>exporting everything to a spreadsheet</strong> to actually make sense of it — which defeats the product's purpose.</p>
+  <div class="statement"><div class="lbl">Problem statement</div><p>How might we help busy teams reach the insight they need in seconds — without exporting to a spreadsheet?</p></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">60%</div><div class="l">of users export to Excel to “really analyze”</div></div>
+    <div class="stat"><div class="n">12+</div><div class="l">widgets on the legacy dashboard</div></div>
+    <div class="stat"><div class="n">daily</div><div class="l">managers check on mobile, mid-meeting</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="goals"><div class="wrap">
+  <div class="kicker"><span class="num">02</span><h2>Goals &amp; Success Metrics</h2></div>
+  <ul class="insights">
+    <li><span class="ic">◎</span><span><b>Hierarchy over density</b>Surface the 4–5 KPIs that matter; demote the rest.</span></li>
+    <li><span class="ic">📈</span><span><b>Trend at a glance</b>Every KPI shows change vs. last period, not just a number.</span></li>
+    <li><span class="ic">▤</span><span><b>Scannable tables</b>Status you can read in one pass — no interpretation required.</span></li>
+  </ul>
+  <p class="small"><strong>Target metrics:</strong> time-to-find KPI &lt; 5s · table-scan task success &gt; 90% · SUS &gt; 80 · reduce “export to Excel” reliance.</p>
+</div></section>
+
+<section class="blk" id="research"><div class="wrap">
+  <div class="kicker"><span class="num">03</span><h2>User Research</h2></div>
+  <div class="tags"><span>9 stakeholder &amp; user interviews</span><span>Feature-usage analytics</span><span>Competitive audit — Mixpanel, Amplitude</span><span>Dovetail synthesis</span></div>
+  <h3 class="sub">Key findings</h3>
+  <ul class="insights">
+    <li><span class="ic">1</span><span><b>A handful of metrics carry the weight</b>Revenue, active users, orders and conversion — everything else is situational noise.</span></li>
+    <li><span class="ic">2</span><span><b>Numbers need context</b>“Is that good?” — users want comparison and trend, not an isolated figure.</span></li>
+    <li><span class="ic">3</span><span><b>Tables are where ops lives</b>Analysts need status (paid / pending / refunded) legible instantly.</span></li>
+    <li><span class="ic">4</span><span><b>Mobile check-ins are real</b>Leaders glance at numbers on their phone between meetings.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="personas"><div class="wrap">
+  <div class="kicker"><span class="num">04</span><h2>Personas</h2></div>
+  <div class="grid-2">
+    <div class="persona">
+      <div class="top"><div class="avatar">DR</div><div><h4>Daniel Roy</h4><div class="role">38 · Head of Growth</div></div></div>
+      <p class="quote">"I don't need every chart. I need the number, whether it's up or down, and I need it now."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Top-line KPIs + trend at a glance</li><li>Check performance on mobile, fast</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Cluttered dashboards, too many widgets</li><li>Numbers with no comparison</li></ul></div>
+    </div>
+    <div class="persona">
+      <div class="top"><div class="avatar">AH</div><div><h4>Aisha Hassan</h4><div class="role">31 · Operations Analyst</div></div></div>
+      <p class="quote">"I live in the orders table. If I can't scan statuses quickly, I'm back in a spreadsheet."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Filter &amp; scan records efficiently</li><li>Spot pending / refunded at a glance</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Dense tables with no visual status</li><li>Exporting just to sort and read</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="flow"><div class="wrap">
+  <div class="kicker"><span class="num">05</span><h2>User Flow — Get to Insight</h2></div>
+  <div class="flow">
+    <div class="step"><div class="s">START</div><div class="t">Log in</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 1</div><div class="t">Scan KPI row</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 2</div><div class="t">Read trend chart</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 3</div><div class="t">Adjust period</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 4</div><div class="t">Scan orders table</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">DONE</div><div class="t">Insight ✓</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="wireframes"><div class="wrap">
+  <div class="kicker"><span class="num">06</span><h2>Wireframes</h2></div>
+  <p class="lead">Structure-first wireframes established a clear reading order: sidebar → KPI row → charts → table.</p>
+  <div class="wire-row">
+    <div><div class="wf desk">
+      <div style="display:flex;gap:10px"><div style="width:60px"><div class="sk box" style="height:120px"></div></div>
+      <div style="flex:1"><div class="grid3"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div style="display:flex;gap:8px;margin-top:8px"><div class="sk box" style="flex:2;height:60px"></div><div class="sk box accent" style="flex:1;height:60px"></div></div>
+      <div class="sk bar"></div><div class="sk bar"></div><div class="sk bar sm"></div></div></div>
+    </div><div class="wf-cap">Desktop — sidebar · KPIs · charts · table</div></div>
+    <div><div class="wf phone">
+      <div class="rowf"><div class="sk circle"></div><div class="sk bar sm" style="margin-left:auto"></div></div>
+      <div class="rowf" style="margin:8px 0"><div class="sk box" style="flex:1;height:70px"></div><div class="sk box accent" style="flex:1;height:70px"></div></div>
+      <div class="sk box" style="height:80px"></div>
+      <div class="sk bar md"></div><div class="sk bar"></div>
+    </div><div class="wf-cap">Mobile — KPIs stacked + chart</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="prototype"><div class="wrap">
+  <div class="kicker"><span class="num">07</span><h2>Hi-Fi Design &amp; Prototype</h2></div>
+  <p class="lead">A calm, hierarchy-driven dashboard: four KPI cards with delta + sparkline, a focused revenue trend with period toggle, a traffic donut, and an orders table where status reads at a glance — plus a mobile companion for on-the-go checks.</p>
+  <div class="figure"><div class="device desktop"><div class="bar"><i></i><i></i><i></i></div><img src="../figma-exports/07-nimbus-desktop.png" alt="Nimbus analytics dashboard"/></div><figcaption>Analytics dashboard (desktop) — KPIs, charts &amp; status table</figcaption></div>
+  <div class="figure"><div class="shots"><div class="device phone"><img src="../figma-exports/08-nimbus-mobile.png" alt="Nimbus mobile companion"/></div></div><figcaption>Mobile companion — KPIs, trend &amp; recent orders</figcaption></div>
+  <h3 class="sub">Key design decisions</h3>
+  <ul class="insights">
+    <li><span class="ic">◆</span><span><b>KPI cards with context</b>Value + delta chip + sparkline answers “what &amp; is it good?” together.</span></li>
+    <li><span class="ic">◆</span><span><b>Period toggle on the chart</b>Week / Month / Year keeps the view focused instead of five charts at once.</span></li>
+    <li><span class="ic">◆</span><span><b>Status badges (colour + dot + label)</b>Scannable and accessible without relying on colour alone.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="testing"><div class="wrap">
+  <div class="kicker"><span class="num">08</span><h2>Usability Testing</h2></div>
+  <p class="lead">6 participants (product &amp; ops roles), moderated task-based sessions.</p>
+  <p class="small"><strong>Tasks:</strong> (1) “Is revenue up or down this week, and by how much?” (2) “Find an order that's pending.”</p>
+  <table class="tbl"><thead><tr><th>Metric</th><th>Target</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Time to find a KPI + trend</td><td>&lt; 5s</td><td><span class="good">3.4s</span></td></tr>
+    <tr><td>Table-scan task success</td><td>&gt; 90%</td><td><span class="good">100%</span></td></tr>
+    <tr><td>System Usability Scale</td><td>&gt; 80</td><td><span class="good">83</span></td></tr>
+    <tr><td>“Would reduce exporting to Excel”</td><td>Majority</td><td><span class="good">5 / 6</span></td></tr>
+  </tbody></table>
+  <h3 class="sub">What testing changed</h3>
+  <div class="iter"><span class="tagline">Iteration 1</span><p>Users wanted to switch the chart's timeframe without leaving the page. → Added an inline <b>Week / Month / Year segmented toggle</b>.</p></div>
+  <div class="iter"><span class="tagline">Iteration 2</span><p>Status colour alone wasn't accessible. → Added a <b>dot + text label</b> to every status badge for colour-blind clarity.</p></div>
+</div></section>
+
+<section class="blk" id="results"><div class="wrap">
+  <div class="kicker"><span class="num">09</span><h2>Results &amp; Impact</h2></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">3.4s</div><div class="l">to find a KPI + trend (was ~15s)</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">table-scan task success</div></div>
+    <div class="stat"><div class="n">83</div><div class="l">SUS score</div></div>
+    <div class="stat"><div class="n">5/6</div><div class="l">would rely less on spreadsheets</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="reflection"><div class="wrap">
+  <div class="kicker"><span class="num">10</span><h2>Reflection &amp; Next Steps</h2></div>
+  <div class="reflect">
+    <p style="margin-top:0">The hardest design work was <strong>subtraction</strong> — deciding what not to show. Prioritising a few contextual KPIs beat a comprehensive-but-unusable grid every time. Accessibility (status beyond colour) was a small change with outsized impact.</p>
+    <p style="margin-bottom:0"><strong>Next:</strong> saved views per role, natural-language “ask your data”, and configurable alerts so insights find the user instead of the other way around.</p>
+  </div>
+  <div class="tags" style="margin-top:22px"><span>UX Research</span><span>Information Hierarchy</span><span>Data Visualization</span><span>Accessibility</span><span>Design Systems</span><span>Usability Testing</span></div>
+</div></section>
+</main>
+
+<nav class="dots"><a href="#problem" class="on"><span>Problem</span></a><a href="#goals"><span>Goals</span></a><a href="#research"><span>Research</span></a><a href="#personas"><span>Personas</span></a><a href="#flow"><span>User Flow</span></a><a href="#wireframes"><span>Wireframes</span></a><a href="#prototype"><span>Prototype</span></a><a href="#testing"><span>Testing</span></a><a href="#results"><span>Results</span></a><a href="#reflection"><span>Reflection</span></a></nav>
+<div class="foot">Nimbus UX Case Study · Designed by <strong>Rushmitha Varshini</strong> · <a href="index.html">← Back to all case studies</a></div>
+<script>const secs=[...document.querySelectorAll('section.blk')];const dots=[...document.querySelectorAll('.dots a')];const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=secs.indexOf(e.target);dots.forEach(d=>d.classList.remove('on'));if(dots[i])dots[i].classList.add('on');}}),{threshold:.5});secs.forEach(s=>io.observe(s));</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FocusMate — Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0b1020;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.hero{background:linear-gradient(160deg,#182347,#111831);border:1px solid rgba(255,255,255,.09);border-radius:26px;padding:26px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(79,140,255,.12);top:-60px;right:-50px}
+.av{width:86px;height:86px;border-radius:50%;margin:0 auto 14px;background:conic-gradient(from 40deg,#4f8cff,#8b5cf6,#2dd4a7);display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.8rem;position:relative;z-index:1}
+.lvl{display:inline-block;background:rgba(45,212,167,.14);color:#2dd4a7;font-size:.68rem;font-weight:800;padding:6px 14px;border-radius:99px;letter-spacing:.1em;margin-bottom:10px}
+h1{font-family:'Sora';font-size:1.3rem;margin-bottom:4px}
+.hero p{color:#8a94ad;font-size:.8rem}
+.stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 0;position:relative;z-index:1}
+.s3{background:rgba(255,255,255,.05);border-radius:14px;padding:12px 8px}
+.s3 b{font-family:'Sora';display:block;font-size:1.05rem}
+.s3 small{color:#8a94ad;font-size:.64rem;text-transform:uppercase;letter-spacing:.06em}
+.sec{font-family:'Sora';font-size:.92rem;margin:22px 0 12px}
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:6px}
+.bg1{background:#141c3a;border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:14px 6px;text-align:center;transition:.22s;cursor:pointer}
+.bg1:hover{transform:translateY(-4px);border-color:rgba(79,140,255,.4)}
+.bg1 i{font-style:normal;font-size:1.5rem;display:block;margin-bottom:6px}
+.bg1 small{font-size:.58rem;font-weight:700;color:#8a94ad}
+.bg1.lock{opacity:.35}
+.list{background:#141c3a;border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden}
+.li{display:flex;align-items:center;gap:13px;padding:14px 17px;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;transition:.2s}
+.li:last-child{border:0}
+.li:hover{background:rgba(255,255,255,.03)}
+.li i{font-style:normal;width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:.95rem}
+.li b{font-size:.85rem;font-weight:600;display:block}
+.li small{color:#8a94ad;font-size:.72rem}
+.arrow{margin-left:auto;color:#8a94ad}
+</style></head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="av">A</div>
+    <div class="lvl">⚡ LEVEL 7 · FOCUSED</div>
+    <h1>Alex Chen</h1>
+    <p>Remote developer · 47 sessions · member since March</p>
+    <div class="stats3">
+      <div class="s3"><b>47</b><small>Sessions</small></div>
+      <div class="s3"><b>38h</b><small>Focus time</small></div>
+      <div class="s3"><b>12</b><small>Day streak</small></div>
+    </div>
+  </div>
+
+  <div class="sec">Achievements</div>
+  <div class="badges">
+    <div class="bg1"><i>🔥</i><small>STREAK 12</small></div>
+    <div class="bg1"><i>🌙</i><small>NIGHT OWL</small></div>
+    <div class="bg1"><i>🤝</i><small>TEAM PLAYER</small></div>
+    <div class="bg1 lock"><i>🏆</i><small>LOCKED</small></div>
+  </div>
+
+  <div class="sec">Settings</div>
+  <div class="list">
+    <div class="li"><i>🎯</i><div><b>Focus goals</b><small>5 sessions · 4h daily target</small></div><span class="arrow">→</span></div>
+    <div class="li"><i>🔔</i><div><b>Notifications</b><small>Gentle nudges at 9 AM & 2 PM</small></div><span class="arrow">→</span></div>
+    <div class="li"><i>👥</i><div><b>Partner preferences</b><small>Match by schedule + focus style</small></div><span class="arrow">→</span></div>
+    <div class="li"><i>🌙</i><div><b>Appearance</b><small>Dark · auto by schedule</small></div><span class="arrow">→</span></div>
+  </div>
+</div>
+</body></html>

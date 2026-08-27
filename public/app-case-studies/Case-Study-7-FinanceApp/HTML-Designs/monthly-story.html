@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Monthly Recap</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8a94ad;font-size:.82rem;margin-bottom:18px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.k{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 10px;text-align:center}
+.k small{color:#8a94ad;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;display:block}
+.k b{display:block;font-family:'Sora';font-size:1.15rem;margin-top:4px}
+.k .p{color:#fb7185}.k .i{color:#2dd4a7}.k .n{color:#38bdf8}
+.story{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:20px;margin-bottom:14px}
+.story b{font-size:.88rem;display:block;margin-bottom:10px}
+.story p{color:#c6d2ec;font-size:.8rem;line-height:1.6;margin-bottom:10px}
+.insight{background:rgba(45,212,167,.1);border:1px solid rgba(45,212,167,.3);border-radius:14px;padding:12px 14px;font-size:.76rem;color:#6ee7b7;line-height:1.6}
+.insight b{display:block;color:#2dd4a7;margin-bottom:4px;font-size:.8rem}
+.share{width:100%;border:0;border-radius:14px;padding:14px;font-family:'Sora';font-weight:800;font-size:.85rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#2dd4a7,#38bdf8);box-shadow:0 12px 26px rgba(45,212,167,.3);transition:.22s}
+.share:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app">
+  <h1>August Money Story 📖</h1>
+  <p class="sub">Generated Aug 31 · Your 7th monthly recap</p>
+  <div class="kpi">
+    <div class="k"><small>Spent</small><b class="p">₹24,580</b></div>
+    <div class="k"><small>Saved</small><b class="i">₹20,420</b></div>
+    <div class="k"><small>Invested</small><b class="n">₹8,000</b></div>
+  </div>
+  <div class="story"><b>📉 The leak</b><p>Food delivery hit ₹6,840 this month (+24% vs July). That's the single biggest driver of overspend.</p><b>📈 The win</b><p>You hit your emergency fund target 2 months early! Auto-transfer of ₹5,000/mo made it painless.</p></div>
+  <div class="insight"><b>💡 September suggestion</b>Cap food delivery at ₹5,000. Redirect ₹1,840 to your bike fund — you'd hit the Himalayan target by July 2026 instead of October.</div>
+  <button class="share" onclick="alert('📤 Story shared to your partner!')">Share with partner 🤝</button>
+</div>
+</body></html>

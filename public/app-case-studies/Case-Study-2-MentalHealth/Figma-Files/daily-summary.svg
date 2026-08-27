@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #F8FAFC; }
+    .title { color: #8B5CF6; font-family: Inter; font-size: 20px; font-weight: 600; }
+    .summary-card { background: white; border-radius: 16px; padding: 24px; margin: 20px; width: 280px; }
+    .streak { color: #10B981; font-size: 18px; font-weight: bold; }
+    .suggestion { background: #F3F4F6; border-radius: 10px; padding: 16px; margin: 12px 0; }
+    .badge { background: #EC4899; color: white; padding: 4px 8px; border-radius: 12px; font-size: 11px; margin-right: 6px; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Title -->
+  <text x="20" y="40" class="title">Today's Summary</text>
+  
+  <!-- Summary Card -->
+  <rect class="summary-card" x="40" y="100" width="280" height="120"/>
+  <text x="60" y="130" class="streak">7-day streak active</text>
+  <text x="60" y="150" style="color: #6B7280; font-size: 14px;">Keep going! You're building a healthy habit.</text>
+  
+  <!-- Suggestion 1 -->
+  <rect class="suggestion" x="40" y="240" width="280" height="80"/>
+  <text x="60" y="270" style="color: #8B5CF6;">Suggestion: Try box breathing for 2 min</text>
+  
+  <!-- Suggestion 2 -->
+  <rect class="suggestion" x="40" y="340" width="280" height="80"/>
+  <text x="60" y="370" style="color: #EC4899;">Suggestion: Journal about today's wins</text>
+  
+  <!-- Share button -->
+  <text x="20" y="480" style="color: #8B5CF6;">Share with therapist →</text>
+</svg>

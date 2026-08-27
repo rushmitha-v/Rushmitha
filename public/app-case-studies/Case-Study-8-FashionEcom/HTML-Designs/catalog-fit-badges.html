@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StyleHub — Catalog with Fit Badges</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#faf7f2;color:#221a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.02em}
+.icn{width:40px;height:40px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:1.05rem;box-shadow:0 4px 14px rgba(34,26,18,.06);cursor:pointer}
+.search{background:#fff;border-radius:14px;padding:12px 16px;display:flex;gap:10px;align-items:center;margin-bottom:14px;box-shadow:0 4px 14px rgba(34,26,18,.06)}
+.search input{flex:1;border:0;background:none;font-family:'Inter';font-size:.86rem;outline:none;color:#221a12}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:16px}
+.chips::-webkit-scrollbar{display:none}
+.ch{flex:0 0 auto;padding:8px 15px;border-radius:99px;background:#fff;color:#8d7f70;font-size:.72rem;font-weight:700;cursor:pointer;box-shadow:0 3px 10px rgba(34,26,18,.05);transition:.2s}
+.ch.on{background:#221a12;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.p{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(34,26,18,.07);transition:.22s;cursor:pointer}
+.p:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(34,26,18,.12)}
+.img{height:150px;position:relative;display:grid;place-items:center;font-size:3rem}
+.i1{background:linear-gradient(140deg,#efe3d0,#e5d3b8)}.i2{background:linear-gradient(140deg,#dde8ea,#c9dbe0)}
+.i3{background:linear-gradient(140deg,#eadde4,#dcc8d4)}.i4{background:linear-gradient(140deg,#e2e8dc,#cfdbc8)}
+.badge{position:absolute;top:9px;left:9px;background:#c9a227;color:#fff;font-size:.56rem;font-weight:800;padding:4px 9px;border-radius:99px;letter-spacing:.04em}
+.wish{position:absolute;top:8px;right:8px;width:29px;height:29px;background:#fff;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.8rem;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+.info{padding:12px 13px 14px}
+.info b{font-size:.78rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand{color:#8d7f70;font-size:.66rem}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:7px}
+.price{font-family:'Sora';font-weight:800;font-size:.84rem}
+.old{color:#b6a99a;text-decoration:line-through;font-size:.68rem;font-weight:500;margin-left:4px}
+.fitp{font-size:.58rem;font-weight:800;color:#1d8a5f;background:#e2f3ea;padding:3px 8px;border-radius:99px}
+</style></head>
+<body>
+<div class="app">
+  <div class="topbar"><h1>New arrivals ✨</h1><div class="icn">🛍️</div></div>
+  <div class="search">🔍<input placeholder="Search linen shirts, kurtas..."></div>
+  <div class="chips"><div class="ch on">For you · M</div><div class="ch">Tops</div><div class="ch">Bottoms</div><div class="ch">Dresses</div><div class="ch">Sale</div></div>
+  <div class="grid">
+    <div class="p"><div class="img i1">👔<span class="badge">FITS YOU</span><i class="wish">♡</i></div><div class="info"><span class="brand">FabIndia</span><b>Linen Casual Shirt</b><div class="row"><span class="price">₹1,499<span class="old">₹2,199</span></span><span class="fitp">M ✓98%</span></div></div></div>
+    <div class="p"><div class="img i2">👖<i class="wish">♡</i></div><div class="info"><span class="brand">Levi's</span><b>512 Slim Tapered</b><div class="row"><span class="price">₹2,799<span class="old">₹3,999</span></span><span class="fitp">32 ✓95%</span></div></div></div>
+    <div class="p"><div class="img i3">👗<span class="badge">LOW STOCK</span><i class="wish">♡</i></div><div class="info"><span class="brand">W</span><b>Cotton Anarkali Kurta</b><div class="row"><span class="price">₹1,899</span><span class="fitp">M ✓91%</span></div></div></div>
+    <div class="p"><div class="img i4">🧥<i class="wish">♡</i></div><div class="info"><span class="brand">H&M</span><b>Oversized Denim Jacket</b><div class="row"><span class="price">₹2,299<span class="old">₹3,299</span></span><span class="fitp">L ✓89%</span></div></div></div>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.ch').forEach(c=>c.onclick=()=>{document.querySelectorAll('.ch').forEach(x=>x.classList.remove('on'));c.classList.add('on')});
+document.querySelectorAll('.wish').forEach(w=>w.onclick=e=>{e.stopPropagation();w.textContent=w.textContent==='♡'?'❤️':'♡'});
+</script>
+</body></html>

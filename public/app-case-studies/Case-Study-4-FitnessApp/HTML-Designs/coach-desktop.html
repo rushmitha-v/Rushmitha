@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitPulse — Coach Dashboard (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0a0f0d;color:#eafcf2}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 36px;border-bottom:1px solid rgba(255,255,255,.07)}
+.brand{font-family:'Sora';font-weight:800;font-size:1.1rem}
+.brand span{color:#22e07a}
+.pill{font-size:.7rem;color:#8fa89b;border:1px solid rgba(255,255,255,.1);padding:7px 14px;border-radius:99px}
+.wrap{max-width:1200px;margin:0 auto;padding:24px 36px}
+h1{font-family:'Sora';font-size:1.55rem;letter-spacing:-.02em;margin-bottom:6px}
+p.sub{color:#8fa89b;margin-bottom:24px;font-size:.88rem}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.kpi{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
+.kpi small{color:#8fa89b;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.kpi b{display:block;font-family:'Sora';font-size:1.65rem;margin-top:8px}
+.kpi em{font-style:normal;font-size:.66rem;font-weight:800;padding:3px 9px;border-radius:99px;margin-left:7px}
+.u{background:rgba(34,224,122,.13);color:#22e07a}.d{background:rgba(251,113,133,.13);color:#fb7185}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+.card{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px}
+.card h3{font-family:'Sora';font-size:.95rem;margin-bottom:16px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:.64rem;color:#8fa89b;text-transform:uppercase;letter-spacing:.08em;padding:0 0 10px;font-weight:700}
+td{padding:11px 0;border-top:1px solid rgba(255,255,255,.05);font-size:.82rem}
+.uav{width:30px;height:30px;border-radius:10px;display:inline-grid;place-items:center;font-weight:800;font-size:.7rem;font-family:'Sora';margin-right:9px;vertical-align:middle}
+.st{font-size:.62rem;font-weight:800;padding:4px 10px;border-radius:99px}
+.on{background:rgba(34,224,122,.13);color:#22e07a}
+.off{background:rgba(255,255,255,.06);color:#8fa89b}
+.bars{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:6px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.bar i{width:100%;border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,#22e07a,rgba(34,224,122,.3))}
+.bar span{font-size:.6rem;color:#8fa89b}
+</style></head>
+<body>
+<div class="top">
+  <div class="brand">⚡Fit<span>Pulse</span> <small style="font-size:.58rem;color:#8fa89b;font-weight:500">COACH</small></div>
+  <div class="pill">Team Alpha · 18 athletes</div>
+</div>
+<div class="wrap">
+  <h1>Team readiness 📈</h1>
+  <p class="sub">Load management & progression tracking — built for trust, not surveillance</p>
+
+  <div class="kpis">
+    <div class="kpi"><small>Team volume today</small><b>480k kg <em class="u">↑ 8%</em></b></div>
+    <div class="kpi"><small>Avg RPE</small><b>7.2 <em class="u">↑ 0.3</em></b></div>
+    <div class="kpi"><small>Readiness avg</small><b>84% <em class="u">↑ 4%</em></b></div>
+    <div class="kpi"><small>At risk</small><b>2 athletes <em class="d">needs check-in</em></b></div>
+  </div>
+
+  <div class="cols">
+    <div class="card">
+      <h3>Daily volume — last 7 days</h3>
+      <div class="bars">
+        <div class="bar"><i style="height:55%"></i><span>Mon</span></div>
+        <div class="bar"><i style="height:72%"></i><span>Tue</span></div>
+        <div class="bar"><i style="height:64%"></i><span>Wed</span></div>
+        <div class="bar"><i style="height:88%"></i><span>Thu</span></div>
+        <div class="bar"><i style="height:78%"></i><span>Fri</span></div>
+        <div class="bar"><i style="height:22%"></i><span>Sat</span></div>
+        <div class="bar"><i style="height:14%"></i><span>Sun</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Live readiness</h3>
+      <table>
+        <tr><th>Athlete</th><th>Today</th><th>Status</th></tr>
+        <tr><td><span class="uav" style="background:linear-gradient(135deg,#22e07a,#34d399)">PS</span>Priya S.</td><td>Heavy Pull</td><td><span class="st on">● READY</span></td></tr>
+        <tr><td><span class="uav" style="background:linear-gradient(135deg,#34d399,#0ea56a)">RK</span>Rahul K.</td><td>Rest</td><td><span class="st off">○ REST</span></td></tr>
+        <tr><td><span class="uav" style="background:linear-gradient(135deg,#fbbf24,#fb7185)">AM</span>Anita M.</td><td>Push + Core</td><td><span class="st on">● READY</span></td></tr>
+        <tr><td><span class="uav" style="background:rgba(255,255,255,.1)">JL</span>Jordan L.</td><td>—</td><td><span class="st off">⚠️ HIGH RPE</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+</body></html>

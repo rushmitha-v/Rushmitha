@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480">
+  <style>
+    .bg { background: white; }
+    .card { background: #F9FAFB; border-radius: 12px; padding: 24px; margin: 20px; width: 280px; }
+    .restaurant-name { color: #111827; font-family: Inter; font-size: 18px; font-weight: bold; margin-bottom: 4px; }
+    .cuisine { color: #6B7280; font-size: 14px; margin-bottom: 8px; }
+    .rating { display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+    .stars { color: #F59E0B; }
+    .time { color: #6B7280; font-size: 14px; }
+    .order-btn { background: #F97316; color: white; padding: 10px; border-radius: 8px; text-decoration: none; display: block; width: 100%; margin-top: 12px; text-align: center; font-family: Inter; font-size: 14px; }
+  </style>
+  <rect class="bg" width="360" height="480"/>
+  
+  <!-- Restaurant Card -->
+  <rect class="card" x="40" y="20" width="280" height="380"/>
+  
+  <!-- Restaurant Name -->
+  <text x="60" y="50" class="restaurant-name">Trattoria Moderna</text>
+  
+  <!-- Cuisine -->
+  <text x="60" y="78" class="cuisine">🍝 Italian • 🍕 Pizza</text>
+  
+  <!-- Rating -->
+  <g transform="translate(60, 100)">
+    <text x="0" y="0" class="rating">
+      <text class="stars">★★★★</text>
+      <text x="20" y="0">(4.7)</text>
+    </text>
+    <text x="50" y="0" class="time">30 min delivery</text>
+  </g>
+  
+  <!-- Menu Items -->
+  <rect x="60" y="140" width="240" height="200" rx="8" fill="#F3F4F6"/>
+  <text x="70" y="160" class="note" style="color: #6B7280; font-size: 12px;">Spaghetti Carbonara - $18 ⭐ 4.7 (23 reviews)</text>
+  <text x="70" y="175" class="note" style="color: #6B7280; font-size: 12px;">Cacio e Pepe - $17 ⭐ 4.5 (15 reviews)</text>
+  <text x="70" y="190" class="note" style="color: #6B7280; font-size: 12px;">Tiramisu - $9 ⭐ 4.9 (8 reviews)</text>
+  
+  <!-- Order Button -->
+  <a x="60" y="350" href="#" class="order-btn">ORDER NOW</a>
+</svg>

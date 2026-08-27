@@ -1,0 +1,17 @@
+{
+  "color": {
+    "primary": "#22e07a",
+    "primaryDark": "#0ea56a",
+    "background": "#0a0f0d",
+    "surface": "#111a16",
+    "text": "#eafcf2",
+    "muted": "#8fa89b",
+    "accent": "#fbbf24",
+    "info": "#38bdf8",
+    "danger": "#fb7185"
+  },
+  "typography": { "family": "Inter / Sora", "display": "Sora Bold", "body": "Inter 14-16px" },
+  "spacing": { "xs": "4px", "sm": "8px", "md": "16px", "lg": "24px" },
+  "radius": { "card": "22px", "button": "15px", "pill": "99px" },
+  "motion": { "ringSweep": "1.6s ease", "cardHover": "0.22s", "ctaLift": "-3px" }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wanderly — Weekend Explorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f4f9fc;color:#1b2733;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.32rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#7d8fa1;font-size:.8rem;margin-bottom:15px}
+.filters{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:16px;padding-bottom:4px}
+.filters::-webkit-scrollbar{display:none}
+.f{flex:0 0 auto;padding:8px 15px;border-radius:99px;background:#fff;color:#5c6c7d;font-size:.72rem;font-weight:700;cursor:pointer;border:1.5px solid transparent;transition:.2s;box-shadow:0 4px 12px rgba(14,165,233,.06)}
+.f.on{background:#1b2733;color:#fff}
+.dest{border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(14,165,233,.11);margin-bottom:14px;cursor:pointer;transition:.22s}
+.dest:hover{transform:translateY(-3px)}
+.imgw{height:150px;position:relative;display:flex;align-items:flex-end;padding:13px}
+.g1{background:linear-gradient(160deg,#34d399,#0ea5e9)}.g2{background:linear-gradient(160deg,#f97316,#ef4444)}.g3{background:linear-gradient(160deg,#8b5cf6,#ec4899)}
+.pillrow{display:flex;gap:6px;position:relative;z-index:1}
+.pl{background:rgba(255,255,255,.9);color:#1b2733;font-size:.58rem;font-weight:800;padding:5px 10px;border-radius:99px;backdrop-filter:blur(4px)}
+.dbody{padding:14px 16px 16px}
+.dtop{display:flex;justify-content:space-between;align-items:baseline}
+.dtop b{font-family:'Sora';font-size:.95rem}
+.dist{font-size:.66rem;color:#7d8fa1;font-weight:700}
+.dbody p{font-size:.72rem;color:#5c6c7d;line-height:1.55;margin-top:5px}
+.meta{display:flex;gap:7px;margin-top:10px}
+.mt{font-size:.6rem;font-weight:800;padding:4px 9px;border-radius:99px;background:#f0f7fb;color:#0e7490}
+</style></head>
+<body>
+<div class="app">
+  <h1>Weekend escapes 🚗</h1>
+  <p class="sub">From Bengaluru · under ₹6k/person · 2–4 days</p>
+  <div class="filters"><div class="f on">All vibes</div><div class="f">🌿 Nature</div><div class="f">🧗 Adventure</div><div class="f">🏙️ City</div><div class="f">🍜 Food</div></div>
+  <div class="dest"><div class="imgw g1"><div class="pillrow"><span class="pl">🌿 Chill nature</span><span class="pl">⚡ 4h drive</span></div></div>
+    <div class="dbody"><div class="dtop"><b>Coorg Coffee Country</b><span class="dist">250 km · from ₹4,800</span></div><p>Misty estates, waterfall treks & the best filter coffee of your life.</p>
+      <div class="meta"><span class="mt">⭐ 4.8 (3.2k)</span><span class="mt">🌧️ Sep = lush green</span></div></div></div>
+  <div class="dest"><div class="imgw g2"><div class="pillrow"><span class="pl">🧗 Adventure</span><span class="pl">🌙 Night trek</span></div></div>
+    <div class="dbody"><div class="dtop"><b>Skandagiri Night Trek</b><span class="dist">70 km · from ₹1,400</span></div><p>Start at 2 AM, summit by sunrise, sleep all Sunday. Worth it.</p>
+      <div class="meta"><span class="mt">⭐ 4.6 (1.9k)</span><span class="mt">🔥 Only 6 slots left</span></div></div></div>
+  <div class="dest" style="margin-bottom:0"><div class="imgw g3"><div class="pillrow"><span class="pl">🏙️ City lights</span><span class="pl">🚆 Overnight train</span></div></div>
+    <div class="dbody"><div class="dtop"><b>Pondicherry French Quarter</b><span class="dist">310 km · from ₹5,200</span></div><p>Cycles, croissants & pastel walls. Beach sunrise included.</p>
+      <div class="meta"><span class="mt">⭐ 4.7 (2.8k)</span><span class="mt">🎉 Fest Sep 20–21</span></div></div></div>
+</div>
+<script>
+document.querySelectorAll('.f').forEach(f=>f.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('on'));f.classList.add('on')});
+document.querySelectorAll('.dest').forEach(d=>d.onclick=()=>alert('🗺️ Opening destination details...'));
+</script>
+</body></html>

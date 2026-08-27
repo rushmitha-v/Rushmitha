@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Bill Radar</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8a94ad;font-size:.82rem;margin-bottom:18px}
+.calhead{display:flex;justify-content:space-between;align-items:center;background:#141b36;border-radius:16px;padding:13px 17px;margin-bottom:14px;font-size:.8rem}
+.calhead b{font-family:'Sora'}
+.nav{color:#38bdf8;font-weight:800;cursor:pointer}
+.bill{background:#141b36;border:1px solid rgba(255,255,255,.08);border-left-width:4px;border-radius:16px;padding:15px 17px;margin-bottom:11px;display:flex;align-items:center;gap:14px;transition:.22s}
+.bill:hover{transform:translateX(4px)}
+.urgent{border-left-color:#fb7185}.soon{border-left-color:#fbbf24}.later{border-left-color:#38bdf8}.paidb{border-left-color:#2dd4a7;opacity:.65}
+.bill i{font-style:normal;width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:1.25rem;flex-shrink:0}
+.bill div{flex:1}
+.bill b{font-size:.86rem;display:block}
+.bill small{color:#8a94ad;font-size:.7rem;display:block;margin-top:3px}
+.amt{text-align:right}
+.amt b{font-family:'Sora';display:block;font-size:.92rem}
+.st{font-size:.58rem;font-weight:800;padding:3px 9px;border-radius:99px;display:inline-block;margin-top:5px}
+.due{background:rgba(251,113,133,.15);color:#fb7185}
+.soon-s{background:rgba(251,191,36,.15);color:#fbbf24}
+.ok{background:rgba(45,212,167,.15);color:#2dd4a7}
+.payall{width:100%;border:0;border-radius:15px;padding:16px;font-family:'Sora';font-weight:800;font-size:.9rem;color:#04140b;background:linear-gradient(135deg,#2dd4a7,#38bdf8);cursor:pointer;box-shadow:0 12px 28px rgba(45,212,167,.35);transition:.22s;margin-top:6px}
+.payall:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app">
+  <h1>Bill radar 📡</h1>
+  <p class="sub">₹18,240 due in the next 30 days · never miss one again</p>
+  <div class="calhead"><span>←</span><b>September 2026</b><span class="nav">Swipe months →</span></div>
+  <div class="bill urgent"><i>🏠</i><div><b>Rent · Indiranagar PG</b><small>Due tomorrow · autopay OFF ⚠️</small></div><div class="amt"><b>₹9,000</b><span class="st due">DUE IN 24H</span></div></div>
+  <div class="bill soon"><i>📶</i><div><b>Airtel Fiber</b><small>Due in 4 days · autopay on ✓</small></div><div class="amt"><b>₹799</b><span class="st soon-s">AUTO</span></div></div>
+  <div class="bill later"><i>⚡</i><div><b>BESCOM Electricity</b><small>Due Sep 28 · est. from history</small></div><div class="amt"><b>~₹1,340</b><span class="st soon-s">ESTIMATE</span></div></div>
+  <div class="bill paidb"><i>📺</i><div><b>Netflix Premium</b><small>Paid Sep 2 ✓</small></div><div class="amt"><b>₹649</b><span class="st ok">PAID</span></div></div>
+  <div class="bill paidb"><i>🎵</i><div><b>WavePlay Family</b><small>Paid Aug 31 ✓ shared with 3</small></div><div class="amt"><b>₹149</b><span class="st ok">SPLIT 4W</span></div></div>
+  <button class="payall" onclick="alert('✅ All upcoming bills scheduled! You are covered till Oct 2.')">Pay all safe bills now → ₹799</button>
+</div>
+<script>
+document.querySelectorAll('.bill').forEach(b=>b.onclick=()=>alert('📄 Opening bill details...'));
+</script>
+</body></html>

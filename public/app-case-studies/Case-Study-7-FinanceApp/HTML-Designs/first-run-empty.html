@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — First Run</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw;text-align:center;position:relative}
+.orb{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,167,.22),transparent 70%);top:-70px;left:50%;transform:translateX(-50%);filter:blur(6px)}
+.coin{font-size:4rem;display:inline-block;margin-bottom:22px;position:relative;z-index:1;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-8deg)}}
+h1{font-family:'Sora';font-size:1.55rem;letter-spacing:-.02em;line-height:1.28;margin-bottom:12px;position:relative;z-index:1}
+h1 span{color:#2dd4a7}
+p{color:#8a94ad;font-size:.88rem;line-height:1.7;margin-bottom:26px;position:relative;z-index:1}
+.qs{display:flex;flex-direction:column;gap:11px;margin-bottom:26px;text-align:left}
+.q{display:flex;align-items:center;gap:13px;background:#141b36;border:1.5px solid rgba(255,255,255,.09);border-radius:16px;padding:14px 16px;cursor:pointer;transition:.22s}
+.q:hover{border-color:rgba(45,212,167,.5);transform:translateX(5px)}
+.q i{font-style:normal;width:40px;height:40px;border-radius:13px;background:rgba(45,212,167,.12);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}
+.q b{font-size:.85rem;display:block}
+.q small{color:#8a94ad;font-size:.72rem}
+.btn{width:100%;border:0;border-radius:16px;padding:17px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#04140b;background:linear-gradient(135deg,#2dd4a7,#38bdf8);cursor:pointer;box-shadow:0 16px 34px rgba(45,212,167,.4);transition:.22s;position:relative;z-index:1}
+.btn:hover{transform:translateY(-2px)}
+.skip{margin-top:15px;color:#8a94ad;font-size:.78rem;cursor:pointer}
+</style></head>
+<body>
+<div class="card">
+  <div class="orb"></div>
+  <span class="coin">🪙</span>
+  <h1>See where every rupee<br><span>actually goes.</span></h1>
+  <p>Connect your bank once. PennyWise sorts every transaction automatically — no manual entry, ever.</p>
+  <div class="qs">
+    <div class="q"><i>🔗</i><div><b>Connect my banks</b><small>Read-only · 30 seconds · HDFC, ICICI, SBI +12</small></div></div>
+    <div class="q"><i>🎯</i><div><b>Set one savings goal</b><small>Bike, trip, emergency fund — pick anything</small></div></div>
+    <div class="q"><i>🧾</i><div><b>Track bills first</b><small>Skip banks for now, just never miss a due date</small></div></div>
+  </div>
+  <button class="btn">Start with bank connect →</button>
+  <div class="skip">I'll explore manually first</div>
+</div>
+<script>
+document.querySelectorAll('.q').forEach(q=>q.onclick=()=>{document.querySelectorAll('.q').forEach(x=>x.style.borderColor='rgba(255,255,255,.09)');q.style.borderColor='#2dd4a7'});
+</script>
+</body></html>

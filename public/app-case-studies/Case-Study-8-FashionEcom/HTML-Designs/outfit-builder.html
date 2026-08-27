@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StyleHub — Outfit Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#faf7f2;color:#221a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.02em}
+.save{background:#221a12;color:#fff;border-radius:12px;padding:10px 18px;font-size:.74rem;font-weight:800;font-family:'Inter';cursor:pointer;border:0}
+.stage{background:linear-gradient(160deg,#fdf6e3,#f5ead0);border-radius:24px;padding:22px;display:flex;justify-content:center;margin-bottom:16px;position:relative}
+.mannequin{width:130px;height:300px;position:relative}
+.piece{position:absolute;left:50%;transform:translateX(-50%);display:grid;place-items:center;border-radius:14px;box-shadow:0 10px 26px rgba(34,26,18,.15);animation:drop .6s cubic-bezier(.2,.9,.3,1.4) backwards}
+@keyframes drop{from{transform:translateX(-50%) translateY(-30px);opacity:0}}
+.top-p{top:0;width:110px;height:120px;background:#dde8ea;font-size:2.4rem;animation-delay:.1s}
+.bot-p{top:126px;width:100px;height:110px;background:#e5d3b8;font-size:2.2rem;animation-delay:.25s}
+.shoe-p{top:242px;width:90px;height:52px;background:#dcc8d4;font-size:1.4rem;animation-delay:.4s}
+.tagchip{position:absolute;background:#fff;border-radius:99px;padding:5px 11px;font-size:.6rem;font-weight:800;box-shadow:0 6px 16px rgba(34,26,18,.15);white-space:nowrap;animation:pop .5s .8s backwards}
+@keyframes pop{from{transform:scale(0)}}
+.t1{top:40px;right:-30px;color:#1d8a5f}.t2{bottom:70px;left:-42px;color:#c07b1d}
+.total{background:#fff;border-radius:20px;padding:20px;box-shadow:0 8px 24px rgba(34,26,18,.08);margin-bottom:14px}
+.rowl{display:flex;justify-content:space-between;font-size:.82rem;padding:6px 0}
+.rowl b{font-family:'Sora'}
+.grand{border-top:1.5px dashed #efe9df;margin-top:8px;padding-top:12px;font-size:.95rem}
+.buy{width:100%;border:0;border-radius:15px;padding:17px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#fff;background:linear-gradient(135deg,#c9a227,#a8862c);cursor:pointer;transition:.22s;box-shadow:0 14px 30px rgba(201,162,39,.35)}
+.buy:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app">
+  <div class="top"><h1>Your look 👗</h1><button class="save">Save look</button></div>
+  <div class="stage">
+    <div class="mannequin">
+      <div class="piece top-p">👕</div><div class="piece bot-p">👖</div><div class="piece shoe-p">👟</div>
+      <span class="tagchip t1">FITS YOU · 98%</span><span class="tagchip t2">SIZE M · IN STOCK</span>
+    </div>
+  </div>
+  <div class="total">
+    <div class="rowl"><span>Linen Casual Shirt</span><b>₹1,499</b></div>
+    <div class="rowl"><span>512 Slim Tapered</span><b>₹2,799</b></div>
+    <div class="rowl"><span>White Sneakers</span><b>₹1,999</b></div>
+    <div class="rowl grand"><span>Total (bundle −₹500)</span><b style="color:#1d8a5f">₹5,797</b></div>
+  </div>
+  <button class="buy" onclick="alert('🛍️ Complete outfit added to bag with one tap!')">Add full outfit — ₹5,797</button>
+</div>
+</body></html>

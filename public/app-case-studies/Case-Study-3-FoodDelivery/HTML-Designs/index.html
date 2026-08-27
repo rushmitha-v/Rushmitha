@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiteSphere - Food Delivery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff;
+      --fg: #1e293b;
+      --primary: #f97316;
+      --secondary: #ec4899;
+      --card: #fff;
+      --muted: #64748b;
+      --accent-green: #10b981;
+      --accent-pink: #f472b6;
+    }
+    * { font-family: 'Inter', sans-serif; }
+    body { background: var(--bg); color: var(--fg); margin: 0; min-height: 100vh; }
+    .nav { background: var(--card); padding: 1rem 2rem; border-bottom: 1px solid #f1f5f9; }
+    .nav-brand { font-size: 1.5rem; font-weight: 700; color: var(--fg); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .hero { background: var(--card); border-radius: 20px; padding: 3rem; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .hero-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .hero-subtitle { color: var(--muted); font-size: 1.1rem; }
+    .filter-chip { background: #f1f5f9; color: var(--fg); padding: 8px 16px; border-radius: 100px; font-size: 0.85rem; margin: 4px; border: none; cursor: pointer; transition: all 0.2s; }
+    .filter-chip.active { background: var(--primary); color: white; }
+    .restaurant-card { background: var(--card); border-radius: 16px; padding: 2rem; border: 1px solid #f1f5f9; transition: transform 0.2s; width: 280px; }
+    .restaurant-card:hover { transform: translateY(-4px); }
+    .restaurant-name { font-size: 1.25rem; font-weight: 600; color: var(--fg); margin-bottom: 0.25rem; }
+    .restaurant-cuisine { color: var(--muted); font-size: 0.875rem; margin-bottom: 0.75rem; display: block; }
+    .restaurant-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 1rem; }
+    .restaurant-rating .star { color: #f5a623; font-size: 0.875rem; }
+    .restaurant-delivery { color: var(--muted); font-size: 0.875rem; margin-bottom: 1.5rem; display: inline-block; }
+    .price { color: var(--primary); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; display: block; }
+    .dietary-tag { background: #ecfdf5; color: var(--accent-green); padding: 4px 8px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; margin-right: 4px; margin-bottom: 4px; display: inline-block; }
+    .menu-item { padding: 0.75rem 0; border-bottom: 1px solid #f8fafc; }
+    .menu-name { color: var(--fg); font-size: 0.9rem; font-weight: 500; }
+    .menu-details { color: var(--muted); font-size: 0.75rem; margin-top: 2px; display: block; }
+    .menu-price { color: var(--primary); font-size: 0.875rem; float: right; font-weight: 600; }
+    .cta-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem; }
+    .loyal-badge { background: var(--accent-green); color: white; padding: 4px 8px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-brand">BiteSphere</div>
+      <span style="margin-left: 1rem; color: var(--muted);">Support Local</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1 class="hero-title">Discover<br>Local Flavors</h1>
+      <p class="hero-subtitle">Curated independent restaurants, delivered fresh</p>
+      <div style="margin-top: 2rem; flex-wrap: wrap; gap: 8px;">
+        <button class="filter-chip active">All</button>
+        <button class="filter-chip">Italian</button>
+        <button class="filter-chip">Mexican</button>
+        <button class="filter-chip">Vegan</button>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <!-- Restaurant 1 -->
+      <div class="restaurant-card">
+        <div class="restaurant-rating">
+          <span class="star">★★★★</span>
+          <span>(4.7)</span>
+        </div>
+        <div class="restaurant-name">Trattoria Moderna</div>
+        <div class="restaurant-cuisine">🍝 Italian • ⭐ 4.7</div>
+        <div class="restaurant-delivery">25 min delivery • $18 avg</div>
+        <div>
+          <span class="dietary-tag">🌱 Vegan</span>
+          <span class="dietary-tag">🌶️ Spicy</span>
+        </div>
+        <div class="price">$18</div>
+        <button class="cta-btn">ORDER NOW</button>
+      </div>
+      
+      <!-- Restaurant 2 -->
+      <div class="restaurant-card">
+        <div class="restaurant-rating">
+          <span class="star">★★★★</span>
+          <span>(4.5)</span>
+        </div>
+        <div class="restaurant-name">Sazón Latina</div>
+        <div class="restaurant-cuisine">🌮 Mexican • ⭐ 4.5</div>
+        <div class="restaurant-delivery">30 min delivery • $16 avg</div>
+        <div>
+          <span class="dietary-tag">🌱 Vegan</span>
+        </div>
+        <div class="price">$16</div>
+        <button class="cta-btn">ORDER NOW</button>
+      </div>
+      
+      <!-- Restaurant 3 -->
+      <div class="restaurant-card">
+        <div class="restaurant-rating">
+          <span class="star">★★★★</span>
+          <span>(4.8)</span>
+        </div>
+        <div class="restaurant-name">Green Garden</div>
+        <div class="restaurant-cuisine">🥗 Vegan • ⭐ 4.8</div>
+        <div class="restaurant-delivery">20 min delivery • $15 avg</div>
+        <div>
+          <span class="dietary-tag">🌱 Vegan</span>
+          <span class="loyal-badge">New</span>
+        </div>
+        <div class="price">$15</div>
+        <button class="cta-btn">ORDER NOW</button>
+      </div>
+      
+      <!-- Restaurant 4 -->
+      <div class="restaurant-card">
+        <div class="restaurant-rating">
+          <span class="star">★★★★</span>
+          <span>(4.3)</span>
+        </div>
+        <div class="restaurant-name">Burger Joint</div>
+        <div class="restaurant-cuisine">🍔 American • ⭐ 4.3</div>
+        <div class="restaurant-delivery">35 min delivery • $12 avg</div>
+        <div>
+          <span class="dietary-tag">🌶️ Spicy</span>
+        </div>
+        <div class="price">$12</div>
+        <button class="cta-btn">ORDER NOW</button>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem; text-align: center;">
+      <p style="color: var(--muted); margin-bottom: 1rem;">No restaurants found? Try adjusting your filters.</p>
+      <button style="background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 100px; font-size: 0.9rem;">See All Restaurants</button>
+    </div>
+  </div>
+</body>
+</html>

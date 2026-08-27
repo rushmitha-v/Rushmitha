@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LearnLoop — Course Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f6f5ff;color:#1d1b33;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#7a76a0;font-size:.84rem;margin-bottom:18px}
+.search{background:#fff;border:1px solid #efeefb;border-radius:14px;padding:12px 16px;margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.search i{font-style:normal;color:#7a76a0;font-size:1.1rem}
+.search input{flex:1;background:transparent;border:0;color:#1d1b33;font-size:.88rem;outline:none}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tb{flex:0 0 auto;padding:8px 16px;border-radius:99px;border:1px solid #efeefb;background:#fff;color:#7a76a0;font-size:.72rem;font-weight:700;cursor:pointer;transition:.2s;font-family:'Inter'}
+.tb.on{background:#5b5bd6;border-color:#5b5bd6;color:#fff}
+.course{background:#fff;border:1px solid #efeefb;border-radius:16px;padding:16px 18px;margin-bottom:12px;display:flex;gap:14px;transition:.2s}
+.course:hover{transform:translateX(4px);border-color:#c8c4f0}
+.ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;flex-shrink:0}
+.c1{background:#ecebff}.c2{background:#e5f7ef}.c3{background:#fff3e0}.c4{background:#fce4ec}
+.course div{flex:1;min-width:0}
+.course b{font-size:.88rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course small{color:#7a76a0;font-size:.72rem;display:block;margin-top:2px}
+.meta{display:flex;gap:8px;margin-top:8px;font-size:.66rem;color:#7a76a0}
+.mchip{background:#ecebff;color:#5b5bd6;padding:3px 8px;border-radius:99px;font-weight:700}
+.pbar{height:6px;border-radius:99px;background:#efeefb;margin-top:10px;overflow:hidden}
+.pfill{height:100%;border-radius:99px;background:linear-gradient(90deg,#5b5bd6,#7c7cf0);width:0;transition:width 1.2s ease}
+.pct{font-family:'Sora';font-weight:800;font-size:.74rem;color:#5b5bd6;margin-left:auto}
+</style></head>
+<body>
+<div class="app">
+  <h1>Browse courses 📚</h1>
+  <p class="sub">42 courses · Filter by skill, level, or time</p>
+  <div class="search"><i>🔍</i><input type="text" placeholder="Search Python, SQL, ML..."></div>
+  <div class="tabs">
+    <button class="tb on">All</button><button class="tb">Data</button><button class="tb">Programming</button><button class="tb">ML/AI</button><button class="tb">Viz</button>
+  </div>
+  <div class="course">
+    <div class="ic c1">🗄️</div>
+    <div><b>SQL for Analytics</b><small>Zero to analyst · 28 lessons · 15 min/day</small>
+      <div class="meta"><span class="mchip">Beginner</span><span class="mchip">15 min/day</span><span class="mchip">4.9★</span></div>
+      <div class="pbar"><div class="pfill" data-w="57%"></div></div></div>
+    <span class="pct">57%</span>
+  </div>
+  <div class="course">
+    <div class="ic c2">🐍</div>
+    <div><b>Python for Data</b><small>Pandas, NumPy, viz · 36 lessons</small>
+      <div class="meta"><span class="mchip">Beginner</span><span class="mchip">15 min/day</span><span class="mchip">4.8★</span></div>
+      <div class="pbar"><div class="pfill" data-w="22%"></div></div></div>
+    <span class="pct" style="color:#22b573">22%</span>
+  </div>
+  <div class="course">
+    <div class="ic c3">📊</div>
+    <div><b>Data Storytelling</b><small>Charts, narrative, presentations · 22 lessons</small>
+      <div class="meta"><span class="mchip">Intermediate</span><span class="mchip">12 min/day</span><span class="mchip">4.7★</span></div>
+      <div class="pbar"><div class="pfill" data-w="84%"></div></div></div>
+    <span class="pct" style="color:#f5a623">84%</span>
+  </div>
+  <div class="course">
+    <div class="ic c4">🤖</div>
+    <div><b>ML Foundations</b><small>Scikit-learn, eval, deployment · 30 lessons</small>
+      <div class="meta"><span class="mchip">Advanced</span><span class="mchip">20 min/day</span><span class="mchip">4.8★</span></div>
+      <div class="pbar"><div class="pfill" data-w="8%"></div></div></div>
+    <span class="pct">8%</span>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.tb').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));t.classList.add('on')});
+requestAnimationFrame(()=>setTimeout(()=>document.querySelectorAll('.pfill').forEach(p=>p.style.width=p.dataset.w),250));
+</script>
+</body></html>

@@ -1,0 +1,16 @@
+{
+  "color": {
+    "primary": "#0ea5e9",
+    "secondary": "#f97316",
+    "background": "#f4f9fc",
+    "surface": "#ffffff",
+    "text": "#1b2733",
+    "muted": "#7d8fa1",
+    "budgetDark": "#123247",
+    "success": "#22b573"
+  },
+  "typography": { "family": "Inter / Sora", "display": "Sora Bold", "body": "Inter 14-16px" },
+  "spacing": { "sm": "8px", "md": "16px", "lg": "24px" },
+  "radius": { "card": "20px", "vibe": "18px", "pill": "99px" },
+  "gradients": { "hero": "0ea5e9 → 38bdf8 → f97316", "cta": "0ea5e9 → f97316", "budgetFill": "38bdf8 → fbbf24 → f97316" }
+}

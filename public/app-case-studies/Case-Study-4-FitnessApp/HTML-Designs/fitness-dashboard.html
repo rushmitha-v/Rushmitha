@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitPulse — Today's Workout</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0f0d;--card:#111a16;--line:rgba(255,255,255,.08);--txt:#eafcf2;--mut:#8fa89b;
+    --neon:#22e07a;--neon2:#0ea56a;--amber:#fbbf24;--red:#fb7185}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:radial-gradient(700px 420px at 85% -10%,rgba(34,224,122,.14),transparent),var(--bg);
+    color:var(--txt);min-height:100vh;display:flex;justify-content:center;padding:30px 16px}
+  .app{width:400px;max-width:100%}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .brand{font-family:'Sora';font-weight:800;font-size:1.05rem}
+  .brand b{color:var(--neon)}
+  .streak{display:flex;align-items:center;gap:6px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3);
+    padding:7px 13px;border-radius:99px;font-size:.76rem;font-weight:700;color:var(--amber)}
+
+  h1.h{font-family:'Sora';font-size:1.45rem;letter-spacing:-.02em;line-height:1.2;margin-bottom:6px}
+  p.sub{color:var(--mut);font-size:.84rem;margin-bottom:22px}
+
+  /* rings */
+  .rings-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;
+    grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-bottom:18px}
+  .rings{position:relative;width:120px;height:120px}
+  .rings svg{transform:rotate(-90deg)}
+  .rings circle{fill:none;stroke-width:11;stroke-linecap:round}
+  .r1{stroke:rgba(255,255,255,.07)} .r1v{stroke:var(--neon);stroke-dasharray:308;stroke-dashoffset:77;animation:sweep 1.6s ease forwards}
+  .r2{stroke:rgba(255,255,255,.05);stroke-width:9} .r2v{stroke:var(--amber);stroke-dasharray:264;stroke-dashoffset:132;animation:sweep 1.6s .2s ease forwards}
+  .r3{stroke:rgba(255,255,255,.04);stroke-width:7} .r3v{stroke:#38bdf8;stroke-dasharray:220;stroke-dashoffset:55;animation:sweep 1.6s .4s ease forwards}
+  @keyframes sweep{from{stroke-dashoffset:308}}
+  .rings-c{position:absolute;inset:0;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.3rem}
+  .legend{display:flex;flex-direction:column;gap:12px}
+  .lg{display:flex;align-items:center;gap:10px}
+  .lg i{width:10px;height:10px;border-radius:50%;font-style:normal}
+  .lg small{color:var(--mut);font-size:.76rem}
+  .lg b{margin-left:auto;font-family:'Sora';font-size:.9rem}
+
+  /* today workout */
+  .today{background:linear-gradient(135deg,#13241c,#0e1a14);border:1px solid rgba(34,224,122,.3);border-radius:22px;
+    padding:22px;margin-bottom:18px;position:relative;overflow:hidden}
+  .today::after{content:'💪';position:absolute;font-size:5.5rem;right:-14px;bottom:-18px;opacity:.12;transform:rotate(-15deg)}
+  .tagx{display:inline-block;background:rgba(34,224,122,.15);color:var(--neon);font-size:.66rem;font-weight:800;
+    letter-spacing:.12em;padding:5px 11px;border-radius:99px;margin-bottom:12px}
+  .today h2{font-family:'Sora';font-size:1.2rem;margin-bottom:8px}
+  .meta{display:flex;gap:14px;color:var(--mut);font-size:.76rem;margin-bottom:16px}
+  .meta b{color:var(--txt)}
+  .ex-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px dashed var(--line);font-size:.82rem}
+  .ex-row small{color:var(--mut);margin-left:auto;font-weight:600}
+  .go{width:100%;margin-top:16px;border:0;border-radius:15px;padding:15px;font-family:'Sora';font-weight:800;
+    font-size:.92rem;color:#04140b;cursor:pointer;background:linear-gradient(135deg,var(--neon),#7ef0b0);
+    box-shadow:0 14px 30px rgba(34,224,122,.35);transition:.22s}
+  .go:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(34,224,122,.45)}
+
+  /* stats grid */
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+  .st{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;transition:.22s}
+  .st:hover{transform:translateY(-4px);border-color:rgba(34,224,122,.35)}
+  .st small{color:var(--mut);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+  .st b{display:block;font-family:'Sora';font-size:1.35rem;margin-top:6px}
+  .st em{font-style:normal;font-size:.68rem;font-weight:800;padding:3px 8px;border-radius:99px;margin-left:6px}
+  .up{background:rgba(34,224,122,.14);color:var(--neon)} .dn{background:rgba(251,113,133,.14);color:var(--red)}
+
+  /* weekly bars */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
+  .panel h3{font-family:'Sora';font-size:.95rem;margin-bottom:16px}
+  .bars{display:flex;align-items:flex-end;gap:12px;height:110px}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end}
+  .bar i{width:100%;max-width:30px;border-radius:8px;background:linear-gradient(180deg,var(--neon),rgba(34,224,122,.25));transition:.5s}
+  .bar span{font-size:.62rem;color:var(--mut)}
+  .bar.on i{background:linear-gradient(180deg,var(--amber),rgba(251,191,36,.3))}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand">⚡Fit<b>Pulse</b></div>
+    <div class="streak">🔥 21-day streak</div>
+  </div>
+
+  <h1 class="h">Push day, Priya 💪</h1>
+  <p class="sub">Week 4 of your beginner plan · You're stronger than 78% of week-4 users</p>
+
+  <div class="rings-card">
+    <div class="rings">
+      <svg width="120" height="120">
+        <circle class="r1" cx="60" cy="60" r="49"/>
+        <circle class="r1v" cx="60" cy="60" r="49"/>
+        <circle class="r2" cx="60" cy="60" r="42"/>
+        <circle class="r2v" cx="60" cy="60" r="42"/>
+        <circle class="r3" cx="60" cy="60" r="35"/>
+        <circle class="r3v" cx="60" cy="60" r="35"/>
+      </svg>
+      <div class="rings-c">75%</div>
+    </div>
+    <div class="legend">
+      <div class="lg"><i style="background:var(--neon)"></i><small>Move goal</small><b>412 / 550 kcal</b></div>
+      <div class="lg"><i style="background:var(--amber)"></i><small>Workout</small><b>38 / 45 min</b></div>
+      <div class="lg"><i style="background:#38bdf8"></i><small>Standing hrs</small><b>9 / 12</b></div>
+    </div>
+  </div>
+
+  <div class="today">
+    <span class="tagx">TODAY · PUSH DAY</span>
+    <h2>Upper Body Strength</h2>
+    <div class="meta"><span>⏱ <b>45 min</b></span><span>🔥 <b>~420 kcal</b></span><span>🏋️ <b>6 exercises</b></span></div>
+    <div class="ex-row">Bench press (barbell)<small>3 × 10</small></div>
+    <div class="ex-row">Shoulder press<small>3 × 12</small></div>
+    <div class="ex-row">Incline dumbbell press<small>3 × 10</small></div>
+    <button class="go" onclick="done()">▶ Start workout</button>
+  </div>
+
+  <div class="stats">
+    <div class="st"><small>This week</small><b>4 <em class="up">+1</em></b><small style="text-transform:none;letter-spacing:0">workouts</small></div>
+    <div class="st"><small>Bench PR</small><b>42.5kg <em class="up">↑ 2.5</em></b></div>
+    <div class="st"><small>Weight</small><b>63.2 <em class="dn">−0.8</em></b><small style="text-transform:none;letter-spacing:0">kg · 4 weeks</small></div>
+    <div class="st"><small>Consistency</small><b>86% <em class="up">↑ 12%</em></b></div>
+  </div>
+
+  <div class="panel">
+    <h3>Workouts this week</h3>
+    <div class="bars">
+      <div class="bar"><i style="height:60%"></i><span>M</span></div>
+      <div class="bar"><i style="height:0%"></i><span>T</span></div>
+      <div class="bar on"><i style="height:85%"></i><span>W</span></div>
+      <div class="bar"><i style="height:55%"></i><span>T</span></div>
+      <div class="bar"><i style="height:75%"></i><span>F</span></div>
+      <div class="bar"><i style="height:0%"></i><span>S</span></div>
+      <div class="bar"><i style="height:40%"></i><span>S</span></div>
+    </div>
+  </div>
+</div>
+<script>
+function done(){
+  const b=document.querySelector('.go');b.textContent='✓ Workout complete! 🔥';b.style.filter='brightness(1.1)';
+  setTimeout(()=>b.textContent='▶ Start workout',2200);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiteSphere — Restaurant Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#fff7f1;color:#231a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 30px 70px rgba(35,26,18,.14)}
+.banner{height:130px;background:linear-gradient(135deg,#ffd166,#ef476f);position:relative;display:flex;align-items:flex-end;padding:14px}
+.back{position:absolute;top:14px;left:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;cursor:pointer}
+.fav{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;cursor:pointer}
+.banner h1{color:#fff;font-family:'Sora';font-size:1.35rem;text-shadow:0 2px 10px rgba(0,0,0,.3)}
+.banner small{display:block;color:rgba(255,255,255,.9);font-size:.74rem;margin-top:3px}
+.info{display:flex;gap:8px;padding:13px 18px;border-bottom:1px solid #f4e9e1;overflow-x:auto;scrollbar-width:none}
+.info::-webkit-scrollbar{display:none}
+.ic{flex:0 0 auto;font-size:.7rem;font-weight:700;background:#fff3ec;color:#e05a17;padding:7px 12px;border-radius:99px}
+.cats{display:flex;gap:8px;padding:13px 18px 4px;overflow-x:auto;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.ct{flex:0 0 auto;font-size:.74rem;font-weight:600;color:#8d8177;padding:8px 14px;border-radius:99px;background:#faf5f0;cursor:pointer;transition:.2s}
+.ct.on{background:#231a12;color:#fff}
+.menu{padding:8px 18px 90px}
+.mi{display:flex;gap:13px;padding:15px 0;border-bottom:1px dashed #f0e5dc}
+.mi:last-child{border:0}
+.ve{width:16px;height:16px;border:1.6px solid #22b573;border-radius:4px;display:grid;place-items:center;flex-shrink:0;margin-top:3px}
+.ve i{width:8px;height:8px;border-radius:50%;background:#22b573}
+.mi div{flex:1}
+.mi b{font-size:.88rem;display:block;margin-bottom:3px}
+.mi small{color:#8d8177;font-size:.74rem;line-height:1.5;display:block;margin-bottom:7px}
+.price{font-weight:800;font-size:.88rem}
+.add{width:66px;height:34px;border:1.5px solid #ff6b2c;color:#ff6b2c;background:#fff;border-radius:10px;font-weight:800;font-size:.76rem;cursor:pointer;align-self:center;flex-shrink:0;font-family:'Inter';transition:.2s}
+.add:hover{background:#ff6b2c;color:#fff}
+.chef{display:inline-block;font-size:.6rem;font-weight:800;background:#fff3ec;color:#e05a17;padding:3px 8px;border-radius:99px;margin-bottom:6px}
+.bar{position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #f4e9e1;padding:13px 18px;display:flex;align-items:center;gap:13px;box-shadow:0 -8px 24px rgba(35,26,18,.08)}
+.bar small{font-size:.7rem;color:#8d8177;display:block}
+.bar b{font-family:'Sora';font-size:1rem}
+.gocart{margin-left:auto;border:0;background:linear-gradient(135deg,#ff6b2c,#ff9558);color:#fff;font-family:'Sora';font-weight:800;font-size:.85rem;padding:13px 22px;border-radius:14px;cursor:pointer;box-shadow:0 10px 22px rgba(255,107,44,.35);transition:.2s}
+.gocart:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app" style="position:relative">
+  <div class="banner">
+    <div class="back">←</div><div class="fav">♡</div>
+    <div><h1>Trattoria Moderna</h1><small>Italian · Pasta · ⭐ 4.8 (321) · 25 min</small></div>
+  </div>
+
+  <div class="info">
+    <span class="ic">🎉 FLAT 20% OFF</span><span class="ic">🌱 Veg options</span><span class="ic">👨‍🍳 Chef Marco</span>
+  </div>
+
+  <div class="cats">
+    <div class="ct on">Chef's picks</div><div class="ct">Pasta</div><div class="ct">Pizza</div><div class="ct">Desserts</div><div class="ct">Drinks</div>
+  </div>
+
+  <div class="menu">
+    <div class="mi">
+      <div class="ve"><i></i></div>
+      <div><span class="chef">👨‍🍳 SIGNATURE</span><b>Truffle Mushroom Pasta</b><small>Hand-rolled tagliatelle, porcini cream, aged parmesan</small><span class="price">₹420</span></div>
+      <button class="add" onclick="add(this)">ADD</button>
+    </div>
+    <div class="mi">
+      <div class="ve"><i></i></div>
+      <div><b>Burrata Caprese</b><small>Heirloom tomatoes, basil oil, aged balsamic</small><span class="price">₹360</span></div>
+      <button class="add" onclick="add(this)">ADD</button>
+    </div>
+    <div class="mi">
+      <div style="width:16px;border:1.6px solid #e03e3e;border-radius:4px;display:grid;place-items:center;margin-top:3px"><i style="width:8px;height:8px;border-radius:50%;background:#e03e3e"></i></div>
+      <div><b>Slow-Braised Ragu</b><small>8-hour beef ragu, pappardelle, gremolata</small><span class="price">₹520</span></div>
+      <button class="add" onclick="add(this)">ADD</button>
+    </div>
+    <div class="mi">
+      <div class="ve"><i></i></div>
+      <div><b>Tiramisu Della Casa</b><small>Mascarpone, espresso-soaked savoiardi, cocoa</small><span class="price">₹280</span></div>
+      <button class="add" onclick="add(this)">ADD</button>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div><b id="count">2 items</b><small id="total">₹780 · plus taxes</small></div>
+    <button class="gocart" onclick="alert('🛒 Taking you to checkout…')">View cart →</button>
+  </div>
+</div>
+<script>
+let n=2,tot=780;
+function add(btn){
+  n++;tot+=420;btn.textContent='ADDED ✓';
+  setTimeout(()=>btn.textContent='ADD',1200);
+  document.getElementById('count').textContent=n+' items';
+  document.getElementById('total').textContent='₹'+tot+' · plus taxes';
+}
+document.querySelectorAll('.ct').forEach(c=>c.onclick=()=>{document.querySelectorAll('.ct').forEach(x=>x.classList.remove('on'));c.classList.add('on')});
+</script>
+</body></html>

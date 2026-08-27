@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MediCare+ — Clinic Console (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f0f9f8;color:#0c2e2a}
+.top{display:flex;justify-content:space-between;align-items:center;padding:15px 36px;background:#fff;border-bottom:1px solid #d5ebe7}
+.brand{font-family:'Sora';font-weight:800;font-size:1.02rem}.brand em{font-style:normal;color:#0d9488}
+.doc{display:flex;align-items:center;gap:11px;font-size:.76rem;color:#5b7a75;font-weight:600}
+.dav{width:36px;height:36px;border-radius:12px;background:#0d9488;color:#fff;display:grid;place-items:center;font-size:.95rem}
+.wrap{max-width:1200px;margin:0 auto;padding:24px 36px;display:grid;grid-template-columns:340px 1fr 300px;gap:18px;align-items:start}
+.cardd{background:#fff;border-radius:20px;padding:20px;box-shadow:0 8px 22px rgba(13,148,136,.09)}
+.cardd h3{font-family:'Sora';font-size:.92rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.livechip{margin-left:auto;font-size:.56rem;font-weight:800;background:#fee2e2;color:#dc2626;padding:4px 10px;border-radius:99px;display:inline-flex;gap:6px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:#dc2626;animation:pul 1.4s infinite}
+@keyframes pul{50%{opacity:.3}}
+.q{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid #eef6f4}
+.q:last-child{border:0}
+.tk{width:44px;height:34px;border-radius:10px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:.72rem;flex-shrink:0}
+.now{background:#0d9488;color:#fff}.next{background:#fef3c7;color:#b45309}.wait{background:#eef6f4;color:#5b7a75}
+.q div b{font-size:.78rem;display:block}
+.q small{color:#5b7a75;font-size:.66rem}
+.min{margin-left:auto;font-size:.62rem;color:#94a3ac;font-weight:700;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.kpi{background:#fff;border-radius:18px;padding:17px 19px;box-shadow:0 8px 22px rgba(13,148,136,.09)}
+.kpi small{color:#5b7a75;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+.kpi b{display:block;font-family:'Sora';font-size:1.45rem;margin-top:6px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:120px;margin-top:4px}
+.bar{flex:1;display:flex;flex-direction:column;height:100%;justify-content:flex-end;align-items:center;gap:7px}
+.bar i{width:100%;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,#14b8a6,#0d9488)}
+.bar span{font-size:.58rem;color:#5b7a75;font-weight:700}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:13px;padding:12px 14px;font-size:.72rem;line-height:1.65;color:#713f12;margin-top:13px}
+</style></head>
+<body>
+<div class="top"><div class="brand">MEDICARE<em>+</em> <small style="font-weight:500;font-size:.58rem;color:#5b7a75">CLINIC CONSOLE</small></div><div class="doc"><span class="dav">🩺</span>Dr. Kavitha Rao · General Medicine · Apollo Indiranagar</div></div>
+<div class="wrap">
+  <div class="stats">
+    <div class="kpi"><small>Patients today</small><b>38</b></div>
+    <div class="kpi"><small>Avg consult time</small><b>11 min</b></div>
+    <div class="kpi"><small>Queue health</small><b style="color:#0f766e">On time ✓</b></div>
+  </div>
+
+  <div class="cardd"><h3>Morning session · live queue <span class="livechip"><span class="dot"></span>LIVE</span></h3>
+    <div class="q"><span class="tk now">A-19</span><div><b>In consult · Ravi Kumar</b><small>Fever follow-up · arrived 10:42</small></div><span class="min">started 11:00</span></div>
+    <div class="q"><span class="tk next">A-20</span><div><b>Sneha Chandran</b><small>Cold & cough · checked in ✓</small></div><span class="min">~11 min</span></div>
+    <div class="q"><span class="tk next">A-21</span><div><b>Mohan Das</b><small>Blood pressure review</small></div><span class="min">~22 min</span></div>
+    <div class="q"><span class="tk wait">A-22</span><div><b>Priya T.</b><small>Not yet arrived · nudge sent 10:55</small></div><span class="min">~33 min</span></div>
+    <div class="note">💡 A-22 hasn't checked in. One tap sends a WhatsApp nudge — or you can pull A-23 forward and keep the line moving.</div></div>
+
+  <div class="cardd"><h3>This week's flow</h3>
+    <div class="bars">
+      <div class="bar"><i style="height:70%"></i><span>Mon<br>32</span></div>
+      <div class="bar"><i style="height:82%"></i><span>Tue<br>38</span></div>
+      <div class="bar"><i style="height:64%"></i><span>Wed<br>29</span></div>
+      <div class="bar"><i style="height:88%"></i><span>Thu<br>40</span></div>
+      <div class="bar"><i style="height:76%"></i><span>Fri<br>35</span></div>
+      <div class="bar"><i style="height:30%"></i><span>Sat<br>14</span></div>
+    </div>
+    <p style="margin-top:12px;font-size:.72rem;color:#5b7a75;line-height:1.6">Thursday runs 25% over capacity — consider opening 4 extra video-consult slots that day.</p></div>
+
+  <div class="cardd"><h3>Patient notes needing action</h3>
+    <div class="q"><span class="tk wait" style="background:#fee2e2;color:#dc2626">⚠️</span><div><b>Ananya Iyer</b><small>HbA1c borderline — 90-day recheck due Oct 15</small></div><span class="min">schedule</span></div>
+    <div class="q"><span class="tk wait" style="background:#fee2e2;color:#dc2626">⚠️</span><div><b>Rahul M.</b><small>No med refill for 12 days — call?</small></div><span class="min">call</span></div>
+    <div class="q"><span class="tk wait" style="background:#d7f2ee;color:#0f766e">✓</span><div><b>Kiran V.</b><small>Reports normal — discharge summary sent</small></div><span class="min">done</span></div></div>
+</div>
+</body></html>

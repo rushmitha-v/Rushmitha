@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #F3F4F6; }
+    .timer { color: #111827; font-family: Inter; font-size: 80px; font-weight: bold; text-align: center; }
+    .partner { color: #6B7280; font-size: 14px; margin-top: 8px; text-align: center; }
+    .accomplished { color: #10B981; font-size: 14px; margin-top: 8px; text-align: center; }
+    .button { background: #3B82F6; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-family: Inter; font-size: 16px; display: block; width: 200px; margin: 20px auto; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Timer -->
+  <text x="180" y="300" class="timer">25:00</text>
+  
+  <!-- Partner info -->
+  <text x="180" y="360" class="partner">Accountability: Alex • Working together...</text>
+  
+  <!-- Accomplished -->
+  <text x="180" y="390" class="accomplished">You: "Reading" • Alex: "Coding"</text>
+  
+  <!-- Buttons -->
+  <a href="#" class="button" y="440">✓ Done</a>
+  <a href="#" class="button" y="480" style="background: #EF4444; margin-left: 20px;">Skip</a>
+</svg>

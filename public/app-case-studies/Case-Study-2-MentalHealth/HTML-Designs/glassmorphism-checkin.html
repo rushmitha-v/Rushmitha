@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindful — Your calm space</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:#0f0c29;color:#fff;overflow:hidden;position:relative}
+  /* animated aurora blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:float 14s ease-in-out infinite}
+  .b1{width:480px;height:480px;background:#7c3aed;top:-140px;left:-120px}
+  .b2{width:420px;height:420px;background:#ec4899;bottom:-140px;right:-100px;animation-delay:-4s}
+  .b3{width:360px;height:360px;background:#0ea5e9;top:30%;right:22%;animation-delay:-8s;opacity:.35}
+  @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-30px,25px) scale(.95)}}
+
+  .phone{width:390px;max-width:94vw;background:rgba(255,255,255,.07);backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.14);border-radius:34px;padding:26px 24px 30px;position:relative;z-index:2;
+    box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+  .brand{font-family:'Sora';font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .bell{width:40px;height:40px;border-radius:13px;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:1rem}
+
+  h2.greet{font-family:'Sora';font-size:1.5rem;line-height:1.25;letter-spacing:-.02em;margin-bottom:6px}
+  p.hint{color:rgba(255,255,255,.65);font-size:.85rem;margin-bottom:22px}
+
+  /* mood row */
+  .moods{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px}
+  .mood{aspect-ratio:1;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
+    display:grid;place-items:center;font-size:1.5rem;cursor:pointer;transition:.3s cubic-bezier(.2,.9,.3,1.4)}
+  .mood:hover{transform:translateY(-5px) scale(1.05)}
+  .mood.sel{background:linear-gradient(145deg,#a78bfa,#ec4899);border-color:transparent;transform:scale(1.12);
+    box-shadow:0 12px 26px rgba(236,72,153,.4)}
+  .mood small{display:block;font-size:.6rem;color:rgba(255,255,255,.75);margin-top:2px;font-weight:600}
+
+  /* intensity */
+  label.sec{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600}
+  .slider{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:99px;margin:14px 0 6px;
+    background:linear-gradient(90deg,#34d399,#fbbf24,#fb7185);outline:none}
+  .slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;
+    border:5px solid #ec4899;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.4);transition:.2s}
+  .slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+  .scale{display:flex;justify-content:space-between;font-size:.68rem;color:rgba(255,255,255,.5);margin-bottom:22px}
+
+  textarea.note{width:100%;height:74px;border-radius:16px;border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);color:#fff;padding:12px 14px;font-family:'Inter';font-size:.85rem;resize:none;outline:none;transition:.25s}
+  textarea.note:focus{border-color:rgba(236,72,153,.6);box-shadow:0 0 0 3px rgba(236,72,153,.18)}
+  textarea.note::placeholder{color:rgba(255,255,255,.4)}
+
+  .save{width:100%;margin-top:20px;padding:16px;border:0;border-radius:18px;cursor:pointer;
+    font-family:'Sora';font-weight:700;font-size:.95rem;color:#fff;
+    background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 14px 30px rgba(139,92,246,.45);transition:.25s}
+  .save:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(139,92,246,.55)}
+  .skip{text-align:center;margin-top:12px;color:rgba(255,255,255,.55);font-size:.82rem;cursor:pointer}
+  .skip:hover{color:#fff}
+
+  /* streak + insight */
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+  .chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:14px;text-align:center}
+  .chip b{font-family:'Sora';font-size:1.25rem;display:block}
+  .chip span{font-size:.7rem;color:rgba(255,255,255,.6)}
+  .insight{margin-top:14px;background:linear-gradient(135deg,rgba(52,211,153,.15),rgba(14,165,233,.12));
+    border:1px solid rgba(52,211,153,.25);border-radius:18px;padding:14px 16px;font-size:.82rem;line-height:1.5}
+  .insight b{color:#6ee7b7}
+
+  .confetti{position:fixed;top:-12px;font-size:1.1rem;z-index:9;pointer-events:none;animation:drop 1.6s ease-in forwards}
+  @keyframes drop{to{transform:translateY(105vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+<div class="phone">
+  <div class="top">
+    <div class="brand">🌿 Mindful</div>
+    <div class="bell">🔔</div>
+  </div>
+
+  <h2 class="greet">How are you feeling<br>right now?</h2>
+  <p class="hint">No wrong answers. This is your space.</p>
+
+  <div class="moods" id="moods">
+    <div class="mood sel" data-l="Great">😊<small>Great</small></div>
+    <div class="mood" data-l="Okay">😐<small>Okay</small></div>
+    <div class="mood" data-l="Low">😢<small>Low</small></div>
+    <div class="mood" data-l="Stressed">😠<small>Stress</small></div>
+    <div class="mood" data-l="Tired">😴<small>Tired</small></div>
+  </div>
+
+  <label class="sec">Intensity</label>
+  <input type="range" min="1" max="10" value="7" class="slider" id="inten" oninput="document.getElementById('ival').textContent=this.value+' / 10'">
+  <div class="scale"><span>Calm</span><b id="ival" style="color:#fff">7 / 10</b><span>Intense</span></div>
+
+  <label class="sec">Note <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+  <textarea class="note" placeholder="What's on your mind? Only you can see this." style="margin-top:12px"></textarea>
+
+  <button class="save" onclick="saved()">Save check-in</button>
+  <div class="skip">Skip for today</div>
+
+  <div class="row2">
+    <div class="chip"><b>🔥 7</b><span>day streak</span></div>
+    <div class="chip"><b style="color:#6ee7b7">↑ 12%</b><span>mood vs last week</span></div>
+  </div>
+
+  <div class="insight">
+    💡 <b>Gentle insight:</b> Your mood lifts ~20% on days you journal after 6pm. Want a reminder?
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.mood').forEach(m=>{
+    m.addEventListener('click',()=>{
+      document.querySelectorAll('.mood').forEach(x=>x.classList.remove('sel'));
+      m.classList.add('sel');
+    });
+  });
+  function saved(){
+    const emo=['✨','💜','🌸','🫶','🌟','💫'];
+    for(let i=0;i<26;i++){
+      const c=document.createElement('div');
+      c.className='confetti'; c.textContent=emo[i%emo.length];
+      c.style.left=Math.random()*100+'vw';
+      c.style.animationDelay=(Math.random()*.5)+'s';
+      c.style.fontSize=(0.8+Math.random()*1.1)+'rem';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),2400);
+    }
+    setTimeout(()=>alert('Check-in saved 💜 See you tomorrow.'),300);
+  }
+</script>
+</body>
+</html>

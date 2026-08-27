@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Scrollytelling Portfolio — Canvas Animation & Interactive Design</title>
+  <meta name="description" content="Awwwards-inspired personal portfolio with HTML5 Canvas frame scrubbing, parallax overlays, glassmorphism, and dark/light themes built in React.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="cs-nav__logo" aria-label="Home"><span>R</span>ushmitha</a>
+    <ul class="cs-nav__links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="demos/design-system.html">Design System</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="https://linkedin.com/in/rushmitha-varshini-ys-5039b4283" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">moon</button>
+  </nav>
+
+  <article class="page-wrapper">
+
+    <header class="cs-hero">
+      <span class="cs-hero__badge">Creative Development / React</span>
+      <h1 class="cs-hero__title">Scrollytelling Portfolio</h1>
+      <p class="cs-hero__subtitle">A personal portfolio with HTML5 Canvas frame scrubbing, parallax text overlays, glassmorphism UI, and a complete dark/light theme system — built in React + Vite.</p>
+      <div class="cs-hero__meta">
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Role</span>
+          <span class="cs-hero__meta-value">Designer & Developer</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Stack</span>
+          <span class="cs-hero__meta-value">React, Vite, Canvas</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Type</span>
+          <span class="cs-hero__meta-value">Personal Portfolio</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Deployment</span>
+          <span class="cs-hero__meta-value">Netlify (SPA)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01 Problem -->
+    <section class="cs-section" aria-labelledby="problem">
+      <div class="cs-section__number">1</div>
+      <h2 class="cs-section__title" id="problem">Design Challenge</h2>
+      <p class="cs-section__text">
+        Most developer portfolios are either visually impressive but technically shallow, or technically impressive but visually generic. The goal was to create a portfolio that demonstrates both design sensibility AND engineering depth — a site where the medium IS the message.
+      </p>
+      <p class="cs-section__text">
+        The central mechanic: a scroll-linked animation that scrubs through a cinematic image sequence as the user scrolls, creating a "scrollytelling" experience similar to award-winning sites on Awwwards. This approach replaces a traditional video tag with something interactive, performant, and unique.
+      </p>
+
+      <div class="cs-callout cs-callout--insight">
+        <strong>Core Challenge:</strong> Build a scroll-linked canvas animation that renders at 60fps, combined with parallax text overlays, glassmorphism UI, dark/light themes, and responsive design — all while keeping the bundle small and load times fast on Netlify.
+      </div>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric__value">60fps</div>
+          <div class="cs-metric__label">Scroll Animation</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">75</div>
+          <div class="cs-metric__label">WebP Frames</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">&lt;3s</div>
+          <div class="cs-metric__label">Initial Load (3G)</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">2</div>
+          <div class="cs-metric__label">Theme Modes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Technical Architecture -->
+    <section class="cs-section" aria-labelledby="architecture">
+      <div class="cs-section__number">2</div>
+      <h2 class="cs-section__title" id="architecture">Technical Architecture</h2>
+
+      <p class="cs-section__text">
+        The site is built with React 19 + Vite 8, using vanilla CSS custom properties for the design system and Framer Motion for supplementary animations. The core scrollytelling mechanic uses a custom Canvas rendering engine — no video tags, no heavy animation libraries.
+      </p>
+
+      <div class="cs-code">
+        <div class="cs-code-label">Architecture Overview</div>
+<pre style="margin:0;white-space:pre-wrap;">
+┌─────────────────────────────────────────────────┐
+│                  React App (Vite)                │
+├─────────────────────────────────────────────────┤
+│  ScrollyCanvas.jsx     ← Canvas frame renderer  │
+│  ScrollyOverlay.jsx    ← Parallax text layers   │
+│  Navbar.jsx            ← Fixed glass nav        │
+│  ProjectsSection.jsx   ← Glassmorphic cards     │
+│  AboutSection.jsx      ← Bio + education        │
+│  ExperienceSection.jsx ← Work history           │
+│  SkillsSection.jsx     ← Filterable skills      │
+│  ContactSection.jsx    ← WhatsApp integration   │
+│  ThemeContext.jsx       ← Dark/Light state       │
+├─────────────────────────────────────────────────┤
+│  index.css             ← Design system (473ln)  │
+│  sequence/frame_*.webp ← 75 animation frames    │
+└─────────────────────────────────────────────────┘
+</pre>
+      </div>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Key Technical Decisions</h3>
+
+      <div class="cs-table-wrapper">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Decision</th>
+              <th>Choice</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Canvas over &lt;video&gt;</td>
+              <td>HTML5 Canvas + RAF</td>
+              <td>Frame-precise control, no codec issues, works on all browsers</td>
+            </tr>
+            <tr>
+              <td>WebP image sequence</td>
+              <td>75 frames @ 15fps</td>
+              <td>Smaller than video, progressive loading, no buffering</td>
+            </tr>
+            <tr>
+              <td>Lerp-based interpolation</td>
+              <td>requestAnimationFrame</td>
+              <td>Smooth 60fps frame transitions even on slower scroll</td>
+            </tr>
+            <tr>
+              <td>CSS Custom Properties</td>
+              <td>Vanilla CSS (no Tailwind)</td>
+              <td>Zero build overhead, full theme control, 473-line design system</td>
+            </tr>
+            <tr>
+              <td>React Context</td>
+              <td>ThemeContext</td>
+              <td>Lightweight dark/light toggle with localStorage persistence</td>
+            </tr>
+            <tr>
+              <td>Netlify SPA</td>
+              <td>netlify.toml config</td>
+              <td>Immutable asset caching + SPA redirect rules</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 03 Canvas Engine -->
+    <section class="cs-section" aria-labelledby="canvas">
+      <div class="cs-section__number">3</div>
+      <h2 class="cs-section__title" id="canvas">Canvas Frame Scrubbing Engine</h2>
+
+      <p class="cs-section__text">
+        The heart of the portfolio is the scroll-linked canvas animation. As the user scrolls through a 500vh container, the scroll progress (0 to 1) maps to frame indices (0 to 74). The engine uses linear interpolation (lerp) to smoothly transition between frames, preventing jarring jumps.
+      </p>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Canvas Rendering Pipeline</h3>
+
+      <!-- SVG Canvas Pipeline Diagram -->
+      <div style="margin:1.5rem 0;padding:2rem;background:var(--bg-code);border:1px solid var(--border-subtle);border-radius:0.75rem;">
+        <p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-primary);margin-bottom:1rem;">Scroll-to-Frame Rendering Pipeline</p>
+        <svg viewBox="0 0 700 180" style="width:100%;max-width:700px;" role="img" aria-label="Diagram showing scroll to canvas frame pipeline">
+          <rect x="10" y="50" width="110" height="70" rx="8" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-opacity="0.4" stroke-width="1.5"/>
+          <text x="25" y="78" fill="#a78bfa" font-size="10" font-weight="700" font-family="Space Grotesk, sans-serif">Scroll</text>
+          <text x="25" y="95" fill="#94a3b8" font-size="8" font-family="Plus Jakarta Sans, sans-serif">passive listener</text>
+          <line x1="120" y1="85" x2="160" y2="85" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#ap1)"/>
+          <rect x="160" y="50" width="120" height="70" rx="8" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.5"/>
+          <text x="175" y="78" fill="#22d3ee" font-size="10" font-weight="700" font-family="Space Grotesk, sans-serif">Progress 0-1</text>
+          <text x="175" y="95" fill="#64748b" font-size="8" font-family="Plus Jakarta Sans, sans-serif">target = p * 74</text>
+          <line x1="280" y1="85" x2="320" y2="85" stroke="#06b6d4" stroke-width="1.5" marker-end="url(#ap2)"/>
+          <rect x="320" y="50" width="130" height="70" rx="8" fill="#f59e0b" fill-opacity="0.12" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1.5"/>
+          <text x="335" y="78" fill="#fbbf24" font-size="10" font-weight="700" font-family="Space Grotesk, sans-serif">Lerp + RAF</text>
+          <text x="335" y="95" fill="#64748b" font-size="8" font-family="Plus Jakarta Sans, sans-serif">smooth interpolation</text>
+          <line x1="450" y1="85" x2="490" y2="85" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#ap3)"/>
+          <rect x="490" y="35" width="190" height="100" rx="10" fill="#10b981" fill-opacity="0.08" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5"/>
+          <text x="520" y="62" fill="#34d399" font-size="11" font-weight="700" font-family="Space Grotesk, sans-serif">Canvas Render</text>
+          <text x="510" y="82" fill="#94a3b8" font-size="9" font-family="Plus Jakarta Sans, sans-serif">drawImage(frame[idx])</text>
+          <text x="510" y="100" fill="#64748b" font-size="8" font-family="Plus Jakarta Sans, sans-serif">60fps | 75 WebP frames</text>
+          <rect x="510" y="110" width="14" height="10" rx="2" fill="#334155"/>
+          <rect x="528" y="110" width="14" height="10" rx="2" fill="#334155"/>
+          <rect x="546" y="110" width="14" height="10" rx="2" fill="#334155" stroke="#8b5cf6" stroke-width="1.5"/>
+          <rect x="564" y="110" width="14" height="10" rx="2" fill="#334155"/>
+          <rect x="582" y="110" width="14" height="10" rx="2" fill="#334155"/>
+          <text x="600" y="119" fill="#64748b" font-size="7" font-family="Plus Jakarta Sans, sans-serif">...75 frames</text>
+          <defs>
+            <marker id="ap1" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#8b5cf6"/></marker>
+            <marker id="ap2" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#06b6d4"/></marker>
+            <marker id="ap3" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#f59e0b"/></marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="cs-code">
+        <div class="cs-code-label">ScrollyCanvas.jsx — Core Logic</div>
+<pre style="margin:0;">
+import { useRef, useEffect, useState } from 'react';
+
+export default function ScrollyCanvas() {
+  const canvasRef = useRef(null);
+  const framesRef = useRef([]);
+  const [loaded, setLoaded] = useState(0);
+  const targetFrame = useRef(0);
+  const currentFrame = useRef(0);
+
+  // Preload all 75 WebP frames
+  useEffect(() => {
+    const TOTAL = 75;
+    let count = 0;
+    for (let i = 1; i <= TOTAL; i++) {
+      const img = new Image();
+      img.src = `/sequence/frame_${String(i).padStart(3,'0')}.webp`;
+      img.onload = () => {
+        count++;
+        setLoaded(count);
+        framesRef.current[i - 1] = img;
+      };
+    }
+  }, []);
+
+  // RAF loop with lerp interpolation
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let raf;
+
+    const render = () => {
+      // Lerp toward target for smooth transitions
+      currentFrame.current += (targetFrame.current - currentFrame.current) * 0.15;
+      const idx = Math.round(currentFrame.current);
+
+      if (framesRef.current[idx]) {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        ctx.drawImage(framesRef.current[idx], 0, 0,
+          canvas.width, canvas.height);
+      }
+      raf = requestAnimationFrame(render);
+    };
+    render();
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  // Scroll listener maps progress to frame index
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.querySelector('.scroll-container');
+      const rect = el.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1,
+        -rect.top / (rect.height - window.innerHeight)));
+      targetFrame.current = progress * 74;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    &lt;div className="canvas-container"&gt;
+      &lt;canvas ref={canvasRef} className="canvas-element" /&gt;
+      &lt;div className="canvas-vignette" /&gt;
+      {loaded &lt; 75 &amp;&amp; (
+        &lt;div className="loading"&gt;
+          Loading... {Math.round(loaded/75*100)}%
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+</pre>
+      </div>
+
+      <div class="cs-callout cs-callout--success">
+        <strong>Performance:</strong> The RAF loop runs at 60fps even on mid-range devices. WebP frames are ~8KB each (total ~600KB), compared to a 15MB video file. Progressive preloading ensures frames appear as soon as they're decoded — no full-load blocking.
+      </div>
+    </section>
+
+    <!-- 04 Design System -->
+    <section class="cs-section" aria-labelledby="design">
+      <div class="cs-section__number">4</div>
+      <h2 class="cs-section__title" id="design">Design System: Glassmorphism & Themes</h2>
+
+      <p class="cs-section__text">
+        The visual language is built on glassmorphism — frosted glass cards with backdrop-filter blur, semi-transparent backgrounds, and subtle borders. The dark mode is the default (matching the cinematic canvas), with a light mode that maintains the same token structure with overridden values.
+      </p>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">CSS Custom Properties (Tokens)</h3>
+
+      <div class="cs-code">
+        <div class="cs-code-label">index.css — Theme Tokens</div>
+<pre style="margin:0;">
+:root {
+  --font-primary: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+
+  /* Dark Mode (Default) */
+  --bg-dark: #07090e;
+  --bg-surface: rgba(13, 17, 26, 0.75);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(139, 92, 246, 0.35);
+
+  --color-primary: #8b5cf6;
+  --color-secondary: #06b6d4;
+  --color-accent: #f59e0b;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+[data-theme="light"] {
+  --bg-dark: #f8fafc;
+  --bg-surface: rgba(255, 255, 255, 0.9);
+  --color-primary: #7c3aed;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+}
+</pre>
+      </div>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Glassmorphism Component</h3>
+
+      <div class="cs-code">
+        <div class="cs-code-label">Glass Card Pattern</div>
+<pre style="margin:0;">
+.glass-card {
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -5px rgba(0,0,0,0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--glow-violet);
+}
+</pre>
+      </div>
+    </section>
+
+    <!-- 05 Accessibility -->
+    <section class="cs-section" aria-labelledby="a11y">
+      <div class="cs-section__number">5</div>
+      <h2 class="cs-section__title" id="a11y">Accessibility & Performance</h2>
+
+      <p class="cs-section__text">
+        Despite the visual complexity, the portfolio maintains strong accessibility foundations. The canvas animation is decorative (aria-hidden), keyboard navigation is fully supported, and the reduced-motion media query disables all animations.
+      </p>
+
+      <div class="cs-table-wrapper">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Implementation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Keyboard Navigation</td>
+              <td>Full tab order, visible focus rings on all interactive elements (2px solid primary color)</td>
+            </tr>
+            <tr>
+              <td>Screen Readers</td>
+              <td>Canvas marked aria-hidden="true"; semantic HTML sections with proper heading hierarchy</td>
+            </tr>
+            <tr>
+              <td>Reduced Motion</td>
+              <td>@media (prefers-reduced-motion: reduce) disables all keyframe animations and transitions</td>
+            </tr>
+            <tr>
+              <td>Color Contrast</td>
+              <td>All text meets WCAG AA (4.5:1); headings meet AAA (7:1) in both themes</td>
+            </tr>
+            <tr>
+              <td>Skip to Content</td>
+              <td>Hidden skip link appears on keyboard focus for quick section navigation</td>
+            </tr>
+            <tr>
+              <td>Performance</td>
+              <td>Lazy-loaded below-fold sections, preloaded critical frames, immutable asset caching on Netlify</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 06 Deployment -->
+    <section class="cs-section" aria-labelledby="deploy">
+      <div class="cs-section__number">6</div>
+      <h2 class="cs-section__title" id="deploy">Deployment & Outcome</h2>
+
+      <p class="cs-section__text">
+        Deployed on Netlify with optimized caching headers — immutable assets get long cache lifetimes, HTML gets SPA redirect rules. The build output is a single JS bundle (~85KB gzipped) plus 75 WebP frames totaling ~600KB.
+      </p>
+
+      <div class="cs-code">
+        <div class="cs-code-label">netlify.toml</div>
+<pre style="margin:0;">
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sequence/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+</pre>
+      </div>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric__value">60fps</div>
+          <div class="cs-metric__label">Canvas Animation</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">~85KB</div>
+          <div class="cs-metric__label">JS Bundle (gzip)</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">~600KB</div>
+          <div class="cs-metric__label">Total Image Assets</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">2</div>
+          <div class="cs-metric__label">Themes (Dark + Light)</div>
+        </div>
+      </div>
+
+      <p class="cs-section__text">
+        The portfolio demonstrates the ability to not only design interfaces but engineer them with performance, accessibility, and maintainability in mind. It serves as both a showcase of work and a proof of craft.
+      </p>
+
+      <div class="tag-list">
+        <span class="tag tag--primary">React.js</span>
+        <span class="tag tag--rose">Canvas API</span>
+        <span class="tag tag--cyan">Scrollytelling</span>
+        <span class="tag tag--amber">Animation</span>
+        <span class="tag tag--emerald">Accessibility</span>
+        <span class="tag tag--primary">Dark/Light Themes</span>
+        <span class="tag tag--cyan">Netlify</span>
+        <span class="tag tag--rose">Performance</span>
+      </div>
+    </section>
+
+    <!-- Key Takeaways -->
+    <section class="cs-section" aria-labelledby="takeaways" style="border-left:4px solid var(--color-primary);">
+      <h2 class="cs-section__title" id="takeaways">Key Takeaways</h2>
+      <ul class="cs-list">
+        <li><strong>Decouple input from rendering:</strong> The scroll handler updates a target; the RAF loop renders. This separation prevents frame drops during fast scrolling.</li>
+        <li><strong>Image sequences > video for interaction:</strong> WebP frames give frame-precise control that video tags cannot match, at 96% smaller file size.</li>
+        <li><strong>Progressive loading matters:</strong> Showing frames as they decode (not waiting for all 75) creates a smooth experience even on slow connections.</li>
+        <li><strong>Your portfolio IS a case study:</strong> The medium demonstrates the message — engineering skill shown through the site itself, not just described in text.</li>
+      </ul>
+    </section>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3rem;flex-wrap:wrap;gap:1rem;">
+      <a href="case-study-3.html" class="btn btn--secondary">← Previous: Meditate UX</a>
+      <a href="index.html" class="btn btn--primary">Back to All Projects</a>
+    </div>
+
+  </article>
+
+  <footer class="cs-footer">
+    <p>&copy; 2026 Rushmitha Varshini &mdash; <a href="mailto:Rushmithavarshini33@gmail.com">Rushmithavarshini33@gmail.com</a> &mdash; Melbourne, Australia</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+</body>
+</html>

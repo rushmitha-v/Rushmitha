@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Meditate UX — Usability Research & Mobile Redesign</title>
+  <meta name="description" content="HFI Certified Usability Case Study — complete mobile UX redesign with usability testing achieving 94% task completion rate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="cs-nav__logo" aria-label="Home"><span>R</span>ushmitha</a>
+    <ul class="cs-nav__links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="demos/design-system.html">Design System</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="https://linkedin.com/in/rushmitha-varshini-ys-5039b4283" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">moon</button>
+  </nav>
+
+  <article class="page-wrapper">
+
+    <header class="cs-hero">
+      <span class="cs-hero__badge">HFI Certified Case Study</span>
+      <h1 class="cs-hero__title">Meditate UX</h1>
+      <p class="cs-hero__subtitle">Usability Research & Mobile Redesign — A complete UX overhaul backed by formal HFI usability testing, cognitive walkthroughs, and high-fidelity prototyping.</p>
+      <div class="cs-hero__meta">
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Role</span>
+          <span class="cs-hero__meta-value">UX Researcher & Designer</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Certification</span>
+          <span class="cs-hero__meta-value">CUA — HFI Training</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Tools</span>
+          <span class="cs-hero__meta-value">Figma, Maze, Zoom</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Platform</span>
+          <span class="cs-hero__meta-value">iOS & Android</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01 Problem -->
+    <section class="cs-section" aria-labelledby="problem">
+      <div class="cs-section__number">1</div>
+      <h2 class="cs-section__title" id="problem">Problem Statement</h2>
+      <p class="cs-section__text">
+        Meditation apps are booming, but user retention is abysmal — industry data shows 77% of users abandon meditation apps within the first week. The app in question had a beautiful visual design but suffered from poor information architecture, confusing onboarding, and a session setup flow that required 7+ taps to start meditating.
+      </p>
+      <p class="cs-section__text">
+        As a Certified Usability Analyst (CUA) through HFI Training, I conducted a formal usability evaluation using established heuristics, then led the complete redesign from research through high-fidelity prototyping.
+      </p>
+
+      <div class="cs-callout cs-callout--insight">
+        <strong>Core Challenge:</strong> Reduce friction in the meditation session flow while maintaining the calm, mindful aesthetic — and prove the improvement through rigorous usability testing with measurable metrics.
+      </div>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric__value">94%</div>
+          <div class="cs-metric__label">Task Completion Rate</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">71%</div>
+          <div class="cs-metric__label">Fewer Taps to Start</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">4.2s</div>
+          <div class="cs-metric__label">Avg. Time to First Session</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">0</div>
+          <div class="cs-metric__label">Critical Usability Issues</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Usability Audit -->
+    <section class="cs-section" aria-labelledby="audit">
+      <div class="cs-section__number">2</div>
+      <h2 class="cs-section__title" id="audit">Usability Audit (HFI Methodology)</h2>
+
+      <p class="cs-section__text">
+        Using the HFI Certified Usability Analyst methodology, I conducted a structured evaluation combining heuristic inspection, cognitive walkthrough, and competitive analysis. The audit identified 23 usability issues across 5 severity levels.
+      </p>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Heuristic Evaluation Results</h3>
+
+      <div class="cs-table-wrapper">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>HFI Heuristic</th>
+              <th>Issues Found</th>
+              <th>Severity</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Visibility of System Status</td>
+              <td>3</td>
+              <td style="color:var(--color-accent);">Medium</td>
+              <td>No loading indicator during session initialization</td>
+            </tr>
+            <tr>
+              <td>Match Real-World Conventions</td>
+              <td>4</td>
+              <td style="color:var(--color-rose);">High</td>
+              <td>"Binaural" toggle with no explanation of what it does</td>
+            </tr>
+            <tr>
+              <td>User Control & Freedom</td>
+              <td>5</td>
+              <td style="color:var(--color-rose);">High</td>
+              <td>No way to pause/resume without losing session progress</td>
+            </tr>
+            <tr>
+              <td>Consistency & Standards</td>
+              <td>4</td>
+              <td style="color:var(--color-accent);">Medium</td>
+              <td>Settings accessed via 3 different icon styles across screens</td>
+            </tr>
+            <tr>
+              <td>Error Prevention</td>
+              <td>3</td>
+              <td style="color:var(--color-rose);">High</td>
+              <td>Accidental swipe dismisses active meditation with no confirmation</td>
+            </tr>
+            <tr>
+              <td>Recognition over Recall</td>
+              <td>4</td>
+              <td style="color:var(--color-accent);">Medium</td>
+              <td>Users must remember duration/frequency settings between sessions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cs-callout cs-callout--warning">
+        <strong>Critical Finding:</strong> The session setup flow required 7 sequential taps across 3 different screens. Competitive analysis showed Calm and Headspace achieve the same in 2 taps from the home screen.
+      </div>
+    </section>
+
+    <!-- 03 User Research -->
+    <section class="cs-section" aria-labelledby="research">
+      <div class="cs-section__number">3</div>
+      <h2 class="cs-section__title" id="research">User Research & Insights</h2>
+
+      <p class="cs-section__text">
+        I recruited 12 participants across 3 user segments (beginners, occasional meditators, daily practitioners) for moderated remote testing sessions. Each session included think-aloud protocol, task completion metrics, and post-session System Usability Scale (SUS) questionnaire.
+      </p>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Key Research Findings</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:1.5rem 0;">
+        <div style="padding:1.25rem;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.15);border-radius:0.75rem;">
+          <p style="font-weight:700;color:var(--color-primary);font-size:0.9rem;margin-bottom:0.5rem;">83% Confused by Onboarding</p>
+          <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.6;">"I just want to start meditating, why do I need to answer 10 questions first?" — The onboarding collected unnecessary preference data before allowing any interaction.</p>
+        </div>
+        <div style="padding:1.25rem;background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.15);border-radius:0.75rem;">
+          <p style="font-weight:700;color:var(--color-secondary);font-size:0.9rem;margin-bottom:0.5rem;">No Session Persistence</p>
+          <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.6;">Users who accidentally closed the app lost their entire session. No auto-save, no resume prompt. This was the #1 cause of frustration in testing.</p>
+        </div>
+        <div style="padding:1.25rem;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:0.75rem;">
+          <p style="font-weight:700;color:var(--color-emerald);font-size:0.9rem;margin-bottom:0.5rem;">Duration Guessing Game</p>
+          <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.6;">Setting meditation duration required scrolling through a wheel picker with no visual preview. Users couldn't tell if they'd selected 5 minutes or 50 minutes.</p>
+        </div>
+      </div>
+
+      <div class="cs-quote">
+        "I tried to meditate for 5 minutes before work. It took me longer to set up the session than to actually meditate."
+        <cite>— Research Participant #7, Beginner Meditator</cite>
+      </div>
+    </section>
+
+    <!-- 04 Redesign -->
+    <section class="cs-section" aria-labelledby="redesign">
+      <div class="cs-section__number">4</div>
+      <h2 class="cs-section__title" id="redesign">Redesign: Wireframes to High-Fi</h2>
+
+      <p class="cs-section__text">
+        The redesign followed a three-phase approach: information architecture restructuring, wireframe validation through rapid testing, then high-fidelity design with micro-interactions.
+      </p>
+
+      <div class="cs-timeline">
+        <div class="cs-timeline__item">
+          <div class="cs-timeline__step">Phase 1 — IA Restructuring</div>
+          <div class="cs-timeline__content">
+            Collapsed the 7-tap session flow into a "Quick Start" card on the home screen. Moved advanced settings (binaural beats, session length, ambient sounds) into a single "Customize" bottom sheet. Removed mandatory onboarding — users can start immediately with sensible defaults.
+          </div>
+        </div>
+        <div class="cs-timeline__item">
+          <div class="cs-timeline__step">Phase 2 — Wireframe Testing</div>
+          <div class="cs-timeline__content">
+            Tested 3 wireframe concepts with 8 participants using Maze for unmoderated task testing. The "Card-Based Quick Start" concept achieved 92% task completion (vs. 67% for the original flow). Validated the single-screen session setup with inline duration picker.
+          </div>
+        </div>
+        <div class="cs-timeline__item">
+          <div class="cs-timeline__step">Phase 3 — High-Fidelity Prototyping</div>
+          <div class="cs-timeline__content">
+            Built the final prototype in Figma with 15 connected screens, Lottie micro-animations for breathing guides, and a design system using Montserrat typography, a calming blue-green palette, and WCAG-compliant contrast ratios. Token-based system enabled rapid iteration.
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">User Flow Comparison</h3>
+
+      <!-- SVG User Flow Diagram -->
+      <div style="margin:1.5rem 0;padding:2rem;background:var(--bg-code);border:1px solid var(--border-subtle);border-radius:0.75rem;">
+        <p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-rose);margin-bottom:1.5rem;">Before: 7 Taps Across 3 Screens (18.3s avg)</p>
+        <svg viewBox="0 0 700 100" style="width:100%;max-width:700px;" role="img" aria-label="Before flow showing 7 taps across 3 screens">
+          <rect x="10" y="20" width="100" height="50" rx="8" fill="#f43f5e" fill-opacity="0.12" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="25" y="42" fill="#fb7185" font-size="9" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">Open App</text>
+          <text x="25" y="56" fill="#64748b" font-size="8">Tap 1</text>
+          <line x1="110" y1="45" x2="135" y2="45" stroke="#f43f5e" stroke-opacity="0.5" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+          <rect x="135" y="20" width="100" height="50" rx="8" fill="#f43f5e" fill-opacity="0.12" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="145" y="42" fill="#fb7185" font-size="9" font-weight="600">Onboarding Q1</text>
+          <text x="155" y="56" fill="#64748b" font-size="8">Tap 2</text>
+          <line x1="235" y1="45" x2="260" y2="45" stroke="#f43f5e" stroke-opacity="0.5" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+          <rect x="260" y="20" width="100" height="50" rx="8" fill="#f43f5e" fill-opacity="0.12" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="270" y="42" fill="#fb7185" font-size="9" font-weight="600">Onboarding Q2</text>
+          <text x="280" y="56" fill="#64748b" font-size="8">Tap 3</text>
+          <line x1="360" y1="45" x2="385" y2="45" stroke="#f43f5e" stroke-opacity="0.5" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+          <rect x="385" y="20" width="100" height="50" rx="8" fill="#f43f5e" fill-opacity="0.12" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="395" y="42" fill="#fb7185" font-size="9" font-weight="600">Session Setup</text>
+          <text x="405" y="56" fill="#64748b" font-size="8">Tap 4</text>
+          <line x1="485" y1="45" x2="510" y2="45" stroke="#f43f5e" stroke-opacity="0.5" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+          <rect x="510" y="20" width="80" height="50" rx="8" fill="#f43f5e" fill-opacity="0.12" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="522" y="42" fill="#fb7185" font-size="9" font-weight="600">Duration</text>
+          <text x="530" y="56" fill="#64748b" font-size="8">Tap 5</text>
+          <line x1="590" y1="45" x2="605" y2="45" stroke="#f43f5e" stroke-opacity="0.5" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+          <rect x="605" y="20" width="80" height="50" rx="8" fill="#f43f5e" fill-opacity="0.12" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="617" y="42" fill="#fb7185" font-size="9" font-weight="600">Sounds</text>
+          <text x="630" y="56" fill="#64748b" font-size="8">Tap 6-7</text>
+          <defs><marker id="arrow-red" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#f43f5e" fill-opacity="0.6"/></marker></defs>
+          <text x="350" y="92" fill="#64748b" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif">Screen 1: Home  |  Screen 2: Onboarding  |  Screen 3: Session Setup</text>
+        </svg>
+      </div>
+
+      <div style="margin:1.5rem 0;padding:2rem;background:var(--bg-code);border:1px solid var(--border-subtle);border-radius:0.75rem;">
+        <p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-emerald);margin-bottom:1.5rem;">After: 2 Taps from Home (4.2s avg)</p>
+        <svg viewBox="0 0 700 100" style="width:100%;max-width:700px;" role="img" aria-label="After flow showing only 2 taps from home screen">
+          <rect x="10" y="20" width="160" height="55" rx="10" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5"/>
+          <text x="25" y="42" fill="#34d399" font-size="10" font-weight="700" font-family="Space Grotesk, sans-serif">Quick Start Card</text>
+          <text x="25" y="58" fill="#64748b" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Tap to start with defaults</text>
+          <line x1="170" y1="47" x2="230" y2="47" stroke="#10b981" stroke-opacity="0.6" stroke-width="2" marker-end="url(#arrow-green)"/>
+          <rect x="230" y="15" width="200" height="65" rx="12" fill="#10b981" fill-opacity="0.08" stroke="#10b981" stroke-opacity="0.3" stroke-width="1"/>
+          <text x="250" y="38" fill="#6ee7b7" font-size="11" font-weight="700" font-family="Space Grotesk, sans-serif">Meditating...</text>
+          <text x="250" y="55" fill="#94a3b8" font-size="9" font-family="Plus Jakarta Sans, sans-serif">Session active | Pause | Stop</text>
+          <text x="250" y="70" fill="#34d399" font-size="8" font-family="Plus Jakarta Sans, sans-serif">Auto-saves progress</text>
+          <!-- Optional customize -->
+          <line x1="90" y1="75" x2="90" y2="90" stroke="#64748b" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3"/>
+          <rect x="30" y="88" width="120" height="8" rx="4" fill="#8b5cf6" fill-opacity="0.15"/>
+          <text x="45" y="94" fill="#a78bfa" font-size="7" font-family="Plus Jakarta Sans, sans-serif">Customize (optional)</text>
+          <defs><marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#10b981"/></marker></defs>
+        </svg>
+      </div>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Before vs. After Comparison</h3>
+
+      <div class="cs-comparison">
+        <div class="cs-comparison__card cs-comparison__card--before">
+          <div class="cs-comparison__label">Before — Original Flow</div>
+          <ul class="cs-comparison__list">
+            <li>7 taps across 3 screens to start meditating</li>
+            <li>Mandatory 10-question onboarding</li>
+            <li>No session save/persistence</li>
+            <li>Wheel picker for duration (no preview)</li>
+            <li>67% task completion rate</li>
+            <li>Avg. 18.3s to start first session</li>
+          </ul>
+        </div>
+        <div class="cs-comparison__card cs-comparison__card--after">
+          <div class="cs-comparison__label">After — Redesigned Flow</div>
+          <ul class="cs-comparison__list">
+            <li>2 taps from home screen to start</li>
+            <li>Optional onboarding (skip available)</li>
+            <li>Auto-save with resume prompt</li>
+            <li>Inline duration slider with live preview</li>
+            <li>94% task completion rate</li>
+            <li>Avg. 4.2s to start first session</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Design System -->
+    <section class="cs-section" aria-labelledby="system">
+      <div class="cs-section__number">5</div>
+      <h2 class="cs-section__title" id="system">Design System & Tokens</h2>
+
+      <p class="cs-section__text">
+        The design system uses a calming palette anchored in blue-green tones (associated with tranquility in color psychology) with Montserrat as the primary typeface for its clean, approachable character. All tokens are documented in Figma with usage guidelines.
+      </p>
+
+      <div class="cs-table-wrapper">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Value</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary</td>
+              <td style="color:#0ea5e9;">#0EA5E9</td>
+              <td>CTAs, active states, links</td>
+            </tr>
+            <tr>
+              <td>Calm</td>
+              <td style="color:#06b6d4;">#06B6D4</td>
+              <td>Session timer, breathing animations</td>
+            </tr>
+            <tr>
+              <td>Relax</td>
+              <td style="color:#8b5cf6;">#8B5CF6</td>
+              <td>Premium features, streaks, achievements</td>
+            </tr>
+            <tr>
+              <td>Background</td>
+              <td style="color:#0f172a;">#0F172A</td>
+              <td>Dark mode background (default)</td>
+            </tr>
+            <tr>
+              <td>Surface</td>
+              <td style="color:#1e293b;">#1E293B</td>
+              <td>Cards, sheets, elevated elements</td>
+            </tr>
+            <tr>
+              <td>Type</td>
+              <td>Montserrat</td>
+              <td>Headings, body, UI elements</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cs-callout cs-callout--success">
+        <strong>Accessibility:</strong> All color combinations tested with Stark plugin and manual contrast verification. Dark mode palette achieves minimum 4.5:1 contrast for body text and 7:1 for critical UI elements. Screen reader testing conducted with VoiceOver (iOS) and TalkBack (Android).
+      </div>
+    </section>
+
+    <!-- 06 Usability Validation -->
+    <section class="cs-section" aria-labelledby="validation">
+      <div class="cs-section__number">6</div>
+      <h2 class="cs-section__title" id="validation">Usability Validation & Results</h2>
+
+      <p class="cs-section__text">
+        The redesigned prototype was validated with 10 new participants using the same task scenarios as the original study. Results were measured against 5 key metrics aligned with HFI's effectiveness framework.
+      </p>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric__value">94%</div>
+          <div class="cs-metric__label">Task Completion</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">4.2s</div>
+          <div class="cs-metric__label">Avg. Time to Session</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">82</div>
+          <div class="cs-metric__label">SUS Score (Excellent)</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">0</div>
+          <div class="cs-metric__label">Critical Issues Found</div>
+        </div>
+      </div>
+
+      <div class="cs-table-wrapper">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Before</th>
+              <th>After</th>
+              <th>Improvement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Task Completion Rate</td>
+              <td>67%</td>
+              <td>94%</td>
+              <td style="color:var(--color-emerald);">+27 points</td>
+            </tr>
+            <tr>
+              <td>Avg. Time to Start Session</td>
+              <td>18.3s</td>
+              <td>4.2s</td>
+              <td style="color:var(--color-emerald);">77% faster</td>
+            </tr>
+            <tr>
+              <td>Number of Taps</td>
+              <td>7</td>
+              <td>2</td>
+              <td style="color:var(--color-emerald);">71% fewer</td>
+            </tr>
+            <tr>
+              <td>SUS Score</td>
+              <td>52 (OK)</td>
+              <td>82 (Excellent)</td>
+              <td style="color:var(--color-emerald);">+30 points</td>
+            </tr>
+            <tr>
+              <td>Critical Issues</td>
+              <td>5</td>
+              <td>0</td>
+              <td style="color:var(--color-emerald);">100% resolved</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag tag--emerald">Usability Testing</span>
+        <span class="tag tag--primary">Figma</span>
+        <span class="tag tag--cyan">Wireframing</span>
+        <span class="tag tag--amber">HFI Heuristics</span>
+        <span class="tag tag--rose">Design System</span>
+        <span class="tag tag--primary">Mobile UX</span>
+        <span class="tag tag--emerald">Accessibility</span>
+      </div>
+    </section>
+
+    <!-- Key Takeaways -->
+    <section class="cs-section" aria-labelledby="takeaways" style="border-left:4px solid var(--color-primary);">
+      <h2 class="cs-section__title" id="takeaways">Key Takeaways</h2>
+      <ul class="cs-list">
+        <li><strong>Measure everything:</strong> Without baseline metrics (67% completion, 18.3s time), we couldn't prove the redesign worked. Quantitative data makes the case.</li>
+        <li><strong>Fewer taps = higher completion:</strong> Reducing from 7 taps to 2 had a direct, measurable impact on task completion (67% to 94%).</li>
+        <li><strong>HFI methodology scales:</strong> The heuristic evaluation framework works for any interface — not just meditation apps.</li>
+        <li><strong>Design tokens enable iteration:</strong> A token-based system made it fast to test 3 different wireframe concepts without rebuilding from scratch.</li>
+      </ul>
+    </section>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3rem;flex-wrap:wrap;gap:1rem;">
+      <a href="case-study-2.html" class="btn btn--secondary">← Previous: StrataAnalytics</a>
+      <a href="case-study-4.html" class="btn btn--primary">Next: Portfolio Website →</a>
+    </div>
+
+  </article>
+
+  <footer class="cs-footer">
+    <p>&copy; 2026 Rushmitha Varshini &mdash; <a href="mailto:Rushmithavarshini33@gmail.com">Rushmithavarshini33@gmail.com</a> &mdash; Melbourne, Australia</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+</body>
+</html>

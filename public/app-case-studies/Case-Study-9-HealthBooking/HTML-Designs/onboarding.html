@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MediCare+ — Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f0f9f8;color:#0c2e2a;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw;text-align:center}
+.logo{font-family:'Sora';font-weight:800;font-size:1.02rem;letter-spacing:.16em;color:#0d9488;margin-bottom:30px}
+.cross{width:96px;height:96px;margin:0 auto 26px;border-radius:28px;background:#fff;box-shadow:0 18px 44px rgba(13,148,136,.22);display:grid;place-items:center;position:relative;animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.cross::before,.cross::after{content:'';position:absolute;background:linear-gradient(135deg,#0d9488,#2dd4bf);border-radius:6px}
+.cross::before{width:44px;height:13px}.cross::after{width:13px;height:44px}
+h1{font-family:'Sora';font-size:1.62rem;letter-spacing:-.02em;line-height:1.26;margin-bottom:12px}
+h1 span{background:linear-gradient(120deg,#0d9488,#14b8a6);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:#5b7a75;font-size:.9rem;line-height:1.7;margin-bottom:30px}
+.feats{display:flex;flex-direction:column;gap:11px;text-align:left;margin-bottom:30px}
+.f{display:flex;align-items:center;gap:13px;background:#fff;border-radius:16px;padding:13px 15px;box-shadow:0 6px 16px rgba(13,148,136,.07)}
+.f i{font-style:normal;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}
+.f1 i{background:#d7f2ee}.f2 i{background:#fef3c7}.f3 i{background:#dbeafe}
+.f b{font-size:.84rem;display:block}
+.f small{color:#5b7a75;font-size:.71rem}
+.btn{width:100%;border:0;border-radius:16px;padding:17px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#fff;background:linear-gradient(135deg,#0d9488,#14b8a6);cursor:pointer;box-shadow:0 16px 34px rgba(13,148,136,.4);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+.skip{margin-top:15px;color:#5b7a75;font-size:.78rem;cursor:pointer}
+</style></head>
+<body>
+<div class="card">
+  <div class="logo">MEDICARE+</div>
+  <div class="cross"></div>
+  <h1>Your clinic visit,<br><span>without the waiting room</span></h1>
+  <p>Book in 3 taps, track your live token from home, and get prescriptions + reports in one place.</p>
+  <div class="feats">
+    <div class="f f1"><i>🎟️</i><div><b>Live queue tokens</b><small>See exactly when it's your turn — no hovering by the door</small></div></div>
+    <div class="f f2"><i>🩺</i><div><b>Symptom → right doctor</b><small>We match you to the correct specialist first time</small></div></div>
+    <div class="f f3"><i>💊</i><div><b>Meds, labs & reminders</b><small>Digital prescriptions and refill alerts built-in</small></div></div>
+  </div>
+  <button class="btn">Get started — it's free →</button>
+  <span class="skip">I have a referral code</span>
+</div>
+</body></html>

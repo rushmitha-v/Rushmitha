@@ -15,6 +15,9 @@ dist-ssr
 *.bak
 __pycache__/
 *.pyc
+deploy_all_case_study_repos.py
+list_repos.py
+generate_more_pdfs.py
 
 # Environment & Secrets
 .env

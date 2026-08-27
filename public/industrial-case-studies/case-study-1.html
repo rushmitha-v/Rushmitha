@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: HYDRA-CORE v3.1 — Industrial HMI & Telemetry System</title>
+  <meta name="description" content="In-depth case study of designing a high-precision industrial HMI interface for hydraulic machinery with 150+ components and 35% faster operator response.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="cs-nav__logo" aria-label="Home"><span>R</span>ushmitha</a>
+    <ul class="cs-nav__links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="demos/design-system.html">Design System</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="https://linkedin.com/in/rushmitha-varshini-ys-5039b4283" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">moon</button>
+  </nav>
+
+  <article class="page-wrapper">
+
+    <!-- Hero -->
+    <header class="cs-hero">
+      <span class="cs-hero__badge">GEE KAY VEE HYDRAULICS</span>
+      <h1 class="cs-hero__title">HYDRA-CORE v3.1</h1>
+      <p class="cs-hero__subtitle">Industrial HMI & Telemetry System — A high-precision operator control interface designed for heavy industrial hydraulic machinery.</p>
+      <div class="cs-hero__meta">
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Role</span>
+          <span class="cs-hero__meta-value">Designing Engineer</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Duration</span>
+          <span class="cs-hero__meta-value">Jun 2023 – Jan 2025</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Tools</span>
+          <span class="cs-hero__meta-value">Figma, UX Research</span>
+        </div>
+        <div class="cs-hero__meta-item">
+          <span class="cs-hero__meta-label">Type</span>
+          <span class="cs-hero__meta-value">Industrial UX</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01 Problem Statement -->
+    <section class="cs-section" aria-labelledby="problem">
+      <div class="cs-section__number">1</div>
+      <h2 class="cs-section__title" id="problem">Problem Statement</h2>
+      <p class="cs-section__text">
+        Heavy hydraulic machinery operators face a unique challenge: they must monitor and control complex systems involving pressure levels, flow rates, temperature thresholds, and emergency alerts — often in harsh factory environments with extreme lighting conditions, vibration, and time pressure.
+      </p>
+      <p class="cs-section__text">
+        The existing control interfaces were built with legacy industrial software — dense, text-heavy screens with no visual hierarchy, no ergonomic consideration for touch interaction, and no standardized component library. Operators reported slow response times during critical emergency scenarios, and new hires required weeks of training before becoming proficient.
+      </p>
+
+      <div class="cs-callout cs-callout--insight">
+        <strong>Core Challenge:</strong> How do you translate complex telemetry data into an ergonomic, glanceable interface that works under extreme industrial conditions — while maintaining precision and reducing operator cognitive load?
+      </div>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric__value">35%</div>
+          <div class="cs-metric__label">Faster Emergency Response</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">150+</div>
+          <div class="cs-metric__label">Reusable Components</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">60%</div>
+          <div class="cs-metric__label">Reduced Training Time</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">4</div>
+          <div class="cs-metric__label">Machine Types Supported</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Research & Discovery -->
+    <section class="cs-section" aria-labelledby="research">
+      <div class="cs-section__number">2</div>
+      <h2 class="cs-section__title" id="research">Research & User Insights</h2>
+
+      <p class="cs-section__text">
+        The research phase combined on-site observations, operator interviews, and analysis of existing control workflows. I spent time on the factory floor observing operators during both routine and emergency scenarios.
+      </p>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Key Research Methods</h3>
+
+      <div class="cs-table-wrapper">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Participants</th>
+              <th>Key Finding</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Contextual Inquiry</td>
+              <td>8 operators</td>
+              <td>Operators rely on color and position, not labels, for critical alerts</td>
+            </tr>
+            <tr>
+              <td>Task Analysis</td>
+              <td>12 workflows</td>
+              <td>Emergency shutdown required 4+ screen transitions</td>
+            </tr>
+            <tr>
+              <td>Touch Target Study</td>
+              <td>6 operators</td>
+              <td>Gloved hands need minimum 48px touch targets (not 44px mobile standard)</td>
+            </tr>
+            <tr>
+              <td>Glare Testing</td>
+              <td>3 lighting conditions</td>
+              <td>High-contrast themes with saturated colors outperform muted palettes</td>
+            </tr>
+            <tr>
+              <td>Interviews</td>
+              <td>5 senior operators</td>
+              <td>Cognitive overload from 20+ simultaneous data points on one screen</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cs-callout cs-callout--insight">
+        <strong>Key Insight:</strong> Operators don't read — they scan. In emergency situations, they look for color-coded visual patterns and spatial position. The interface needed to leverage pre-attentive processing, not require focused reading.
+      </div>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">User Persona</h3>
+      <div style="padding:1.25rem;background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.15);border-radius:0.75rem;margin:1rem 0;">
+        <p style="font-weight:700;color:var(--color-secondary);font-size:0.9rem;margin-bottom:0.5rem;">Primary Persona: "Kumar" — Senior Hydraulic Operator</p>
+        <p style="color:var(--text-muted);font-size:0.875rem;line-height:1.7;">
+          12 years of experience. Manages 3 hydraulic press units simultaneously. Wears industrial gloves during operation. Needs to check pressure, temperature, and flow rate every 2-3 minutes. Most critical during emergency pressure spikes where he has &lt;10 seconds to respond. Prefers visual patterns over text. Trains new operators monthly.
+        </p>
+      </div>
+    </section>
+
+    <!-- 03 Wireframes & Sketches -->
+    <section class="cs-section" aria-labelledby="wireframes">
+      <div class="cs-section__number">3</div>
+      <h2 class="cs-section__title" id="wireframes">Wireframes & Information Architecture</h2>
+
+      <p class="cs-section__text">
+        Starting with low-fidelity sketches, I mapped the information hierarchy based on operator priority: emergency alerts at the top, real-time telemetry in the center, and configuration controls at the bottom. The layout follows a Z-pattern matching natural eye movement during monitoring tasks.
+      </p>
+
+      <!-- SVG Wireframe Diagram -->
+      <div style="margin:2rem 0;padding:2rem;background:var(--bg-code);border:1px solid var(--border-subtle);border-radius:0.75rem;">
+        <p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-secondary);margin-bottom:1rem;">Information Architecture — Three-Zone Layout</p>
+        <svg viewBox="0 0 600 400" style="width:100%;max-width:600px;" role="img" aria-label="Wireframe diagram showing the three-zone HMI layout with Alert Zone at top, Telemetry Zone in center, and Control Zone at bottom">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.2"/>
+              <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.1"/>
+            </linearGradient>
+          </defs>
+          <!-- Screen frame -->
+          <rect x="10" y="10" width="580" height="380" rx="12" fill="none" stroke="#334155" stroke-width="2"/>
+          <!-- Alert Zone -->
+          <rect x="20" y="20" width="560" height="80" rx="8" fill="#ef4444" fill-opacity="0.12" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="40" y="50" fill="#ef4444" font-size="11" font-weight="700" font-family="Space Grotesk, sans-serif">ALERT ZONE</text>
+          <text x="40" y="70" fill="#94a3b8" font-size="10" font-family="Plus Jakarta Sans, sans-serif">Emergency indicators | Status alerts | Critical thresholds</text>
+          <rect x="380" y="35" width="90" height="28" rx="6" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-opacity="0.5" stroke-width="1"/>
+          <text x="395" y="54" fill="#fca5a5" font-size="9" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">EMERGENCY</text>
+          <rect x="485" y="35" width="80" height="28" rx="6" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-opacity="0.5" stroke-width="1"/>
+          <text x="498" y="54" fill="#fbbf24" font-size="9" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">WARNING</text>
+          <!-- Telemetry Zone -->
+          <rect x="20" y="115" width="370" height="200" rx="8" fill="url(#g1)" stroke="#8b5cf6" stroke-opacity="0.3" stroke-width="1"/>
+          <text x="40" y="145" fill="#a78bfa" font-size="11" font-weight="700" font-family="Space Grotesk, sans-serif">TELEMETRY ZONE</text>
+          <text x="40" y="165" fill="#94a3b8" font-size="10" font-family="Plus Jakarta Sans, sans-serif">Real-time gauges | Data visualization | Monitoring</text>
+          <!-- Gauges -->
+          <circle cx="90" cy="230" r="35" fill="none" stroke="#06b6d4" stroke-opacity="0.5" stroke-width="2"/>
+          <text x="75" y="235" fill="#22d3ee" font-size="12" font-weight="700" font-family="Space Grotesk, sans-serif">72</text>
+          <text x="68" y="250" fill="#64748b" font-size="8" font-family="Plus Jakarta Sans, sans-serif">PSI</text>
+          <circle cx="200" cy="230" r="35" fill="none" stroke="#10b981" stroke-opacity="0.5" stroke-width="2"/>
+          <text x="185" y="235" fill="#34d399" font-size="12" font-weight="700" font-family="Space Grotesk, sans-serif">45</text>
+          <text x="180" y="250" fill="#64748b" font-size="8" font-family="Plus Jakarta Sans, sans-serif">TEMP</text>
+          <circle cx="310" cy="230" r="35" fill="none" stroke="#f59e0b" stroke-opacity="0.5" stroke-width="2"/>
+          <text x="293" y="235" fill="#fbbf24" font-size="12" font-weight="700" font-family="Space Grotesk, sans-serif">120</text>
+          <text x="288" y="250" fill="#64748b" font-size="8" font-family="Plus Jakarta Sans, sans-serif">FLOW</text>
+          <!-- Control Zone -->
+          <rect x="405" y="115" width="165" height="200" rx="8" fill="#10b981" fill-opacity="0.08" stroke="#10b981" stroke-opacity="0.3" stroke-width="1"/>
+          <text x="425" y="145" fill="#34d399" font-size="11" font-weight="700" font-family="Space Grotesk, sans-serif">CONTROL</text>
+          <text x="425" y="165" fill="#94a3b8" font-size="10" font-family="Plus Jakarta Sans, sans-serif">Touch controls | Settings</text>
+          <rect x="425" y="185" width="130" height="36" rx="8" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="448" y="208" fill="#6ee7b7" font-size="10" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">START</text>
+          <rect x="425" y="230" width="130" height="36" rx="8" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="448" y="253" fill="#fbbf24" font-size="10" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">PAUSE</text>
+          <rect x="425" y="275" width="130" height="36" rx="8" fill="#ef4444" fill-opacity="0.15" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="448" y="298" fill="#fca5a5" font-size="10" font-weight="600" font-family="Plus Jakarta Sans, sans-serif">STOP</text>
+          <!-- Bottom bar -->
+          <rect x="20" y="330" width="560" height="50" rx="8" fill="#1e293b" fill-opacity="0.5" stroke="#334155" stroke-width="1"/>
+          <text x="40" y="360" fill="#64748b" font-size="10" font-family="Plus Jakarta Sans, sans-serif">Machine Config | Operator Profile | Diagnostics | Settings</text>
+          <!-- Touch target annotation -->
+          <line x1="555" y1="275" x2="580" y2="290" stroke="#8b5cf6" stroke-opacity="0.6" stroke-width="1" stroke-dasharray="3"/>
+          <text x="555" y="305" fill="#a78bfa" font-size="8" font-family="Plus Jakarta Sans, sans-serif">64px min</text>
+          <text x="555" y="315" fill="#64748b" font-size="7" font-family="Plus Jakarta Sans, sans-serif">touch target</text>
+        </svg>
+      </div>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Layout Principles</h3>
+      <ul class="cs-list">
+        <li><strong>Emergency-first hierarchy:</strong> Critical alerts occupy the top-left zone with pulsing color indicators visible from 3+ meters away</li>
+        <li><strong>Touch zone optimization:</strong> Primary controls sized at 64px minimum (beyond standard 48px) for gloved operation</li>
+        <li><strong>Data density management:</strong> Progressive disclosure — show summary first, details on tap/hover</li>
+        <li><strong>Glare resistance:</strong> High-contrast color tokens with minimum 7:1 contrast ratio for critical indicators</li>
+        <li><strong>Dark-mode primary:</strong> Dark backgrounds reduce glare in factory lighting; light elements pop for quick scanning</li>
+      </ul>
+
+      <div class="cs-comparison">
+        <div class="cs-comparison__card cs-comparison__card--before">
+          <div class="cs-comparison__label">Before (Legacy Interface)</div>
+          <ul class="cs-comparison__list">
+            <li>Dense text-based readouts with no visual hierarchy</li>
+            <li>Small touch targets (24px) requiring stylus</li>
+            <li>4+ screen transitions for emergency shutdown</li>
+            <li>No color coding — all data rendered in monochrome green</li>
+            <li>No component reuse — each machine type built from scratch</li>
+          </ul>
+        </div>
+        <div class="cs-comparison__card cs-comparison__card--after">
+          <div class="cs-comparison__label">After (HYDRA-CORE v3.1)</div>
+          <ul class="cs-comparison__list">
+            <li>Visual hierarchy with color-coded zones and gauges</li>
+            <li>64px touch targets with haptic feedback indicators</li>
+            <li>One-tap emergency shutdown from any screen</li>
+            <li>Semantic color system: green → amber → red severity scale</li>
+            <li>150+ reusable components across 4 machine types</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-callout cs-callout--warning">
+        <strong>Constraint:</strong> Industrial displays run at 1024×768 resolution with limited color gamut. All designs were validated against actual hardware constraints, not just Retina displays.
+      </div>
+    </section>
+
+    <!-- 04 Iterations -->
+    <section class="cs-section" aria-labelledby="iterations">
+      <div class="cs-section__number">4</div>
+      <h2 class="cs-section__title" id="iterations">Design Iterations</h2>
+
+      <p class="cs-section__text">
+        The design went through three major iterations, each informed by operator feedback sessions conducted on-site at the manufacturing facility.
+      </p>
+
+      <div class="cs-timeline">
+        <div class="cs-timeline__item">
+          <div class="cs-timeline__step">Iteration 1 — Information Architecture</div>
+          <div class="cs-timeline__content">
+            Established the three-zone layout: Alert Zone (top), Telemetry Zone (center), Control Zone (bottom). Initial component audit revealed we needed a shared token system for colors, spacing, and typography to maintain consistency across 4 machine configurations. Created the first 40 Figma components with auto-layout and responsive constraints.
+          </div>
+        </div>
+        <div class="cs-timeline__item">
+          <div class="cs-timeline__step">Iteration 2 — Ergonomic Refinement</div>
+          <div class="cs-timeline__content">
+            After first operator review: increased all touch targets by 33%, added visual weight to emergency indicators, introduced gauge animations that map pressure changes to needle movement (more intuitive than numeric readouts). Simplified the navigation from 5 tabs to 3 zones with gesture-based transitions. Added high-contrast mode for operators with visual impairments.
+          </div>
+        </div>
+        <div class="cs-timeline__item">
+          <div class="cs-timeline__step">Iteration 3 — Component Library & Scalability</div>
+          <div class="cs-timeline__content">
+            Final iteration focused on systematization: built a comprehensive Figma component library with 150+ components, 8 variant states per component, and auto-layout constraints. Introduced design tokens for cross-platform consistency. Validated emergency response flow with timed testing — achieved 35% reduction in average response time. Documented usage guidelines for the engineering team.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Final Design -->
+    <section class="cs-section" aria-labelledby="final">
+      <div class="cs-section__number">5</div>
+      <h2 class="cs-section__title" id="final">Final Design</h2>
+
+      <p class="cs-section__text">
+        The final HYDRA-CORE v3.1 interface features a dark-mode-primary design system optimized for industrial display hardware. The color palette uses saturated, high-contrast tones that remain distinguishable under harsh factory lighting and on limited-gamut industrial monitors.
+      </p>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Design System Tokens</h3>
+      <div class="cs-table-wrapper">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Value</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--alert-critical</code></td>
+              <td style="color:#ef4444;">#EF4444</td>
+              <td>Emergency stop, pressure overload, temperature critical</td>
+            </tr>
+            <tr>
+              <td><code>--alert-warning</code></td>
+              <td style="color:#f59e0b;">#F59E0B</td>
+              <td>Approaching thresholds, maintenance due</td>
+            </tr>
+            <tr>
+              <td><code>--status-normal</code></td>
+              <td style="color:#10b981;">#10B981</td>
+              <td>All systems operational</td>
+            </tr>
+            <tr>
+              <td><code>--gauge-primary</code></td>
+              <td style="color:#06b6d4;">#06B6D4</td>
+              <td>Primary gauge fill, active data streams</td>
+            </tr>
+            <tr>
+              <td><code>--bg-display</code></td>
+              <td style="color:#0a0e17;">#0A0E17</td>
+              <td>Display background (factory glare resistant)</td>
+            </tr>
+            <tr>
+              <td><code>--touch-target</code></td>
+              <td>64px min</td>
+              <td>All interactive elements (gloved operation)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="color:var(--text-main);font-size:1.1rem;margin:1.5rem 0 0.75rem;">Component Library Highlights</h3>
+      <div class="tag-list" style="margin-bottom:1.5rem;">
+        <span class="tag tag--cyan">Pressure Gauges (4 variants)</span>
+        <span class="tag tag--primary">Temperature Displays</span>
+        <span class="tag tag--amber">Alert Indicators</span>
+        <span class="tag tag--emergency" style="border-color:rgba(244,63,94,0.3);color:#fb7185;">Emergency Buttons</span>
+        <span class="tag tag--primary">Flow Rate Monitors</span>
+        <span class="tag tag--cyan">Data Tables</span>
+        <span class="tag tag--emerald">Status Cards</span>
+        <span class="tag tag--amber">Navigation Tabs</span>
+      </div>
+
+      <p class="cs-section__text">
+        Each component includes 8 state variants (default, hover, active, disabled, loading, error, warning, critical) with auto-layout constraints ensuring consistent spacing across all 4 machine type configurations.
+      </p>
+
+      <div class="cs-callout cs-callout--success">
+        <strong>Accessibility:</strong> All color tokens meet WCAG AAA contrast requirements (7:1 minimum). Emergency indicators use both color AND shape/pattern to ensure distinction for colorblind operators. Keyboard navigation fully supported with visible focus rings.
+      </div>
+    </section>
+
+    <!-- 06 Outcome & Impact -->
+    <section class="cs-section" aria-labelledby="outcome">
+      <div class="cs-section__number">6</div>
+      <h2 class="cs-section__title" id="outcome">Outcome & Impact</h2>
+
+      <div class="cs-metrics">
+        <div class="cs-metric">
+          <div class="cs-metric__value">35%</div>
+          <div class="cs-metric__label">Faster Emergency Response</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">150+</div>
+          <div class="cs-metric__label">Figma Components Built</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">60%</div>
+          <div class="cs-metric__label">Training Time Reduction</div>
+        </div>
+        <div class="cs-metric">
+          <div class="cs-metric__value">4</div>
+          <div class="cs-metric__label">Machine Types Supported</div>
+        </div>
+      </div>
+
+      <p class="cs-section__text">
+        The HYDRA-CORE v3.1 interface was deployed across all 4 hydraulic press units at GEE KAY VEE HYDRAULICS. Operator feedback was overwhelmingly positive — the visual hierarchy and touch-optimized layout reduced emergency response times by 35% in controlled testing. New operator training time dropped from 3 weeks to under 1 week due to the intuitive, consistent interface design.
+      </p>
+
+      <p class="cs-section__text">
+        The 150+ component Figma library became the foundation for all subsequent projects at the company, establishing a scalable design system that engineering could implement directly from design specs.
+      </p>
+
+      <div class="cs-quote">
+        "The new interface changed how we work. I can see everything I need at a glance, and in an emergency, I don't have to think — I just react."
+        <cite>— Senior Hydraulic Operator, GEE KAY VEE HYDRAULICS</cite>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag tag--primary">Figma</span>
+        <span class="tag tag--cyan">UX Research</span>
+        <span class="tag tag--amber">Industrial HMI</span>
+        <span class="tag tag--emerald">Ergonomics</span>
+        <span class="tag tag--rose">Design Systems</span>
+        <span class="tag tag--primary">Accessibility</span>
+      </div>
+    </section>
+
+    <!-- Key Takeaways -->
+    <section class="cs-section" aria-labelledby="takeaways" style="border-left:4px solid var(--color-primary);">
+      <h2 class="cs-section__title" id="takeaways">Key Takeaways</h2>
+      <ul class="cs-list">
+        <li><strong>Constraints drive creativity:</strong> Designing for gloved hands, factory glare, and legacy hardware forced better solutions than designing for ideal conditions.</li>
+        <li><strong>Color has semantic weight:</strong> In safety-critical interfaces, color isn't decoration — it's a communication system with life-or-death consequences.</li>
+        <li><strong>Design systems scale:</strong> The 150+ component library reduced design time by 60% across 4 machine types and became the company standard.</li>
+        <li><strong>Test with real users in real environments:</strong> Factory floor testing revealed issues that lab testing never would have caught.</li>
+      </ul>
+    </section>
+
+    <!-- Navigation -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3rem;flex-wrap:wrap;gap:1rem;">
+      <a href="index.html" class="btn btn--secondary">← Back to All Projects</a>
+      <a href="case-study-2.html" class="btn btn--primary">Next Case Study →</a>
+    </div>
+
+  </article>
+
+  <footer class="cs-footer">
+    <p>&copy; 2026 Rushmitha Varshini &mdash; <a href="mailto:Rushmithavarshini33@gmail.com">Rushmithavarshini33@gmail.com</a> &mdash; Melbourne, Australia</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+</body>
+</html>

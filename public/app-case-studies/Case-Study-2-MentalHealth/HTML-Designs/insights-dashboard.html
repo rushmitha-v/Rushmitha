@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindful — Insights & Trends</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0d1024;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.1);--txt:#f2eefb;--mut:#a79ec5;
+    --vio:#8b5cf6;--pnk:#ec4899;--grn:#34d399;--sky:#38bdf8;--amb:#fbbf24}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';color:var(--txt);min-height:100vh;padding:34px 20px;
+    background:radial-gradient(800px 480px at 90% -10%,rgba(139,92,246,.22),transparent),
+               radial-gradient(700px 420px at -10% 100%,rgba(236,72,153,.16),transparent),var(--bg)}
+  .wrap{max-width:980px;margin:0 auto}
+
+  .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:26px;flex-wrap:wrap;gap:14px}
+  .brand{font-family:'Sora';font-weight:800;font-size:.95rem;color:rgba(255,255,255,.75);margin-bottom:10px}
+  h1.h{font-family:'Sora';font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:-.02em;line-height:1.15}
+  p.sub{color:var(--mut);font-size:.88rem;margin-top:8px}
+  .range{display:flex;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:99px;padding:4px}
+  .rg{border:0;background:transparent;color:var(--mut);font-family:'Inter';font-weight:600;font-size:.78rem;
+    padding:8px 16px;border-radius:99px;cursor:pointer;transition:.2s}
+  .rg.on{background:linear-gradient(135deg,var(--vio),var(--pnk));color:#fff}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+  .kpi{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:18px;padding:18px 20px;transition:.25s}
+  .kpi:hover{transform:translateY(-4px);background:rgba(255,255,255,.09)}
+  .kpi small{color:var(--mut);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+  .kpi b{display:block;font-family:'Sora';font-size:1.55rem;margin-top:8px}
+  .trend{font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:99px;margin-left:8px;vertical-align:middle}
+  .up{background:rgba(52,211,153,.15);color:var(--grn)} .dn{background:rgba(251,113,133,.16);color:#fb7185}
+
+  .cols{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-bottom:18px}
+  .panel{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:22px;padding:24px}
+  .panel h3{font-family:'Sora';font-size:.98rem;margin-bottom:4px}
+  .cap{color:var(--mut);font-size:.76rem;margin-bottom:18px}
+
+  /* mood line chart (SVG) */
+  svg.chart{width:100%;height:auto}
+  .axis{stroke:rgba(255,255,255,.08);stroke-dasharray:4 6}
+  .mood-line{fill:none;stroke:url(#lg);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2s ease forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .area{fill:url(#ag);opacity:0;animation:fadein 1.2s .8s forwards}
+  @keyframes fadein{to{opacity:1}}
+  .pt{fill:#fff;stroke-width:3}
+  .xlab{fill:var(--mut);font-size:11px;font-family:'Inter'}
+
+  /* heat grid */
+  .heat{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:4px}
+  .hc{aspect-ratio:1;border-radius:9px;display:grid;place-items:center;font-size:.62rem;font-weight:700;color:rgba(255,255,255,.85);transition:.2s;cursor:pointer}
+  .hc:hover{transform:scale(1.12)}
+
+  /* triggers list */
+  .trg{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .trg:last-child{border:0}
+  .tri{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:1rem;flex-shrink:0}
+  .trg div{flex:1}.trg b{font-size:.84rem;display:block}.trg small{color:var(--mut);font-size:.72rem}
+  .bar-mini{width:74px;height:7px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+  .bar-mini i{display:block;height:100%;border-radius:99px;width:0;transition:width 1.2s ease}
+
+  .note-band{margin-top:4px;background:linear-gradient(135deg,rgba(139,92,246,.16),rgba(56,189,248,.12));
+    border:1px solid rgba(139,92,246,.35);border-radius:20px;padding:20px 24px;display:flex;gap:16px;align-items:center}
+  .nb-ic{width:46px;height:46px;border-radius:14px;background:rgba(139,92,246,.25);display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
+  .note-band b{font-family:'Sora';display:block;margin-bottom:4px;font-size:.92rem}
+  .note-band p{color:var(--mut);font-size:.8rem;line-height:1.6}
+  .nb-btn{margin-left:auto;flex-shrink:0;border:0;border-radius:13px;padding:12px 20px;font-family:'Inter';font-weight:700;
+    font-size:.82rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,var(--vio),var(--pnk));box-shadow:0 12px 26px rgba(139,92,246,.4);transition:.22s}
+  .nb-btn:hover{transform:translateY(-2px)}
+
+  @media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div>
+      <div class="brand">🌿 Mindful · Insights</div>
+      <h1 class="h">Your patterns, beautifully clear.</h1>
+      <p class="sub">Last 30 days · 27 check-ins logged · private to you 🔒</p>
+    </div>
+    <div class="range"><button class="rg">Week</button><button class="rg on">Month</button><button class="rg">Year</button></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><small>Avg mood</small><b>7.2<span class="trend up">↑ 0.8</span></b></div>
+    <div class="kpi"><small>Check-in streak</small><b>12 days</b></div>
+    <div class="kpi"><small>Calmest day</small><b style="color:var(--grn)">Saturday</b></div>
+    <div class="kpi"><small>Toughest window</small><b style="color:#fb7185">Tue 2–4 PM</b></div>
+  </div>
+
+  <div class="cols">
+    <!-- LINE CHART -->
+    <div class="panel">
+      <h3>Mood over time</h3>
+      <p class="cap">Daily average intensity · higher = calmer & happier</p>
+      <svg class="chart" viewBox="0 0 600 240">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#8b5cf6"/><stop offset="55%" stop-color="#ec4899"/><stop offset="100%" stop-color="#38bdf8"/>
+          </linearGradient>
+          <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#8b5cf6" stop-opacity=".28"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line class="axis" x1="30" y1="40"  x2="580" y2="40"/>
+        <line class="axis" x1="30" y1="110" x2="580" y2="110"/>
+        <line class="axis" x1="30" y1="180" x2="580" y2="180"/>
+        <path class="area" d="M40 150 L130 118 L220 138 L310 96 L400 128 L490 66 L580 84 L580 200 L40 200 Z"/>
+        <path class="mood-line" d="M40 150 L130 118 L220 138 L310 96 L400 128 L490 66 L580 84"/>
+        <circle class="pt" cx="490" cy="66" r="6" fill="#34d399"/>
+      </svg>
+      <svg viewBox="0 0 600 26" style="width:100%"><text class="xlab" x="32">Jul 25</text><text class="xlab" x="160">Aug 1</text><text class="xlab" x="290">Aug 8</text><text class="xlab" x="420">Aug 15</text><text class="xlab" x="545">Today</text></svg>
+    </div>
+
+    <!-- TRIGGERS -->
+    <div class="panel">
+      <h3>What moves your mood</h3>
+      <p class="cap">Detected correlations from your notes</p>
+      <div class="trg"><div class="tri" style="background:rgba(52,211,153,.15)">🏃</div><div><b>Evening walks</b><small>+1.8 avg mood lift</small></div><div class="bar-mini"><i data-w="86%" style="background:var(--grn)"></i></div></div>
+      <div class="trg"><div class="tri" style="background:rgba(139,92,246,.15)">📓</div><div><b>Journaling</b><small>+1.2 avg mood lift</small></div><div class="bar-mini"><i data-w="64%" style="background:var(--vio)"></i></div></div>
+      <div class="trg"><div class="tri" style="background:rgba(251,191,36,.14)">💼</div><div><b>Deadline crunch</b><small>−1.6 on those days</small></div><div class="bar-mini"><i data-w="72%" style="background:var(--amb)"></i></div></div>
+      <div class="trg"><div class="tri" style="background:rgba(251,113,133,.14)">🌙</div><div><b>Sleep &lt; 6 hrs</b><small>−2.1 next morning</small></div><div class="bar-mini"><i data-w="92%" style="background:#fb7185"></i></div></div>
+    </div>
+  </div>
+
+  <!-- HEATMAP -->
+  <div class="panel" style="max-width:520px;margin-bottom:18px">
+    <h3>Mood heatmap — time of week</h3>
+    <p class="cap">Greener = calmer · redder = intense · tap a cell for that day's note</p>
+    <div class="heat" id="heat"></div>
+  </div>
+
+  <div class="note-band">
+    <div class="nb-ic">💡</div>
+    <div>
+      <b>Tuesday afternoons are your pattern to watch.</b>
+      <p>Your mood drops ~35% before sprint reviews — but recovers fully when you take a walk right after lunch. Want Mindful to schedule a gentle nudge?</p>
+    </div>
+    <button class="nb-btn">Set reminder ✨</button>
+  </div>
+</div>
+
+<script>
+/* heatmap colors */
+const shades=['#fb7185','#fb923c','#fbbf24','#a3e635','#34d399','#2dd4bf'];
+const heat=document.getElementById('heat');
+for(let i=0;i<21;i++){
+  const c=document.createElement('div');c.className='hc';
+  const s=shades[Math.min(shades.length-1,Math.floor(Math.random()*shades.length))];
+  c.style.background=s;c.style.opacity=(0.45+Math.random()*0.55).toFixed(2);
+  c.textContent=Math.floor(Math.random()*10)+1;
+  heat.appendChild(c);
+}
+/* animate trigger bars */
+requestAnimationFrame(()=>setTimeout(()=>{
+  document.querySelectorAll('.bar-mini i').forEach(i=>i.style.width=i.dataset.w);
+},250));
+/* range switcher */
+document.querySelectorAll('.rg').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.rg').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+});
+</script>
+</body>
+</html>

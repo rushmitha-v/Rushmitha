@@ -1,0 +1,20 @@
+{
+  "color": {
+    "primary": "#2dd4a7",
+    "info": "#38bdf8",
+    "background": "#0c1226",
+    "surface": "#141b36",
+    "text": "#eef2fb",
+    "muted": "#8a94ad",
+    "warning": "#fbbf24",
+    "danger": "#fb7185"
+  },
+  "typography": { "family": "Inter / Sora", "numbers": "Sora Bold tabular", "body": "Inter 14px" },
+  "spacing": { "sm": "8px", "md": "16px", "lg": "26px" },
+  "radius": { "card": "22px", "input": "15px", "verdict": "16px" },
+  "verdictStates": {
+    "ok": { "color": "#2dd4a7", "icon": "✅" },
+    "think": { "color": "#fbbf24", "icon": "⚠️" },
+    "no": { "color": "#fb7185", "icon": "🛑", "copy": "non-judgmental, never blocks" }
+  }
+}

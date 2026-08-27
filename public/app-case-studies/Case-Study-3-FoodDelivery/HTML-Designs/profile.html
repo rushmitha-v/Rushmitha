@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiteSphere — Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#fff7f1;color:#231a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.hero{background:linear-gradient(135deg,#ffd166,#ef476f);border-radius:24px;padding:28px 20px 22px;color:#fff;text-align:center;margin-bottom:16px}
+.av{width:70px;height:70px;border-radius:50%;margin:0 auto 12px;background:rgba(255,255,255,.2);display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.6rem}
+h1{font-family:'Sora';font-size:1.25rem;margin-bottom:4px}
+.hero p{font-size:.8rem;opacity:.9}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 0}
+.st{background:rgba(255,255,255,.2);border-radius:12px;padding:10px 6px}
+.st b{font-family:'Sora';display:block;font-size:1rem}
+.st small{font-size:.6rem;opacity:.9}
+.card{background:#fff;border:1px solid #f4e9e1;border-radius:18px;overflow:hidden;margin-bottom:12px}
+.row{display:flex;align-items:center;gap:14px;padding:14px 17px;border-bottom:1px solid #f4e9e1;cursor:pointer;transition:.2s}
+.row:last-child{border:0}
+.row:hover{background:#fffaf6}
+.row i{font-style:normal;width:38px;height:38px;border-radius:12px;background:#fff3ec;display:grid;place-items:center;font-size:1.1rem;flex-shrink:0}
+.row div b{font-size:.86rem;font-weight:600;display:block}
+.row small{color:#8d8177;font-size:.72rem}
+.row em{margin-left:auto;font-style:normal;font-size:.64rem;font-weight:800;background:#fff3ec;color:#e05a17;padding:4px 9px;border-radius:99px}
+.loyal{background:#fff8ec;border:1px solid #fde3b8;border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-top:8px}
+.loyal i{font-style:normal;font-size:1.3rem}
+.loyal b{font-size:.84rem;display:block}
+.loyal small{color:#a08350;font-size:.72rem}
+.loyal a{margin-left:auto;font-size:.7rem;font-weight:800;color:#d96a1e;text-decoration:none}
+</style></head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="av">🍽️</div>
+    <h1>Rajesh K.</h1>
+    <p>Food explorer since Jan 2025 · 47 orders placed</p>
+    <div class="stats">
+      <div class="st"><b>47</b><small>ORDERS</small></div>
+      <div class="st"><b>₹18.4K</b><small>SPENT</small></div>
+      <div class="st"><b>23</b><small>KITCHENS</small></div>
+      <div class="st"><b>🔥 11</b><small>STREAK</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row"><i>📦</i><div><b>Order history</b><small>Track, reorder, rate</small></div></div>
+    <div class="row"><i>🏠</i><div><b>Saved addresses</b><small>Home, Office, Mom's place</small></div></div>
+    <div class="row"><i>💳</i><div><b>Payment methods</b><small>UPI, Card ending 92, Cash</small></div></div>
+    <div class="row"><i>📋</i><div><b>Dietary preferences</b><small>Vegetarian · No peanuts</small></div></div>
+    <div class="row"><i>🔔</i><div><b>Notifications</b><small>Order updates, promos, new kitchens</small></div></div>
+    <div class="row"><i>⚙️</i><div><b>Settings</b><small>Language, help, logout</small></div></div>
+  </div>
+
+  <div class="loyal">
+    <i>🥇</i>
+    <div><b>Local Legend</b><small>Top 5% supporter this month — ₹2,400 to local kitchens</small></div>
+    <a href="#">View badge →</a>
+  </div>
+</div>
+</body></html>

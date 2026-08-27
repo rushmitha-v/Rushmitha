@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mindful — Breathing Session</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:radial-gradient(500px 400px at 50% 20%,rgba(139,92,246,.25),transparent),#0f0c29;color:#fff;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw;text-align:center}
+.close{color:rgba(255,255,255,.5);font-size:.85rem;cursor:pointer}
+.close:hover{color:#fff}
+.orb-wrap{position:relative;width:260px;height:260px;margin:40px auto 30px;display:grid;place-items:center}
+.orb{width:170px;height:170px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#c4b5fd,#8b5cf6 55%,#6d28d9);
+  box-shadow:0 0 70px rgba(139,92,246,.55);animation:breathe 8s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(.82)}45%{transform:scale(1.08)}}
+.ring-o{position:absolute;border-radius:50%;border:1px solid rgba(196,181,253,.25);animation:breathe 8s ease-in-out infinite}
+.r1{width:210px;height:210px}.r2{width:250px;height:250px;animation-delay:.1s}
+#phase{font-family:'Sora';font-weight:700;font-size:1.15rem;position:absolute;z-index:2}
+.count{color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:34px}
+.meta{display:flex;justify-content:center;gap:10px;margin-bottom:26px}
+.mchip{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.7);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:8px 15px;border-radius:99px}
+.btn{width:100%;max-width:300px;border:0;border-radius:99px;padding:16px;font-family:'Sora';font-weight:700;font-size:.92rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 14px 34px rgba(139,92,246,.5);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+.end{margin-top:16px;color:rgba(255,255,255,.5);font-size:.8rem;cursor:pointer}
+</style></head>
+<body>
+<div class="app">
+  <span class="close">✕ Close</span>
+  <div class="orb-wrap">
+    <div class="ring-o r1"></div><div class="ring-o r2"></div>
+    <div class="orb"></div>
+    <div id="phase">Breathe in…</div>
+  </div>
+  <p class="count">Box breathing · round 3 of 4</p>
+  <div class="meta">
+    <span class="mchip">⏱ 4 min</span>
+    <span class="mchip">🎵 Rain sounds</span>
+    <span class="mchip">🌙 Evening calm</span>
+  </div>
+  <button class="btn" onclick="togglePause()" id="pb">Pause</button>
+  <div class="end">End session early</div>
+</div>
+<script>
+const phases=['Breathe in…','Hold…','Breathe out…','Hold…'];
+let pi=0,paused=false;
+setInterval(()=>{if(!paused){pi=(pi+1)%4;document.getElementById('phase').textContent=phases[pi]}},2000);
+function togglePause(){paused=!paused;document.getElementById('pb').textContent=paused?'Resume':'Pause'}
+</script>
+</body></html>

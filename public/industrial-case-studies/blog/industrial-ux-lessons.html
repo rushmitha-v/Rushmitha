@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Lessons from Designing Industrial HMI Systems — Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="cs-nav__logo" aria-label="Home"><span>R</span>ushmitha</a>
+    <ul class="cs-nav__links">
+      <li><a href="../index.html">Work</a></li>
+      <li><a href="../demos/design-system.html">Design System</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">moon</button>
+  </nav>
+  <article class="page-wrapper" style="max-width:720px;">
+    <header class="cs-hero" style="padding-bottom:1rem;">
+      <span class="cs-hero__badge">Industrial Design</span>
+      <h1 class="cs-hero__title" style="font-size:clamp(1.8rem,4vw,2.8rem);">5 Lessons from Designing Industrial HMI Systems</h1>
+      <p class="cs-hero__subtitle">August 2026 · 8 min read</p>
+    </header>
+
+    <section class="cs-section">
+      <p class="cs-section__text">When I started as a Designing Engineer at GEE KAY VEE HYDRAULICS, I expected the work to be straightforward — take the existing screens and make them look better. I was wrong. Industrial UX is a fundamentally different discipline from consumer app design, and it taught me lessons I carry into every project.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">1. Design for Gloved Hands, Not Fingertips</h3>
+      <p class="cs-section__text">The mobile industry settled on 44px as the minimum touch target size. In industrial settings, that number is meaningless. Operators wear thick protective gloves, and their hands are often damp or oily. We sized all interactive elements at 64px minimum — 45% larger than the mobile standard — and added haptic-style visual feedback (scale animations on tap) to compensate for the reduced tactile precision.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">2. Color is a Safety System, Not Decoration</h3>
+      <p class="cs-section__text">In a consumer app, a red badge might mean "you have notifications." In an HMI, red means "pressure is about to exceed safe limits." The semantic weight of color is dramatically higher. We established a strict color vocabulary: green = operational, amber = caution/approaching threshold, red = critical/emergency. Every color token was documented with its operational meaning, not just its hex value.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">3. Glanceability Beats Comprehensiveness</h3>
+      <p class="cs-section__text">Operators don't sit and read the screen. They glance at it every 2-3 seconds while performing physical tasks. This means the most important information must be perceivable in under 500ms. We used large numeric displays, animated gauges (needle position is faster to read than digits), and spatial consistency — the temperature is always in the top-right, pressure always in the center.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">4. Design for the Worst Case</h3>
+      <p class="cs-section__text">Most UI design optimizes for the happy path. Industrial design must optimize for the failure state. The emergency shutdown button was always visible, always one tap, and always in the same position — regardless of which screen the operator was viewing. We tested the emergency flow under simulated stress conditions with actual operators.</p>
+
+      <h3 style="color:var(--text-main);margin:1.5rem 0 0.75rem;">5. The Design System is the Product</h3>
+      <p class="cs-section__text">With 4 different hydraulic press types, each with slightly different telemetry requirements, a component library wasn't a nice-to-have — it was the core deliverable. The 150+ Figma components with 8 state variants each became the engineering team's implementation spec. The design system reduced cross-project design time by an estimated 60%.</p>
+
+      <div class="cs-callout cs-callout--insight">
+        <strong>Takeaway:</strong> Industrial UX taught me that design constraints aren't limitations — they're the foundation of focused, effective design work. Every constraint forced a better solution.
+      </div>
+    </section>
+
+    <div style="margin-top:2rem;"><a href="index.html" class="btn btn--secondary">← Back to Blog</a></div>
+  </article>
+  <footer class="cs-footer"><p>&copy; 2026 Rushmitha Varshini</p></footer>
+  <script>
+    function toggleTheme(){const h=document.documentElement,n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);}
+    (function(){const s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wanderly — Trip Expenses</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f4f9fc;color:#1b2733;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#7d8fa1;font-size:.8rem;margin-bottom:16px}
+.hero{background:linear-gradient(135deg,#0ea5e9,#f97316);border-radius:22px;padding:22px;color:#fff;margin-bottom:16px}
+.hero small{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;opacity:.9}
+.hero b{display:block;font-family:'Sora';font-size:2rem;margin-top:6px}
+.hero p{font-size:.74rem;opacity:.92;margin-top:6px}
+.people{display:flex;gap:14px;margin-bottom:18px;background:#fff;border-radius:18px;padding:15px 17px;box-shadow:0 6px 18px rgba(14,165,233,.08)}
+.pp{text-align:center;flex:1}
+.pav{width:40px;height:40px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:.78rem;color:#fff}
+.p1{background:#f97316}.p2{background:#0ea5e9}.p3{background:#10b981}.p4{background:#8b5cf6}
+.pp small{font-size:.62rem;font-weight:700;display:block}
+.pos{color:#22b573}.neg{color:#ef4444}.zero{color:#7d8fa1}
+.tx{background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:13px;box-shadow:0 5px 15px rgba(14,165,233,.07)}
+.tx i{font-style:normal;width:38px;height:38px;border-radius:12px;background:#f0f7fb;display:grid;place-items:center;font-size:1.05rem}
+.tx div{flex:1}
+.tx b{font-size:.82rem;display:block}
+.tx small{color:#7d8fa1;font-size:.68rem}
+.tx em{font-style:normal;font-family:'Sora';font-weight:800;font-size:.84rem}
+.settle{width:100%;border:0;border-radius:15px;padding:16px;font-family:'Sora';font-weight:800;font-size:.88rem;color:#fff;background:linear-gradient(135deg,#0ea5e9,#f97316);cursor:pointer;box-shadow:0 14px 30px rgba(14,165,233,.35);transition:.22s}
+.settle:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app">
+  <h1>Trip khata 💸</h1>
+  <p class="sub">Coorg weekend · 4 people · all bills settled in-app</p>
+  <div class="hero"><small>Total spent</small><b>₹19,240</b><p>₹4,810 per person · fair split by shares</p></div>
+  <div class="people">
+    <div class="pp"><div class="pav">R</div><small>Ravi<br><span class="zero">settled</span></small></div>
+    <div class="pp"><div class="pav">A</div><small>Anu<br><span class="neg">owes ₹620</span></small></div>
+    <div class="pp"><div class="pav">K</div><small>Kiran<br><span class="pos">gets ₹310</span></small></div>
+    <div class="pp"><div class="pav">M</div><small>Meera<br><span class="pos">gets ₹310</span></small></div>
+  </div>
+  <div class="tx"><i>🏡</i><div><b>Homestay · 3 nights</b><small>Paid by Ravi · split 4 ways</small></div><em>₹12,600</em></div>
+  <div class="tx"><i>🚙</i><div><b>Self-drive car + fuel</b><small>Paid by Kiran · split 4 ways</small></div><em>₹4,100</em></div>
+  <div class="tx"><i>🍜</i><div><b>Dinner · Coorg Cuisine Co.</b><small>Paid by Meera · Anu skipped (ill)</small></div><em>₹2,540</em></div>
+  <button class="settle" onclick="alert('✅ UPI request sent to Anu for ₹620!')">Settle up with one tap</button>
+</div>
+</body></html>

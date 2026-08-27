@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #fff; }
+    .header { color: #000; font-family: Arial; font-size: 20px; font-weight: bold; padding: 20px; border-bottom: 1px solid #ccc; }
+    .search-bar { background: #f0f0f0; border: none; border-radius: 8px; height: 40px; width: 280px; margin: 20px; padding: 0 12px; }
+    .filter { background: #f0f0f0; border: none; border-radius: 8px; height: 32px; width: 120px; margin: 0 8px; font-size: 12px; }
+    .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; margin: 12px; width: 280px; }
+    .card-title { color: #000; font-size: 14px; font-weight: bold; margin-bottom: 4px; }
+    .card-meta { color: #666; font-size: 12px; margin-bottom: 8px; }
+    .card-rating { color: #f5a623; font-size: 12px; margin-right: 4px; }
+    .card-time { color: #666; font-size: 12px; }
+    .cta { background: #3b82f6; color: white; border: none; border-radius: 6px; padding: 10px; width: 100%; font-size: 14px; margin-top: 12px; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Header -->
+  <text x="20" y="40" class="header">FocusMate</text>
+  <text x="20" y="65" style="color: #666;">Daily Productivity Tracker</text>
+  
+  <!-- Search -->
+  <rect x="40" y="90" width="280" height="40" class="search-bar" rx="4"/>
+  <text x="50" y="115" style="color: #666;">Search sessions... </text>
+  
+  <!-- Filters -->
+  <g transform="translate(40, 150)">
+    <rect class="filter">25min</rect>
+    <text x="30" y="35" style="color: #666;">&nbsp;45min</text>
+    <rect class="filter" x="100">90min</text>
+  </g>
+  
+  <!-- Cards -->
+  <rect x="40" y="210" width="280" height="80" class="card"/>
+  <text x="60" y="230" class="card-title">Session 1</text>
+  <text x="60" y="245" class="card-meta">25 min • 2 days ago</text>
+  
+  <rect x="40" y="300" width="280" height="80" class="card"/>
+  <text x="60" y="320" class="card-title">Session 2</text>
+  <text x="60" y="335" class="card-meta">45 min • 5 days ago</text>
+  
+  <rect x="40" y="390" width="280" height="80" class="card"/>
+  <text x="60" y="410" class="card-title">Session 3</text>
+  <text x="60" y="425" class="card-meta">90 min • 12 days ago</text>
+  
+  <!-- CTA -->
+  <rect x="40" y="500" width="280" height="40" class="cta">START NEW SESSION</text>
+</svg>

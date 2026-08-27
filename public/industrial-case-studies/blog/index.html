@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Rushmitha Varshini</title>
+  <meta name="description" content="Design insights, engineering explorations, and lessons learned from industrial UX, accessibility, and creative development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .blog-list { display: flex; flex-direction: column; gap: 2rem; margin: 2rem 0; }
+    .blog-post {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+    [data-theme="light"] .blog-post { background: rgba(255,255,255,0.94); }
+    .blog-post:hover { border-color: var(--border-glow); transform: translateY(-2px); box-shadow: var(--glow-violet); }
+    .blog-post__tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .blog-post__title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .blog-post__meta {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+    .blog-post__content {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .blog-post__content p { margin-bottom: 1rem; }
+    .blog-post__content h3 {
+      color: var(--text-main);
+      font-size: 1.1rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    .blog-post__content ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .blog-post__content li {
+      padding: 0.35rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .blog-post__content li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+    .blog-post__content code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 0.1rem 0.35rem;
+      border-radius: 0.2rem;
+      color: var(--color-primary);
+    }
+    .blog-divider {
+      border: none;
+      border-top: 1px solid var(--border-subtle);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="cs-nav" role="navigation" aria-label="Main navigation">
+    <a href="../index.html" class="cs-nav__logo" aria-label="Home"><span>R</span>ushmitha</a>
+    <ul class="cs-nav__links">
+      <li><a href="../index.html">Work</a></li>
+      <li><a href="../demos/design-system.html">Design System</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="https://linkedin.com/in/rushmitha-varshini-ys-5039b4283" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+      <span class="theme-toggle__stars">
+        <span class="theme-toggle__star"></span>
+        <span class="theme-toggle__star"></span>
+        <span class="theme-toggle__star"></span>
+        <span class="theme-toggle__star"></span>
+        <span class="theme-toggle__star"></span>
+      </span>
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__icon theme-toggle__icon--sun"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span>
+      </span>
+      <span class="theme-toggle__thumb"></span>
+    </button>
+  </nav>
+
+  <main class="page-wrapper">
+
+    <header class="cs-hero">
+      <span class="cs-hero__badge">Writing & Insights</span>
+      <h1 class="cs-hero__title">Blog</h1>
+      <p class="cs-hero__subtitle">Thoughts on design decisions, engineering explorations, and lessons learned from building human-centered digital experiences.</p>
+    </header>
+
+    <div class="blog-list">
+
+      <!-- Article 1 -->
+      <article class="blog-post" id="industrial-ux">
+        <span class="blog-post__tag">Industrial Design</span>
+        <h2 class="blog-post__title">5 Lessons from Designing Industrial HMI Systems</h2>
+        <p class="blog-post__meta">August 2026 · 8 min read</p>
+        <div class="blog-post__content">
+          <p>When I started as a Designing Engineer at GEE KAY VEE HYDRAULICS, I expected the work to be straightforward — take the existing screens and make them look better. I was wrong. Industrial UX is a fundamentally different discipline from consumer app design, and it taught me lessons I carry into every project.</p>
+
+          <h3>1. Design for Gloved Hands, Not Fingertips</h3>
+          <p>The mobile industry settled on 44px as the minimum touch target size. In industrial settings, that number is meaningless. Operators wear thick protective gloves, and their hands are often damp or oily. We sized all interactive elements at 64px minimum — 45% larger than the mobile standard — and added haptic-style visual feedback (scale animations on tap) to compensate for the reduced tactile precision.</p>
+
+          <h3>2. Color is a Safety System, Not Decoration</h3>
+          <p>In a consumer app, a red badge might mean "you have notifications." In an HMI, red means "pressure is about to exceed safe limits." The semantic weight of color is dramatically higher. We established a strict color vocabulary: green = operational, amber = caution/approaching threshold, red = critical/emergency. Every color token was documented with its operational meaning, not just its hex value.</p>
+
+          <h3>3. Glanceability Beats Comprehensiveness</h3>
+          <p>Operators don't sit and read the screen. They glance at it every 2-3 seconds while performing physical tasks. This means the most important information must be perceivable in under 500ms. We used large numeric displays, animated gauges (needle position is faster to read than digits), and spatial consistency — the temperature is always in the top-right, pressure always in the center.</p>
+
+          <h3>4. Design for the Worst Case</h3>
+          <p>Most UI design optimizes for the happy path. Industrial design must optimize for the failure state. The emergency shutdown button was always visible, always one tap, and always in the same position — regardless of which screen the operator was viewing. We tested the emergency flow under simulated stress conditions with actual operators.</p>
+
+          <h3>5. The Design System is the Product</h3>
+          <p>With 4 different hydraulic press types, each with slightly different telemetry requirements, a component library wasn't a nice-to-have — it was the core deliverable. The 150+ Figma components with 8 state variants each became the engineering team's implementation spec. The design system reduced cross-project design time by an estimated 60%.</p>
+
+          <p>Industrial UX taught me that design constraints aren't limitations — they're the foundation of focused, effective design work. Every constraint forced a better solution.</p>
+        </div>
+      </article>
+
+      <hr class="blog-divider">
+
+      <!-- Article 2 -->
+      <article class="blog-post" id="accessibility">
+        <span class="blog-post__tag">Accessibility</span>
+        <h2 class="blog-post__title">Why Accessibility is a Design Problem, Not Just an Engineering One</h2>
+        <p class="blog-post__meta">August 2026 · 6 min read</p>
+        <div class="blog-post__content">
+          <p>There's a common pattern in product teams: designers create the "ideal" visual design, then engineers add accessibility as a compliance checkbox at the end. ARIA labels here, alt text there, maybe a skip link. This approach produces technically compliant but experientially poor interfaces.</p>
+
+          <p>Accessibility is a design problem. It requires understanding how different users perceive, navigate, and interact with your interface — and making intentional design decisions to accommodate those differences.</p>
+
+          <h3>Contrast is a Design Decision</h3>
+          <p>When I design a color palette, I test every combination for WCAG contrast ratios before committing to it. Not after. The primary color (#8B5F6 on dark backgrounds) was chosen partly because it meets 4.5:1 contrast against the background — that's not a happy accident, it's a design constraint.</p>
+
+          <h3>Keyboard Navigation Needs Visual Design</h3>
+          <p>A visible focus indicator isn't just an engineering addition — it needs to be designed. Our 2px solid primary-color focus ring was a conscious decision: thick enough to be visible, colored to be distinctive, positioned to not obscure content. Engineers implemented it, but design defined it.</p>
+
+          <h3>Screen Readers Reveal Information Architecture Flaws</h3>
+          <p>When I navigated my portfolio with VoiceOver for the first time, the heading structure exposed a disorganized page. Screen readers don't see your beautiful layout — they see your HTML structure. If your heading hierarchy doesn't make sense when read linearly, your information architecture has problems that visual design can't hide.</p>
+
+          <h3>Reduced Motion is Empathy in Code</h3>
+          <p>Some users experience motion sickness, vestibular disorders, or anxiety from animations. The <code>prefers-reduced-motion</code> media query isn't a nice-to-have — it's a fundamental respect for user diversity. Every animation in this portfolio is gracefully degraded when this preference is detected.</p>
+
+          <h3>The Business Case</h3>
+          <p>Beyond the moral imperative, accessible design is better design. High contrast improves readability for everyone. Clear heading hierarchy improves SEO. Keyboard navigation improves power-user efficiency. Focus management improves form completion rates. Accessibility doesn't limit design — it elevates it.</p>
+
+          <p>My portfolio explicitly documents its accessibility implementation — not because accessibility is a feature, but because it's evidence of design maturity.</p>
+        </div>
+      </article>
+
+      <hr class="blog-divider">
+
+      <!-- Article 3 -->
+      <article class="blog-post" id="scrollytelling">
+        <span class="blog-post__tag">Creative Development</span>
+        <h2 class="blog-post__title">Building a Scrollytelling Hero with Canvas Frame Scrubbing</h2>
+        <p class="blog-post__meta">August 2026 · 10 min read</p>
+        <div class="blog-post__content">
+          <p>The scrollytelling hero animation on this portfolio replaces a traditional <code>&lt;video&gt;</code> tag with something more interactive and performant: a sequence of 75 WebP images rendered on an HTML5 Canvas, scrubbed by the user's scroll position. Here's how it works, why I chose this approach, and what I learned.</p>
+
+          <h3>Why Not Just Use a Video?</h3>
+          <p>Video tags are simple but have critical limitations for scroll-linked interaction: no frame-precise control (you're at the mercy of the browser's buffering), codec compatibility issues across browsers, and inability to pause at exact positions. Canvas gives us pixel-perfect frame control synced to scroll position.</p>
+
+          <h3>The Image Sequence Pipeline</h3>
+          <p>The animation was originally a 3-second cinematic AI-generated video. I converted it to WebP format using ezgif at 15fps, then split it into 75 individual frames. Each frame is approximately 8KB — totaling ~600KB for the entire sequence. Compare this to the original 15MB video file: a 96% size reduction with better control.</p>
+
+          <h3>The RAF Lerp Loop</h3>
+          <p>The rendering engine uses <code>requestAnimationFrame</code> with linear interpolation (lerp). When the user scrolls, we calculate a target frame index based on scroll progress (0-1 mapped to frame 0-74). The lerp function smoothly interpolates between the current frame and target frame with a factor of 0.15, creating buttery-smooth transitions even when scroll input is jumpy.</p>
+
+          <p>The key insight: don't render on scroll events. Render on every animation frame, and let the scroll handler just update the target. This decouples input from rendering and prevents frame drops.</p>
+
+          <h3>Progressive Preloading</h3>
+          <p>All 75 frames are preloaded via JavaScript Image objects before the canvas renders anything. We track load progress and show a loading indicator. Frames are rendered as soon as they load (not waiting for all 75), so the user sees the animation progressively appear. This means even on slow connections, the experience degrades gracefully.</p>
+
+          <h3>The Vignette Overlay</h3>
+          <p>A critical detail: the canvas sits behind the content, and a CSS vignette overlay blends the animation edges into the page background color (#07090e). This gradient mask ensures seamless transitions between the animated hero and the content sections below, making the scroll container feel like a natural part of the page rather than a disconnected visual element.</p>
+
+          <h3>Performance Results</h3>
+          <p>The animation runs at 60fps on mid-range devices (tested on a 2020 MacBook Air and Pixel 6). The total asset weight is ~600KB (frames) + ~85KB (gzipped JS bundle). On Netlify, immutable caching headers ensure frames are cached after first load, making subsequent visits essentially free.</p>
+
+          <p>This project reinforced my belief that creative development isn't about using the fanciest library — it's about choosing the right tool for the interaction you want to create, and engineering it with performance as a constraint from day one.</p>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <footer class="cs-footer">
+    <p>&copy; 2026 Rushmitha Varshini &mdash; <a href="mailto:Rushmithavarshini33@gmail.com">Rushmithavarshini33@gmail.com</a> &mdash; Melbourne, Australia</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+</body>
+</html>

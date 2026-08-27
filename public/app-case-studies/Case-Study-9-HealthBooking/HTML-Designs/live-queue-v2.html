@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MediCare+ — Live Queue</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f0f9f8;color:#0c2e2a;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw;text-align:center}
+.card{background:#fff;border-radius:28px;padding:30px 26px;box-shadow:0 16px 44px rgba(13,148,136,.14);margin-bottom:14px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#0d9488,#2dd4bf)}
+.docrow{display:flex;align-items:center;gap:14px;text-align:left;margin-bottom:22px}
+.av{width:56px;height:56px;border-radius:18px;background:#d7f2ee;display:grid;place-items:center;font-size:1.7rem;flex-shrink:0}
+.docrow b{font-size:.95rem;display:block;font-family:'Sora'}
+.docrow small{color:#5b7a75;font-size:.76rem;display:block;margin-top:2px}
+.live{display:inline-flex;align-items:center;gap:6px;background:#fee2e2;color:#dc2626;font-size:.62rem;font-weight:800;padding:4px 10px;border-radius:99px;margin-left:auto}
+.dot{width:7px;height:7px;border-radius:50%;background:#dc2626;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.token{font-size:.68rem;color:#5b7a75;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.num{font-family:'Sora';font-weight:800;font-size:4.2rem;line-height:1.1;background:linear-gradient(135deg,#0d9488,#2dd4bf);-webkit-background-clip:text;background-clip:text;color:transparent;margin:6px 0}
+.of{color:#5b7a75;font-size:.82rem}
+.bar{height:10px;border-radius:99px;background:#e6f4f2;margin:20px 0 8px;overflow:hidden}
+.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#0d9488,#2dd4bf);width:0;transition:width 1.4s cubic-bezier(.2,.9,.3,1)}
+.eta{display:flex;justify-content:space-between;font-size:.74rem;color:#5b7a75;font-weight:600}
+.steps{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.st{background:#fff;border-radius:15px;padding:12px 15px;display:flex;align-items:center;gap:11px;font-size:.78rem;text-align:left}
+.st i{font-style:normal;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:.85rem}
+.st.ok i{background:#d7f2ee}.st.now i{background:#fef3c7}
+.st small{color:#5b7a75;display:block;font-size:.66rem}
+.nudge{background:#fff;border:1px solid #cfe9e5;border-radius:16px;padding:14px 16px;font-size:.75rem;color:#0f5f57;text-align:left;line-height:1.6}
+</style></head>
+<body>
+<div class="app">
+  <div class="card">
+    <div class="docrow"><div class="av">🩺</div><div><b>Dr. Kavitha Rao</b><small>General Physician · Apollo Clinic</small></div><span class="live"><span class="dot"></span>LIVE</span></div>
+    <div class="token">Your token</div><div class="num" id="n">A-24</div><div class="of">Now serving A-19 · 3 ahead of you</div>
+    <div class="bar"><div class="fill" id="f"></div></div>
+    <div class="eta"><span>Token A-15</span><span>~18 min wait</span></div>
+  </div>
+  <div class="steps">
+    <div class="st ok"><i>✅</i><div><b>Checked in</b><small>Arrived at 10:42 AM</small></div></div>
+    <div class="st ok"><i>✅</i><div><b>Nurse triage done</b><small>BP + temp recorded</small></div></div>
+    <div class="st now"><i>⏳</i><div><b>Waiting for doctor</b><small>You'll be called ~11:05 AM</small></div></div>
+  </div>
+  <div class="nudge">☕ <b>No need to hover by the door.</b> We'll buzz your phone when it's your turn — grab a coffee at the café downstairs.</div>
+</div>
+<script>
+requestAnimationFrame(()=>setTimeout(()=>document.getElementById('f').style.width='64%',300));
+let cur=19,nxt=document.getElementById('n');
+setInterval(()=>{if(cur<23){cur++;nxt.textContent='A-'+cur}},4000);
+</script>
+</body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mindful — Profile & Privacy</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0f0c29;color:#fff;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.hero{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:26px;text-align:center;margin-bottom:16px}
+.av{width:78px;height:78px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,#a78bfa,#ec4899);display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.6rem}
+h1{font-family:'Sora';font-size:1.25rem;margin-bottom:4px}
+.hero p{color:rgba(255,255,255,.55);font-size:.8rem}
+.chips{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.c{font-size:.68rem;font-weight:700;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.08)}
+.c.g{background:rgba(52,211,153,.15);color:#6ee7b7}
+.sec{font-family:'Sora';font-size:.9rem;margin:22px 0 12px;color:rgba(255,255,255,.85)}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden}
+.row{display:flex;align-items:center;gap:13px;padding:15px 17px;border-bottom:1px solid rgba(255,255,255,.06)}
+.row:last-child{border:0}
+.row i{font-style:normal;width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.07);display:grid;place-items:center;flex-shrink:0}
+.row div b{font-size:.85rem;font-weight:600;display:block}
+.row small{color:rgba(255,255,255,.5);font-size:.72rem}
+.sw{margin-left:auto;width:44px;height:25px;border-radius:99px;background:linear-gradient(90deg,#8b5cf6,#ec4899);position:relative;cursor:pointer;flex-shrink:0;transition:.25s}
+.sw::after{content:'';position:absolute;width:19px;height:19px;border-radius:50%;background:#fff;top:3px;right:3px;transition:.25s}
+.sw.off{background:rgba(255,255,255,.15)}
+.sw.off::after{right:auto;left:3px}
+.lock{margin-top:22px;background:linear-gradient(135deg,rgba(52,211,153,.12),rgba(14,165,233,.1));border:1px solid rgba(52,211,153,.3);border-radius:18px;padding:16px 18px;display:flex;gap:13px;align-items:center}
+.lock i{font-style:normal;font-size:1.4rem}
+.lock b{font-size:.84rem;display:block}
+.lock small{color:rgba(255,255,255,.6);font-size:.72rem;line-height:1.5}
+</style></head>
+<body>
+<div class="app">
+  <div class="hero">
+    <div class="av">J</div>
+    <h1>Jamie W.</h1>
+    <p>Checking in since March · 87 check-ins logged</p>
+    <div class="chips"><span class="c g">🔥 12-day streak</span><span class="c">🌙 Night checker</span><span class="c">💜 Anxiety focus</span></div>
+  </div>
+
+  <div class="sec">Privacy controls</div>
+  <div class="card">
+    <div class="row"><i>🔒</i><div><b>Face ID lock</b><small>Require unlock to open Mindful</small></div><div class="sw"></div></div>
+    <div class="row"><i>🙈</i><div><b>Hide from app switcher</b><small>Blur preview when app is backgrounded</small></div><div class="sw"></div></div>
+    <div class="row"><i>📤</i><div><b>Therapist sharing</b><small>Weekly summary only · never raw notes</small></div><div class="sw off"></div></div>
+    <div class="row"><i>💾</i><div><b>Export my data</b><small>Download everything, anytime. It's yours.</small></div></div>
+  </div>
+
+  <div class="sec">Wellbeing</div>
+  <div class="card">
+    <div class="row"><i>🔔</i><div><b>Gentle reminders</b><small>9 PM daily · skips if you checked in</small></div><div class="sw"></div></div>
+    <div class="row"><i>🧘</i><div><b>Wind-down routine</b><small>Breathing + journal at night</small></div><div class="sw off"></div></div>
+  </div>
+
+  <div class="lock"><i>🛡️</i><div><b>Your data never trains ads</b><small>Mindful is ad-free. Mood data stays on-device unless you choose to share.</small></div></div>
+</div>
+<script>
+document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>s.classList.toggle('off'));
+</script>
+</body></html>

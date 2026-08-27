@@ -1,6 +1,8 @@
 import React from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
+import ParticleBackground from './components/ParticleBackground';
+import ToastNotification from './components/ToastNotification';
 import ScrollyCanvas from './components/ScrollyCanvas';
 import ProjectsSection from './components/ProjectsSection';
 import CaseStudySection from './components/CaseStudySection';
@@ -15,8 +17,14 @@ export default function App() {
   return (
     <ThemeProvider>
       <div className="app-container">
-        {/* Floating Navigation Header */}
+        {/* Floating Navigation Header & Mobile Drawer */}
         <Navbar />
+
+        {/* 60FPS Ambient Particle Constellation Background */}
+        <ParticleBackground />
+
+        {/* Global Toast Alert Notifications */}
+        <ToastNotification />
 
         {/* Atmospheric Ambient Glows */}
         <div className="ambient-glow-1" />
@@ -46,6 +54,7 @@ export default function App() {
           target="_blank"
           rel="noreferrer"
           className="floating-whatsapp-btn"
+          title="Chat directly on WhatsApp"
           style={{
             position: 'fixed',
             bottom: '24px',

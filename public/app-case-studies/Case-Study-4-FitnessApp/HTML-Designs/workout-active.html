@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitPulse — Active Workout</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0a0f0d;color:#eafcf2;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+h1{font-family:'Sora';font-size:1.2rem;letter-spacing:-.02em}
+.timer{font-family:'Sora';font-weight:800;font-size:1.3rem;color:#22e07a}
+.ex{background:#111a16;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:20px;margin-bottom:14px}
+.ex h3{font-family:'Sora';font-size:.95rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.set{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed rgba(255,255,255,.08)}
+.set:first-of-type{border:0}
+.set i{font-style:normal;font-size:.9rem;color:#8fa89b;min-width:40px}
+.set input{flex:1;background:transparent;border:0;color:#eafcf2;font-family:'Sora';font-size:.9rem;font-weight:700;text-align:center;outline:none;-webkit-appearance:none;-moz-appearance:textfield}
+.set input::-webkit-outer-spin-button,.set input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.set span{color:#8fa89b;font-size:.7rem;min-width:38px}
+.done-btn{width:52px;height:52px;border-radius:16px;border:1.5px solid #22e07a;background:transparent;color:#22e07a;font-family:'Sora';font-weight:800;font-size:.8rem;cursor:pointer;transition:.2s}
+.done-btn.on{background:#22e07a;color:#04140b;box-shadow:0 8px 20px rgba(34,224,122,.35)}
+.rest{display:flex;align-items:center;gap:10px;background:rgba(34,224,122,.08);border:1px solid rgba(34,224,122,.3);border-radius:16px;padding:14px 16px;margin-top:14px}
+.rest i{font-style:normal;font-size:1.3rem}
+.rest div b{font-family:'Sora';font-size:1.2rem;color:#22e07a;display:block}
+.rest small{color:#8fa89b;font-size:.72rem}
+.skip{margin-top:10px;text-align:center;font-size:.72rem;color:#8fa89b;cursor:pointer}
+.skip:hover{color:#eafcf2}
+.bar{margin:22px 0;height:6px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22e07a,#38bdf8);width:0;transition:width .4s ease}
+</style></head>
+<body>
+<div class="app">
+  <div class="top">
+    <h1>Push Day · Exercise 2/6</h1>
+    <div class="timer" id="t">24:13</div>
+  </div>
+  <div class="bar"><i id="prog"></i></div>
+
+  <div class="ex">
+    <h3>🏋️ Incline Dumbbell Press</h3>
+    <div class="set"><i>SET 1</i><input type="number" value="10" min="1" max="30"><span>reps</span><input type="number" value="22.5" step="2.5" min="0"><span>kg</span><button class="done-btn" onclick="this.classList.toggle('on')">✓</button></div>
+    <div class="set"><i>SET 2</i><input type="number" value="10" min="1" max="30"><span>reps</span><input type="number" value="22.5" step="2.5" min="0"><span>kg</span><button class="done-btn" onclick="this.classList.toggle('on')">✓</button></div>
+    <div class="set"><i>SET 3</i><input type="number" value="8" min="1" max="30"><span>reps</span><input type="number" value="25" step="2.5" min="0"><span>kg</span><button class="done-btn" onclick="this.classList.toggle('on')">✓</button></div>
+    <div class="rest"><i>⏱</i><div><b id="r">90s</b><small>Rest — auto-starts next set</small></div><button style="margin-left:auto;border:0;background:none;color:#8fa89b;font-size:.72rem;font-weight:700;cursor:pointer" onclick="alert('⏭️ Skipped rest')">Skip</button></div>
+  </div>
+  <div class="ex" style="padding:14px 20px;background:transparent;border:0;color:#8fa89b;font-size:.78rem;text-align:center">Swipe down when complete → Next: Shoulder Press</div>
+</div>
+<script>
+let t=24*60+13,r=90,pr=0;
+setInterval(()=>{if(t>0){t--;document.getElementById('t').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');pr=1-t/(25*60);document.getElementById('prog').style.width=(pr*100)+'%'}},1000);
+setInterval(()=>{if(r>0){r--;document.getElementById('r').textContent=r+'s'}},1000);
+</script>
+</body></html>

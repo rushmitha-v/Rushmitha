@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Money Command Center (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 36px;border-bottom:1px solid rgba(255,255,255,.08);background:#141b36}
+.brand{font-family:'Sora';font-weight:800;font-size:1.05rem}
+.brand span{color:#2dd4a7}
+.net{font-size:.74rem;color:#8a94ad}.net b{color:#2dd4a7;font-family:'Sora'}
+.wrap{max-width:1200px;margin:0 auto;padding:26px 36px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start}
+.hero2{grid-column:1/4;background:linear-gradient(135deg,#141b36,#182347);border:1px solid rgba(45,212,167,.25);border-radius:24px;padding:26px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+.hero2 small{display:block;color:#8a94ad;font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.big{font-family:'Sora';font-weight:800;font-size:2.3rem;margin-top:6px}
+.big em{font-style:normal;font-size:.9rem;color:#2dd4a7;margin-left:10px}
+.minis{display:flex;gap:14px}
+.mn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:14px 20px;text-align:center}
+.mn b{font-family:'Sora';display:block;font-size:1.15rem;margin-top:5px}
+.cardd{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px}
+.cardd h3{font-family:'Sora';font-size:.92rem;margin-bottom:15px}
+.bars{display:flex;align-items:flex-end;gap:11px;height:130px}
+.bar{flex:1;display:flex;flex-direction:column;height:100%;justify-content:flex-end;align-items:center;gap:8px}
+.bar i{width:100%;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#38bdf8,#1d6fa8)}
+.bar.over i{background:linear-gradient(180deg,#fb7185,#be3a55)}
+.bar span{font-size:.58rem;color:#8a94ad;font-weight:700}
+.goalrow{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.goalrow:last-child{border:0}
+.gp{height:6px;width:90px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+.gf{height:100%;background:linear-gradient(90deg,#2dd4a7,#38bdf8)}
+.txline{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.78rem;align-items:center}
+.txline:last-child{border:0}
+.txline i{font-style:normal;font-size:1.05rem}
+.txline small{color:#8a94ad;display:block;font-size:.66rem}
+.txline em{margin-left:auto;font-style:normal;font-family:'Sora';font-weight:700}
+</style></head>
+<body>
+<div class="top"><div class="brand">🪙 Penny<span>Wise</span> <small style="font-weight:500;font-size:.6rem;color:#8a94ad">DESKTOP</small></div><div class="net">This month net saved <b>+₹20,420 🎉</b></div></div>
+<div class="wrap">
+  <div class="hero2">
+    <div><small>Total balance · 3 accounts synced</small><div class="big">₹1,84,320 <em>↑ 8% this month</em></div></div>
+    <div class="minis">
+      <div class="mn"><small>Spent</small><b style="color:#fb7185">₹24,580</b></div>
+      <div class="mn"><small>Saved</small><b style="color:#2dd4a7">₹20,420</b></div>
+      <div class="mn"><small>Invested</small><b style="color:#38bdf8">₹8,000</b></div>
+      <div class="mn"><small>Bills due</small><b style="color:#fbbf24">₹18,240</b></div>
+    </div>
+  </div>
+
+  <div class="cardd"><h3>Budget health by category</h3>
+    <div class="bars">
+      <div class="bar"><i style="height:52%"></i><span>Food<br>₹8.3k</span></div>
+      <div class="bar over"><i style="height:88%"></i><span>Dine<br>₹4.1k ⚠️</span></div>
+      <div class="bar"><i style="height:40%"></i><span>Fuel<br>₹3.9k</span></div>
+      <div class="bar"><i style="height:64%"></i><span>Groc<br>₹3.7k</span></div>
+      <div class="bar"><i style="height:30%"></i><span>Shop<br>₹2.9k</span></div>
+      <div class="bar"><i style="height:48%"></i><span>Fun<br>₹1.6k</span></div>
+    </div></div>
+
+  <div class="cardd"><h3>Goal progress</h3>
+    <div class="goalrow"><div>Himalayan fund<div class="gp"><div class="gf" style="width:62%"></div></div></div><b style="font-family:'Sora'">62%</b></div>
+    <div class="goalrow"><div>Emergency fund<div class="gp"><div class="gf" style="width:87%"></div></div></div><b style="font-family:'Sora'">87%</b></div>
+    <div class="goalrow"><div>Europe 2026<div class="gp"><div class="gf" style="width:28%"></div></div></div><b style="font-family:'Sora'">28%</b></div>
+    <div style="margin-top:13px;font-size:.72rem;color:#8a94ad;line-height:1.65;background:rgba(45,212,167,.08);border:1px solid rgba(45,212,167,.25);border-radius:12px;padding:11px 13px">💡 At current pace you'll hit the bike goal in <b style="color:#2dd4a7">July 2026</b> — 3 months early.</div></div>
+
+  <div class="cardd"><h3>Live activity</h3>
+    <div class="txline"><i>🍜</i><div><b>Swiggy · Midnight biryani</b><small>Today 12:04 AM</small></div><em style="color:#fb7185">−₹340</em></div>
+    <div class="txline"><i>💰</i><div><b>Salary credit</b><small>Sep 1</small></div><em style="color:#2dd4a7">+₹45,000</em></div>
+    <div class="txline"><i>📈</i><div><b>SIP executed · Nifty 50</b><small>Sep 5</small></div><em style="color:#38bdf8">−₹8,000</em></div>
+    <div class="txline"><i>🏠</i><div><b>Rent autopaid</b><small>Sep 3 · receipt saved</small></div><em style="color:#fb7185">−₹9,000</em></div></div>
+</div>
+</body></html>

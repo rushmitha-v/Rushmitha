@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Profile & Trust</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+.hero{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:26px 22px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,167,.25),transparent 70%)}
+.av{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,#2dd4a7,#38bdf8);display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.6rem;color:#04140b}
+h1{font-family:'Sora';font-size:1.25rem}
+.hero p{color:#8a94ad;font-size:.78rem;margin-top:4px}
+.trust{display:inline-flex;align-items:center;gap:7px;background:rgba(45,212,167,.12);border:1px solid rgba(45,212,167,.35);color:#6ee7b7;font-size:.66rem;font-weight:800;padding:6px 13px;border-radius:99px;margin-top:13px}
+.list{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;margin-bottom:16px}
+.li{display:flex;align-items:center;gap:13px;padding:15px 17px;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;transition:.2s}
+.li:last-child{border:0}.li:hover{background:rgba(255,255,255,.03)}
+.li i{font-style:normal;width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:1.05rem;flex-shrink:0}
+.li b{font-size:.84rem;font-weight:600;display:block}
+.li small{color:#8a94ad;font-size:.71rem}
+.tag{margin-left:auto;font-size:.58rem;font-weight:800;padding:4px 10px;border-radius:99px}
+.tg{background:rgba(45,212,167,.15);color:#2dd4a7}
+.tn{background:rgba(56,189,248,.15);color:#38bdf8}
+.sec{font-family:'Sora';font-size:.88rem;margin-bottom:11px}
+.danger{text-align:center;color:#fb7185;font-size:.78rem;font-weight:700;padding:14px;cursor:pointer}
+</style></head>
+<body>
+<div class="app">
+  <div class="hero"><div class="av">R</div><h1>Ravi Kumar</h1><p>ravi.k@outlook.com · Member since Jan 2025</p><span class="trust">🔒 Bank-grade security · Data encrypted at rest</span></div>
+
+  <div class="sec">Linked accounts</div>
+  <div class="list">
+    <div class="li"><i>🏦</i><div><b>HDFC Savings ••4821</b><small>Synced 2 min ago · read-only</small></div><span class="tag tg">✓ ACTIVE</span></div>
+    <div class="li"><i>🏦</i><div><b>ICICI Salary ••9034</b><small>Synced 2 min ago · read-only</small></div><span class="tag tg">✓ ACTIVE</span></div>
+    <div class="li"><i>💳</i><div><b>HDFC Credit ••7729</b><small>Bill day: 5th · limit ₹1.2L</small></div><span class="tag tn">AUTOPAY</span></div>
+  </div>
+
+  <div class="sec">Money rules</div>
+  <div class="list">
+    <div class="li"><i>🛡️</i><div><b>Overspend alerts</b><small>Warn at 80% of any category</small></div><span class="tag tg">ON</span></div>
+    <div class="li"><i>🤝</i><div><b>Partner view</b><small>Ananya sees goals only, not transactions</small></div><span class="tag tn">LIMITED</span></div>
+    <div class="li"><i>🔔</i><div><b>Daily digest</b><small>9 PM summary · WhatsApp</small></div><span class="tag tg">ON</span></div>
+    <div class="li"><i>🌍</i><div><b>Data & privacy</b><small>Export or delete everything anytime</small></div><span class="tag tn">YOURS</span></div>
+  </div>
+  <div class="danger">Disconnect all banks & delete data</div>
+</div>
+</body></html>

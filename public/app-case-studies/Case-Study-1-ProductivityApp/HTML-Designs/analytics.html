@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FocusMate — Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0b1020;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.4rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8a94ad;font-size:.82rem;margin-bottom:20px}
+.range{display:inline-flex;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:99px;padding:4px;margin-bottom:18px}
+.rg{border:0;background:transparent;color:#8a94ad;font-weight:600;font-size:.74rem;padding:7px 15px;border-radius:99px;cursor:pointer}
+.rg.on{background:linear-gradient(135deg,#4f8cff,#8b5cf6);color:#fff}
+.card{background:#141c3a;border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:20px;margin-bottom:14px}
+.card h3{font-family:'Sora';font-size:.9rem;margin-bottom:2px}
+.cap{color:#8a94ad;font-size:.72rem;margin-bottom:14px}
+.big{display:flex;align-items:baseline;gap:10px}
+.big b{font-family:'Sora';font-size:2.2rem;letter-spacing:-.03em}
+.up{font-size:.72rem;font-weight:800;color:#2dd4a7;background:rgba(45,212,167,.13);padding:4px 10px;border-radius:99px}
+svg{width:100%;height:auto}
+.ln{fill:none;stroke:url(#g);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700;animation:d 1.8s ease forwards}
+@keyframes d{to{stroke-dashoffset:0}}
+.ar{fill:url(#ga);opacity:0;animation:fi 1s .7s forwards}
+@keyframes fi{to{opacity:1}}
+.grid-l{stroke:rgba(255,255,255,.07);stroke-dasharray:3 5}
+.heat{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
+.hc{aspect-ratio:1;border-radius:6px;background:rgba(79,140,255,.15)}
+.insight{background:linear-gradient(135deg,rgba(79,140,255,.12),rgba(139,92,246,.1));border:1px solid rgba(79,140,255,.3);border-radius:16px;padding:15px 17px;display:flex;gap:12px;align-items:center}
+.insight b{font-size:.84rem;display:block}
+.insight small{color:#8a94ad;font-size:.73rem;line-height:1.5}
+.insight i{font-style:normal;font-size:1.3rem}
+</style></head>
+<body>
+<div class="app">
+  <h1>Your focus, decoded 📊</h1>
+  <p class="sub">Patterns from 47 sessions this month</p>
+  <div class="range"><button class="rg">Week</button><button class="rg on">Month</button><button class="rg">All time</button></div>
+
+  <div class="card">
+    <h3>Deep focus hours</h3>
+    <div class="cap">Daily average · higher is better</div>
+    <div class="big"><b>3.8h</b><span class="up">↑ 22% vs last month</span></div>
+    <svg viewBox="0 0 360 120">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient>
+        <linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4f8cff" stop-opacity=".25"/><stop offset="100%" stop-color="#4f8cff" stop-opacity="0"/></linearGradient>
+      </defs>
+      <line class="grid-l" x1="10" y1="30" x2="350" y2="30"/><line class="grid-l" x1="10" y1="65" x2="350" y2="65"/><line class="grid-l" x1="10" y1="100" x2="350" y2="100"/>
+      <path class="ar" d="M10 85 L70 70 L130 78 L190 52 L250 60 L310 30 L350 38 L350 120 L10 120Z"/>
+      <path class="ln" d="M10 85 L70 70 L130 78 L190 52 L250 60 L310 30 L350 38"/>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>When you focus best</h3>
+    <div class="cap">Sessions by hour · darker = more sessions</div>
+    <div class="heat">
+      <div class="hc" style="opacity:.2"></div><div class="hc" style="opacity:.15"></div><div class="hc" style="opacity:.1"></div><div class="hc" style="opacity:.2"></div>
+      <div class="hc" style="opacity:.4"></div><div class="hc" style="opacity:.7"></div><div class="hc" style="opacity:.95"></div><div class="hc" style="opacity:.6"></div>
+      <div class="hc" style="opacity:.85"></div><div class="hc" style="opacity:.5"></div><div class="hc" style="opacity:.3"></div><div class="hc" style="opacity:.25"></div>
+    </div>
+    <div class="cap" style="margin:10px 0 0">☀️ Your golden window: <b style="color:#fff">10 AM – 1 PM</b></div>
+  </div>
+
+  <div class="insight"><i>💡</i><div><b>Tuesday tip</b><small>You focus 31% longer when Maria is your partner. She's free tomorrow at 10 AM.</small></div></div>
+</div>
+<script>
+document.querySelectorAll('.rg').forEach(r=>r.onclick=()=>{document.querySelectorAll('.rg').forEach(x=>x.classList.remove('on'));r.classList.add('on')});
+</script>
+</body></html>

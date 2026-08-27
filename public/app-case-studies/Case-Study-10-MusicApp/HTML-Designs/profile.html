@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WavePlay — Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0b0616;color:#f3effc;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+.hero{background:linear-gradient(160deg,#1a1030,#241543);border:1px solid rgba(255,255,255,.1);border-radius:26px;padding:26px 22px;text-align:center;margin-bottom:16px}
+.av{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,#8b5cf6,#22d3ee);display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.65rem}
+h1{font-family:'Sora';font-size:1.22rem}
+.hero p{color:#a89fc4;font-size:.75rem;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:17px}
+.s{background:rgba(255,255,255,.07);border-radius:13px;padding:11px 4px}
+.s b{font-family:'Sora';display:block;font-size:1.08rem;background:linear-gradient(120deg,#c4b5fd,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.s small{font-size:.56rem;color:#a89fc4;font-weight:700}
+.sec{font-family:'Sora';font-size:.88rem;margin-bottom:11px}
+.list{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:20px;overflow:hidden;margin-bottom:16px}
+.li{display:flex;align-items:center;gap:13px;padding:15px 17px;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;transition:.2s}
+.li:last-child{border:0}.li:hover{background:rgba(255,255,255,.04)}
+.li i{font-style:normal;width:38px;height:38px;border-radius:12px;background:rgba(139,92,246,.18);display:grid;place-items:center;font-size:1.05rem;flex-shrink:0}
+.li b{font-size:.83rem;font-weight:600;display:block}
+.li small{color:#a89fc4;font-size:.7rem}
+.tag{margin-left:auto;font-size:.56rem;font-weight:800;padding:4px 10px;border-radius:99px;background:rgba(34,211,238,.15);color:#22d3ee;white-space:nowrap}
+.plan{background:linear-gradient(135deg,#8b5cf6,#22d3ee);border-radius:20px;padding:18px;display:flex;align-items:center;gap:14px;margin-bottom:16px;color:#fff}
+.plan i{font-style:normal;font-size:1.8rem}
+.plan b{font-size:.92rem;display:block;font-family:'Sora'}
+.plan small{opacity:.92;font-size:.72rem}
+.pb{margin-left:auto;border:0;border-radius:99px;padding:9px 17px;font-size:.68rem;font-weight:800;background:rgba(255,255,255,.22);color:#fff;cursor:pointer;white-space:nowrap}
+</style></head>
+<body>
+<div class="app">
+  <div class="hero"><div class="av">R</div><h1>Ravi Kumar</h1><p>Listening since Nov 2024 · Tamil · English · Kannada</p>
+    <div class="stats"><div class="s"><b>41k</b><small>MINUTES/YR</small></div><div class="s"><b>37</b><small>ARTISTS FOUND</small></div><div class="s"><b>12</b><small>PLAYLISTS</small></div></div></div>
+
+  <div class="plan"><i>💎</i><div><b>WavePlay Premium</b><small>Ad-free · offline · renews Oct 2</small></div><button class="pb" onclick="alert('💳 Managing subscription...')">Manage</button></div>
+
+  <div class="sec">Your sound identity</div>
+  <div class="list">
+    <div class="li"><i>⚡</i><div><b>Mood mode</b><small>Energized by default · auto-switch at gym GPS</small></div><span class="tag">ON</span></div>
+    <div class="li"><i>🌙</i><div><b>Sleep timer default</b><small>45 min with gradual fade</small></div><span class="tag">SET</span></div>
+    <div class="li"><i>📴</i><div><b>Smart offline</b><small>Auto-download commute mixes on Wi-Fi</small></div><span class="tag">ON</span></div>
+    <div class="li"><i>🎧</i><div><b>Audio quality</b><small>High (320kbps) · auto-lower on mobile data</small></div><span class="tag">HIGH</span></div>
+    <div class="li"><i>👥</i><div><b>Blend with friends</b><small>Merge tastes with Ananya weekly 🎶</small></div><span class="tag">2 BLENDS</span></div>
+  </div>
+
+  <div class="sec">Privacy</div>
+  <div class="list">
+    <div class="li"><i>🙈</i><div><b>Private listening</b><small>Your guilty pleasures stay yours 😅</small></div><span class="tag">OFF</span></div>
+    <div class="li"><i>📊</i><div><b>Listening data</b><small>Download or delete everything anytime</small></div><span class="tag">YOURS</span></div>
+  </div>
+</div>
+</body></html>

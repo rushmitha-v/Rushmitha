@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnLoop — Today's Lessons</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f6f5ff;--card:#fff;--ink:#1d1b33;--mut:#7a76a0;--ind:#5b5bd6;--ind2:#7c7cf0;
+    --grn:#22b573;--amb:#f5a623;--line:#e9e6f8}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:var(--bg);color:var(--ink);min-height:100vh;display:flex;justify-content:center;padding:30px 16px;
+    background-image:radial-gradient(500px 300px at 110% -5%,rgba(91,91,214,.12),transparent),radial-gradient(400px 260px at -10% 30%,rgba(34,181,115,.08),transparent)}
+  .app{width:410px;max-width:100%}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .brand{font-family:'Sora';font-weight:800;font-size:1.08rem}
+  .brand b{color:var(--ind)}
+  .xp{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:.76rem;font-weight:700}
+  .xp i{font-style:normal;background:linear-gradient(135deg,var(--ind),var(--ind2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  h1.h{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em;margin-bottom:6px}
+  p.sub{color:var(--mut);font-size:.85rem;margin-bottom:20px}
+
+  /* streak strip */
+  .strip{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;
+    align-items:center;gap:12px;margin-bottom:18px;box-shadow:0 10px 26px rgba(29,27,51,.06)}
+  .flame{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#fff1dd,#ffe3c2);display:grid;place-items:center;font-size:1.25rem}
+  .strip div b{font-size:.88rem;display:block}
+  .strip small{color:var(--mut);font-size:.74rem}
+  .days{margin-left:auto;display:flex;gap:4px}
+  .d{width:22px;height:22px;border-radius:8px;background:#efeefb;display:grid;place-items:center;font-size:.6rem;font-weight:800;color:#b9b4dd}
+  .d.on{background:linear-gradient(135deg,var(--ind),var(--ind2));color:#fff}
+
+  /* today card */
+  .today{background:linear-gradient(135deg,#5b5bd6,#7c5bd6 60%,#9d5bd6);border-radius:24px;padding:22px;color:#fff;
+    margin-bottom:18px;position:relative;overflow:hidden;box-shadow:0 20px 44px rgba(91,91,214,.35)}
+  .today::after{content:'';position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.12);top:-60px;right:-50px}
+  .today::before{content:'';position:absolute;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.08);bottom:-40px;left:-30px}
+  .t-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border-radius:99px;
+    padding:5px 12px;font-size:.68rem;font-weight:700;margin-bottom:12px}
+  .today h2{font-family:'Sora';font-size:1.22rem;margin-bottom:6px;position:relative;z-index:1}
+  .today p{font-size:.8rem;opacity:.85;margin-bottom:16px;position:relative;z-index:1}
+  .lessons{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+  .les{background:rgba(255,255,255,.14);backdrop-filter:blur(6px);border-radius:14px;padding:12px 14px;display:flex;
+    align-items:center;gap:12px;cursor:pointer;transition:.2s;border:1px solid transparent}
+  .les:hover{background:rgba(255,255,255,.22);transform:translateX(4px)}
+  .les i{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.22);display:grid;place-items:center;font-style:normal;font-size:.95rem;flex-shrink:0}
+  .les b{font-size:.82rem;display:block}
+  .les small{font-size:.68rem;opacity:.8}
+  .les em{margin-left:auto;font-style:normal;font-size:.66rem;font-weight:800;background:rgba(255,255,255,.22);padding:4px 9px;border-radius:99px}
+  .les.done{opacity:.65}.les.done em{background:rgba(255,255,255,.3)}
+
+  /* continue learning */
+  .sec-t{display:flex;justify-content:space-between;align-items:center;margin:20px 0 12px}
+  .sec-t h3{font-family:'Sora';font-size:.98rem}
+  .sec-t a{color:var(--ind);font-size:.76rem;font-weight:700;text-decoration:none}
+
+  .course{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;gap:14px;
+    align-items:center;margin-bottom:10px;box-shadow:0 10px 26px rgba(29,27,51,.05);transition:.22s}
+  .course:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(29,27,51,.1)}
+  .c-ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:1.4rem;flex-shrink:0}
+  .ci1{background:#ecebff} .ci2{background:#e5f7ef} .ci3{background:#fff3e0}
+  .course div{flex:1}
+  .course b{font-size:.88rem;display:block;margin-bottom:2px}
+  .course small{color:var(--mut);font-size:.72rem}
+  .pbar{height:7px;background:#efeefb;border-radius:99px;margin-top:9px;overflow:hidden}
+  .pfill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--ind),var(--ind2));transition:width 1.2s ease}
+  .pct{font-family:'Sora';font-weight:800;font-size:.8rem;color:var(--ind)}
+
+  /* review banner */
+  .review{background:linear-gradient(135deg,#fff7ea,#ffefd6);border:1px solid #f5dfb8;border-radius:18px;padding:15px 16px;
+    display:flex;align-items:center;gap:12px;margin-top:16px}
+  .review i{font-style:normal;font-size:1.3rem}
+  .review b{font-size:.84rem;display:block}
+  .review small{color:#9a8460;font-size:.73rem}
+  .go-r{margin-left:auto;border:0;background:var(--amb);color:#fff;font-weight:800;font-size:.74rem;padding:10px 15px;border-radius:11px;cursor:pointer;font-family:'Inter'}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand">🔄 Learn<b>Loop</b></div>
+    <div class="xp">⚡ <i id="xp">1,240</i> XP</div>
+  </div>
+
+  <h1 class="h">3 small wins today, Ananya</h1>
+  <p class="sub">SQL Basics · Day 16 of your 90-day data path</p>
+
+  <div class="strip">
+    <div class="flame">🔥</div>
+    <div><b>16-day streak</b><small>Best ever! One lesson keeps it alive</small></div>
+    <div class="days">
+      <div class="d on">M</div><div class="d on">T</div><div class="d on">W</div><div class="d on">T</div>
+      <div class="d on">F</div><div class="d">S</div><div class="d">S</div>
+    </div>
+  </div>
+
+  <div class="today">
+    <span class="t-tag">⏱ TODAY'S LOOP · 15 MIN TOTAL</span>
+    <h2>Finish by lunch break ☕</h2>
+    <p>Three micro-lessons · quiz after each · XP on completion</p>
+    <div class="lessons">
+      <div class="les done"><i>✓</i><div><b>JOINs — inner vs outer</b><small>5 min · video</small></div><em>+30 XP</em></div>
+      <div class="les"><i>▶</i><div><b>GROUP BY & HAVING</b><small>6 min · video + practice</small></div><em>+30 XP</em></div>
+      <div class="les"><i>🎧</i><div><b>Window functions intro</b><small>4 min · audio-only</small></div><em>+30 XP</em></div>
+    </div>
+  </div>
+
+  <div class="sec-t"><h3>Continue learning</h3><a href="#">My paths →</a></div>
+
+  <div class="course">
+    <div class="c-ic ci1">🗄️</div>
+    <div><b>SQL from Zero to Analyst</b><small>24 of 42 lessons · 12 min/day</small>
+      <div class="pbar"><div class="pfill" data-w="57%"></div></div></div>
+    <span class="pct">57%</span>
+  </div>
+  <div class="course">
+    <div class="c-ic ci2">🐍</div>
+    <div><b>Python for Data</b><small>8 of 36 lessons · starts after SQL</small>
+      <div class="pbar"><div class="pfill" data-w="22%" style="background:linear-gradient(90deg,#22b573,#5ad196)"></div></div></div>
+    <span class="pct" style="color:var(--grn)">22%</span>
+  </div>
+
+  <div class="review">
+    <i>🧠</i>
+    <div><b>3 flashcards due for review</b><small>Spaced repetition · 2 min</small></div>
+    <button class="go-r" onclick="review()">Review</button>
+  </div>
+</div>
+<script>
+requestAnimationFrame(()=>setTimeout(()=>document.querySelectorAll('.pfill').forEach(p=>p.style.width=p.dataset.w),250));
+function review(){alert('🧠 Flashcard review: swipe right if you knew it, left to repeat!')}
+document.querySelectorAll('.les').forEach(l=>l.addEventListener('click',()=>{l.classList.add('done');l.querySelector('i').textContent='✓'}));
+</script>
+</body>
+</html>

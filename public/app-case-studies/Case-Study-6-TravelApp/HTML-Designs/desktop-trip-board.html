@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wanderly — Trip Planner (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f4f9fc;color:#1b2733}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 36px;background:#fff;border-bottom:1px solid #e8eff5}
+.brand{font-family:'Sora';font-weight:800;font-size:1.05rem}
+.brand span{background:linear-gradient(120deg,#0ea5e9,#f97316);-webkit-background-clip:text;background-clip:text;color:transparent}
+.trip{display:flex;align-items:center;gap:10px;font-size:.74rem;color:#7d8fa1;font-weight:700}
+.inv{display:flex;gap:-6px}
+.iav{width:30px;height:30px;border-radius:50%;border:2.5px solid #fff;display:grid;place-items:center;font-size:.62rem;font-weight:800;color:#fff;margin-left:-7px;font-family:'Sora'}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 36px;display:grid;grid-template-columns:300px 1fr 320px;gap:20px;align-items:start}
+.col h3{font-family:'Sora';font-size:.92rem;margin-bottom:13px}
+.hero2{grid-column:1/4;background:linear-gradient(120deg,#0ea5e9,#f97316);border-radius:24px;padding:28px 30px;color:#fff;margin-bottom:4px}
+.hero2 small{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;opacity:.92}
+.hero2 b{display:block;font-family:'Sora';font-size:1.7rem;margin-top:8px}
+.hero2 p{font-size:.82rem;opacity:.94;margin-top:6px}
+.chips{display:flex;gap:9px;margin-top:14px}
+.chip{background:rgba(255,255,255,.22);border-radius:99px;padding:6px 14px;font-size:.66rem;font-weight:800}
+.cardd{background:#fff;border-radius:18px;padding:18px;box-shadow:0 8px 22px rgba(14,165,233,.09)}
+.day{margin-bottom:12px}
+.dh{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.dh b{font-family:'Sora';font-size:.84rem;width:64px}
+.evline{display:flex;gap:11px;padding:8px 0 8px 12px;border-left:2.5px solid #cfe7f2;margin-left:8px}
+.tm{font-size:.62rem;font-weight:800;color:#f97316;width:52px;flex-shrink:0;padding-top:2px}
+.evline div b{font-size:.78rem;display:block}
+.evline small{color:#7d8fa1;font-size:.68rem}
+.budget .rowl{display:flex;justify-content:space-between;font-size:.76rem;padding:7px 0;border-bottom:1px dashed #eef4f8}
+.budget .rowl:last-child{border:0}
+.pbar{height:9px;border-radius:99px;background:#eef4f8;overflow:hidden;margin:10px 0 6px}
+.pfill{height:100%;width:0;background:linear-gradient(90deg,#0ea5e9,#f97316);border-radius:99px;transition:width 1.2s ease}
+.note{background:#fff8ec;border:1px solid #fbe3bd;border-radius:14px;padding:12px 14px;font-size:.72rem;line-height:1.6;color:#92600a;margin-top:14px}
+</style></head>
+<body>
+<div class="top"><div class="brand">🧭 Wander<span>ly</span></div><div class="trip">Coorg Weekend · Sep 12–15 <div class="inv"><span class="iav" style="background:#f97316">R</span><span class="iav" style="background:#0ea5e9">A</span><span class="iav" style="background:#10b981">K</span><span class="iav" style="background:#8b5cf6">M</span></div> <span style="color:#22b573">● All voted ✓</span></div></div>
+<div class="wrap">
+  <div class="hero2"><small>Group trip · 4 travelers</small><b>Coorg Coffee Country ☕</b><p>3 nights · homestay booked · car booked · day plan ready — everything in one place, works offline.</p>
+    <div class="chips"><span class="chip">✅ Stay booked</span><span class="chip">✅ Travel locked</span><span class="chip">📋 11 activities planned</span><span class="chip">💸 ₹19,240 tracked</span></div></div>
+
+  <div class="col cardd"><h3>Trip timeline</h3>
+    <div class="day"><div class="dh"><b>Fri 12</b><small style="color:#7d8fa1;font-size:.68rem">Arrive 4 PM</small></div>
+      <div class="evline"><span class="tm">4:30 PM</span><div><b>Check-in homestay</b><small>Wooden cottage · valley view</small></div></div>
+      <div class="evline"><span class="tm">7:00 PM</span><div><b>Campfire + dinner</b><small>Host arranges BBQ</small></div></div></div>
+    <div class="day"><div class="dh"><b>Sat 13</b><small style="color:#7d8fa1;font-size:.68rem">Full day out</small></div>
+      <div class="evline"><span class="tm">6:00 AM</span><div><b>Raja's Seat sunrise</b><small>Leave by 5:40 AM</small></div></div>
+      <div class="evline"><span class="tm">10:30 AM</span><div><b>Abbey Falls trek</b><small>Rain jacket!</small></div></div>
+      <div class="evline"><span class="tm">4:00 PM</span><div><b>Estate tour (booked)</b><small>Guide: Manoj</small></div></div></div>
+    <div class="day" style="margin-bottom:0"><div class="dh"><b>Sun 14</b><small style="color:#7d8fa1;font-size:.68rem">Chill day</small></div>
+      <div class="evline" style="border-color:#fbd9b6"><span class="tm">Anytime</span><div><b>Free / suggestions open</b><small>Vote closes Fri night</small></div></div></div></div>
+
+  <div class="col budget cardd"><h3>Budget tracker</h3>
+    <div class="pbar"><div class="pfill" id="pf" data-w="72%"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:.66rem;color:#7d8fa1;margin-bottom:8px"><span>₹19,240 spent</span><span>₹27,000 planned</span></div>
+    <div class="rowl"><span>🏡 Stay</span><b>₹12,600</b></div>
+    <div class="rowl"><span>🚙 Car + fuel</span><b>₹4,100</b></div>
+    <div class="rowl"><span>🍜 Food</span><b>₹2,540</b></div>
+    <div class="note">💡 Kiran's fuel top-up will cross the travel budget by ₹400 — approve extra or trim Sunday drive?</div></div>
+</div>
+<script>requestAnimationFrame(()=>setTimeout(()=>document.getElementById('pf').style.width='72%',250));</script>
+</body></html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PennyWise — Spending Insights</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0c1226;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8a94ad;font-size:.82rem;margin-bottom:18px}
+.donut-wrap{display:flex;gap:20px;background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:20px;margin-bottom:14px;align-items:center}
+.donut{width:120px;height:120px;border-radius:50%;background:conic-gradient(#fb7185 0 34%,#38bdf8 34% 58%,#fbbf24 58% 74%,#2dd4a7 74% 90%,#a78bfa 90% 100%);display:grid;place-items:center;flex-shrink:0;animation:spinin 1s ease}
+@keyframes spinin{from{transform:scale(.6) rotate(-120deg);opacity:0}}
+.hole{width:76px;height:76px;background:#141b36;border-radius:50%;display:grid;place-items:center;text-align:center}
+.hole b{font-family:'Sora';font-size:.95rem;display:block;line-height:1.1}
+.hole small{color:#8a94ad;font-size:.56rem}
+.legend{flex:1}
+.lg{display:flex;align-items:center;gap:8px;font-size:.72rem;padding:4px 0;color:#c6d2ec}
+.lg i{width:10px;height:10px;border-radius:3px;font-style:normal;flex-shrink:0}
+.lg b{margin-left:auto;font-family:'Sora'}
+.insight{background:#141b36;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px 17px;margin-bottom:11px}
+.insight .ih{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.insight .ih i{font-style:normal;font-size:1.15rem}
+.insight .ih b{font-size:.84rem}
+.badge{margin-left:auto;font-size:.58rem;font-weight:800;padding:4px 9px;border-radius:99px}
+.b-up{background:rgba(251,113,133,.15);color:#fb7185}
+.b-good{background:rgba(45,212,167,.15);color:#2dd4a7}
+.insight p{font-size:.75rem;color:#a9b4cc;line-height:1.65}
+.spark{display:flex;align-items:flex-end;gap:5px;height:44px;margin-top:12px}
+.sp{flex:1;border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#38bdf8,#2dd4a7);min-height:6px}
+</style></head>
+<body>
+<div class="app">
+  <h1>Where money went 🔍</h1>
+  <p class="sub">August · auto-categorized from 84 transactions</p>
+  <div class="donut-wrap">
+    <div class="donut"><div class="hole"><div><b>₹24.5k</b><small>SPENT</small></div></div></div>
+    <div class="legend">
+      <div class="lg"><i style="background:#fb7185"></i>Food delivery<b>₹8.3k</b></div>
+      <div class="lg"><i style="background:#38bdf8"></i>Rent & bills<b>₹5.7k</b></div>
+      <div class="lg"><i style="background:#fbbf24"></i>Transport<b>₹3.9k</b></div>
+      <div class="lg"><i style="background:#2dd4a7"></i>Groceries<b>₹3.7k</b></div>
+      <div class="lg"><i style="background:#a78bfa"></i>Shopping<b>₹2.9k</b></div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="ih"><i>🍜</i><b>Swiggy is 12% of income</b><span class="badge b-up">↑ 24% vs Jul</span></div>
+    <p>You ordered 23 times — mostly Sundays at midnight 😅. A ₹5k cap saves ₹1,840/mo.</p>
+    <div class="spark"><div class="sp" style="height:30%"></div><div class="sp" style="height:45%"></div><div class="sp" style="height:35%"></div><div class="sp" style="height:60%"></div><div class="sp" style="height:40%;background:#fb7185"></div><div class="sp" style="height:100%;background:#fb7185"></div><div class="sp" style="height:55%"></div></div>
+  </div>
+  <div class="insight">
+    <div class="ih"><i>⛽</i><b>Fuel spend normalized</b><span class="badge b-good">steady ✓</span></div>
+    <p>₹3,900 across 4 fills — right on your commute budget. No action needed.</p>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.insight').forEach(i=>i.onclick=()=>alert('💡 Opening detailed breakdown...'));
+</script>
+</body></html>

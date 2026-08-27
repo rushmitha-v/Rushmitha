@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LearnLoop — Leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f6f5ff;color:#1d1b33;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#7a76a0;font-size:.84rem;margin-bottom:18px}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;padding-bottom:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tb{flex:0 0 auto;padding:8px 16px;border-radius:99px;border:1px solid #efeefb;background:#fff;color:#7a76a0;font-size:.72rem;font-weight:700;cursor:pointer;transition:.2s;font-family:'Inter'}
+.tb.on{background:#5b5bd6;border-color:#5b5bd6;color:#fff}
+.usr{background:#fff;border:1px solid #efeefb;border-radius:16px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:14px;transition:.2s}
+.usr:hover{transform:translateX(4px);border-color:#c8c4f0}
+.usr.me{border-color:#5b5bd6;background:#f8f7ff}
+.rank{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.78rem;font-family:'Sora';flex-shrink:0}
+.r1{background:linear-gradient(135deg,#f5a623,#fbbf24);color:#fff}
+.r2{background:linear-gradient(135deg,#c0c0c0,#a0a0a0);color:#fff}
+.r3{background:linear-gradient(135deg,#cd7f32,#b87333);color:#fff}
+.rx{background:#efeefb;color:#7a76a0}
+.usr div{flex:1;min-width:0}
+.usr b{font-size:.88rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.usr small{color:#7a76a0;font-size:.72rem;display:block}
+.xp{font-family:'Sora';font-weight:800;font-size:.82rem;color:#5b5bd6;flex-shrink:0}
+</style></head>
+<body>
+<div class="app">
+  <h1>Weekly leaderboard 🏆</h1>
+  <p class="sub">This week's XP · Resets every Monday</p>
+  <div class="tabs">
+    <button class="tb on">This week</button><button class="tb">All time</button><button class="tb">My path</button>
+  </div>
+  <div class="usr"><div class="rank r1">1</div><div><b>Priya K.</b><small>SQL for Analytics · Day 67</small></div><span class="xp">2,840 XP</span></div>
+  <div class="usr"><div class="rank r2">2</div><div><b>Rohan M.</b><small>Python for Data · Day 42</small></div><span class="xp">2,610 XP</span></div>
+  <div class="usr"><div class="rank r3">3</div><div><b>Sneha C.</b><small>Data Storytelling · Day 89</small></div><span class="xp">2,480 XP</span></div>
+  <div class="usr"><div class="rank rx">4</div><div><b>Arjun P.</b><small>ML Foundations · Day 12</small></div><span class="xp">1,920 XP</span></div>
+  <div class="usr me"><div class="rank rx">7</div><div><b>You</b><small>SQL for Analytics · Day 47</small></div><span class="xp">1,240 XP</span></div>
+  <div class="usr"><div class="rank rx">8</div><div><b>Meera S.</b><small>Data Storytelling · Day 23</small></div><span class="xp">1,180 XP</span></div>
+  <div class="usr"><div class="rank rx">9</div><div><b>Karan V.</b><small>Python for Data · Day 8</small></div><span class="xp">980 XP</span></div>
+  <div class="usr"><div class="rank rx">10</div><div><b>Nina R.</b><small>SQL for Analytics · Day 31</small></div><span class="xp">890 XP</span></div>
+</div>
+<script>
+document.querySelectorAll('.tb').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));t.classList.add('on')});
+</script>
+</body></html>

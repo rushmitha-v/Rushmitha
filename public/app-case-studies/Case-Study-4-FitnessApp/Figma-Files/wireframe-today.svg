@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640" font-family="Arial">
+  <rect width="360" height="640" fill="#0a0f0d"/>
+  <text x="20" y="40" fill="#22e07a" font-size="18" font-weight="bold">⚡FitPulse</text>
+  <rect x="250" y="22" width="90" height="26" rx="13" fill="none" stroke="#fbbf24"/>
+  <text x="262" y="39" fill="#fbbf24" font-size="11">🔥 21-day</text>
+  <text x="20" y="80" fill="#fff" font-size="20" font-weight="bold">Today's Workout</text>
+  <text x="20" y="102" fill="#8fa89b" font-size="12">Week 4 · Push day</text>
+  <!-- rings -->
+  <circle cx="70" cy="170" r="40" fill="none" stroke="#1a2b22" stroke-width="10"/>
+  <circle cx="70" cy="170" r="40" fill="none" stroke="#22e07a" stroke-width="10" stroke-dasharray="190 252" stroke-linecap="round" transform="rotate(-90 70 170)"/>
+  <text x="52" y="176" fill="#fff" font-size="15" font-weight="bold">75%</text>
+  <text x="130" y="150" fill="#8fa89b" font-size="11">Move: 412/550 kcal</text>
+  <text x="130" y="172" fill="#8fa89b" font-size="11">Workout: 38/45 min</text>
+  <text x="130" y="194" fill="#8fa89b" font-size="11">Stand: 9/12 hrs</text>
+  <!-- workout card -->
+  <rect x="16" y="230" width="328" height="200" rx="18" fill="#13241c" stroke="#22e07a" stroke-opacity=".4"/>
+  <rect x="32" y="248" width="90" height="20" rx="10" fill="#22e07a" fill-opacity=".15"/>
+  <text x="42" y="262" fill="#22e07a" font-size="10" font-weight="bold">TODAY · PUSH</text>
+  <text x="32" y="292" fill="#fff" font-size="16" font-weight="bold">Upper Body Strength</text>
+  <text x="32" y="314" fill="#8fa89b" font-size="11">⏱ 45 min   🔥 ~420 kcal   🏋️ 6 exercises</text>
+  <line x1="32" y1="330" x2="328" y2="330" stroke="#22e07a" stroke-opacity=".2" stroke-dasharray="4 4"/>
+  <text x="32" y="352" fill="#eafcf2" font-size="12">Bench press</text><text x="300" y="352" fill="#8fa89b" font-size="12">3×10</text>
+  <text x="32" y="374" fill="#eafcf2" font-size="12">Shoulder press</text><text x="300" y="374" fill="#8fa89b" font-size="12">3×12</text>
+  <text x="32" y="396" fill="#eafcf2" font-size="12">Incline DB press</text><text x="300" y="396" fill="#8fa89b" font-size="12">3×10</text>
+  <rect x="32" y="440" width="296" height="44" rx="13" fill="#22e07a"/>
+  <text x="128" y="467" fill="#04140b" font-size="14" font-weight="bold">▶ Start workout</text>
+  <!-- weekly bars -->
+  <text x="20" y="520" fill="#fff" font-size="14" font-weight="bold">This week</text>
+  <rect x="30" y="560" width="26" height="40" rx="6" fill="#22e07a" opacity=".8"/>
+  <rect x="80" y="590" width="26" height="10" rx="6" fill="#22e07a" opacity=".25"/>
+  <rect x="130" y="545" width="26" height="55" rx="6" fill="#fbbf24"/>
+  <rect x="180" y="565" width="26" height="35" rx="6" fill="#22e07a" opacity=".8"/>
+  <rect x="230" y="552" width="26" height="48" rx="6" fill="#22e07a" opacity=".8"/>
+  <rect x="280" y="590" width="26" height="10" rx="6" fill="#22e07a" opacity=".25"/>
+  <rect x="330" y="575" width="20" height="25" rx="6" fill="#22e07a" opacity=".5"/>
+</svg>

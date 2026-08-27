@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LearnLoop — Flashcard Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f6f5ff;color:#1d1b33;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:390px;max-width:94vw}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+h1{font-family:'Sora';font-size:1.2rem;letter-spacing:-.02em}
+.streak{display:flex;align-items:center;gap:6px;background:#fff3e0;color:#c07b1d;font-size:.72rem;font-weight:800;padding:6px 12px;border-radius:99px}
+.card{width:300px;height:300px;background:#fff;border:1px solid #efeefb;border-radius:24px;margin:0 auto 24px;position:relative;cursor:pointer;perspective:1000px;transition:transform .6s cubic-bezier(.2,.9,.3,1.2);box-shadow:0 10px 30px rgba(29,27,51,.08)}
+.card.flipped{transform:rotateY(180deg)}
+.side{position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;border-radius:24px}
+.front{background:#fff}
+.back{background:linear-gradient(135deg,#e5f7ef,#d1f5e0);transform:rotateY(180deg)}
+.side i{font-style:normal;font-size:2.8rem;margin-bottom:16px}
+.side b{font-family:'Sora';font-size:1.1rem;line-height:1.4;display:block;margin-bottom:8px}
+.side small{color:#7a76a0;font-size:.8rem}
+.hint{color:#7a76a0;font-size:.74rem;margin-bottom:22px;text-align:center}
+.acts{display:flex;gap:12px;justify-content:center}
+.btn{flex:1;border:0;border-radius:14px;padding:14px;font-family:'Sora';font-weight:800;font-size:.85rem;cursor:pointer;transition:.22s}
+.again{background:#fff;border:1px solid #efeefb;color:#7a76a0}
+.again:hover{background:#f8f7ff}
+.good{background:linear-gradient(135deg,#5b5bd6,#7c7cf0);color:#fff;box-shadow:0 10px 24px rgba(91,91,214,.35)}
+.good:hover{transform:translateY(-2px)}
+.progress{display:flex;gap:6px;justify-content:center;margin-top:18px}
+.d{width:24px;height:24px;border-radius:8px;background:#efeefb;display:grid;place-items:center;font-size:.64rem;font-weight:800;color:#b9b4dd}
+.d.done{background:linear-gradient(135deg,#5b5bd6,#7c7cf0);color:#fff}
+.d.current{box-shadow:0 0 0 3px rgba(91,91,214,.3)}
+</style></head>
+<body>
+<div class="app">
+  <div class="top"><h1>Flashcard review</h1><span class="streak">🔥 14</span></div>
+  <div class="card" id="c" onclick="flip()">
+    <div class="side front"><i>❓</i><b>What does GROUP BY do?</b><small>Groups rows with same values in specified columns</small></div>
+    <div class="side back"><i>✅</i><b>Groups rows with same values</b><small>Aggregates (SUM, COUNT, AVG) apply per group</small></div>
+  </div>
+  <p class="hint">Tap to reveal answer · Swipe or click buttons</p>
+  <div class="acts">
+    <button class="btn again" onclick="next()">Again</button>
+    <button class="btn good" onclick="next()">Good</button>
+  </div>
+  <div class="progress">
+    <div class="d done">1</div><div class="d done">2</div><div class="d current">3</div><div class="d">4</div><div class="d">5</div>
+  </div>
+</div>
+<script>
+const c=document.getElementById('c');let f=false;
+function flip(){f=!f;c.classList.toggle('flipped',f)}
+function next(){c.classList.remove('flipped');f=false;alert('🧠 Next card loaded! Spaced repetition scheduled.')}
+// swipe support
+let sx=0;c.addEventListener('touchstart',e=>sx=e.touches[0].clientX);
+c.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){c.classList.remove('flipped');f=false;next()}});
+</script>
+</body></html>

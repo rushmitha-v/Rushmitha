@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StyleHub — Fits first, always</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf7f2;--card:#fff;--ink:#221c15;--mut:#8d8478;--line:#ece5da;--grn:#1e9e6a;--amb:#e8a020;--blk:#221c15}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:var(--bg);color:var(--ink);min-height:100vh;display:flex;justify-content:center;padding:30px 16px}
+  .app{width:400px;max-width:100%}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .brand{font-family:'Playfair Display';font-weight:800;font-size:1.3rem;letter-spacing:-.01em}
+  .bag{position:relative;width:40px;height:40px;border:1px solid var(--line);background:#fff;border-radius:13px;display:grid;place-items:center;cursor:pointer}
+  .bag-n{position:absolute;top:-6px;right:-6px;background:var(--blk);color:#fff;font-size:.62rem;font-weight:800;width:19px;height:19px;border-radius:50%;display:grid;place-items:center;transform:scale(0);transition:.3s cubic-bezier(.2,1.6,.4,1)}
+  .bag-n.show{transform:scale(1)}
+
+  /* occasion tabs */
+  .occ{display:flex;gap:8px;margin-bottom:18px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .occ::-webkit-scrollbar{display:none}
+  .o{flex:0 0 auto;padding:9px 17px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font-size:.78rem;font-weight:600;color:var(--mut);cursor:pointer;transition:.22s;font-family:'Inter'}
+  .o.on{background:var(--blk);color:#fff;border-color:var(--blk)}
+
+  /* product hero */
+  .hero{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:16px}
+  .photo{height:250px;position:relative;display:grid;place-items:center}
+  .ph1{background:linear-gradient(160deg,#efe3d3,#e3cdb4)}
+  .model{font-size:4.6rem;filter:drop-shadow(0 14px 20px rgba(34,28,21,.22));transition:.45s cubic-bezier(.2,.9,.3,1)}
+  .badge-fit{position:absolute;top:14px;left:14px;background:#e7f5ee;color:var(--grn);font-size:.66rem;font-weight:800;
+    padding:6px 12px;border-radius:99px;display:flex;align-items:center;gap:6px}
+  .wish{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.9);
+    display:grid;place-items:center;cursor:pointer;font-size:1rem;transition:.2s}
+  .wish:hover{transform:scale(1.12)}
+  .wish.on{background:#fde8ec}
+  .body-switch{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);border-radius:99px;padding:4px;display:flex;gap:2px}
+  .bs{border:0;background:transparent;font-size:.66rem;font-weight:700;color:var(--mut);padding:7px 13px;border-radius:99px;cursor:pointer;font-family:'Inter';transition:.2s}
+  .bs.on{background:var(--blk);color:#fff}
+  .p-body{padding:16px 18px 18px}
+  .p-brand{font-size:.68rem;letter-spacing:.16em;font-weight:700;color:var(--mut);text-transform:uppercase;margin-bottom:4px}
+  .p-name{font-family:'Playfair Display';font-size:1.25rem;margin-bottom:6px}
+  .p-price{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
+  .p-price b{font-size:1.15rem}
+  .p-price s{color:var(--mut);font-size:.85rem}
+  .p-price em{font-style:normal;color:var(--grn);font-size:.78rem;font-weight:800}
+  /* size confidence */
+  .fit-card{background:#f6f1e8;border:1px solid #eadfcd;border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .conf{position:relative;width:54px;height:54px;flex-shrink:0}
+  .conf svg{transform:rotate(-90deg)}
+  .conf circle{fill:none;stroke-width:6}
+  .ct{stroke:#eadfcd}.cv{stroke:var(--grn);stroke-dasharray:145;stroke-dashoffset:145;transition:stroke-dashoffset 1.4s ease}
+  .conf b{position:absolute;inset:0;display:grid;place-items:center;font-family:'Sora';font-size:.8rem}
+  .fit-card div b{font-size:.84rem;display:block}
+  .fit-card small{color:var(--mut);font-size:.72rem;line-height:1.45;display:block;margin-top:2px}
+  .sizes{display:flex;gap:8px;margin-bottom:16px}
+  .sz{flex:1;height:42px;border:1.5px solid var(--line);border-radius:12px;display:grid;place-items:center;
+    font-weight:700;font-size:.85rem;cursor:pointer;transition:.2s;background:#fff}
+  .sz:hover{border-color:var(--blk)}
+  .sz.rec{background:var(--blk);color:#fff;border-color:var(--blk);position:relative}
+  .sz.rec::after{content:'YOUR FIT';position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--grn);
+    color:#fff;font-size:.52rem;font-weight:800;letter-spacing:.08em;padding:2px 7px;border-radius:99px}
+  .add{width:100%;border:0;border-radius:14px;padding:15px;background:var(--blk);color:#fff;font-family:'Inter';
+    font-weight:700;font-size:.9rem;cursor:pointer;transition:.22s}
+  .add:hover{transform:translateY(-2px)}
+
+  /* complete the look */
+  .sec-t{font-family:'Playfair Display';font-size:1.05rem;margin:22px 0 13px}
+  .look{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+  .lk{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden;cursor:pointer;transition:.22s}
+  .lk:hover{transform:translateY(-4px)}
+  .lk .im{height:74px;display:grid;place-items:center;font-size:1.7rem}
+  .li1{background:#efe3d3}.li2{background:#e7e0d5}.li3{background:#e3d8c8}
+  .lk div{padding:8px 9px 10px}
+  .lk b{font-size:.68rem;display:block}
+  .lk small{color:var(--mut);font-size:.64rem;font-weight:700}
+  .bundle{background:#f6f1e8;border:1px dashed #d8c9ac;border-radius:15px;padding:13px 16px;display:flex;align-items:center;gap:10px}
+  .bundle small{font-size:.72rem;color:var(--mut);line-height:1.4}
+  .bundle b{display:block;color:var(--ink);font-size:.84rem}
+  .addall{margin-left:auto;border:0;background:var(--grn);color:#fff;font-weight:800;font-size:.72rem;padding:10px 14px;border-radius:11px;cursor:pointer;font-family:'Inter';transition:.2s}
+  .addall:hover{filter:brightness(1.08)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand">StyleHub</div>
+    <div class="bag">👜<span class="bag-n" id="bn">0</span></div>
+  </div>
+
+  <div class="occ">
+    <div class="o on">💼 Work</div><div class="o">☕ Brunch</div><div class="o">💍 Wedding</div><div class="o">🛋️ Lounge</div>
+  </div>
+
+  <div class="hero">
+    <div class="photo ph1">
+      <span class="badge-fit">✓ 92% fit confidence</span>
+      <div class="wish" onclick="this.classList.toggle('on')">♡</div>
+      <span class="model" id="model">👗</span>
+      <div class="body-switch">
+        <button class="bs on" onclick="body_(this,'Petite')">Petite</button>
+        <button class="bs" onclick="body_(this,'Regular')">Regular</button>
+        <button class="bs" onclick="body_(this,'Curvy')">Curvy</button>
+      </div>
+    </div>
+    <div class="p-body">
+      <div class="p-brand">Aavaran Studio</div>
+      <div class="p-name">Cotton Poplin Wrap Dress</div>
+      <div class="p-price"><b>₹2,199</b><s>₹3,499</s><em>37% off</em></div>
+
+      <div class="fit-card">
+        <div class="conf">
+          <svg width="54" height="54"><circle class="ct" cx="27" cy="27" r="23"/><circle class="cv" id="cring" cx="27" cy="27" r="23"/></svg>
+          <b>92%</b>
+        </div>
+        <div>
+          <b>Take size M — you're covered</b>
+          <small>Based on 214 returns & shoppers your height (5'4") and build. Wrap style runs slightly loose.</small>
+        </div>
+      </div>
+
+      <div class="sizes">
+        <div class="sz">XS</div><div class="sz">S</div><div class="sz rec">M</div><div class="sz">L</div><div class="sz">XL</div>
+      </div>
+
+      <button class="add" onclick="add()">Add to bag · M</button>
+    </div>
+  </div>
+
+  <div class="sec-t">Complete the look</div>
+  <div class="look">
+    <div class="lk"><div class="im li1">👡</div><div><b>Tan Block Heels</b><small>₹1,499</small></div></div>
+    <div class="lk"><div class="im li2">👜</div><div><b>Tote Mini</b><small>₹1,899</small></div></div>
+    <div class="lk"><div class="im li3">✨</div><div><b>Gold Hoops</b><small>₹649</small></div></div>
+  </div>
+
+  <div class="bundle">
+    <small><b>Full outfit ₹5,247</b> <span style="color:var(--grn)">save ₹801</span><br>Free returns on everything · 30 days</small>
+    <button class="addall" onclick="add(3)">Add all 4</button>
+  </div>
+</div>
+<script>
+requestAnimationFrame(()=>setTimeout(()=>document.getElementById('cring').style.strokeDashoffset=145*(1-.92),350));
+function body_(btn,label){
+  document.querySelectorAll('.bs').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  const m=document.getElementById('model');
+  m.style.opacity=0;
+  setTimeout(()=>{m.textContent=label==='Petite'?'🧍‍♀️':label==='Curvy'?'💃':'👗';m.style.opacity=1},200);
+}
+function add(n=1){
+  const c=document.getElementById('bn');
+  c.textContent=+c.textContent+n;c.classList.add('show');
+  setTimeout(()=>c.style.transform='scale(1.25)',150);
+  setTimeout(()=>c.style.transform='scale(1)',320);
+}
+document.querySelectorAll('.o').forEach(o=>o.onclick=()=>{document.querySelectorAll('.o').forEach(x=>x.classList.remove('on'));o.classList.add('on')});
+document.querySelectorAll('.sz').forEach(s=>s.onclick=()=>{document.querySelectorAll('.sz').forEach(x=>x.classList.remove('rec'));s.classList.add('rec')});
+</script>
+</body>
+</html>

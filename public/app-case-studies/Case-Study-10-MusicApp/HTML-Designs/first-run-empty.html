@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WavePlay — First Run</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0b0616;color:#f3effc;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw;text-align:center;position:relative;z-index:1}
+.waves{font-size:3.8rem;display:inline-block;margin-bottom:22px;animation:dance 2.6s ease-in-out infinite}
+@keyframes dance{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(10deg) scale(1.1)}}
+h1{font-family:'Sora';font-size:1.52rem;letter-spacing:-.02em;line-height:1.28;margin-bottom:12px}
+h1 span{background:linear-gradient(120deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:#a89fc4;font-size:.88rem;line-height:1.7;margin-bottom:26px}
+.picks{text-align:left;margin-bottom:26px;display:flex;flex-direction:column;gap:11px}
+.pk{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:13px 15px;cursor:pointer;transition:.22s}
+.pk:hover{border-color:rgba(139,92,246,.6);transform:translateX(4px)}
+.pk i{font-style:normal;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}
+.k1 i{background:linear-gradient(140deg,#f97316,#ef4444)}.k2 i{background:linear-gradient(140deg,#8b5cf6,#6366f1)}.k3 i{background:linear-gradient(140deg,#22d3ee,#0891b2)}
+.pk b{font-size:.84rem;display:block}
+.pk small{color:#a89fc4;font-size:.71rem}
+.btn{width:100%;border:0;border-radius:16px;padding:17px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#fff;background:linear-gradient(135deg,#8b5cf6,#22d3ee);cursor:pointer;box-shadow:0 16px 34px rgba(139,92,246,.45);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+.skip{margin-top:15px;color:#a89fc4;font-size:.78rem;cursor:pointer}
+</style></head>
+<body>
+<div class="card">
+  <span class="waves">🌊</span>
+  <h1>Pick three sounds<br><span>you love.</span></h1>
+  <p>Your first mixes are built from these. Change them anytime — WavePlay keeps learning.</p>
+  <div class="picks">
+    <div class="pk k1"><i>🎸</i><div><b>Tamil indie & film hits</b><small>Anirudh, Kharesma, Santhosh Narayanan</small></div></div>
+    <div class="pk k2"><i>🎹</i><div><b>Lo-fi & ambient focus</b><small>For deep work and late-night code</small></div></div>
+    <div class="pk k3"><i>🥁</i><div><b>Gym energy / EDM</b><small>150+ BPM to match your stride</small></div></div>
+  </div>
+  <button class="btn">Build my first mix →</button>
+  <span class="skip">Surprise me instead 🎲</span>
+</div>
+<script>
+document.querySelectorAll('.pk').forEach(p=>p.onclick=()=>p.style.borderColor=p.style.borderColor==='rgb(139, 92, 246)'?'rgba(255,255,255,.1)':'#8b5cf6');
+</script>
+</body></html>

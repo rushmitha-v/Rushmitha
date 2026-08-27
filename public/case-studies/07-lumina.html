@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lumina — UX Case Study · Rushmitha Varshini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+</head>
+<body style="--accent:#5B5BF5; --accent2:#8B5CF6">
+<div class="topbar"><div class="in"><a class="back" href="index.html">← All case studies</a><span class="brand">Lumina<b>.</b> · UX Case Study</span></div></div>
+
+<header class="hero"><div class="in">
+  <span class="tag">E-learning · Course Platform</span>
+  <h1>Lumina — helping learners actually finish the course</h1>
+  <p class="sub">An online-learning platform designed around completion, not just enrollment — clear progress, one-tap resume, and motivating momentum that brings learners back.</p>
+  <div class="meta">
+    <div><div class="k">Role</div><div class="v">UX / UI Designer</div></div>
+    <div><div class="k">Timeline</div><div class="v">7 weeks</div></div>
+    <div><div class="k">Platform</div><div class="v">Web + Mobile</div></div>
+    <div><div class="k">Tools</div><div class="v">Figma · Maze · Hotjar</div></div>
+  </div>
+</div></header>
+
+<main>
+<section class="blk" id="problem"><div class="wrap">
+  <div class="kicker"><span class="num">01</span><h2>The Problem</h2></div>
+  <p class="lead">People enroll in online courses full of intention — and rarely finish. They lose their place, lose momentum, and the dashboard does nothing to pull them back. Completion rates sit in the low double digits.</p>
+  <div class="statement"><div class="lbl">Problem statement</div><p>How might we help learners maintain momentum and actually finish the courses they start?</p></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">~13%</div><div class="l">average online-course completion rate</div></div>
+    <div class="stat"><div class="n">#1</div><div class="l">drop-off reason: “lost my place / motivation”</div></div>
+    <div class="stat"><div class="n">↑</div><div class="l">completion when progress &amp; goals are visible</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="goals"><div class="wrap">
+  <div class="kicker"><span class="num">02</span><h2>Goals &amp; Success Metrics</h2></div>
+  <ul class="insights">
+    <li><span class="ic">▶</span><span><b>Effortless resume</b>“Continue where you left off” as the hero action, one tap away.</span></li>
+    <li><span class="ic">◎</span><span><b>Visible progress</b>Every course shows how far along you are — and what's next.</span></li>
+    <li><span class="ic">♦</span><span><b>Motivating momentum</b>Weekly goals &amp; streaks that reward consistency.</span></li>
+  </ul>
+  <p class="small"><strong>Target metrics:</strong> time-to-resume &lt; 5s · next-lesson findability &gt; 90% · SUS &gt; 80 · motivation ↑.</p>
+</div></section>
+
+<section class="blk" id="research"><div class="wrap">
+  <div class="kicker"><span class="num">03</span><h2>User Research</h2></div>
+  <div class="tags"><span>10 learner interviews</span><span>Survey — 52 respondents</span><span>Competitive audit — Coursera, Udemy, Duolingo</span><span>Hotjar recordings</span></div>
+  <h3 class="sub">Key findings</h3>
+  <ul class="insights">
+    <li><span class="ic">1</span><span><b>Resuming is the biggest friction</b>Learners abandon when they can't instantly find where they stopped.</span></li>
+    <li><span class="ic">2</span><span><b>Progress is motivating</b>Seeing “33% complete” and a shrinking to-do list pulls people forward.</span></li>
+    <li><span class="ic">3</span><span><b>Micro-learning fits real life</b>Busy learners study in short mobile bursts, not long desktop sessions.</span></li>
+    <li><span class="ic">4</span><span><b>Goals &amp; streaks work</b>Duolingo-style weekly goals meaningfully increase return visits.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="personas"><div class="wrap">
+  <div class="kicker"><span class="num">04</span><h2>Personas</h2></div>
+  <div class="grid-2">
+    <div class="persona">
+      <div class="top"><div class="avatar">AK</div><div><h4>Arjun Kumar</h4><div class="role">27 · Developer · upskilling on the side</div></div></div>
+      <p class="quote">"I get 30 minutes between work and life. Just drop me back exactly where I stopped."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Resume instantly in spare moments</li><li>See how close he is to finishing</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Hunting for the next lesson</li><li>Losing momentum after a break</li></ul></div>
+    </div>
+    <div class="persona">
+      <div class="top"><div class="avatar">LB</div><div><h4>Lena Brar</h4><div class="role">22 · Student · goal-driven learner</div></div></div>
+      <p class="quote">"Streaks and weekly goals are what keep me coming back — I don't want to break the chain."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Hit a weekly learning goal</li><li>Feel progress &amp; accomplishment</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>No sense of momentum or reward</li><li>Flat, uninspiring dashboards</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="flow"><div class="wrap">
+  <div class="kicker"><span class="num">05</span><h2>User Flow — Resume &amp; Complete</h2></div>
+  <div class="flow">
+    <div class="step"><div class="s">START</div><div class="t">Dashboard</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 1</div><div class="t">Tap “Resume”</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 2</div><div class="t">See lesson list</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 3</div><div class="t">Play next lesson</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 4</div><div class="t">Mark complete</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">DONE</div><div class="t">Progress +, goal ✓</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="wireframes"><div class="wrap">
+  <div class="kicker"><span class="num">06</span><h2>Wireframes</h2></div>
+  <p class="lead">Low-fi centred the dashboard on a big “continue learning” hero, with progress and a weekly goal in view — and a mobile course page built around lesson states.</p>
+  <div class="wire-row">
+    <div><div class="wf desk">
+      <div class="rowf"><div class="sk circle"></div><div class="sk bar sm" style="margin-left:auto"></div></div>
+      <div class="sk box accent" style="height:80px;margin-top:10px"></div>
+      <div style="display:flex;gap:10px;margin-top:8px"><div style="flex:2"><div class="rowf"><div class="sk box" style="flex:1;height:90px"></div><div class="sk box" style="flex:1;height:90px"></div></div></div>
+      <div style="flex:1"><div class="sk box" style="height:90px"></div></div></div>
+    </div><div class="wf-cap">Desktop — continue hero · courses · goal</div></div>
+    <div><div class="wf phone">
+      <div class="sk box tall" style="height:100px"></div>
+      <div class="sk bar md"></div>
+      <div class="rowf" style="margin:8px 0"><div class="sk bar sm"></div><div class="sk bar" style="width:40px;margin-left:auto"></div></div>
+      <div class="sk box" style="height:44px"></div><div class="sk box accent" style="height:44px"></div><div class="sk box" style="height:44px"></div>
+    </div><div class="wf-cap">Mobile — progress + lesson states</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="prototype"><div class="wrap">
+  <div class="kicker"><span class="num">07</span><h2>Hi-Fi Design &amp; Prototype</h2></div>
+  <p class="lead">The dashboard leads with a “Continue Learning” hero (progress bar + Resume), course cards each show their progress, and a weekly-goal ring rewards consistency. The mobile course page uses clear lesson states — done, now-playing and locked.</p>
+  <div class="figure"><div class="device desktop"><div class="bar"><i></i><i></i><i></i></div><img src="../figma-exports/13-lumina-desktop.png" alt="Lumina course dashboard"/></div><figcaption>Course dashboard (desktop) — continue hero, courses, weekly goal &amp; schedule</figcaption></div>
+  <div class="figure"><div class="shots"><div class="device phone"><img src="../figma-exports/14-lumina-mobile.png" alt="Lumina course detail"/></div></div><figcaption>Course detail (mobile) — progress + lesson states + Continue</figcaption></div>
+  <h3 class="sub">Key design decisions</h3>
+  <ul class="insights">
+    <li><span class="ic">◆</span><span><b>“Continue Learning” hero</b>The single most-wanted action — resume — is the biggest, clearest thing on the page.</span></li>
+    <li><span class="ic">◆</span><span><b>Progress everywhere</b>Course cards, a completion bar and a weekly-goal ring keep momentum visible.</span></li>
+    <li><span class="ic">◆</span><span><b>Lesson states</b>Done ✓ / now-playing / locked make “what's next” unmistakable.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="testing"><div class="wrap">
+  <div class="kicker"><span class="num">08</span><h2>Usability Testing</h2></div>
+  <p class="lead">6 learners, moderated remote sessions.</p>
+  <p class="small"><strong>Tasks:</strong> (1) “Resume your in-progress course.” (2) “Find the next lesson to complete.”</p>
+  <table class="tbl"><thead><tr><th>Metric</th><th>Target</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Time to resume a course</td><td>&lt; 5s</td><td><span class="good">3s</span></td></tr>
+    <tr><td>Next-lesson findability</td><td>&gt; 90%</td><td><span class="good">96%</span></td></tr>
+    <tr><td>System Usability Scale</td><td>&gt; 80</td><td><span class="good">85</span></td></tr>
+    <tr><td>Motivation to continue (1–5)</td><td>↑</td><td><span class="good">4.4</span></td></tr>
+  </tbody></table>
+  <h3 class="sub">What testing changed</h3>
+  <div class="iter"><span class="tagline">Iteration 1</span><p>Resume competed with browsing new courses. → Made <b>“Continue Learning” the visual hero</b> with a clear Resume button and progress.</p></div>
+  <div class="iter"><span class="tagline">Iteration 2</span><p>Learners weren't sure which lesson was next. → Strengthened <b>lesson states</b> (done / now-playing highlight / locked) so the next step is obvious.</p></div>
+</div></section>
+
+<section class="blk" id="results"><div class="wrap">
+  <div class="kicker"><span class="num">09</span><h2>Results &amp; Impact</h2></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">3s</div><div class="l">to resume a course (target &lt;5s)</div></div>
+    <div class="stat"><div class="n">96%</div><div class="l">found the next lesson</div></div>
+    <div class="stat"><div class="n">85</div><div class="l">SUS score</div></div>
+    <div class="stat"><div class="n">4.4/5</div><div class="l">motivation to keep learning</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="reflection"><div class="wrap">
+  <div class="kicker"><span class="num">10</span><h2>Reflection &amp; Next Steps</h2></div>
+  <div class="reflect">
+    <p style="margin-top:0">Completion is a <strong>design problem, not a content problem</strong>. Making “resume” frictionless and progress visible did more for momentum than any feature. Borrowing habit mechanics (goals, streaks) from Duolingo translated well to structured courses.</p>
+    <p style="margin-bottom:0"><strong>Next:</strong> smart reminders after a lapse, downloadable lessons for offline micro-learning, and certificates/celebrations at milestones.</p>
+  </div>
+  <div class="tags" style="margin-top:22px"><span>UX Research</span><span>Behavioural Design</span><span>Information Architecture</span><span>Responsive Design</span><span>Usability Testing</span></div>
+</div></section>
+</main>
+
+<nav class="dots"><a href="#problem" class="on"><span>Problem</span></a><a href="#goals"><span>Goals</span></a><a href="#research"><span>Research</span></a><a href="#personas"><span>Personas</span></a><a href="#flow"><span>User Flow</span></a><a href="#wireframes"><span>Wireframes</span></a><a href="#prototype"><span>Prototype</span></a><a href="#testing"><span>Testing</span></a><a href="#results"><span>Results</span></a><a href="#reflection"><span>Reflection</span></a></nav>
+<div class="foot">Lumina UX Case Study · Designed by <strong>Rushmitha Varshini</strong> · <a href="index.html">← Back to all case studies</a></div>
+<script>const secs=[...document.querySelectorAll('section.blk')];const dots=[...document.querySelectorAll('.dots a')];const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=secs.indexOf(e.target);dots.forEach(d=>d.classList.remove('on'));if(dots[i])dots[i].classList.add('on');}}),{threshold:.5});secs.forEach(s=>io.observe(s));</script>
+</body>
+</html>

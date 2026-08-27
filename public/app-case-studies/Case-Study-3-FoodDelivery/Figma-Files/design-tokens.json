@@ -1,0 +1,25 @@
+{
+  "color": {
+    "primary": "#F97316",
+    "secondary": "#EC4899",
+    "background": "#FFFFFF",
+    "accent": "#10B981",
+    "negative": "#6B7280"
+  },
+  "typography": {
+    "family": "Inter",
+    "headers": "28px Bold",
+    "menu": "16px Regular",
+    "price": "20px SemiBold"
+  },
+  "spacing": {
+    "small": "8px",
+    "medium": "24px",
+    "large": "32px"
+  },
+  "borderRadius": {
+    "small": "8px",
+    "medium": "16px",
+    "large": "20px"
+  }
+}

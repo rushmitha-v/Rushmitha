@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FocusMate — Partner Match</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:radial-gradient(600px 400px at 80% -10%,rgba(139,92,246,.2),transparent),#0b1020;color:#eef2fb;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.4rem;text-align:center;letter-spacing:-.02em;margin-bottom:6px}
+p.sub{color:#8a94ad;text-align:center;font-size:.84rem;margin-bottom:24px}
+.pulse{width:74px;height:74px;margin:0 auto 18px;border-radius:50%;background:rgba(79,140,255,.15);display:grid;place-items:center;font-size:1.7rem;position:relative}
+.pulse::before,.pulse::after{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(79,140,255,.35);animation:rip 2s infinite}
+.pulse::after{animation-delay:1s}
+@keyframes rip{from{transform:scale(.85);opacity:1}to{transform:scale(1.5);opacity:0}}
+.match{background:#141c3a;border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:22px;margin-bottom:14px;display:flex;gap:15px;align-items:center;transition:.25s;cursor:pointer}
+.match:hover{transform:translateY(-4px);border-color:rgba(79,140,255,.45)}
+.match.on{border-color:#4f8cff;background:linear-gradient(145deg,#182347,#131c3a)}
+.av{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.15rem;flex-shrink:0}
+.a1{background:linear-gradient(135deg,#4f8cff,#8b5cf6)} .a2{background:linear-gradient(135deg,#2dd4a7,#38bdf8)} .a3{background:linear-gradient(135deg,#fbbf24,#fb7185)}
+.match b{font-size:.95rem;display:flex;align-items:center;gap:7px}
+.grn{width:8px;height:8px;border-radius:50%;background:#2dd4a7;box-shadow:0 0 0 3px rgba(45,212,167,.2)}
+.match small{color:#8a94ad;font-size:.75rem;display:block;margin-top:4px;line-height:1.5}
+.tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.tag{font-size:.62rem;font-weight:700;padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.06);color:#c6d2ec}
+.match>div{flex:1}
+.score{font-family:'Sora';font-weight:800;color:#2dd4a7;font-size:.85rem;text-align:center;flex-shrink:0}
+.score small{display:block;color:#8a94ad;font-weight:500;font-size:.62rem}
+.btn{width:100%;border:0;border-radius:15px;padding:16px;font-family:'Sora';font-weight:800;font-size:.95rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#4f8cff,#8b5cf6);box-shadow:0 14px 32px rgba(79,140,255,.35);margin-top:6px;transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="card">
+  <div class="pulse">🔍</div>
+  <h1>3 partners ready now</h1>
+  <p class="sub">Matched by schedule overlap, focus style & goals</p>
+
+  <div class="match on">
+    <div class="av a1">MK</div>
+    <div>
+      <b>Maria K. <span class="grn"></span></b>
+      <small>Product designer · Deep 45s · starts when you start</small>
+      <div class="tags"><span class="tag">🎨 Design</span><span class="tag">🦉 Night owl</span></div>
+    </div>
+    <div class="score">96%<small>match</small></div>
+  </div>
+
+  <div class="match">
+    <div class="av a2">JT</div>
+    <div>
+      <b>Jonas T. <span class="grn"></span></b>
+      <small>Data analyst · Pomodoro 25 · 12-day streak</small>
+      <div class="tags"><span class="tag">📊 Analytics</span><span class="tag">☕ Morning</span></div>
+    </div>
+    <div class="score">89%<small>match</small></div>
+  </div>
+
+  <div class="match">
+    <div class="av a3">PR</div>
+    <div>
+      <b>Priya R. <span class="grn"></span></b>
+      <small>Writer · Flow 90 · working on a novel</small>
+      <div class="tags"><span class="tag">✍️ Writing</span><span class="tag">🌙 Late</span></div>
+    </div>
+    <div class="score">84%<small>match</small></div>
+  </div>
+
+  <button class="btn" onclick="alert('🤝 Partner request sent! You will start together when both tap ready.')">Pair with Maria →</button>
+</div>
+<script>
+document.querySelectorAll('.match').forEach(m=>m.onclick=()=>{document.querySelectorAll('.match').forEach(x=>x.classList.remove('on'));m.classList.add('on')});
+</script>
+</body></html>

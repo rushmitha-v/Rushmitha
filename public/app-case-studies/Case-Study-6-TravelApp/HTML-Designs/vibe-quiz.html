@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wanderly — Vibe Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f4f9fc;color:#1b2733;min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:390px;max-width:94vw;background:#fff;border-radius:28px;padding:32px 28px;text-align:center;box-shadow:0 20px 50px rgba(14,165,233,.15)}
+.dots{display:flex;gap:7px;justify-content:center;margin-bottom:28px}
+.dots i{width:8px;height:8px;border-radius:99px;background:#e2eef4}
+.dots i.on{width:26px;background:linear-gradient(90deg,#0ea5e9,#f97316)}
+.icon{font-size:3.8rem;margin-bottom:20px}
+h1{font-family:'Sora';font-size:1.5rem;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px}
+h1 span{background:linear-gradient(120deg,#0ea5e9,#f97316);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:#7d8fa1;font-size:.9rem;line-height:1.7;margin-bottom:28px}
+.vibes{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:22px}
+.v{height:100px;border-radius:18px;position:relative;overflow:hidden;cursor:pointer;transition:.25s;border:2.5px solid transparent}
+.v:hover{transform:translateY(-4px) rotate(-1deg)}
+.v.on{border-color:#f97316;box-shadow:0 14px 30px rgba(249,115,22,.3)}
+.v1{background:linear-gradient(140deg,#34d399,#0ea5e9)} .v2{background:linear-gradient(140deg,#f97316,#ef4444)}
+.v3{background:linear-gradient(140deg,#8b5cf6,#ec4899)} .v4{background:linear-gradient(140deg,#fbbf24,#84cc16)}
+.v span{position:absolute;bottom:10px;left:12px;color:#fff;font-family:'Sora';font-weight:800;font-size:.85rem;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+.v i{position:absolute;top:10px;right:11px;font-style:normal;font-size:1.3rem;filter:drop-shadow(0 4px 8px rgba(0,0,0,.3))}
+.btn{width:100%;border:0;border-radius:16px;padding:16px;font-family:'Sora';font-weight:800;font-size:.92rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0ea5e9,#f97316);box-shadow:0 14px 30px rgba(14,165,233,.35);transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="card">
+  <div class="dots"><i class="on"></i><i></i><i></i></div>
+  <span class="icon">🧭</span>
+  <h1>What's your <span>travel vibe</span>?</h1>
+  <p>We'll curate 3 perfect weekends based on your mood — no endless scrolling.</p>
+  <div class="vibes">
+    <div class="v v1 on"><i>🌿</i><span>Chill nature</span></div>
+    <div class="v v2"><i>🧗</i><span>Adventure</span></div>
+    <div class="v v3"><i>🏙️</i><span>City lights</span></div>
+    <div class="v v4"><i>🍜</i><span>Food trail</span></div>
+  </div>
+  <button class="btn">Show me 3 weekends →</button>
+</div>
+<script>
+document.querySelectorAll('.v').forEach(v=>v.onclick=()=>{document.querySelectorAll('.v').forEach(x=>x.classList.remove('on'));v.classList.add('on')});
+</script>
+</body></html>

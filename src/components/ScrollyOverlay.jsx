@@ -271,11 +271,12 @@ export default function ScrollyOverlay({ progress }) {
         style={{
           position: 'absolute',
           right: 'clamp(1rem, 7vw, 7rem)',
-          top: '28%',
+          top: '40%',
+          transform: `translateY(${tr2}px)`,
           maxWidth: '520px',
           textAlign: 'left',
           opacity: op2,
-          transform: `translateY(${tr2}px)`,
+
           transition: 'opacity 0.15s ease-out, transform 0.15s ease-out',
           pointerEvents: op2 > 0.4 ? 'auto' : 'none'
         }}
@@ -358,12 +359,13 @@ export default function ScrollyOverlay({ progress }) {
         className="scrolly-card-stage scrolly-card-left"
         style={{
           position: 'absolute',
-          left: 'clamp(1rem, 7vw, 7rem)',
-          top: '28%',
+          left: 'clamp(1rem, 3vw, 3rem)',
+          top: '40%',
+          transform: `translateY(${tr3}px)`,
           maxWidth: '540px',
           textAlign: 'left',
           opacity: op3,
-          transform: `translateY(${tr3}px)`,
+
           transition: 'opacity 0.15s ease-out, transform 0.15s ease-out',
           pointerEvents: op3 > 0.4 ? 'auto' : 'none'
         }}
@@ -446,13 +448,10 @@ export default function ScrollyOverlay({ progress }) {
         className="scrolly-card-stage scrolly-card-center"
         style={{
           position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
+          right: 'clamp(1rem, 5vw, 5rem)',
+          top: '25%',
+          maxWidth: '520px',
           textAlign: 'center',
-          padding: '0 clamp(1rem, 4vw, 4rem)',
           opacity: op4,
           transform: `translateY(${tr4}px)`,
           transition: 'opacity 0.15s ease-out, transform 0.15s ease-out',

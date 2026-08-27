@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, Check, Copy, MessageSquare, AlertCircle, Loader2, MessageCircle } from 'lucide-react';
+import { Send, Mail, MapPin, Check, Copy, MessageSquare, AlertCircle, Loader2, MessageCircle, Phone } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import emailjs from '@emailjs/browser';
+import { useTheme } from '../context/ThemeContext';
 
 // EmailJS Configuration
 const EMAILJS_SERVICE_ID = 'service_d3hltdr';
@@ -11,17 +12,30 @@ const EMAILJS_PUBLIC_KEY = 'o8zb1rwfXfZDa112F';
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [copied, setCopied] = useState(false);
+  const [phoneCopied, setPhoneCopied] = useState(false);
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const { showToast, triggerConfetti } = useTheme();
 
   const email = 'Rushmithavarshini33@gmail.com';
+  const phone = '+61 434 455 126';
   const location = 'Melbourne, Victoria, Australia';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email);
     setCopied(true);
+    showToast('Email copied: Rushmithavarshini33@gmail.com', 'copy');
+    triggerConfetti({ particleCount: 30, spread: 50 });
     setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(phone);
+    setPhoneCopied(true);
+    showToast('Phone number copied: +61 434 455 126', 'copy');
+    triggerConfetti({ particleCount: 30, spread: 50 });
+    setTimeout(() => setPhoneCopied(false), 2500);
   };
 
   const handleSubmit = async (e) => {
@@ -200,8 +214,8 @@ export default function ContactSection() {
                   <MessageCircle size={20} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--color-emerald)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>WhatsApp Direct</div>
-                  <div style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.9rem' }}>+61 434 455 126</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--color-emerald)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Instant Messaging</div>
+                  <div style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.95rem' }}>WhatsApp</div>
                 </div>
               </div>
 
@@ -212,10 +226,10 @@ export default function ContactSection() {
                 style={{
                   background: 'linear-gradient(135deg, #25D366, #128C7E)',
                   color: '#ffffff',
-                  padding: '7px 14px',
+                  padding: '8px 16px',
                   borderRadius: '8px',
                   fontWeight: 700,
-                  fontSize: '0.8rem',
+                  fontSize: '0.82rem',
                   textDecoration: 'none',
                   display: 'flex',
                   alignItems: 'center',
@@ -224,7 +238,8 @@ export default function ContactSection() {
                   flexShrink: 0
                 }}
               >
-                <span>Chat</span>
+                <MessageCircle size={14} />
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
 

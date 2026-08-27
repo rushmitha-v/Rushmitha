@@ -1,0 +1,25 @@
+{
+  "color": {
+    "primary": "#8B5CF6",
+    "secondary": "#EC4899",
+    "background": "#F8FAFC",
+    "stress": "#EF4444",
+    "calm": "#10B981",
+    "text": "#111827"
+  },
+  "typography": {
+    "family": "Inter",
+    "headers": "20px SemiBold",
+    "body": "14px Regular",
+    "emoji": "32px System"
+  },
+  "spacing": {
+    "small": "8px",
+    "medium": "16px",
+    "large": "20px"
+  },
+  "borderRadius": {
+    "small": "6px",
+    "medium": "10px"
+  }
+}

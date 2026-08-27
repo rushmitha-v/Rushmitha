@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StyleHub — Wishlist</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#faf7f2;color:#221a12;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#8d7f70;font-size:.8rem;margin-bottom:16px}
+.alert{background:linear-gradient(135deg,#fdf0d5,#fbe3b6);border:1px solid #eccf94;border-radius:18px;padding:15px 17px;margin-bottom:16px;display:flex;align-items:center;gap:12px;animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 10px 30px rgba(201,162,39,.25)}}
+.alert i{font-style:normal;font-size:1.5rem}
+.alert b{font-size:.82rem;display:block;color:#7a5c14}
+.alert small{font-size:.68rem;color:#9c8034}
+.wl{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.w{background:#fff;border-radius:18px;padding:13px;display:flex;gap:14px;box-shadow:0 6px 18px rgba(34,26,18,.07);transition:.22s}
+.w:hover{transform:translateY(-2px)}
+.thumb{width:74px;height:92px;border-radius:13px;display:grid;place-items:center;font-size:2rem;position:relative;flex-shrink:0}
+.t1{background:#efe3d0}.t2{background:#dde8ea}.t3{background:#eadde4}
+.drop{position:absolute;top:-8px;left:-8px;background:#22c55e;color:#fff;font-size:.54rem;font-weight:800;padding:4px 7px;border-radius:99px}
+.winfo{flex:1;min-width:0}
+.winfo b{font-size:.83rem;display:block}
+.winfo small{color:#8d7f70;font-size:.68rem;display:block;margin-top:2px}
+.wp{margin-top:8px;display:flex;align-items:center;gap:8px}
+.nowp{font-family:'Sora';font-weight:800;font-size:.95rem}
+.oldp{color:#b6a99a;text-decoration:line-through;font-size:.72rem}
+.fitok{margin-left:auto;font-size:.56rem;font-weight:800;background:#e2f3ea;color:#1d8a5f;padding:4px 9px;border-radius:99px}
+.move{border:0;border-radius:99px;padding:9px 16px;font-size:.68rem;font-weight:800;background:#221a12;color:#fff;cursor:pointer;transition:.2s}
+.move:hover{transform:scale(1.05)}
+.stockbar{height:5px;border-radius:99px;background:#f2ede4;overflow:hidden;margin-top:9px}
+.sf{height:100%;width:32%;background:#eab308;border-radius:99px}
+</style></head>
+<body>
+<div class="app">
+  <h1>Wishlist 💛</h1>
+  <p class="sub">6 items · we watch prices for you 24×7</p>
+  <div class="alert"><i>📉</i><div><b>Price drop on 2 saved items!</b><small>Denim jacket fell ₹400 — lowest in 90 days</small></div><span style="font-size:1rem">🎉</span></div>
+  <div class="wl">
+    <div class="w"><div class="thumb t1">🧥<span class="drop">−₹400</span></div><div class="winfo"><b>Oversized Denim Jacket</b><small>H&M · your size L in stock</small><div class="wp"><span class="nowp">₹2,299</span><span class="oldp">₹2,699</span><button class="move">Move to bag</button></div></div></div>
+    <div class="w"><div class="thumb t2">👗<span class="drop">−₹250</span></div><div class="winfo"><b>Cotton Anarkali Kurta</b><small>W · only 3 left in M!</small><div class="wp"><span class="nowp">₹1,649</span><span class="oldp">₹1,899</span><span class="fitok">M ✓91%</span></div><div class="stockbar"><div class="sf"></div></div></div></div>
+    <div class="w"><div class="thumb t3">👠</div><div class="winfo"><b>Block Heel Sandals</b><small>Metro · price watch since Aug 1</small><div class="wp"><span class="nowp">₹1,999</span><span class="oldp">₹2,999</span><span class="fitok">37 ✓88%</span></div></div></div>
+  </div>
+  <p style="text-align:center;font-size:.7rem;color:#8d7f70">🔔 We'll ping you when any wishlisted item drops below its 90-day low.</p>
+</div>
+<script>
+document.querySelectorAll('.move').forEach(m=>m.onclick=e=>{e.stopPropagation();m.textContent='✓ Added';setTimeout(()=>alert('🛍️ Moved to bag!'),150)});
+</script>
+</body></html>

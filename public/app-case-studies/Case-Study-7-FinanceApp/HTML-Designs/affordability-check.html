@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PennyWise — Can I afford it?</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0c1226;--card:#141b36;--line:rgba(255,255,255,.08);--txt:#eef2fb;--mut:#8a94ad;
+    --mint:#2dd4a7;--amber:#fbbf24;--red:#fb7185;--sky:#38bdf8}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:radial-gradient(700px 400px at 90% -10%,rgba(45,212,167,.13),transparent),var(--bg);
+    color:var(--txt);min-height:100vh;display:flex;justify-content:center;padding:30px 16px}
+  .app{width:400px;max-width:100%}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+  .brand{font-family:'Sora';font-weight:800;font-size:1.05rem}
+  .brand b{color:var(--mint)}
+  .month{font-size:.76rem;color:var(--mut);font-weight:600;border:1px solid var(--line);padding:7px 13px;border-radius:99px}
+
+  /* safe to spend hero */
+  .hero{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:26px;text-align:center;margin-bottom:18px}
+  .hero small{color:var(--mut);font-size:.7rem;letter-spacing:.18em;font-weight:700;text-transform:uppercase}
+  .ring-wrap{position:relative;width:210px;height:210px;margin:16px auto 10px}
+  svg{transform:rotate(-90deg)}
+  circle{fill:none;stroke-width:16;stroke-linecap:round}
+  .trk{stroke:rgba(255,255,255,.07)}
+  .val{stroke:url(#mg);stroke-dasharray:534;stroke-dashoffset:534;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.9,.3,1)}
+  .center{position:absolute;inset:0;display:grid;place-items:center}
+  .center b{font-family:'Sora';font-size:2.5rem;letter-spacing:-.03em}
+  .center small{display:block;color:var(--mut);font-size:.72rem;margin-top:4px}
+  .hero-foot{display:flex;justify-content:space-between;font-size:.74rem;color:var(--mut);border-top:1px dashed var(--line);padding-top:14px}
+  .hero-foot b{color:var(--txt)}
+
+  /* afford check */
+  .check{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin-bottom:18px}
+  .check h3{font-family:'Sora';font-size:.95rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .live{font-size:.6rem;font-weight:800;color:var(--mint);background:rgba(45,212,167,.12);padding:3px 9px;border-radius:99px;letter-spacing:.08em}
+  .amt-row{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid var(--line);
+    border-radius:15px;padding:14px 16px;margin-bottom:14px}
+  .cur{font-family:'Sora';font-weight:800;font-size:1.3rem;color:var(--mut)}
+  #amt{flex:1;background:transparent;border:0;outline:0;color:var(--txt);font-family:'Sora';font-size:1.5rem;font-weight:800;width:100%}
+  .verdict{min-height:74px;border-radius:16px;display:flex;align-items:center;gap:14px;padding:14px 16px;
+    background:rgba(255,255,255,.04);border:1px dashed var(--line);transition:.35s}
+  .v-ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;flex-shrink:0;background:rgba(255,255,255,.06)}
+  .verdict b{font-size:.9rem;display:block}
+  .verdict small{color:var(--mut);font-size:.74rem;line-height:1.45;display:block;margin-top:2px}
+  .v-ok{background:rgba(45,212,167,.1);border:1px solid rgba(45,212,167,.35)}
+  .v-ok .v-ic{background:rgba(45,212,167,.18)}
+  .v-ok b{color:var(--mint)}
+  .v-think{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3)}
+  .v-think .v-ic{background:rgba(251,191,36,.15)}
+  .v-think b{color:var(--amber)}
+  .v-no{background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.3)}
+  .v-no .v-ic{background:rgba(251,113,133,.15)}
+  .v-no b{color:var(--red)}
+  .stamp{animation:stamp .45s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes stamp{from{transform:scale(.85);opacity:0}}
+
+  /* categories */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px}
+  .panel h3{font-family:'Sora';font-size:.95rem;margin-bottom:16px}
+  .cat{display:flex;align-items:center;gap:12px;padding:10px 0}
+  .cat i{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-style:normal;font-size:1rem;flex-shrink:0}
+  .cat div{flex:1}
+  .cat b{font-size:.82rem;display:flex;justify-content:space-between}
+  .cat small{color:var(--mut);font-size:.7rem}
+  .cbar{height:7px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:7px;overflow:hidden}
+  .cbar i{display:block;height:100%;border-radius:99px;width:0;transition:width 1.2s ease}
+  .over{color:var(--red)!important}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="brand">💰Penny<b>Wise</b></div>
+    <div class="month">AUGUST · DAY 18</div>
+  </div>
+
+  <div class="hero">
+    <small>Safe to spend today</small>
+    <div class="ring-wrap">
+      <svg width="210" height="210">
+        <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2dd4a7"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient></defs>
+        <circle class="trk" cx="105" cy="105" r="85"/>
+        <circle class="val" id="ring" cx="105" cy="105" r="85"/>
+      </svg>
+      <div class="center"><div><b>₹640</b><small>of ₹900 daily budget</small></div></div>
+    </div>
+    <div class="hero-foot">
+      <span>Spent today <b>₹260</b></span>
+      <span>Month-end projection <b style="color:var(--mint)">+₹3,100 left</b></span>
+    </div>
+  </div>
+
+  <div class="check">
+    <h3>Can I afford it? <span class="live">● LIVE</span></h3>
+    <div class="amt-row"><span class="cur">₹</span><input id="amt" type="number" value="850" oninput="check()"></div>
+    <div class="verdict" id="vd">
+      <div class="v-ic" id="vic">✅</div>
+      <div><b id="vt">Yes — go for it!</b><small id="vs">This keeps you ₹310 under today's safe limit. Pizza earned. 🍕</small></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Where August went</h3>
+    <div class="cat"><i style="background:rgba(251,113,133,.14)">🍜</i><div><b>Food delivery <span class="over">₹6,840 / 5,500</span></b><small>Over by 24% — main leak this month</small><div class="cbar"><i data-w="100%" style="background:var(--red)"></i></div></div></div>
+    <div class="cat"><i style="background:rgba(56,189,248,.14)">🚕</i><div><b>Commute <span>₹2,100 / 3,000</span></b><small>On track</small><div class="cbar"><i data-w="70%" style="background:var(--sky)"></i></div></div></div>
+    <div class="cat"><i style="background:rgba(45,212,167,.14)">🏠</i><div><b>Rent + bills <span>₹18,000 / 18,000</span></b><small>Fixed · paid on 2nd</small><div class="cbar"><i data-w="100%" style="background:var(--mint)"></i></div></div></div>
+    <div class="cat"><i style="background:rgba(139,92,246,.14)">🎮</i><div><b>Fun money <span>₹1,900 / 4,000</span></b><small>48% left · 13 days to go</small><div class="cbar"><i data-w="48%" style="background:#8b5cf6"></i></div></div></div>
+  </div>
+</div>
+<script>
+/* animate ring to 71% */
+requestAnimationFrame(()=>setTimeout(()=>document.getElementById('ring').style.strokeDashoffset=534*(1-.71),350));
+/* animate bars */
+requestAnimationFrame(()=>setTimeout(()=>document.querySelectorAll('.cbar i').forEach(b=>b.style.width=b.dataset.w),400));
+
+function check(){
+  const a=+document.getElementById('amt').value||0;
+  const vd=document.getElementById('vd'),vic=document.getElementById('vic'),vt=document.getElementById('vt'),vs=document.getElementById('vs');
+  vd.className='verdict';
+  if(a<=640){vd.classList.add('v-ok');vic.textContent='✅';vt.textContent='Yes — go for it!';vs.textContent='This keeps you ₹'+(640-a)+' under today\'s safe limit. Pizza earned. 🍕'}
+  else if(a<=1900){vd.classList.add('v-think');vic.textContent='⚠️';vt.textContent='Possible, but it borrows from tomorrow';vs.textContent='You\'ll have ₹'+Math.max(0,900-(a-640))+' left tomorrow. Worth it? Only you know 😌'}
+  else{vd.classList.add('v-no');vic.textContent='🛑';vt.textContent='This squeezes your month-end';vs.textContent='Doing this leaves you ₹'+(a-640)+' short for essentials. Maybe wait for salary?'}
+  vd.classList.remove('stamp');void vd.offsetWidth;vd.classList.add('stamp');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mindful — Journal</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:radial-gradient(500px 300px at 100% 0%,rgba(236,72,153,.12),transparent),#0f0c29;color:#fff;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.4rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:rgba(255,255,255,.55);font-size:.83rem;margin-bottom:20px}
+.prompt{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:20px;margin-bottom:14px}
+.prompt small{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:700}
+.prompt h3{font-family:'Sora';font-size:1.05rem;margin-top:8px;line-height:1.45}
+.shuffle{margin-top:12px;font-size:.76rem;color:#c4b5fd;cursor:pointer;font-weight:600}
+.shuffle:hover{color:#fff}
+textarea{width:100%;height:150px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;
+  color:#fff;padding:18px;font-family:'Inter';font-size:.9rem;line-height:1.7;resize:none;outline:none;transition:.25s;margin-bottom:14px}
+textarea:focus{border-color:rgba(236,72,153,.6);box-shadow:0 0 0 3px rgba(236,72,153,.15)}
+textarea::placeholder{color:rgba(255,255,255,.35)}
+.mood-tag{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border-radius:14px;padding:12px 15px;margin-bottom:14px}
+.mood-tag i{font-style:normal;font-size:1.2rem}
+.mood-tag small{color:rgba(255,255,255,.6);font-size:.76rem}
+.mood-tag b{font-size:.8rem;margin-left:auto}
+.tools{display:flex;gap:8px;margin-bottom:18px}
+.t{flex:1;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.7);border-radius:12px;padding:10px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:'Inter';transition:.2s}
+.t:hover{color:#fff;border-color:rgba(236,72,153,.5)}
+.save{width:100%;border:0;border-radius:18px;padding:16px;font-family:'Sora';font-weight:700;color:#fff;font-size:.95rem;cursor:pointer;background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 14px 32px rgba(139,92,246,.45);transition:.22s}
+.save:hover{transform:translateY(-2px)}
+.past{margin-top:24px}
+.past h4{font-family:'Sora';font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:10px}
+.pe{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.1);font-size:.8rem;color:rgba(255,255,255,.75)}
+.pe i{font-style:normal}
+.pe small{margin-left:auto;color:rgba(255,255,255,.4);font-size:.68rem}
+</style></head>
+<body>
+<div class="app">
+  <h1>Evening journal 🌙</h1>
+  <p class="sub">Three lines is enough. Nobody else reads this.</p>
+
+  <div class="prompt">
+    <small>TONIGHT'S PROMPT</small>
+    <h3>What's one thing that went better than expected today?</h3>
+    <span class="shuffle" onclick="alert('✨ New prompt: What drained your energy today — and what refilled it?')">↻ Shuffle prompt</span>
+  </div>
+
+  <textarea placeholder="Start anywhere… even 'hmm' counts."></textarea>
+
+  <div class="mood-tag"><i>😊</i><small>Logging with today's check-in mood</small><b>7/10</b></div>
+
+  <div class="tools">
+    <button class="t">🎙️ Voice note</button>
+    <button class="t">📷 Photo</button>
+    <button class="t">🔒 Lock entry</button>
+  </div>
+
+  <button class="save" onclick="alert('💜 Entry saved. Streak extended to 13 days!')">Save entry</button>
+
+  <div class="past">
+    <h4>THIS WEEK</h4>
+    <div class="pe"><i>😊</i>Presentation went well — team liked the prototype<small>Mon</small></div>
+    <div class="pe"><i>😐</i>Slow day. Allowed myself to slow down too.<small>Sun</small></div>
+    <div class="pe"><i>🫶</i>Mom called. Small thing, big lift.<small>Sat</small></div>
+  </div>
+</div>
+</body></html>

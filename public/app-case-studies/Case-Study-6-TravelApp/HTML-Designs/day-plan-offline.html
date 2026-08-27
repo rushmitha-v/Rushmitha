@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wanderly — Day Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f4f9fc;color:#1b2733;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.02em}
+.offline{background:#fff4e0;color:#b45309;font-size:.64rem;font-weight:800;padding:6px 11px;border-radius:99px}
+.days{display:flex;gap:8px;margin-bottom:18px}
+.dy{flex:1;background:#fff;border-radius:13px;padding:9px 0;text-align:center;font-size:.68rem;font-weight:700;color:#7d8fa1;cursor:pointer;transition:.2s;border:1.5px solid transparent}
+.dy.on{background:linear-gradient(135deg,#0ea5e9,#f97316);color:#fff;border-color:transparent}
+.dy small{display:block;font-weight:500;margin-top:2px;font-size:.6rem}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2.5px;border-radius:99px;background:linear-gradient(180deg,#0ea5e9,#f97316)}
+.ev{background:#fff;border-radius:16px;padding:14px 15px;margin-bottom:12px;position:relative;box-shadow:0 6px 18px rgba(14,165,233,.08)}
+.ev::before{content:'';position:absolute;left:-23px;top:19px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid #0ea5e9}
+.time{font-size:.62rem;font-weight:800;color:#f97316;letter-spacing:.06em}
+.ev b{font-size:.86rem;display:block;margin-top:3px}
+.ev small{color:#7d8fa1;font-size:.72rem;display:block;line-height:1.55;margin-top:4px}
+.tags{display:flex;gap:7px;margin-top:8px}
+.tg{font-size:.58rem;font-weight:800;padding:4px 9px;border-radius:99px}
+.g1{background:#e5f7ef;color:#22b573}.g2{background:#ecebff;color:#5b5bd6}.g3{background:#fff3e0;color:#c07b1d}
+.nudge{background:linear-gradient(135deg,#0ea5e9,#f97316);border-radius:18px;padding:16px 17px;color:#fff;font-size:.76rem;line-height:1.65;margin-bottom:12px}
+.nudge b{font-family:'Sora'}
+.btn{width:100%;border:0;border-radius:15px;padding:15px;font-family:'Sora';font-weight:800;font-size:.88rem;color:#fff;background:#1b2733;cursor:pointer;transition:.22s}
+.btn:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app">
+  <div class="head"><h1>Coorg · Day 2 🌿</h1><span class="offline">📴 Offline saved</span></div>
+  <div class="days">
+    <div class="dy">Fri<small>Arrive</small></div><div class="dy on">Sat<small>Day 2</small></div><div class="dy">Sun<small>Day 3</small></div><div class="dy">Mon<small>Leave</small></div>
+  </div>
+  <div class="tl">
+    <div class="ev"><span class="time">6:00 AM</span><b>Sunrise at Raja's Seat</b><small>15 min drive from stay · gates open 5:45 AM · entry ₹20</small>
+      <div class="tags"><span class="tg g1">☀️ Best light 6:10</span><span class="tg g2">📸 Photo spot</span></div></div>
+    <div class="ev"><span class="time">8:30 AM</span><b>Breakfast · Coorg Cuisine Co.</b><small>Akki rotti + pandi curry · veg option available · ₹250/pp</small>
+      <div class="tags"><span class="tg g3">⭐ 4.7 (2.3k)</span><span class="tg g1">🥬 Veg friendly</span></div></div>
+    <div class="ev"><span class="time">10:30 AM</span><b>Abbey Falls trek</b><small>Easy 800m walk · carry rain jacket · leech socks recommended</small>
+      <div class="tags"><span class="tg g2">🥾 Easy trail</span><span class="tg g3">🌧️ Rain likely</span></div></div>
+    <div class="ev"><span class="time">4:00 PM</span><b>Coffee estate tour + cupping</b><small>Booked ✓ · 90 min · guide: Manoj · pickup from gate</small>
+      <div class="tags"><span class="tg g1">✅ Booked</span></div></div>
+  </div>
+  <div class="nudge">🌦️ <b>Rain alert:</b> Showers expected 2–4 PM near Abbey Falls. We've moved the estate tour after lunch — swap back anytime.</div>
+  <button class="btn" onclick="alert('📥 Day plan downloaded for offline use')">Download for offline 📴</button>
+</div>
+<script>
+document.querySelectorAll('.dy').forEach(d=>d.onclick=()=>{document.querySelectorAll('.dy').forEach(x=>x.classList.remove('on'));d.classList.add('on')});
+</script>
+</body></html>

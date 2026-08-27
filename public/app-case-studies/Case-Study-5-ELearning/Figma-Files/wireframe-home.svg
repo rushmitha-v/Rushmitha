@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640" font-family="Arial">
+  <rect width="360" height="640" fill="#f6f5ff"/>
+  <text x="20" y="40" fill="#1d1b33" font-size="17" font-weight="bold">🔄 LearnLoop</text>
+  <rect x="255" y="24" width="85" height="26" rx="13" fill="#fff" stroke="#e9e6f8"/>
+  <text x="266" y="41" fill="#5b5bd6" font-size="11" font-weight="bold">⚡ 1240 XP</text>
+  <text x="20" y="80" fill="#1d1b33" font-size="19" font-weight="bold">3 small wins today</text>
+  <text x="20" y="100" fill="#7a76a0" font-size="12">SQL Basics · Day 16</text>
+  <!-- streak -->
+  <rect x="16" y="118" width="328" height="52" rx="14" fill="#fff" stroke="#e9e6f8"/>
+  <text x="32" y="140" fill="#f5a623" font-size="16">🔥</text>
+  <text x="58" y="140" fill="#1d1b33" font-size="12" font-weight="bold">16-day streak</text>
+  <text x="58" y="156" fill="#7a76a0" font-size="10">Best ever!</text>
+  <rect x="240" y="133" width="18" height="18" rx="6" fill="#5b5bd6"/>
+  <rect x="262" y="133" width="18" height="18" rx="6" fill="#5b5bd6"/>
+  <rect x="284" y="133" width="18" height="18" rx="6" fill="#efeefb"/>
+  <rect x="306" y="133" width="18" height="18" rx="6" fill="#efeefb"/>
+  <!-- today card -->
+  <rect x="16" y="186" width="328" height="230" rx="20" fill="#5b5bd6"/>
+  <circle cx="310" cy="200" r="60" fill="#fff" opacity=".1"/>
+  <rect x="32" y="206" width="150" height="22" rx="11" fill="#fff" opacity=".2"/>
+  <text x="42" y="221" fill="#fff" font-size="10" font-weight="bold">⏱ TODAY · 15 MIN TOTAL</text>
+  <text x="32" y="252" fill="#fff" font-size="16" font-weight="bold">Finish by lunch break</text>
+  <rect x="32" y="272" width="296" height="40" rx="11" fill="#fff" opacity=".16"/>
+  <text x="46" y="297" fill="#fff" font-size="12">✓ JOINs — inner vs outer · 5 min</text>
+  <rect x="32" y="318" width="296" height="40" rx="11" fill="#fff" opacity=".16"/>
+  <text x="46" y="343" fill="#fff" font-size="12">▶ GROUP BY &amp; HAVING · 6 min</text>
+  <rect x="32" y="364" width="296" height="40" rx="11" fill="#fff" opacity=".16"/>
+  <text x="46" y="389" fill="#fff" font-size="12">🎧 Window functions · audio · 4 min</text>
+  <!-- courses -->
+  <text x="20" y="448" fill="#1d1b33" font-size="14" font-weight="bold">Continue learning</text>
+  <rect x="16" y="462" width="328" height="64" rx="14" fill="#fff" stroke="#e9e6f8"/>
+  <rect x="30" y="476" width="36" height="36" rx="11" fill="#ecebff"/>
+  <text x="78" y="490" fill="#1d1b33" font-size="12" font-weight="bold">SQL from Zero to Analyst</text>
+  <text x="78" y="506" fill="#7a76a0" font-size="10">24 of 42 lessons</text>
+  <rect x="78" y="512" width="200" height="6" rx="3" fill="#efeefb"/>
+  <rect x="78" y="512" width="114" height="6" rx="3" fill="#5b5bd6"/>
+  <text x="292" y="496" fill="#5b5bd6" font-size="12" font-weight="bold">57%</text>
+  <!-- review -->
+  <rect x="16" y="544" width="328" height="60" rx="14" fill="#fff7ea" stroke="#f5dfb8"/>
+  <text x="32" y="580" fill="#f5a623" font-size="18">🧠</text>
+  <text x="62" y="570" fill="#1d1b33" font-size="12" font-weight="bold">3 flashcards due</text>
+  <text x="62" y="586" fill="#9a8460" font-size="10">Spaced repetition · 2 min</text>
+  <rect x="262" y="560" width="66" height="28" rx="9" fill="#f5a623"/>
+  <text x="278" y="578" fill="#fff" font-size="11" font-weight="bold">Review</text>
+</svg>

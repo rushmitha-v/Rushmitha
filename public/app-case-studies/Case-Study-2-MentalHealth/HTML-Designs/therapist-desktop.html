@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mindful — Therapist Portal (Desktop)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#0f0c29;color:#fff}
+.side{position:fixed;left:0;top:0;bottom:0;width:230px;background:rgba(255,255,255,.04);border-right:1px solid rgba(255,255,255,.08);padding:26px 18px}
+.logo{font-family:'Sora';font-weight:800;margin-bottom:30px}
+.logo span{color:#a78bfa}
+.nav{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:12px;color:rgba(255,255,255,.55);font-size:.85rem;font-weight:500;cursor:pointer;transition:.2s;margin-bottom:4px}
+.nav:hover{background:rgba(255,255,255,.05);color:#fff}
+.nav.on{background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(236,72,153,.15));color:#fff;border:1px solid rgba(139,92,246,.35)}
+.main{margin-left:230px;padding:30px 40px;max-width:1050px}
+h1{font-family:'Sora';font-size:1.55rem;letter-spacing:-.02em;margin-bottom:6px}
+p.sub{color:rgba(255,255,255,.55);font-size:.88rem;margin-bottom:26px}
+.consent{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:14px;padding:13px 18px;font-size:.8rem;color:#6ee7b7;margin-bottom:24px}
+.cols{display:grid;grid-template-columns:1fr 1.4fr;gap:18px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:22px}
+.card h3{font-family:'Sora';font-size:.92rem;margin-bottom:14px}
+.plist{display:flex;flex-direction:column;gap:9px}
+.p{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:13px;background:rgba(255,255,255,.04);cursor:pointer;transition:.2s}
+.p:hover{background:rgba(255,255,255,.08)}
+.p.on{border:1px solid rgba(139,92,246,.5);background:rgba(139,92,246,.12)}
+.pav{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.75rem;font-family:'Sora';flex-shrink:0}
+.p b{font-size:.82rem;display:block}
+.p small{color:rgba(255,255,255,.5);font-size:.68rem}
+.trend{font-size:.64rem;font-weight:800;padding:3px 8px;border-radius:99px;margin-left:auto}
+.up{background:rgba(52,211,153,.15);color:#6ee7b7}.dn{background:rgba(251,113,133,.15);color:#fb7185}
+svg{width:100%;height:auto}
+.ln{fill:none;stroke:#a78bfa;stroke-width:3;stroke-linecap:round}
+.grid-l{stroke:rgba(255,255,255,.07);stroke-dasharray:3 5}
+.note{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:14px 16px;margin-top:14px}
+.note b{font-size:.8rem;display:block;margin-bottom:6px;color:#c4b5fd}
+.note p{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.6}
+</style></head>
+<body>
+<div class="side">
+  <div class="logo">🌿 Mindful<span>Care</span></div>
+  <div class="nav">👥 Clients</div>
+  <div class="nav on">📊 Shared summaries</div>
+  <div class="nav">🗓️ Sessions</div>
+  <div class="nav">📚 Resources</div>
+</div>
+<div class="main">
+  <h1>Client summaries 📊</h1>
+  <p class="sub">Weekly mood trends shared voluntarily by clients · summary data only, never raw journal entries</p>
+  <div class="consent">🔒 Jamie W. granted summary access on Aug 2 · revocable anytime by them</div>
+
+  <div class="cols">
+    <div class="card">
+      <h3>Clients sharing (4)</h3>
+      <div class="plist">
+        <div class="p on"><div class="pav" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">JW</div><div><b>Jamie W.</b><small>Sharing since Aug 2</small></div><span class="trend up">↑ 12%</span></div>
+        <div class="p"><div class="pav" style="background:linear-gradient(135deg,#34d399,#38bdf8)">RK</div><div><b>Riley K.</b><small>Sharing since Jul 14</small></div><span class="trend up">↑ 5%</span></div>
+        <div class="p"><div class="pav" style="background:linear-gradient(135deg,#fbbf24,#fb7185)">SM</div><div><b>Sam M.</b><small>Sharing since Jun 30</small></div><span class="trend dn">↓ 8%</span></div>
+        <div class="p"><div class="pav" style="background:rgba(255,255,255,.1)">TA</div><div><b>Taylor A.</b><small>Sharing since Aug 18</small></div><span class="trend up">↑ 3%</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Jamie W. — 30-day mood summary</h3>
+      <svg viewBox="0 0 420 160">
+        <line class="grid-l" x1="10" y1="40" x2="410" y2="40"/>
+        <line class="grid-l" x1="10" y1="80" x2="410" y2="80"/>
+        <line class="grid-l" x1="10" y1="120" x2="410" y2="120"/>
+        <path class="ln" d="M10 100 L60 88 L110 95 L160 70 L210 82 L260 55 L310 62 L360 48 L410 55"/>
+      </svg>
+      <div class="note"><b>📌 Session prep note</b><p>Mood dips cluster around Tuesday afternoons (work reviews). Sleep correlation strong: &lt;6h sleep → next-day mood −2.1. Jamie reports breathing exercises "actually help now."</p></div>
+    </div>
+  </div>
+</div>
+</body></html>

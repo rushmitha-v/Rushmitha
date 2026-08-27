@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wanderlust — UX Case Study · Rushmitha Varshini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+</head>
+<body style="--accent:#0EA5E9; --accent2:#FF7A59">
+<div class="topbar"><div class="in"><a class="back" href="index.html">← All case studies</a><span class="brand">Wander<b>lust</b> · UX Case Study</span></div></div>
+
+<header class="hero"><div class="in">
+  <span class="tag">Travel · Booking App</span>
+  <h1>Wanderlust — from daydream to booked in a few taps</h1>
+  <p class="sub">A travel-stay app that makes discovery inspiring and booking effortless — surfacing places you'll love and collapsing the path to a confident “Book Now”.</p>
+  <div class="meta">
+    <div><div class="k">Role</div><div class="v">UX / UI Designer</div></div>
+    <div><div class="k">Timeline</div><div class="v">6 weeks</div></div>
+    <div><div class="k">Platform</div><div class="v">iOS &amp; Android</div></div>
+    <div><div class="k">Tools</div><div class="v">Figma · Maze · FigJam</div></div>
+  </div>
+</div></header>
+
+<main>
+<section class="blk" id="problem"><div class="wrap">
+  <div class="kicker"><span class="num">01</span><h2>The Problem</h2></div>
+  <p class="lead">Booking a trip should feel exciting — instead it's exhausting. Endless listings, uninspiring grids, and prices that jump at checkout push travelers to open ten tabs, compare endlessly, and abandon the booking entirely.</p>
+  <div class="statement"><div class="lbl">Problem statement</div><p>How might we help travelers discover stays they'll love and book them confidently — without decision fatigue or price surprises?</p></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">38</div><div class="l">sites the avg. traveler visits before booking</div></div>
+    <div class="stat"><div class="n">#1</div><div class="l">abandonment cause: surprise fees at checkout</div></div>
+    <div class="stat"><div class="n">2s</div><div class="l">to lose interest in a boring listing grid</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="goals"><div class="wrap">
+  <div class="kicker"><span class="num">02</span><h2>Goals &amp; Success Metrics</h2></div>
+  <ul class="insights">
+    <li><span class="ic">✦</span><span><b>Inspire, then filter</b>Lead with curated, visual discovery — not a spreadsheet of rooms.</span></li>
+    <li><span class="ic">✓</span><span><b>Build trust on the detail page</b>Photos, ratings, amenities and an honest total price.</span></li>
+    <li><span class="ic">⚡</span><span><b>Fast, transparent booking</b>A sticky book bar with the real per-night price.</span></li>
+  </ul>
+  <p class="small"><strong>Target metrics:</strong> stay findability &gt; 85% · booking completion &gt; 90% · SUS &gt; 80 · price-clarity rating ↑.</p>
+</div></section>
+
+<section class="blk" id="research"><div class="wrap">
+  <div class="kicker"><span class="num">03</span><h2>User Research</h2></div>
+  <div class="tags"><span>10 user interviews</span><span>Survey — 55 respondents</span><span>Competitive audit — Airbnb, Booking, Hopper</span><span>Journey mapping</span></div>
+  <h3 class="sub">Key findings</h3>
+  <ul class="insights">
+    <li><span class="ic">1</span><span><b>Inspiration comes before criteria</b>People browse to dream first, then narrow — discovery must feel visual and curated.</span></li>
+    <li><span class="ic">2</span><span><b>Photos + ratings win trust</b>Real imagery and review counts are the biggest confidence drivers on the detail page.</span></li>
+    <li><span class="ic">3</span><span><b>Amenities decide ties</b>Wi-Fi, pool, breakfast — the deciding details when comparing two stays.</span></li>
+    <li><span class="ic">4</span><span><b>Hidden fees destroy trust</b>A price that changes at checkout is the fastest way to lose the booking.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="personas"><div class="wrap">
+  <div class="kicker"><span class="num">04</span><h2>Personas</h2></div>
+  <div class="grid-2">
+    <div class="persona">
+      <div class="top"><div class="avatar">NV</div><div><h4>Nisha Verma</h4><div class="role">28 · Consultant · spontaneous traveler</div></div></div>
+      <p class="quote">"I decide to travel on a Thursday for the weekend. I want inspiration and a fast, honest booking."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Discover great stays quickly</li><li>Book in minutes on mobile</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Overwhelming, samey listings</li><li>Prices that change at checkout</li></ul></div>
+    </div>
+    <div class="persona">
+      <div class="top"><div class="avatar">TC</div><div><h4>Tom &amp; Cara</h4><div class="role">33 · planning a couples' getaway</div></div></div>
+      <p class="quote">"We compare a lot before we commit — show us amenities and the real total so we can just decide."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Compare amenities &amp; ratings easily</li><li>See the honest total up front</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Fee surprises &amp; unclear inclusions</li><li>Long, fiddly booking forms</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="flow"><div class="wrap">
+  <div class="kicker"><span class="num">05</span><h2>User Flow — Discover &amp; Book</h2></div>
+  <div class="flow">
+    <div class="step"><div class="s">START</div><div class="t">Explore feed</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 1</div><div class="t">Search / filter</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 2</div><div class="t">Open a stay</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 3</div><div class="t">Review amenities</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 4</div><div class="t">Set dates &amp; guests</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">DONE</div><div class="t">Book Now ✓</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="wireframes"><div class="wrap">
+  <div class="kicker"><span class="num">06</span><h2>Wireframes</h2></div>
+  <p class="lead">Low-fi prioritised a visual, curated Explore feed and a detail page that answers doubts above the sticky book bar.</p>
+  <div class="wire-row">
+    <div><div class="wf phone">
+      <div class="rowf"><div class="sk bar sm"></div><div class="sk circle" style="margin-left:auto"></div></div>
+      <div class="sk pill" style="width:100%;margin:10px 0"></div>
+      <div class="rowf"><div class="sk pill accent" style="width:25%"></div><div class="sk pill" style="width:25%"></div><div class="sk pill" style="width:25%"></div></div>
+      <div class="sk box accent tall" style="margin-top:10px"></div>
+      <div class="rowf" style="margin-top:8px"><div class="sk box" style="flex:1;height:70px"></div><div class="sk box" style="flex:1;height:70px"></div></div>
+    </div><div class="wf-cap">Explore — search, chips, featured + cards</div></div>
+    <div><div class="wf phone">
+      <div class="sk box tall" style="height:130px"></div>
+      <div class="sk bar md"></div><div class="sk bar sm"></div>
+      <div class="grid3" style="margin:10px 0"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div class="sk bar"></div>
+      <div class="rowf" style="margin-top:12px"><div class="sk bar sm"></div><div class="sk box accent" style="width:120px;height:42px;margin-left:auto"></div></div>
+    </div><div class="wf-cap">Detail — hero, amenities, sticky Book</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="prototype"><div class="wrap">
+  <div class="kicker"><span class="num">07</span><h2>Hi-Fi Design &amp; Prototype</h2></div>
+  <p class="lead">Discovery leads with a bold featured card and category chips; the detail page builds trust with a photo gallery, ratings and an amenities grid — with an honest per-night total pinned to a sticky Book bar.</p>
+  <div class="figure"><div class="shots">
+    <div class="device phone"><img src="../figma-exports/09-wanderlust-explore.png" alt="Wanderlust explore"/></div>
+    <div class="device phone"><img src="../figma-exports/10-wanderlust-detail.png" alt="Wanderlust hotel detail"/></div>
+  </div><figcaption>Explore &amp; hotel detail — high-fidelity screens</figcaption></div>
+  <h3 class="sub">Key design decisions</h3>
+  <ul class="insights">
+    <li><span class="ic">◆</span><span><b>Featured hero + chips</b>Inspiration first; filtering is one tap away, not the whole screen.</span></li>
+    <li><span class="ic">◆</span><span><b>Amenities grid</b>Scannable icons answer the deciding “does it have…?” questions instantly.</span></li>
+    <li><span class="ic">◆</span><span><b>Transparent sticky book bar</b>The real price/night stays visible so there's no surprise at checkout.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="testing"><div class="wrap">
+  <div class="kicker"><span class="num">08</span><h2>Usability Testing</h2></div>
+  <p class="lead">6 participants, unmoderated (Maze) + follow-up interviews.</p>
+  <p class="small"><strong>Tasks:</strong> (1) “Find a highly-rated beach stay.” (2) “Book it for 2 guests.”</p>
+  <table class="tbl"><thead><tr><th>Metric</th><th>Target</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Stay findability</td><td>&gt; 85%</td><td><span class="good">91%</span></td></tr>
+    <tr><td>Booking completion</td><td>&gt; 90%</td><td><span class="good">94%</span></td></tr>
+    <tr><td>System Usability Scale</td><td>&gt; 80</td><td><span class="good">85</span></td></tr>
+    <tr><td>Price-clarity rating (1–5)</td><td>↑</td><td><span class="good">4.6</span></td></tr>
+  </tbody></table>
+  <h3 class="sub">What testing changed</h3>
+  <div class="iter"><span class="tagline">Iteration 1</span><p>Users wanted the total before committing to the booking screen. → Surfaced the <b>per-night price on the sticky bar</b> earlier in the flow.</p></div>
+  <div class="iter"><span class="tagline">Iteration 2</span><p>Date &amp; guest selection was easy to miss. → Combined <b>“Dates · Guests” into the search summary</b> and made it a clear, tappable field.</p></div>
+</div></section>
+
+<section class="blk" id="results"><div class="wrap">
+  <div class="kicker"><span class="num">09</span><h2>Results &amp; Impact</h2></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">94%</div><div class="l">booking task completion</div></div>
+    <div class="stat"><div class="n">91%</div><div class="l">found a matching stay quickly</div></div>
+    <div class="stat"><div class="n">85</div><div class="l">SUS score</div></div>
+    <div class="stat"><div class="n">4.6/5</div><div class="l">price transparency rating</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="reflection"><div class="wrap">
+  <div class="kicker"><span class="num">10</span><h2>Reflection &amp; Next Steps</h2></div>
+  <div class="reflect">
+    <p style="margin-top:0">Leading with <strong>emotion and imagery</strong> — then letting filters follow — matched how people actually plan trips. And nothing built trust like <strong>an honest price shown early</strong>; transparency was a UX feature, not just a policy.</p>
+    <p style="margin-bottom:0"><strong>Next:</strong> saved wishlists &amp; trip boards, map-based discovery, and flexible-date price views for spontaneous travelers like Nisha.</p>
+  </div>
+  <div class="tags" style="margin-top:22px"><span>UX Research</span><span>Journey Mapping</span><span>Visual Design</span><span>Interaction Design</span><span>Usability Testing</span></div>
+</div></section>
+</main>
+
+<nav class="dots"><a href="#problem" class="on"><span>Problem</span></a><a href="#goals"><span>Goals</span></a><a href="#research"><span>Research</span></a><a href="#personas"><span>Personas</span></a><a href="#flow"><span>User Flow</span></a><a href="#wireframes"><span>Wireframes</span></a><a href="#prototype"><span>Prototype</span></a><a href="#testing"><span>Testing</span></a><a href="#results"><span>Results</span></a><a href="#reflection"><span>Reflection</span></a></nav>
+<div class="foot">Wanderlust UX Case Study · Designed by <strong>Rushmitha Varshini</strong> · <a href="index.html">← Back to all case studies</a></div>
+<script>const secs=[...document.querySelectorAll('section.blk')];const dots=[...document.querySelectorAll('.dots a')];const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=secs.indexOf(e.target);dots.forEach(d=>d.classList.remove('on'));if(dots[i])dots[i].classList.add('on');}}),{threshold:.5});secs.forEach(s=>io.observe(s));</script>
+</body>
+</html>

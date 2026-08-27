@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MediCare+ — Lab Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f0f9f8;color:#0c2e2a;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#5b7a75;font-size:.8rem;margin-bottom:16px}
+.banner{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:18px;padding:14px 16px;font-size:.75rem;color:#713f12;line-height:1.6;margin-bottom:15px;display:flex;gap:11px;align-items:center}
+.banner i{font-style:normal;font-size:1.4rem}
+.res{background:#fff;border-radius:18px;padding:16px 17px;margin-bottom:11px;box-shadow:0 6px 18px rgba(13,148,136,.08)}
+.rhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.rhead b{font-size:.85rem;display:block}
+.rhead small{color:#5b7a75;font-size:.66rem;display:block;margin-top:2px}
+.stx{font-size:.58rem;font-weight:800;padding:4px 11px;border-radius:99px;white-space:nowrap}
+.ok2{background:#d7f2ee;color:#0f766e}.hi{background:#fee2e2;color:#dc2626}.watch{background:#fef3c7;color:#b45309}
+.valrow{display:flex;align-items:baseline;gap:8px}
+.vnow{font-family:'Sora';font-weight:800;font-size:1.35rem}
+.vrange{font-size:.68rem;color:#5b7a75}
+.sparkline{height:34px;display:flex;align-items:flex-end;gap:3px;margin-top:9px}
+.sp{flex:1;border-radius:3px;background:#99e0d5;min-height:5px}
+.sp.hot{background:#fb7185}
+.expl{margin-top:10px;background:#f0f9f8;border-radius:12px;padding:11px 13px;font-size:.72rem;line-height:1.6;color:#134e48}
+.expl b{color:#0f766e}
+</style></head>
+<body>
+<div class="app">
+  <h1>Lab results 🔬</h1>
+  <p class="sub">Full body checkup · Aug 22 · SRL Diagnostics</p>
+  <div class="banner"><i>🧑‍⚕️</i><span><b>Dr. Kavitha has reviewed these.</b> Nothing urgent — one value to watch. Her notes are below each result.</span></div>
+  <div class="res">
+    <div class="rhead"><div><b>Vitamin D</b><small>Normal: 30–100 ng/mL</small></div><span class="stx hi">LOW ⚠️</span></div>
+    <div class="valrow"><span class="vnow" style="color:#dc2626">18.2</span><span class="vrange">ng/mL</span></div>
+    <div class="sparkline"><div class="sp" style="height:60%"></div><div class="sp hot" style="height:38%"></div><div class="sp hot" style="height:26%"></div><div class="sp hot" style="height:18%"></div></div>
+    <div class="expl"><b>In plain words:</b> Low vitamin D explains your tiredness and body ache. Dr. Rao added a weekly supplement + 20 min morning sun to your plan.</div>
+  </div>
+  <div class="res">
+    <div class="rhead"><div><b>HbA1c (sugar)</b><small>Normal: &lt; 5.7%</small></div><span class="stx watch">BORDERLINE</span></div>
+    <div class="valrow"><span class="vnow" style="color:#b45309">5.6</span><span class="vrange">%</span></div>
+    <div class="sparkline"><div class="sp" style="height:40%"></div><div class="sp" style="height:52%"></div><div class="sp" style="height:58%"></div><div class="sp" style="height:62%"></div></div>
+    <div class="expl"><b>In plain words:</b> Just under the line. Cut sugary drinks this month — we'll recheck in 90 days before it becomes a problem.</div>
+  </div>
+  <div class="res">
+    <div class="rhead"><div><b>Thyroid (TSH)</b><small>Normal: 0.4–4.0</small></div><span class="stx ok2">NORMAL ✓</span></div>
+    <div class="valrow"><span class="vnow" style="color:#0f766e">2.4</span><span class="vrange">mIU/L</span></div>
+    <div class="sparkline"><div class="sp" style="height:45%"></div><div class="sp" style="height:50%"></div><div class="sp" style="height:47%"></div><div class="sp" style="height:49%"></div></div>
+    <div class="expl"><b>In plain words:</b> Steady and healthy. No action needed.</div>
+  </div>
+</div>
+<script>document.querySelectorAll('.res').forEach(r=>r.onclick=()=>alert('📄 Full report + doctor note opened'));</script>
+</body></html>

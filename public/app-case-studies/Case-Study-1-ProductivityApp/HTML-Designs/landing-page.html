@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FocusMate — Get more done, together</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#070b16;--txt:#eef2fb;--mut:#93a0bd;--b1:#4f8cff;--b2:#8b5cf6;--line:rgba(255,255,255,.09)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:var(--bg);color:var(--txt);overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+  .logo{font-family:'Sora';font-weight:800;font-size:1.15rem}
+  .logo b{color:var(--b1)}
+  nav ul{display:flex;gap:26px;list-style:none}
+  nav a{color:var(--mut);text-decoration:none;font-size:.85rem;font-weight:500;transition:.2s}
+  nav a:hover{color:#fff}
+  .nav-cta{padding:10px 20px;border-radius:12px;color:#fff!important;text-decoration:none;font-weight:700;font-size:.82rem;
+    background:linear-gradient(135deg,var(--b1),var(--b2));box-shadow:0 10px 26px rgba(79,140,255,.35)}
+
+  /* HERO */
+  .hero{text-align:center;padding:84px 0 60px;position:relative}
+  .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.35;pointer-events:none}
+  .o1{width:440px;height:440px;background:var(--b1);top:-160px;left:-120px}
+  .o2{width:380px;height:380px;background:var(--b2);top:-80px;right:-120px}
+  .pillx{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:99px;
+    padding:8px 18px;font-size:.78rem;color:#c6d2ec;margin-bottom:26px}
+  h1.h{font-family:'Sora';font-size:clamp(2.5rem,5.6vw,4.1rem);letter-spacing:-.03em;line-height:1.08;margin-bottom:22px}
+  h1.h span{background:linear-gradient(120deg,var(--b1),var(--b2),#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}
+  p.hs{color:var(--mut);max-width:520px;margin:0 auto 34px;line-height:1.75;font-size:1rem}
+  .cta{display:flex;gap:14px;justify-content:center;margin-bottom:60px}
+  .b1,.b2{padding:15px 30px;border-radius:14px;text-decoration:none;font-weight:700;font-size:.92rem;transition:.25s;display:inline-block}
+  .b1{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;box-shadow:0 16px 36px rgba(79,140,255,.4)}
+  .b1:hover{transform:translateY(-3px)}
+  .b2{border:1px solid var(--line);color:var(--txt)} .b2:hover{background:rgba(255,255,255,.06)}
+
+  /* APP PREVIEW */
+  .preview{border-radius:24px;border:1px solid var(--line);background:linear-gradient(180deg,#101a38,#0c1226);
+    padding:18px;box-shadow:0 50px 110px rgba(0,0,0,.55),0 0 90px rgba(79,140,255,.12);
+    transform:perspective(1200px) rotateX(7deg);transition:.6s cubic-bezier(.2,.9,.3,1.1)}
+  .preview:hover{transform:perspective(1200px) rotateX(0deg) translateY(-8px)}
+  .pv-bar{display:flex;gap:7px;padding:4px 8px 12px} .pv-bar i{width:11px;height:11px;border-radius:50%;opacity:.85}
+  .pv-body{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;background:#0a1122;border-radius:16px;padding:20px}
+  .pv-card{border:1px solid var(--line);border-radius:14px;padding:18px;background:rgba(255,255,255,.03)}
+  .pv-card small{color:var(--mut);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em}
+  .pv-card b{font-family:'Sora';display:block;font-size:1.3rem;margin-top:8px}
+  .ring-pv{grid-column:span 1;display:grid;place-items:center}
+  svg circle{fill:none;stroke-width:11;stroke-linecap:round}
+  .tk{stroke:rgba(255,255,255,.08)} .vl{stroke:url(#gg);stroke-dasharray:308;stroke-dashoffset:77;
+    animation:sweep 2.4s ease forwards}
+  @keyframes sweep{from{stroke-dashoffset:308}}
+  .timer-big{grid-column:span 2;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px}
+  .t-num{font-family:'Sora';font-size:2.9rem;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+  /* LOGOS / SOCIAL PROOF */
+  .proof{text-align:center;padding:56px 0 8px}
+  .proof small{color:var(--mut);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase}
+  .avatars{display:flex;justify-content:center;margin-top:18px}
+  .av{width:44px;height:44px;border-radius:50%;border:3px solid var(--bg);margin-left:-10px;display:grid;place-items:center;font-weight:800;font-family:'Sora';font-size:.85rem}
+  .a1{background:#4f8cff}.a2{background:#8b5cf6}.a3{background:#ec4899}.a4{background:#2dd4a7}.a5{background:#fbbf24;color:#111}
+  .stars-line{margin-top:16px;color:#fbbf24;font-size:.95rem;letter-spacing:2px}
+  .stars-line span{color:var(--mut);letter-spacing:0;margin-left:10px;font-size:.82rem}
+
+  /* FEATURES */
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:64px 0 30px}
+  .feat{border:1px solid var(--line);border-radius:20px;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,.04),transparent);transition:.25s}
+  .feat:hover{transform:translateY(-6px);border-color:rgba(79,140,255,.4);box-shadow:0 24px 54px rgba(0,0,0,.4)}
+  .fic{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:1.25rem;margin-bottom:18px}
+  .fc1{background:rgba(79,140,255,.16)} .fc2{background:rgba(139,92,246,.16)} .fc3{background:rgba(45,212,167,.16)}
+  .feat h3{font-family:'Sora';font-size:1.02rem;margin-bottom:10px}
+  .feat p{color:var(--mut);font-size:.86rem;line-height:1.7}
+
+  /* CTA BAND */
+  .band{margin:60px 0 80px;border-radius:26px;padding:58px 30px;text-align:center;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#16204a,#231a4d);border:1px solid rgba(139,92,246,.35)}
+  .band::before,.band::after{content:'';position:absolute;border-radius:50%;filter:blur(70px);opacity:.4}
+  .band::before{width:280px;height:280px;background:var(--b1);left:-90px;top:-90px}
+  .band::after{width:260px;height:260px;background:var(--b2);right:-70px;bottom:-90px}
+  .band h2{font-family:'Sora';font-size:clamp(1.6rem,3.4vw,2.4rem);letter-spacing:-.02em;margin-bottom:14px;position:relative;z-index:1}
+  .band p{color:#c6d2ec;margin-bottom:26px;position:relative;z-index:1}
+  footer{text-align:center;color:var(--mut);font-size:.78rem;padding-bottom:44px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="logo">⚡Focus<b>Mate</b></div>
+    <ul><li><a href="#">Features</a></li><li><a href="#">Stories</a></li><li><a href="#">Pricing</a></li></ul>
+    <a class="nav-cta" href="#">Start free</a>
+  </nav>
+
+  <div class="hero">
+    <i class="orb o1"></i><i class="orb o2"></i>
+    <span class="pillx">🔥 Loved by 12,000+ remote workers · Free forever plan</span>
+    <h1 class="h">Get more done,<br><span>together.</span></h1>
+    <p class="hs">FocusMate pairs you with an accountability partner for distraction-free focus sessions.
+      Real humans. Real progress. Zero awkward Zoom calls.</p>
+    <div class="cta"><a class="b1" href="#">Start your first session →</a><a class="b2" href="#feat">See how it works</a></div>
+
+    <div class="preview">
+      <div class="pv-bar"><i style="background:#fb7185"></i><i style="background:#fbbf24"></i><i style="background:#34d399"></i></div>
+      <div class="pv-body">
+        <div class="pv-card ring-pv">
+          <svg width="118" height="118"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+            <circle class="tk" cx="59" cy="59" r="49"/><circle class="vl" cx="59" cy="59" r="49"/>
+          </svg>
+        </div>
+        <div class="pv-card timer-big">
+          <small style="color:var(--mut);letter-spacing:.2em;font-size:.68rem">DEEP FOCUS · WITH @MARIA</small>
+          <div class="t-num">18:42</div>
+          <small style="color:#34d399;font-weight:600">● Both of you are in flow</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof">
+      <small>Trusted by focused teams at</small>
+      <div class="avatars"><div class="av a1">A</div><div class="av a2">M</div><div class="av a3">J</div><div class="av a4">R</div><div class="av a5">+</div></div>
+      <div class="stars-line">★★★★★ <span>4.9 average from 2,300+ reviews</span></div>
+    </div>
+  </div>
+
+  <div class="feats" id="feat">
+    <div class="feat"><div class="fic fc1">👥</div><h3>Human accountability</h3><p>Match with a partner who starts when you start. Their presence alone lifts focus by up to 40%.</p></div>
+    <div class="feat"><div class="fic fc2">🧠</div><h3>Science-backed sessions</h3><p>Pomodoro 25, Deep 45 or Flow 90 — pick the rhythm that matches your brain, not the other way round.</p></div>
+    <div class="feat"><div class="fic fc3">📈</div><h3>Progress you can feel</h3><p>Streaks, weekly insight reports and gentle nudges — motivation that compounds day after day.</p></div>
+  </div>
+
+  <div class="band">
+    <h2>Your next deep-work hour is one click away.</h2>
+    <p>Join thousands finishing work by 6pm — without guilt.</p>
+    <a class="b1" href="#" style="position:relative;z-index:1">Start free — no card needed</a>
+  </div>
+
+  <footer>© 2026 FocusMate · Designed by Rushmitha · Figma → HTML/CSS/JS</footer>
+</div>
+</body>
+</html>

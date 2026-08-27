@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wanderly — Group Vote</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f4f9fc;color:#1b2733;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.35rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#7d8fa1;font-size:.84rem;margin-bottom:18px}
+.options{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+.opt{background:#fff;border:2px solid #e8eef4;border-radius:20px;padding:18px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:.25s;position:relative}
+.opt:hover{border-color:#c8e0ec;transform:translateY(-2px)}
+.opt.on{border-color:#f97316;background:#fff8ec;box-shadow:0 12px 28px rgba(249,115,22,.2)}
+.opt img{width:80px;height:80px;border-radius:16px;object-fit:cover;flex-shrink:0}
+.opt div{flex:1}
+.opt h4{font-family:'Sora';font-size:.95rem;margin-bottom:4px}
+.opt small{color:#7d8fa1;font-size:.74rem;display:block}
+.badge{position:absolute;top:-10px;right:-10px;background:#f97316;color:#fff;font-size:.64rem;font-weight:800;padding:5px 10px;border-radius:99px;box-shadow:0 6px 16px rgba(249,115,22,.3)}
+.reactions{display:flex;gap:8px;margin-top:10px}
+.rxn{flex:1;background:#f0f7fb;border:1px solid #e2ebe9;border-radius:12px;padding:10px;text-align:center;cursor:pointer;transition:.2s}
+.rxn:hover{background:#e6f4f2}
+.rxn.on{background:#f97316;color:#fff;border-color:#f97316}
+.rxn i{font-style:normal;font-size:1.2rem;display:block;margin-bottom:4px}
+.rxn small{font-size:.66rem;font-weight:700}
+.vote{width:100%;margin-top:18px;border:0;border-radius:16px;padding:16px;font-family:'Sora';font-weight:800;font-size:.92rem;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0ea5e9,#f97316);box-shadow:0 14px 30px rgba(14,165,233,.35);transition:.22s}
+.vote:hover{transform:translateY(-2px)}
+</style></head>
+<body>
+<div class="app">
+  <h1>Group decision 🗳️</h1>
+  <p class="sub">5 friends voting · majority wins · auto-locks in 2 hrs</p>
+  <div class="options">
+    <div class="opt on"><img src="https://picsum.photos/seed/coorg/160/160" alt=""><div><h4>Coorg Coffee Estate</h4><small>3 days · ₹4,800/pp · Waterfalls + campfire</small></div><span class="badge">LEADING 3/5</span></div>
+    <div class="opt"><img src="https://picsum.photos/seed/goa/160/160" alt=""><div><h4>Goa Beach Villa</h4><small>3 days · ₹5,200/pp · Sunset + seafood</small></div></div>
+    <div class="opt"><img src="https://picsum.photos/seed/kerala/160/160" alt=""><div><h4>Kerala Backwaters</h4><small>4 days · ₹6,100/pp · Houseboat + Ayurveda</small></div></div>
+  </div>
+  <div class="reactions">
+    <div class="rxn"><i>👍</i><small>Thumbs up</small></div>
+    <div class="rxn"><i>❤️</i><small>Love it</small></div>
+    <div class="rxn"><i>🤔</i><small>Maybe</small></div>
+  </div>
+  <button class="vote" onclick="alert('✅ Your vote recorded! Option B (Goa) now leading 3/5')">Vote for this one</button>
+</div>
+<script>
+document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{document.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));o.classList.add('on')});
+document.querySelectorAll('.rxn').forEach(r=>r.onclick=()=>{document.querySelectorAll('.rxn').forEach(x=>x.classList.remove('on'));r.classList.add('on')});
+</script>
+</body></html>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640" font-family="Arial">
+  <rect width="360" height="640" fill="#0c1226"/>
+  <text x="20" y="38" fill="#2dd4a7" font-size="16" font-weight="bold">💰PennyWise</text>
+  <rect x="252" y="22" width="92" height="24" rx="12" fill="none" stroke="#2b3554"/>
+  <text x="262" y="38" fill="#8a94ad" font-size="10">AUGUST · DAY 18</text>
+  <text x="130" y="72" fill="#8a94ad" font-size="9" text-anchor="middle" letter-spacing="2">SAFE TO SPEND TODAY</text>
+  <circle cx="180" cy="170" r="72" fill="none" stroke="#1c2542" stroke-width="14"/>
+  <circle cx="180" cy="170" r="72" fill="none" stroke="#2dd4a7" stroke-width="14" stroke-linecap="round"
+    stroke-dasharray="330" stroke-dashoffset="96" transform="rotate(-90 180 170)"/>
+  <text x="180" y="172" fill="#fff" font-size="24" font-weight="bold" text-anchor="middle">₹640</text>
+  <text x="180" y="192" fill="#8a94ad" font-size="9" text-anchor="middle">of ₹900 daily budget</text>
+  <text x="40" y="272" fill="#8a94ad" font-size="10">Spent today: ₹260</text>
+  <text x="230" y="272" fill="#2dd4a7" font-size="10">Projection: +₹3,100 left</text>
+  <!-- afford check -->
+  <rect x="16" y="290" width="328" height="120" rx="16" fill="#141b36"/>
+  <text x="32" y="316" fill="#fff" font-size="13" font-weight="bold">Can I afford it?</text>
+  <rect x="32" y="328" width="296" height="36" rx="10" fill="#0c1226"/>
+  <text x="44" y="352" fill="#8a94ad" font-size="14" font-weight="bold">₹</text>
+  <text x="60" y="352" fill="#fff" font-size="15" font-weight="bold">850</text>
+  <rect x="32" y="372" width="296" height="28" rx="9" fill="#2dd4a7" fill-opacity=".12" stroke="#2dd4a7" stroke-opacity=".4"/>
+  <text x="44" y="390" fill="#2dd4a7" font-size="11" font-weight="bold">✅ Yes — ₹310 under limit. Pizza earned 🍕</text>
+  <!-- categories -->
+  <text x="20" y="440" fill="#fff" font-size="13" font-weight="bold">Where August went</text>
+  <text x="32" y="468" fill="#eef2fb" font-size="11">🍜 Food delivery</text><text x="300" y="468" fill="#fb7185" font-size="11">₹6,840 ⚠</text>
+  <rect x="32" y="476" width="296" height="6" rx="3" fill="#1c2542"/><rect x="32" y="476" width="296" height="6" rx="3" fill="#fb7185"/>
+  <text x="32" y="502" fill="#eef2fb" font-size="11">🚕 Commute</text><text x="310" y="502" fill="#8a94ad" font-size="11">₹2,100</text>
+  <rect x="32" y="510" width="296" height="6" rx="3" fill="#1c2542"/><rect x="32" y="510" width="207" height="6" rx="3" fill="#38bdf8"/>
+  <text x="32" y="536" fill="#eef2fb" font-size="11">🏠 Rent + bills</text><text x="310" y="536" fill="#8a94ad" font-size="11">₹18,000</text>
+  <rect x="32" y="544" width="296" height="6" rx="3" fill="#1c2542"/><rect x="32" y="544" width="296" height="6" rx="3" fill="#2dd4a7"/>
+  <text x="32" y="570" fill="#eef2fb" font-size="11">🎮 Fun money</text><text x="310" y="570" fill="#8a94ad" font-size="11">₹1,900</text>
+  <rect x="32" y="578" width="296" height="6" rx="3" fill="#1c2542"/><rect x="32" y="578" width="142" height="6" rx="3" fill="#8b5cf6"/>
+  <text x="20" y="616" fill="#8a94ad" font-size="9">Auto-categorized from SMS · correct once, rules learned</text>
+</svg>

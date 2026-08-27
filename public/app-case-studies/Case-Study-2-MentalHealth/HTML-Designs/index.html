@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindful - Mental Health Check-in</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf5ff;
+      --fg: #1e293b;
+      --primary: #8b5cf6;
+      --secondary: #ec4899;
+      --card: #ffffff;
+      --muted: #a78bfa;
+      --accent-stress: #f87171;
+      --accent-calm: #34d399;
+    }
+    * { font-family: 'Inter', sans-serif; }
+    body { background: var(--bg); color: var(--fg); margin: 0; min-height: 100vh; }
+    .nav { background: var(--card); padding: 1rem 2rem; border-bottom: 1px solid #e8d4f0; }
+    .nav-brand { font-size: 1.5rem; font-weight: 700; color: var(--fg); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .hero { background: var(--card); border-radius: 20px; padding: 3rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .hero-title { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .hero-subtitle { color: var(--muted); font-size: 1rem; }
+    .mood-option { width: 50px; height: 50px; background: #f1f5f9; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; transition: all 0.2s; margin: 4px; }
+    .mood-option.selected { background: var(--primary); color: white; transform: scale(1.1); }
+    .intensity-slider { width: 200px; height: 10px; background: #e2e8f0; border-radius: 5px; margin: 1rem auto; position: relative; }
+    .intensity-fill { height: 100%; background: var(--accent-stress); border-radius: 5px; width: 70%; transition: width 0.3s; }
+    .save-btn { background: var(--primary); color: white; border: none; padding: 12px 32px; border-radius: 100px; font-size: 1rem; font-weight: 600; cursor: margin: 2rem auto 0; display: block; }
+    .streak-badge { background: var(--accent-calm); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+    .suggestion-card { background: #f8fafc; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border: 1px solid #e2e8f0; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-brand">Mindful</div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1 class="hero-title">How are you<br>feeling today?</h1>
+      <p class="hero-subtitle">Quick check-in to track your mood</p>
+    </div>
+
+    <div style="max-width: 360px; margin: 0 auto;">
+      <!-- Mood Emojis -->
+      <div style="display: flex; justify-content: center; margin: 2rem 0;">
+        <button class="mood-option selected" onclick="this.classList.add('selected')">😊</button>
+        <button class="mood-option">😐</button>
+        <button class="mood-option">😢</button>
+        <button class="mood-option">😠</button>
+        <button class="mood-option">😴</button>
+      </div>
+      
+      <!-- Intensity Slider -->
+      <div style="text-align: center;">
+        <span style="display: block; margin-bottom: 0.5rem; color: var(--muted);">Intensity</span>
+        <div class="intensity-slider">
+          <div class="intensity-fill" style="width: 70%;"></div>
+        </div>
+        <span style="position: relative; top: -12px; left: 80px; color: var(--muted);">7/10</span>
+      </div>
+      
+      <!-- Optional Note -->
+      <div style="background: #f8fafc; border-radius: 10px; padding: 1rem; margin: 1.5rem 0;">
+        <textarea style="width: 100%; height: 60px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px; font-family: 'Inter', sans-serif; resize: none; font-size: 0.9rem;" placeholder="Optional: What's on your mind?"></textarea>
+      </div>
+      
+      <!-- Buttons -->
+      <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+        <button class="save-btn" style="flex: 1; margin-right: 8px;">SAVE MOOD</button>
+        <span style="color: var(--muted); cursor: pointer;">SKIP</span>
+      </div>
+      
+      <!-- Streak & Suggestions -->
+      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e8d4f0;">
+        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+          <span>7-day <span class="streak-badge">streak</span></span>
+        </div>
+        <div class="suggestion-card">
+          <p style="color: var(--muted); margin-bottom: 0.5rem; font-size: 0.9rem;">Suggestion: Try box breathing for 2 minutes</p>
+          <button style="background: none; border: none; color: var(--primary); font-size: 0.8rem; cursor: pointer;">Learn more</button>
+        </div>
+        <div class="suggestion-card" style="margin-top: 1rem;">
+          <p style="color: var(--secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">Suggestion: Journal about today's wins</p>
+          <button style="background: none; border: none; color: var(--secondary); font-size: 0.8rem; cursor: pointer;">Learn more</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MediCare+ — Medicine Reminders</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter';background:#f0f9f8;color:#0c2e2a;min-height:100vh;display:grid;place-items:center;padding:24px}
+.app{width:400px;max-width:94vw}
+h1{font-family:'Sora';font-size:1.3rem;letter-spacing:-.02em;margin-bottom:4px}
+p.sub{color:#5b7a75;font-size:.8rem;margin-bottom:16px}
+.streakcard{background:linear-gradient(135deg,#0d9488,#14b8a6);border-radius:22px;padding:20px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:16px}
+.flame{font-size:2.6rem;animation:flick 2s ease-in-out infinite}
+@keyframes flick{50%{transform:scale(1.12) rotate(-4deg)}}
+.streakcard b{font-family:'Sora';font-size:1.3rem;display:block}
+.streakcard small{opacity:.92;font-size:.74rem}
+.adh{margin-left:auto;text-align:center;background:rgba(255,255,255,.18);border-radius:15px;padding:11px 15px}
+.adh b{font-family:'Sora';font-size:1.25rem}
+.today{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(13,148,136,.09);margin-bottom:16px}
+.th{padding:13px 17px;font-size:.72rem;font-weight:800;color:#5b7a75;border-bottom:1px solid #eef6f4;background:#fafdfc;display:flex;justify-content:space-between}
+.med{display:flex;align-items:center;gap:13px;padding:14px 17px;border-bottom:1px solid #eef6f4}
+.med:last-child{border:0}
+.pic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}
+.p1{background:#fee2e2}.p2{background:#fef3c7}.p3{background:#dbeafe}.p4{background:#d7f2ee}
+.med div{flex:1}
+.med b{font-size:.84rem;display:block}
+.med small{color:#5b7a75;font-size:.68rem;display:block;margin-top:3px}
+.taken{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:.95rem;flex-shrink:0}
+.tk{background:#d7f2ee;color:#0f766e}
+.ntk{background:#f0f9f8;color:#94a3ac;border:2px dashed #cbdcd8;cursor:pointer;transition:.2s}
+.ntk:hover{border-color:#0d9488;color:#0d9488}
+.soon-tag{font-size:.56rem;font-weight:800;background:#fef3c7;color:#b45309;padding:3px 8px;border-radius:99px;margin-left:6px}
+.refill{background:#fff;border:1.5px solid #fde68a;border-radius:18px;padding:15px 17px;display:flex;align-items:center;gap:13px}
+.refill i{font-style:normal;font-size:1.4rem}
+.refill b{font-size:.82rem;display:block}
+.refill small{color:#5b7a75;font-size:.7rem}
+.rb{margin-left:auto;border:0;border-radius:99px;padding:9px 16px;font-size:.68rem;font-weight:800;background:#0d9488;color:#fff;cursor:pointer}
+</style></head>
+<body>
+<div class="app">
+  <h1>Today's meds 💊</h1>
+  <p class="sub">Viral fever course · day 3 of 5</p>
+  <div class="streakcard"><span class="flame">🔥</span><div><b>7-day streak!</b><small>Best run since you joined MediCare+</small></div><div class="adh"><small style="display:block;font-size:.58rem">ADHERENCE</small><b>93%</b></div></div>
+  <div class="today">
+    <div class="th"><span>MORNING · taken ✓</span><span>8:02 AM</span></div>
+    <div class="med"><div class="pic p1">💊</div><div><b>Paracetamol 650</b><small>After breakfast · marked by you</small></div><span class="taken tk">✓</span></div>
+    <div class="th"><span>NIGHT · upcoming</span><span>9:00 PM</span></div>
+    <div class="med"><div class="pic p1">💊</div><div><b>Paracetamol 650</b><small>After dinner · reminder at 8:45 PM</small></div><span class="taken ntk" onclick="take(this)">✓</span></div>
+    <div class="med"><div class="pic p2">🧴</div><div><b>Cetirizine 10 <span class="soon-tag">LAST DOSE</span></b><small>Bedtime · may cause drowsiness</small></div><span class="taken ntk" onclick="take(this)">✓</span></div>
+  </div>
+  <div class="refill"><i>📦</i><div><b>Vitamin D weekly dose</b><small>Coverage ends Sep 30 · refill takes 90 min delivery</small></div><button class="rb" onclick="alert('🛵 Refill ordered! Arriving before you run out.')">Refill now</button></div>
+</div>
+<script>
+function take(el){el.classList.remove('ntk');el.classList.add('tk');el.textContent='✓';el.onclick=null;
+document.querySelector('.streakcard b').textContent='8-day streak! 🎉'}
+</script>
+</body></html>

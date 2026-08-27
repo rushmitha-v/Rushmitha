@@ -1,0 +1,16 @@
+{
+  "color": {
+    "primary": "#5b5bd6",
+    "primaryLight": "#7c7cf0",
+    "background": "#f6f5ff",
+    "surface": "#ffffff",
+    "text": "#1d1b33",
+    "muted": "#7a76a0",
+    "success": "#22b573",
+    "warning": "#f5a623"
+  },
+  "typography": { "family": "Inter / Sora", "display": "Sora Bold", "body": "Inter 14-16px" },
+  "spacing": { "xs": "4px", "sm": "8px", "md": "16px", "lg": "22px" },
+  "radius": { "card": "18px", "hero": "24px", "pill": "99px" },
+  "motion": { "progressFill": "1.2s ease", "lessonHover": "translateX(4px)", "xpRollUp": "0.8s" }
+}

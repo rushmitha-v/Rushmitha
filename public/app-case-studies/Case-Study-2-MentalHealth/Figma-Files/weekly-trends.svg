@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #F8FAFC; }
+    .title { color: #8B5CF6; font-family: Inter; font-size: 20px; font-weight: 600; }
+    .emoji { font-size: 40px; cursor: pointer; }
+    .slider-bg { width: 200px; height: 20px; background: #E5E7EB; border-radius: 10px; margin: 10px 0; position: relative; }
+    .slider-fill { height: 20px; background: #10B981; border-radius: 10px; width: 50%; position: absolute; left: 0; transition: width 0.3s; }
+    .trend-bar { height: 30px; background: #E5E7EB; border-radius: 6px; margin: 8px 0; }
+    .trend-bar-fill { height: 30px; background: #10B981; border-radius: 6px; width: 70%; margin: 8px 0; }
+    .insight { color: #6B7280; font-size: 14px; margin-top: 10px; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Title -->
+  <text x="20" y="40" class="title">Your Weekly Mood Pattern</text>
+  
+  <!-- Day Labels -->
+  <text x="40" y="100" class="insight">Mon</text>
+  <text x="90" y="100" class="insight">Tue</text>
+  <text x="140" y="100" class="insight">Wed</text>
+  <text x="190" y="100" class="insight">Thu</text>
+  <text x="240" y="100" class="insight">Fri</text>
+  <text x="290" y="100" class="insight">Sat</text>
+  <text x="340" y="100" class="insight">Sun</text>
+  
+  <!-- Mood Bars -->
+  <g transform="translate(20, 140)">
+    <rect class="trend-bar"><rect class="trend-bar-fill" width="70"/></rect>
+    <text x="0" y="45" class="insight" style="font-size: 12px;">7/10</text>
+    
+    <rect class="trend-bar" x="70"><rect class="trend-bar-fill" width="60"/></rect>
+    <text x="70" y="45" class="insight" style="font-size: 12px;">6/10</text>
+    
+    <rect class="trend-bar" x="130"><rect class="trend-bar-fill" width="70"/></rect>
+    <text x="130" y="45" class="insight" style="font-size: 12px;">7/10</text>
+    
+    <rect class="trend-bar" x="200"><rect class="trend-bar-fill" width="50"/></rect>
+    <text x="200" y="45" class="insight" style="font-size: 12px;">5/10</text>
+    
+    <rect class="trend-bar" x="250"><rect class="trend-bar-fill" width="70"/></rect>
+    <text x="250" y="45" class="insight" style="font-size: 12px;">7/10</text>
+    
+    <rect class="trend-bar" x="320"><rect class="trend-bar-fill" width="70"/></rect>
+    <text x="320" y="45" class="insight" style="font-size: 12px;">7/10</text>
+    
+    <rect class="trend-bar" x="390"><rect class="trend-bar-fill" width="60"/></rect>
+    <text x="390" y="45" class="insight" style="font-size: 12px;">6/10</text>
+  </g>
+  
+  <!-- Insight -->
+  <text x="20" y="420" class="insight">Your best days are weekends! Weekend activities boost your mood.</text>
+</svg>

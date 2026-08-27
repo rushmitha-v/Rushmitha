@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #fff; }
+    .header { color: #000; font-family: Arial; font-size: 20px; font-weight: bold; padding: 20px; border-bottom: 1px solid #ccc; }
+    .restaurant-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; margin: 12px; width: 280px; }
+    .restaurant-name { color: #000; font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+    .restaurant-cuisine { color: #666; font-size: 12px; margin-bottom: 8px; display: block; }
+    .restaurant-rating { color: #f5a623; font-size: 12px; margin-right: 4px; }
+    .restaurant-delivery { color: #666; font-size: 12px; margin-bottom: 12px; display: block; }
+    .menu-item { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .menu-name { color: #000; font-size: 13px; margin-bottom: 4px; display: block; }
+    .menu-details { color: #666; font-size: 11px; }
+    .menu-price { color: #10b981; font-size: 14px; float: right; }
+    .cta { background: #f97316; color: white; border: none; border-radius: 6px; padding: 10px; width: 100%; font-size: 12px; margin-top: 8px; text-align: center; cursor: pointer; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Header -->
+  <text x="20" y="40" class="header">BiteSphere</text>
+  <text x="20" y="65" style="color: #666;">Local Food Delivery</text>
+  
+  <!-- Restaurant Cards -->
+  <rect x="40" y="110" width="280" height="100" class="restaurant-card"/>
+  <text x="60" y="130" class="restaurant-name">Trattoria Moderna</text>
+  <text x="60" y="142" class="restaurant-cuisine">🍝 Italian • ⭐ 4.7</text>
+  <text x="60" y="154" class="restaurant-delivery">25 min delivery • $18 avg</text>
+  
+  <rect x="40" y="220" width="280" height="100" class="restaurant-card"/>
+  <text x="60" y="240" class="restaurant-name">Sazón Latina</text>
+  <text x="60" y="252" class="restaurant-cuisine">🌮 Mexican • ⭐ 4.5</text>
+  <text x="60" y="264" class="restaurant-delivery">30 min delivery • $16 avg</text>
+  
+  <rect x="40" y="330" width="280" height="100" class="restaurant-card"/>
+  <text x="60" y="350" class="restaurant-name">Green Garden</text>
+  <text x="60" y="362" class="restaurant-cuisine">🥗 Vegan • ⭐ 4.8</text>
+  <text x="60" y="374" class="restaurant-delivery">20 min delivery • $15 avg</text>
+  
+  <!-- CTA -->
+  <rect x="40" y="460" width="280" height="40" class="cta">DISCOVER RESTAURANTS</text>
+</svg>

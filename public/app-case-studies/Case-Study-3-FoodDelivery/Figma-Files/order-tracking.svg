@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #FFFFFF; }
+    .title { color: #111827; font-family: Inter; font-size: 24px; font-weight: bold; }
+    .map-track { fill: none; stroke: #F97316; stroke-width: 4; }
+    .driver { fill: #F97316; }
+    .eta { color: #10B981; font-family: Inter; font-size: 18px; font-weight: bold; }
+    .restaurant-info { color: #6B7280; font-size: 14px; }
+    .progress { background: #F3F4F6; border-radius: 20px; height: 8px; margin: 20px 0; }
+    .progress-fill { background: #F97316; border-radius: 20px; height: 8%; width: 70%; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Title -->
+  <text x="20" y="40" class="title">Order #1247</text>
+  
+  <!-- ETA -->
+  <text x="20" y="80" class="eta">Estimated delivery: 22 min</text>
+  
+  <!-- Progress bar -->
+  <rect class="progress"/>
+  <rect class="progress-fill"/>
+  
+  <!-- Driver on map -->
+  <circle cx="180" cy="400" r="12" class="driver"/>
+  <path class="map-track" d="M180 400 Q200 350 220 400"/>
+  
+  <!-- Restaurant info -->
+  <text x="20" y="500" class="restaurantinfo">Trattoria Moderna • Italian • Order in 22 min</text>
+  
+  <!-- Completed -->
+  <text x="20" y="530" style="color: #10B981;">✓ Delivered!</text>
+</svg>

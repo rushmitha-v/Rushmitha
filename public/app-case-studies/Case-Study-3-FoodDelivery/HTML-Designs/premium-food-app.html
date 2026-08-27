@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiteSphere — Local food, delivered</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--org:#ff6b2c;--org2:#ff9558;--ink:#231a12;--mut:#8d8177;--cream:#fff7f1;--card:#fff;--green:#22b573}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter';background:var(--cream);color:var(--ink);display:flex;justify-content:center;min-height:100vh;padding:30px 14px}
+
+  .app{width:410px;max-width:100%;background:#fff;border-radius:34px;overflow:hidden;
+    box-shadow:0 40px 90px rgba(35,26,18,.22);position:relative}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#ff6b2c 0%,#ff9046 55%,#ffb25e 100%);padding:24px 22px 74px;
+    border-radius:0 0 30px 30px;position:relative;color:#fff}
+  .hero::after{content:'';position:absolute;width:190px;height:190px;border-radius:50%;right:-60px;top:-70px;background:rgba(255,255,255,.16)}
+  .hero::before{content:'';position:absolute;width:110px;height:110px;border-radius:50%;left:-30px;bottom:-40px;background:rgba(255,255,255,.12)}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:.85rem;font-weight:600}
+  .loc small{display:block;opacity:.8;font-weight:400;font-size:.72rem}
+  .cart-btn{position:relative;width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,.22);display:grid;place-items:center;cursor:pointer}
+  .cart-n{position:absolute;top:-6px;right:-6px;background:#fff;color:var(--org);width:20px;height:20px;border-radius:50%;font-size:.68rem;font-weight:800;display:grid;place-items:center;transform:scale(0);transition:.3s cubic-bezier(.2,.9,.3,1.5)}
+  .cart-n.show{transform:scale(1)}
+  h1.hl{font-family:'Sora';font-size:1.65rem;line-height:1.2;letter-spacing:-.02em;margin-bottom:14px}
+  h1.hl em{font-style:normal;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);text-underline-offset:6px}
+  .search{background:#fff;border-radius:16px;padding:13px 16px;display:flex;gap:10px;align-items:center;color:var(--mut);font-size:.88rem;box-shadow:0 12px 28px rgba(120,50,10,.25)}
+
+  /* CATEGORIES */
+  .cats{display:flex;gap:10px;margin:-48px 0 6px;padding:0 22px;position:relative;z-index:2;overflow-x:auto;scrollbar-width:none}
+  .cats::-webkit-scrollbar{display:none}
+  .cat{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border-radius:18px;
+    padding:12px 15px;box-shadow:0 10px 24px rgba(35,26,18,.09);cursor:pointer;transition:.22s;border:2px solid transparent}
+  .cat:hover{transform:translateY(-4px)}
+  .cat.on{border-color:var(--org)}
+  .cat i{font-style:normal;font-size:1.35rem}
+  .cat span{font-size:.66rem;font-weight:700;color:var(--mut)}
+  .cat.on span{color:var(--org)}
+
+  /* SECTION HEAD */
+  .sec-head{display:flex;justify-content:space-between;align-items:center;padding:20px 22px 12px}
+  .sec-head h2{font-family:'Sora';font-size:1.02rem;letter-spacing:-.01em}
+  .sec-head a{color:var(--org);font-size:.76rem;font-weight:700;text-decoration:none}
+
+  /* RESTAURANT CARDS */
+  .list{padding:0 22px 26px;display:flex;flex-direction:column;gap:14px}
+  .r-card{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid #f4e9e1;transition:.25s;cursor:pointer}
+  .r-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(35,26,18,.14)}
+  .thumb{height:118px;position:relative;display:flex;align-items:flex-end;padding:10px}
+  .t1{background:linear-gradient(135deg,#ffd166,#ef476f)} .t2{background:linear-gradient(135deg,#06d6a0,#118ab2)} .t3{background:linear-gradient(135deg,#b388eb,#7c4dff)}
+  .thumb .emoji{font-size:2.6rem;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+  .pill{margin-left:auto;background:rgba(255,255,255,.92);border-radius:99px;font-size:.66rem;font-weight:800;padding:5px 10px;color:var(--ink)}
+  .promo{position:absolute;top:10px;left:10px;background:#111;color:#ffd166;font-size:.64rem;font-weight:800;padding:5px 10px;border-radius:99px;letter-spacing:.04em}
+  .r-body{padding:13px 15px 15px}
+  .r-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .r-top b{font-size:.95rem}
+  .stars{color:#f5a623;font-size:.75rem;font-weight:700}
+  .r-meta{color:var(--mut);font-size:.75rem;margin-bottom:11px}
+  .r-foot{display:flex;align-items:center;gap:8px}
+  .chipx{background:#fff3ec;color:#e05a17;font-size:.64rem;font-weight:700;padding:4px 9px;border-radius:99px}
+  .add{margin-left:auto;width:34px;height:34px;border:0;border-radius:11px;background:var(--org);color:#fff;font-size:1.05rem;cursor:pointer;
+    display:grid;place-items:center;box-shadow:0 8px 16px rgba(255,107,44,.35);transition:.2s}
+  .add:hover{transform:scale(1.12) rotate(90deg)}
+
+  /* BOTTOM NAV */
+  .nav{display:flex;justify-content:space-around;padding:14px 10px 20px;border-top:1px solid #f4e9e1;background:#fff}
+  .nv{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.62rem;font-weight:700;color:var(--mut);cursor:pointer;transition:.2s}
+  .nv i{font-style:normal;font-size:1.15rem}
+  .nv.on{color:var(--org)}
+  .fly{position:fixed;z-index:99;font-size:1.3rem;pointer-events:none;transition:all .7s cubic-bezier(.4,-0.3,.7,.4)}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="hero">
+    <div class="topbar">
+      <div class="loc">📍 Indiranagar, Bengaluru<small>Support local · 24 kitchens near you</small></div>
+      <div class="cart-btn" onclick="document.querySelector('.cart-n').classList.add('show')">🛒<span class="cart-n" id="cn">0</span></div>
+    </div>
+    <h1 class="hl">Taste your city,<br><em>not a chain.</em></h1>
+    <div class="search">🔍 Search biryani, thali, sourdough…</div>
+  </div>
+
+  <div class="cats">
+    <div class="cat on"><i>🍽️</i><span>All</span></div>
+    <div class="cat"><i>🍕</i><span>Italian</span></div>
+    <div class="cat"><i>🌮</i><span>Mexican</span></div>
+    <div class="cat"><i>🥗</i><span>Vegan</span></div>
+    <div class="cat"><i>🍛</i><span>Indian</span></div>
+    <div class="cat"><i>🍰</i><span>Dessert</span></div>
+  </div>
+
+  <div class="sec-head"><h2>Kitchens near you</h2><a href="#">See all →</a></div>
+
+  <div class="list">
+    <div class="r-card">
+      <div class="thumb t1"><span class="promo">FLAT 20% OFF</span><span class="emoji">🍝</span><span class="pill">⭐ 4.8</span></div>
+      <div class="r-body">
+        <div class="r-top"><b>Trattoria Moderna</b><span class="stars">★ 4.8 (321)</span></div>
+        <div class="r-meta">Italian · Pasta · ₹₹₹ &nbsp;·&nbsp; 🛵 25 min · Free delivery</div>
+        <div class="r-foot"><span class="chipx">🌱 Veg options</span><span class="chipx">👨‍🍳 Chef special</span>
+          <button class="add" onclick="fly(event,'🍝')">+</button></div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="thumb t2"><span class="emoji">🌮</span><span class="pill">⭐ 4.6</span></div>
+      <div class="r-body">
+        <div class="r-top"><b>Sazón Latina</b><span class="stars">★ 4.6 (198)</span></div>
+        <div class="r-meta">Mexican · Tacos · ₹₹ &nbsp;·&nbsp; 🛵 30 min · ₹29 delivery</div>
+        <div class="r-foot"><span class="chipx">🌶️ Spicy picks</span><button class="add" onclick="fly(event,'🌮')">+</button></div>
+      </div>
+    </div>
+
+    <div class="r-card">
+      <div class="thumb t3"><span class="emoji">🥗</span><span class="pill">⭐ 4.9</span></div>
+      <div class="r-body">
+        <div class="r-top"><b>Green Garden</b><span class="stars">★ 4.9 (87)</span></div>
+        <div class="r-meta">Vegan · Bowls · ₹₹ &nbsp;·&nbsp; 🛵 20 min · Free delivery</div>
+        <div class="r-foot"><span class="chipx">🌱 100% plant</span><span class="chipx">♻️ Eco pack</span>
+          <button class="add" onclick="fly(event,'🥗')">+</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="nv on"><i>🏠</i>Home</div>
+    <div class="nv"><i>🔎</i>Browse</div>
+    <div class="nv"><i>🧾</i>Orders</div>
+    <div class="nv"><i>👤</i>Profile</div>
+  </div>
+</div>
+
+<script>
+let n=0;
+function fly(e,emo){
+  n++;const c=document.getElementById('cn');c.textContent=n;c.classList.add('show');
+  const f=document.createElement('div');f.className='fly';f.textContent=emo;
+  const r=e.target.getBoundingClientRect();
+  f.style.left=r.left+'px';f.style.top=r.top+'px';
+  document.body.appendChild(f);
+  requestAnimationFrame(()=>{f.style.left=(window.innerWidth-60)+'px';f.style.top='40px';f.style.transform='scale(.5) rotate(360deg)';f.style.opacity='.2'});
+  setTimeout(()=>f.remove(),750);
+}
+document.querySelectorAll('.cat').forEach(c=>c.onclick=()=>{
+  document.querySelectorAll('.cat').forEach(x=>x.classList.remove('on'));c.classList.add('on');
+});
+</script>
+</body>
+</html>

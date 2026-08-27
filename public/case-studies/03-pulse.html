@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pulse — UX Case Study · Rushmitha Varshini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/case-study.css"/>
+</head>
+<body style="--accent:#F0574A; --accent2:#12B5A6">
+<div class="topbar"><div class="in"><a class="back" href="index.html">← All case studies</a><span class="brand">Pulse<b>.</b> · UX Case Study</span></div></div>
+
+<header class="hero"><div class="in">
+  <span class="tag">Health &amp; Fitness · Mobile App</span>
+  <h1>Pulse — turning daily movement into a habit people keep</h1>
+  <p class="sub">A fitness companion that makes progress feel motivating at a glance — activity rings, forgiving streaks and one-tap workouts that lower the friction of simply showing up.</p>
+  <div class="meta">
+    <div><div class="k">Role</div><div class="v">UX / UI Designer</div></div>
+    <div><div class="k">Timeline</div><div class="v">6 weeks</div></div>
+    <div><div class="k">Platform</div><div class="v">iOS &amp; Android</div></div>
+    <div><div class="k">Tools</div><div class="v">Figma · Maze · Lookback</div></div>
+  </div>
+</div></header>
+
+<main>
+<section class="blk" id="problem"><div class="wrap">
+  <div class="kicker"><span class="num">01</span><h2>The Problem</h2></div>
+  <p class="lead">Fitness apps are downloaded with good intentions and abandoned within weeks. The barrier isn't features — it's <strong>motivation</strong>. Data-heavy dashboards feel like homework, and a single missed day triggers guilt that spirals into quitting.</p>
+  <div class="statement"><div class="lbl">Problem statement</div><p>How might we keep people motivated to move every day by making progress feel rewarding — and effortless to track?</p></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">73%</div><div class="l">of fitness-app users quit within 30 days</div></div>
+    <div class="stat"><div class="n">#1</div><div class="l">churn reason: lost motivation</div></div>
+    <div class="stat"><div class="n">2×</div><div class="l">retention when progress is visible daily</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="goals"><div class="wrap">
+  <div class="kicker"><span class="num">02</span><h2>Goals &amp; Success Metrics</h2></div>
+  <ul class="insights">
+    <li><span class="ic">◎</span><span><b>Glanceable progress</b>Understand today's activity in under 3 seconds.</span></li>
+    <li><span class="ic">♥</span><span><b>Forgiving motivation</b>Celebrate streaks without punishing missed days.</span></li>
+    <li><span class="ic">⚡</span><span><b>Zero-friction start</b>Begin a workout in one tap from the home screen.</span></li>
+  </ul>
+  <p class="small"><strong>Target metrics:</strong> ring comprehension &gt; 90% · time-to-start workout &lt; 10s · SUS &gt; 80 · motivation rating ↑.</p>
+</div></section>
+
+<section class="blk" id="research"><div class="wrap">
+  <div class="kicker"><span class="num">03</span><h2>User Research</h2></div>
+  <div class="tags"><span>11 user interviews</span><span>Survey — 60 respondents</span><span>Competitive audit — Apple Fitness, Strava, Nike</span><span>Diary study (1 week)</span></div>
+  <h3 class="sub">Key findings</h3>
+  <ul class="insights">
+    <li><span class="ic">1</span><span><b>Visible streaks &amp; rings pull people back</b>Seeing a nearly-closed ring is the single strongest motivator to move.</span></li>
+    <li><span class="ic">2</span><span><b>Guilt causes churn</b>“Failed” days and red warnings make users delete the app. Encouraging, forgiving language keeps them.</span></li>
+    <li><span class="ic">3</span><span><b>Starting is the hard part</b>Any friction before a workout (setup, choices) kills the intent to exercise.</span></li>
+    <li><span class="ic">4</span><span><b>Achievement &gt; competition</b>Personal streaks motivate more broadly than leaderboards.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="personas"><div class="wrap">
+  <div class="kicker"><span class="num">04</span><h2>Personas</h2></div>
+  <div class="grid-2">
+    <div class="persona">
+      <div class="top"><div class="avatar">RM</div><div><h4>Rahul Menon</h4><div class="role">30 · Product Manager · time-poor</div></div></div>
+      <p class="quote">"I have 20 minutes. Just tell me what to do and let me feel like I did something."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Quick daily wins that fit a busy day</li><li>See streaks build up over time</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Too many taps before a workout</li><li>Overwhelming stats with no meaning</li></ul></div>
+    </div>
+    <div class="persona">
+      <div class="top"><div class="avatar">SK</div><div><h4>Sana Kapoor</h4><div class="role">26 · Teacher · returning to fitness</div></div></div>
+      <p class="quote">"I've started and stopped so many times — I need encouragement, not another app making me feel bad."</p>
+      <div class="row"><div class="h">Goals</div><ul class="goals"><li>Build a sustainable, gentle routine</li><li>Feel supported when she misses a day</li></ul></div>
+      <div class="row"><div class="h">Frustrations</div><ul><li>Guilt-inducing “you failed” messaging</li><li>Intimidating, athlete-focused apps</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="flow"><div class="wrap">
+  <div class="kicker"><span class="num">05</span><h2>User Flow — Start a Workout</h2></div>
+  <div class="flow">
+    <div class="step"><div class="s">START</div><div class="t">Activity dashboard</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 1</div><div class="t">See rings &amp; streak</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 2</div><div class="t">Pick a workout</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 3</div><div class="t">Review &amp; start</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">STEP 4</div><div class="t">Complete</div></div><div class="arrow">→</div>
+    <div class="step"><div class="s">DONE</div><div class="t">Streak +1 ✓</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="wireframes"><div class="wrap">
+  <div class="kicker"><span class="num">06</span><h2>Wireframes</h2></div>
+  <p class="lead">Low-fi explored putting glanceable progress first and reducing the workout-detail page to a single decision: start.</p>
+  <div class="wire-row">
+    <div><div class="wf phone">
+      <div class="rowf"><div class="sk bar sm"></div><div class="sk circle" style="margin-left:auto"></div></div>
+      <div class="sk box accent tall" style="height:120px;border-radius:60px;width:120px;margin:12px auto"></div>
+      <div class="grid3" style="margin:10px 0"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div class="sk box"></div><div class="sk box"></div>
+    </div><div class="wf-cap">Dashboard — rings + stats + workouts</div></div>
+    <div><div class="wf phone">
+      <div class="sk box accent tall"></div>
+      <div class="grid3" style="margin:10px 0"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div class="sk bar md"></div><div class="sk bar"></div><div class="sk bar sm"></div>
+      <div class="sk box accent" style="height:44px;margin-top:12px"></div>
+    </div><div class="wf-cap">Workout — details + sticky Start</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="prototype"><div class="wrap">
+  <div class="kicker"><span class="num">07</span><h2>Hi-Fi Design &amp; Prototype</h2></div>
+  <p class="lead">Concentric activity rings make progress instantly readable; a forgiving streak celebrates consistency; and the workout page collapses to one confident “Start” action.</p>
+  <div class="figure"><div class="shots">
+    <div class="device phone"><img src="../figma-exports/05-pulse-dashboard.png" alt="Pulse activity dashboard"/></div>
+    <div class="device phone"><img src="../figma-exports/06-pulse-workout.png" alt="Pulse workout detail"/></div>
+  </div><figcaption>Activity dashboard &amp; workout detail — high-fidelity screens</figcaption></div>
+  <h3 class="sub">Key design decisions</h3>
+  <ul class="insights">
+    <li><span class="ic">◆</span><span><b>Concentric rings</b>Move / Exercise / Stand in one glanceable visual — progress you feel, not read.</span></li>
+    <li><span class="ic">◆</span><span><b>Forgiving streak</b>Encouraging copy and a “rest day” state instead of failure warnings.</span></li>
+    <li><span class="ic">◆</span><span><b>One-tap start</b>A prominent Start button removes friction between intent and action.</span></li>
+  </ul>
+</div></section>
+
+<section class="blk" id="testing"><div class="wrap">
+  <div class="kicker"><span class="num">08</span><h2>Usability Testing</h2></div>
+  <p class="lead">6 participants, moderated remote sessions via Lookback.</p>
+  <p class="small"><strong>Tasks:</strong> (1) “How are you doing on today's activity?” (2) “Start the Full Body HIIT workout.”</p>
+  <table class="tbl"><thead><tr><th>Metric</th><th>Target</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Ring comprehension</td><td>&gt; 90%</td><td><span class="good">94%</span></td></tr>
+    <tr><td>Time to start a workout</td><td>&lt; 10s</td><td><span class="good">7s</span></td></tr>
+    <tr><td>System Usability Scale</td><td>&gt; 80</td><td><span class="good">88</span></td></tr>
+    <tr><td>Motivation rating (1–5)</td><td>↑</td><td><span class="good">4.5</span></td></tr>
+  </tbody></table>
+  <h3 class="sub">What testing changed</h3>
+  <div class="iter"><span class="tagline">Iteration 1</span><p>Two users weren't sure which ring meant what. → Added a <b>colour-coded legend with live values</b> beside the rings.</p></div>
+  <div class="iter"><span class="tagline">Iteration 2</span><p>The Start action competed with the exercise list. → Made <b>“Start Workout” a sticky, high-contrast button</b> anchored to the bottom.</p></div>
+</div></section>
+
+<section class="blk" id="results"><div class="wrap">
+  <div class="kicker"><span class="num">09</span><h2>Results &amp; Impact</h2></div>
+  <div class="stat-grid">
+    <div class="stat"><div class="n">94%</div><div class="l">understood progress rings instantly</div></div>
+    <div class="stat"><div class="n">7s</div><div class="l">to start a workout (target &lt;10s)</div></div>
+    <div class="stat"><div class="n">88</div><div class="l">SUS score</div></div>
+    <div class="stat"><div class="n">4.5/5</div><div class="l">reported motivation</div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="reflection"><div class="wrap">
+  <div class="kicker"><span class="num">10</span><h2>Reflection &amp; Next Steps</h2></div>
+  <div class="reflect">
+    <p style="margin-top:0">The insight that reframed the project: <strong>emotion, not data, drives retention</strong>. Designing forgiving, celebratory moments mattered more than adding metrics. Rings worked because they turn progress into a feeling.</p>
+    <p style="margin-bottom:0"><strong>Next:</strong> adaptive workout suggestions, gentle re-engagement after a break, and optional friend “cheers” for accountability without competition.</p>
+  </div>
+  <div class="tags" style="margin-top:22px"><span>UX Research</span><span>Behavioural Design</span><span>Data Visualization</span><span>Interaction Design</span><span>Usability Testing</span></div>
+</div></section>
+</main>
+
+<nav class="dots"><a href="#problem" class="on"><span>Problem</span></a><a href="#goals"><span>Goals</span></a><a href="#research"><span>Research</span></a><a href="#personas"><span>Personas</span></a><a href="#flow"><span>User Flow</span></a><a href="#wireframes"><span>Wireframes</span></a><a href="#prototype"><span>Prototype</span></a><a href="#testing"><span>Testing</span></a><a href="#results"><span>Results</span></a><a href="#reflection"><span>Reflection</span></a></nav>
+<div class="foot">Pulse UX Case Study · Designed by <strong>Rushmitha Varshini</strong> · <a href="index.html">← Back to all case studies</a></div>
+<script>const secs=[...document.querySelectorAll('section.blk')];const dots=[...document.querySelectorAll('.dots a')];const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=secs.indexOf(e.target);dots.forEach(d=>d.classList.remove('on'));if(dots[i])dots[i].classList.add('on');}}),{threshold:.5});secs.forEach(s=>io.observe(s));</script>
+</body>
+</html>

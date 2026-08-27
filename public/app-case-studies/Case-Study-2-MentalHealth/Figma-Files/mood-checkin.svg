@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640">
+  <style>
+    .bg { background: #F8FAFC; }
+    .title { color: #111827; font-family: Inter; font-size: 20px; font-weight: 600; }
+    .emoji { font-size: 32px; cursor: pointer; }
+    .slider { width: 200px; height: 20px; background: #E5E7EB; border-radius: 10px; margin: 10px 0; }
+    .slider-fill { height: 20px; background: #EF4444; border-radius: 10px; width: 70%; transition: width 0.3s; }
+    .note { color: #6B7280; font-size: 14px; }
+  </style>
+  <rect class="bg" width="360" height="640"/>
+  
+  <!-- Title -->
+  <text x="20" y="40" class="title">How are you feeling today?</text>
+  
+  <!-- Emoji Selection -->
+  <g transform="translate(20, 100)">
+    <text x="0" y="0" class="emoji" onclick="selectEmoji('😊')">😊</text>
+    <text x="40" y="0" class="emoji" onclick="selectEmoji('😐')">😐</text>
+    <text x="80" y="0" class="emoji" onclick="selectEmoji('😢')">😢</text>
+    <text x="120" y="0" class="emoji" onclick="selectEmoji('😠')">😠</text>
+    <text x="160" y="0" class="emoji" onclick="selectEmoji('😴')">😴</text>
+  </g>
+  
+  <!-- Intensity Slider -->
+  <rect x="20" y="160" width="320" height="40" rx="6" fill="#E5E7EB"/>
+  <rect x="20" y="160" width="224" height="40" rx="6" fill="#EF4444" style="opacity: 0.8;"/>
+  <text x="30" y="185" class="note">Intensity: 7/10</text>
+  
+  <!-- Optional Note -->
+  <rect x="20" y="220" width="320" height="60" rx="6" fill="white"/>
+  <text x="30" y="245" class="note" style="max-width: 280px;">Optional: "Felt anxious about project"</text>
+  
+  <!-- Buttons -->
+  <text x="30" y="300" class="note" style="margin-right: 10px;">[SKIP]</text>
+  <a x="180" y="300" href="#" style="color: #3B82F6; text-decoration: underline;">[SAVE MOOD]</a>
+</svg>
