@@ -267,10 +267,11 @@ export default function ScrollyOverlay({ progress }) {
       {/* SECTION 2: RIGHT ALIGNED (0.34 to 0.60) - Innovative Design Systems       */}
       {/* ========================================================================= */}
       <div
+        className="scrolly-card-stage scrolly-card-right"
         style={{
           position: 'absolute',
-          right: 'clamp(2rem, 8vw, 7rem)',
-          top: '32%',
+          right: 'clamp(1rem, 7vw, 7rem)',
+          top: '28%',
           maxWidth: '520px',
           textAlign: 'left',
           opacity: op2,
@@ -279,12 +280,12 @@ export default function ScrollyOverlay({ progress }) {
           pointerEvents: op2 > 0.4 ? 'auto' : 'none'
         }}
       >
-        <div style={{
+        <div className="scrolly-card-inner" style={{
           background: 'rgba(7, 9, 14, 0.75)',
           backdropFilter: 'blur(18px)',
           border: '1px solid rgba(139, 92, 246, 0.35)',
           borderRadius: '1.5rem',
-          padding: '28px 32px',
+          padding: 'clamp(20px, 4vw, 32px)',
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(139, 92, 246, 0.2)'
         }}>
           <div style={{
@@ -304,7 +305,7 @@ export default function ScrollyOverlay({ progress }) {
 
           <h2 style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+            fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
             fontWeight: 800,
             lineHeight: 1.15,
             color: '#ffffff',
@@ -316,7 +317,7 @@ export default function ScrollyOverlay({ progress }) {
 
           <p style={{
             color: '#cbd5e1',
-            fontSize: '1.05rem',
+            fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)',
             lineHeight: 1.65,
             marginBottom: '18px'
           }}>
@@ -354,10 +355,11 @@ export default function ScrollyOverlay({ progress }) {
       {/* SECTION 3: LEFT ALIGNED (0.62 to 0.84) - Designing Engineer Track Record   */}
       {/* ========================================================================= */}
       <div
+        className="scrolly-card-stage scrolly-card-left"
         style={{
           position: 'absolute',
-          left: 'clamp(2rem, 8vw, 7rem)',
-          top: '32%',
+          left: 'clamp(1rem, 7vw, 7rem)',
+          top: '28%',
           maxWidth: '540px',
           textAlign: 'left',
           opacity: op3,
@@ -366,12 +368,12 @@ export default function ScrollyOverlay({ progress }) {
           pointerEvents: op3 > 0.4 ? 'auto' : 'none'
         }}
       >
-        <div style={{
+        <div className="scrolly-card-inner" style={{
           background: 'rgba(7, 9, 14, 0.75)',
           backdropFilter: 'blur(18px)',
           border: '1px solid rgba(6, 182, 212, 0.35)',
           borderRadius: '1.5rem',
-          padding: '28px 32px',
+          padding: 'clamp(20px, 4vw, 32px)',
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(6, 182, 212, 0.2)'
         }}>
           <div style={{
@@ -391,7 +393,7 @@ export default function ScrollyOverlay({ progress }) {
 
           <h2 style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+            fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
             fontWeight: 800,
             lineHeight: 1.15,
             color: '#ffffff',
@@ -403,7 +405,7 @@ export default function ScrollyOverlay({ progress }) {
 
           <p style={{
             color: '#cbd5e1',
-            fontSize: '1.05rem',
+            fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)',
             lineHeight: 1.65,
             marginBottom: '18px'
           }}>
@@ -441,6 +443,7 @@ export default function ScrollyOverlay({ progress }) {
       {/* SECTION 4: CENTER TRANSITION CTA (0.85 to 1.00)                           */}
       {/* ========================================================================= */}
       <div
+        className="scrolly-card-stage scrolly-card-center"
         style={{
           position: 'absolute',
           inset: 0,
@@ -449,21 +452,22 @@ export default function ScrollyOverlay({ progress }) {
           justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
-          padding: '0 clamp(1.5rem, 5vw, 4rem)',
+          padding: '0 clamp(1rem, 4vw, 4rem)',
           opacity: op4,
           transform: `translateY(${tr4}px)`,
           transition: 'opacity 0.15s ease-out, transform 0.15s ease-out',
           pointerEvents: op4 > 0.4 ? 'auto' : 'none'
         }}
       >
-        <div style={{
+        <div className="scrolly-card-inner" style={{
           maxWidth: '750px',
+          width: '100%',
           margin: '0 auto',
           background: 'rgba(7, 9, 14, 0.82)',
           backdropFilter: 'blur(22px)',
           border: '1.5px solid rgba(139, 92, 246, 0.4)',
-          borderRadius: '2rem',
-          padding: '40px 36px',
+          borderRadius: 'clamp(1.25rem, 3vw, 2rem)',
+          padding: 'clamp(24px, 5vw, 40px) clamp(18px, 4vw, 36px)',
           boxShadow: '0 25px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(139, 92, 246, 0.3)'
         }}>
           <div style={{
@@ -475,19 +479,23 @@ export default function ScrollyOverlay({ progress }) {
             background: 'rgba(139, 92, 246, 0.15)',
             border: '1px solid rgba(139, 92, 246, 0.4)',
             color: '#c4b5fd',
-            fontSize: '0.8rem',
+            fontSize: 'clamp(0.72rem, 1.5vw, 0.8rem)',
             fontWeight: 600,
-            marginBottom: '1rem'
+            marginBottom: '1rem',
+            maxWidth: '100%',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap'
           }}>
-            <Award size={14} />
-            <span>Certified Usability Analyst • Python for Data Science</span>
+            <Award size={14} style={{ flexShrink: 0 }} />
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>Certified Usability Analyst • Python for Data Science</span>
           </div>
 
           <h2 style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.25rem, 4.5vw, 3.5rem)',
+            fontSize: 'clamp(1.75rem, 4vw, 3.5rem)',
             fontWeight: 800,
-            lineHeight: 1.12,
+            lineHeight: 1.15,
             color: '#ffffff',
             marginBottom: '1rem'
           }}>
@@ -503,16 +511,16 @@ export default function ScrollyOverlay({ progress }) {
 
           <p style={{
             color: '#cbd5e1',
-            fontSize: '1.05rem',
-            lineHeight: 1.7,
-            marginBottom: '2rem',
+            fontSize: 'clamp(0.9rem, 2vw, 1.05rem)',
+            lineHeight: 1.65,
+            marginBottom: '1.75rem',
             maxWidth: '600px',
-            margin: '0 auto 2rem'
+            margin: '0 auto 1.75rem'
           }}>
             Available for UI/UX Engineering and Full-Stack Frontend roles in Melbourne, Victoria, and globally. Direct WhatsApp contact or explore interactive case studies below.
           </p>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
             <a 
               href={whatsappUrl} 
               target="_blank" 
@@ -520,13 +528,14 @@ export default function ScrollyOverlay({ progress }) {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '8px',
-                padding: '0.9rem 1.8rem',
+                padding: '0.85rem 1.6rem',
                 borderRadius: '9999px',
                 background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
                 color: '#ffffff',
                 fontWeight: 700,
-                fontSize: '0.95rem',
+                fontSize: '0.9rem',
                 border: '1px solid rgba(255, 255, 255, 0.25)',
                 cursor: 'pointer',
                 boxShadow: '0 6px 25px rgba(37, 211, 102, 0.45)',
@@ -534,15 +543,15 @@ export default function ScrollyOverlay({ progress }) {
               }}
             >
               <MessageCircle size={18} />
-              <span>WhatsApp: {whatsappNumber}</span>
+              <span>WhatsApp</span>
             </a>
 
             <button 
               onClick={() => scrollTo('projects')} 
               className="btn-primary"
-              style={{ padding: '0.9rem 1.8rem' }}
+              style={{ padding: '0.85rem 1.6rem', fontSize: '0.9rem' }}
             >
-              <span>Explore Projects & Case Studies ↓</span>
+              <span>Explore Projects ↓</span>
             </button>
           </div>
         </div>

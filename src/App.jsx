@@ -45,6 +45,7 @@ export default function App() {
           href="https://wa.me/61434455126?text=Hi%20Rushmitha,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
           target="_blank"
           rel="noreferrer"
+          className="floating-whatsapp-btn"
           style={{
             position: 'fixed',
             bottom: '24px',

@@ -627,9 +627,120 @@ body {
 .cs-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1120px; }
 .cs-gauges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
-@media (max-width: 860px) {
+/* ========================================================================= */
+/* COMPREHENSIVE MOBILE RESPONSIVE MEDIA QUERIES                             */
+/* ========================================================================= */
+@media (max-width: 880px) {
+  /* Hide desktop horizontal links & show mobile hamburger */
+  .nav-links-desktop,
+  .nav-contact-desktop {
+    display: none !important;
+  }
+  .mobile-hamburger-btn {
+    display: inline-flex !important;
+  }
+  .desktop-nav {
+    padding: 6px 14px !important;
+  }
+
+  /* Bento and Case Study Layouts */
   .about-bento { grid-template-columns: 1fr; }
   .about-bento .b-narrative, .about-bento .b-edu { grid-column: auto; }
   .about-bento .b-edu { grid-template-columns: 1fr; }
-  .cs-grid, .cs-steps, .cs-metrics { grid-template-columns: 1fr; }
+  .cs-grid { grid-template-columns: 1fr; }
+  .cs-steps { grid-template-columns: repeat(2, 1fr); }
+  .cs-metrics { grid-template-columns: repeat(2, 1fr); }
+
+  /* Scrollytelling Cards on Tablet/Mobile: Center dynamically */
+  .scrolly-card-stage.scrolly-card-right,
+  .scrolly-card-stage.scrolly-card-left {
+    left: 1rem !important;
+    right: 1rem !important;
+    max-width: 580px !important;
+    margin: 0 auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-brand-text {
+    display: none !important;
+  }
+
+  .portfolio-section {
+    padding: 4.5rem 1rem 2.5rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 0.925rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Scrollytelling Cards on Small Mobile */
+  .scrolly-card-stage.scrolly-card-right,
+  .scrolly-card-stage.scrolly-card-left,
+  .scrolly-card-stage.scrolly-card-center {
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .scrolly-card-inner {
+    padding: 20px 18px !important;
+    border-radius: 1.25rem !important;
+  }
+
+  /* Case study gauges */
+  .cs-steps { grid-template-columns: 1fr; }
+  .cs-metrics { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .cs-gauges { gap: 8px; }
+
+  /* Experience Section Timeline Mobile Tuning */
+  #experience > div[style*="paddingLeft: 46px"] {
+    padding-left: 24px !important;
+  }
+  #experience div[style*="left: 15px"] {
+    left: 7px !important;
+  }
+  #experience div[style*="left: -37px"] {
+    left: -23px !important;
+    width: 12px !important;
+    height: 12px !important;
+  }
+  #experience .glass-card {
+    padding: 20px 16px !important;
+  }
+
+  /* Form and Input Elements Mobile Friendly */
+  input, textarea, select, button {
+    font-size: 16px !important; /* Prevents iOS auto-zoom on input focus */
+  }
+
+  /* Floating WhatsApp on Mobile */
+  .floating-whatsapp-btn {
+    bottom: 16px !important;
+    right: 16px !important;
+    padding: 9px 14px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Buttons on mobile */
+  .btn-primary, .btn-secondary {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .cs-metrics { grid-template-columns: 1fr; }
+  .about-bento .glass-card { padding: 18px 14px !important; }
+  .floating-whatsapp-btn span { display: none !important; }
+  .floating-whatsapp-btn { padding: 10px !important; border-radius: 50% !important; }
 }
