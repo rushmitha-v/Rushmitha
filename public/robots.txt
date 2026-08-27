@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://rushmithavarshini.netlify.app/sitemap.xml
+Sitemap: https://rushmitha.me/sitemap.xml

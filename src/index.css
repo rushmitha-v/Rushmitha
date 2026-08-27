@@ -411,6 +411,28 @@ body {
   color: #ffffff !important;
 }
 
+/* Palette Popup Item Overrides */
+.palette-popup-card button,
+.palette-option-btn {
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .palette-popup-card button,
+[data-theme="light"] .palette-option-btn {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .palette-option-btn span {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .palette-option-btn:hover {
+  background: rgba(15, 23, 42, 0.06) !important;
+  color: #000000 !important;
+}
+
 /* Light mode Glass Cards */
 [data-theme="light"] .glass-card {
   background: rgba(255, 255, 255, 0.97) !important;

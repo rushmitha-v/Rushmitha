@@ -23,7 +23,47 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [navVisible, setNavVisible] = useState(false);
+  const isHoveredRef = React.useRef(false);
   const { theme, toggleTheme, accent, setAccent, triggerConfetti } = useTheme();
+
+  // Auto-hide navbar: ONLY show when user scrolls (mouse scroll/wheel/touch drag)
+  useEffect(() => {
+    let hideTimer = null;
+
+    const showNav = () => {
+      setNavVisible(true);
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (!mobileMenuOpen && !paletteOpen && !isHoveredRef.current) {
+          setNavVisible(false);
+        }
+      }, 5000);
+    };
+
+    const handleWheelScroll = (e) => {
+      if (Math.abs(e.deltaY) > 2 || Math.abs(e.deltaX) > 2) {
+        showNav();
+      }
+    };
+
+    const handleWindowScroll = () => {
+      if (window.scrollY > 15) {
+        showNav();
+      }
+    };
+
+    window.addEventListener('wheel', handleWheelScroll, { passive: true });
+    window.addEventListener('scroll', handleWindowScroll, { passive: true });
+    window.addEventListener('touchmove', showNav, { passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheelScroll);
+      window.removeEventListener('scroll', handleWindowScroll);
+      window.removeEventListener('touchmove', showNav);
+      if (hideTimer) clearTimeout(hideTimer);
+    };
+  }, [mobileMenuOpen, paletteOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,13 +135,18 @@ export default function Navbar() {
       display: 'flex',
       justifyContent: 'center',
       pointerEvents: 'none',
-      padding: '0 12px'
+      padding: '0 12px',
+      opacity: navVisible ? 1 : 0,
+      transform: navVisible ? 'translateY(0)' : 'translateY(-20px)',
+      transition: 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
     }}>
       {/* Desktop & Tablet Main Nav Bar */}
       <nav 
         className="glass-nav desktop-nav"
+        onMouseEnter={() => { isHoveredRef.current = true; }}
+        onMouseLeave={() => { isHoveredRef.current = false; }}
         style={{
-          pointerEvents: 'auto',
+          pointerEvents: navVisible ? 'auto' : 'none',
           transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
           padding: scrolled ? '6px 18px' : '8px 22px',
           borderRadius: '9999px',
@@ -221,29 +266,31 @@ export default function Navbar() {
           {/* Palette Popup Picker */}
           {paletteOpen && (
             <div
+              className="palette-popup-card"
               style={{
                 position: 'absolute',
                 top: '42px',
                 right: 0,
-                background: 'rgba(13, 17, 26, 0.95)',
+                background: theme === 'dark' ? 'rgba(13, 17, 26, 0.96)' : '#ffffff',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid var(--border-glow)',
+                border: theme === 'dark' ? '1px solid var(--border-glow)' : '1px solid rgba(15, 23, 42, 0.15)',
                 borderRadius: '14px',
                 padding: '12px',
                 width: '190px',
-                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.8)',
+                boxShadow: theme === 'dark' ? '0 15px 40px rgba(0, 0, 0, 0.8)' : '0 15px 40px rgba(15, 23, 42, 0.15)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '8px',
                 zIndex: 200
               }}
             >
-              <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', padding: '0 4px' }}>
+              <div style={{ fontSize: '0.72rem', fontWeight: 800, color: theme === 'dark' ? '#94a3b8' : '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', padding: '0 4px' }}>
                 Designer Palettes
               </div>
               {Object.values(ACCENT_PALETTES).map((pal) => (
                 <button
                   key={pal.id}
+                  className="palette-option-btn"
                   onClick={() => {
                     setAccent(pal.id);
                     setPaletteOpen(false);
@@ -253,20 +300,23 @@ export default function Navbar() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '6px 10px',
+                    padding: '8px 10px',
                     borderRadius: '8px',
-                    background: accent === pal.id ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+                    background: accent === pal.id 
+                      ? (theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(15, 23, 42, 0.06)') 
+                      : 'transparent',
                     border: accent === pal.id ? `1px solid ${pal.primary}` : '1px solid transparent',
-                    color: '#ffffff',
-                    fontSize: '0.8rem',
-                    fontWeight: accent === pal.id ? 700 : 500,
+                    color: theme === 'dark' ? '#ffffff' : '#0f172a',
+                    fontSize: '0.82rem',
+                    fontWeight: accent === pal.id ? 700 : 600,
                     cursor: 'pointer',
-                    transition: 'all 0.15s ease'
+                    transition: 'all 0.15s ease',
+                    textShadow: 'none'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: pal.primary, boxShadow: `0 0 6px ${pal.primary}` }} />
-                    <span>{pal.name}</span>
+                    <span style={{ color: theme === 'dark' ? '#ffffff' : '#0f172a', fontWeight: accent === pal.id ? 700 : 600, textShadow: 'none' }}>{pal.name}</span>
                   </div>
                   {accent === pal.id && <Check size={13} style={{ color: pal.primary }} />}
                 </button>
