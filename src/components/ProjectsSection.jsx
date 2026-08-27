@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { FolderGit2, ExternalLink, Sparkles, Layers, ArrowUpRight } from 'lucide-react';
+import { FolderGit2, ExternalLink, Sparkles, Layers, ArrowUpRight, Play, Eye, Maximize2 } from 'lucide-react';
 
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showFigmaEmbed, setShowFigmaEmbed] = useState(true);
+
+  const figmaEmbedUrl = "https://embed.figma.com/design/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&embed-host=share";
+  const figmaDesignUrl = "https://www.figma.com/design/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&m=dev&t=UjdJPDZ7aVl0iAOd-1";
+  const figmaProtoUrl = "https://www.figma.com/proto/gLSdZYnvOQsSF4d8pKYrt4/Rushmitha-Varshini-%E2%80%94-Projects?node-id=41-229&t=UjdJPDZ7aVl0iAOd-1";
 
   const projects = [
     {
@@ -11,6 +16,8 @@ export default function ProjectsSection() {
       image: '/projects/hydraulics_hmi.jpg',
       badge: 'GEE KAY VEE HYDRAULICS',
       badgeColor: '#06b6d4',
+      figmaDesign: figmaDesignUrl,
+      figmaProto: figmaProtoUrl,
       description: 'High-precision operator control interface designed for heavy industrial hydraulic machinery. Translates complex pressure, flow rate, and temperature telemetry into ergonomic visual components.',
       details: [
         'Designed touch-optimized layouts adhering to industrial lighting and glare conditions.',
@@ -25,6 +32,8 @@ export default function ProjectsSection() {
       image: '/projects/analytics_dashboard.jpg',
       badge: 'Cognizant & Full-Stack',
       badgeColor: '#8b5cf6',
+      figmaDesign: figmaDesignUrl,
+      figmaProto: figmaProtoUrl,
       description: 'Enterprise data visualization suite engineered with React.js and Python. Provides real-time revenue analytics, user cohort analysis, and interactive data filtering over MySQL databases.',
       details: [
         'Implemented responsive, accessible React dashboard components with smooth micro-interactions.',
@@ -39,6 +48,8 @@ export default function ProjectsSection() {
       image: '/projects/usability_study.jpg',
       badge: 'HFI Certified Case Study',
       badgeColor: '#10b981',
+      figmaDesign: figmaDesignUrl,
+      figmaProto: figmaProtoUrl,
       description: 'Complete user experience redesign backed by formal usability testing and cognitive walkthroughs. Features wireframe user flows, design system tokens, and high-fidelity mobile prototype screens.',
       details: [
         'Conducted usability testing sessions achieving a 94% task completion rate.',
@@ -57,15 +68,131 @@ export default function ProjectsSection() {
       </div>
       <h2 className="section-title">Selected Design & Engineering Works</h2>
       <p className="section-subtitle">
-        Explore a curated collection of industrial interfaces, web applications, and usability case studies.
+        Explore a curated collection of industrial interfaces, web applications, and live interactive Figma design systems.
       </p>
 
-      {/* Projects Grid */}
+      {/* ===================================================================== */}
+      {/* Interactive Live Figma Workspace Embed Card                           */}
+      {/* ===================================================================== */}
+      <div 
+        className="glass-card" 
+        style={{
+          width: '100%',
+          maxWidth: '1200px',
+          padding: '28px',
+          marginBottom: '40px',
+          border: '1px solid rgba(139, 92, 246, 0.35)',
+          background: 'linear-gradient(145deg, rgba(14, 18, 27, 0.95), rgba(7, 9, 14, 0.98))'
+        }}
+      >
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '16px',
+          marginBottom: '20px'
+        }}>
+          <div>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '3px 10px',
+              borderRadius: '9999px',
+              background: 'rgba(139, 92, 246, 0.15)',
+              border: '1px solid rgba(139, 92, 246, 0.35)',
+              color: '#c4b5fd',
+              fontSize: '0.75rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              marginBottom: '6px'
+            }}>
+              <Sparkles size={12} />
+              <span>Live Interactive Workspace</span>
+            </div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>
+              Rushmitha Varshini — Official Figma Projects
+            </h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', margin: '4px 0 0 0' }}>
+              Interact directly with the live canvas below, zoom in to inspect design tokens, or launch full prototype mode.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <a
+              href={figmaProtoUrl}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                background: 'linear-gradient(135deg, #10b981, #059669)',
+                color: '#ffffff',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                textDecoration: 'none',
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)',
+                transition: 'transform 0.2s ease'
+              }}
+            >
+              <Play size={14} fill="#ffffff" />
+              <span>Launch Prototype</span>
+            </a>
+
+            <a
+              href={figmaDesignUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-secondary"
+              style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+            >
+              <span>Open in Figma</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+
+        {/* Live Responsive Figma Embed Frame */}
+        <div style={{
+          position: 'relative',
+          width: '100%',
+          paddingTop: '56.25%', // 16:9 Aspect Ratio
+          borderRadius: '14px',
+          overflow: 'hidden',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+          background: '#090d16',
+          boxShadow: '0 12px 35px rgba(0, 0, 0, 0.6)'
+        }}>
+          <iframe
+            title="Rushmitha Varshini - Figma Projects Canvas"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              border: 'none'
+            }}
+            src={figmaEmbedUrl}
+            allowFullScreen
+          />
+        </div>
+      </div>
+
+      {/* ===================================================================== */}
+      {/* Projects Grid                                                         */}
+      {/* ===================================================================== */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
         gap: '28px',
-        maxWidth: '1200px'
+        maxWidth: '1200px',
+        width: '100%'
       }}>
         {projects.map((project, index) => (
           <div 
@@ -142,13 +269,42 @@ export default function ProjectsSection() {
                   ))}
                 </div>
 
-                <button 
-                  className="btn-secondary"
-                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '10px' }}
-                >
-                  <span>View Case Details</span>
-                  <ArrowUpRight size={14} />
-                </button>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button 
+                    className="btn-secondary"
+                    style={{ flex: 1, justifyContent: 'center', fontSize: '0.85rem', padding: '10px' }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProject(project);
+                    }}
+                  >
+                    <span>View Details</span>
+                    <ArrowUpRight size={14} />
+                  </button>
+
+                  <a
+                    href={project.figmaProto}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      padding: '10px 14px',
+                      borderRadius: '10px',
+                      background: 'rgba(139, 92, 246, 0.15)',
+                      border: '1px solid rgba(139, 92, 246, 0.35)',
+                      color: '#c4b5fd',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      textDecoration: 'none'
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Play size={12} fill="#c4b5fd" />
+                    <span>Prototype</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -171,7 +327,7 @@ export default function ProjectsSection() {
           <div 
             className="glass-card" 
             style={{ 
-              maxWidth: '750px', 
+              maxWidth: '780px', 
               width: '100%', 
               maxHeight: '90vh', 
               overflowY: 'auto', 
@@ -238,6 +394,58 @@ export default function ProjectsSection() {
               ))}
             </div>
 
+            {/* Direct Figma Action Triggers */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              flexWrap: 'wrap',
+              marginBottom: '20px',
+              padding: '16px',
+              background: 'rgba(139, 92, 246, 0.08)',
+              borderRadius: '12px',
+              border: '1px solid rgba(139, 92, 246, 0.25)'
+            }}>
+              <a
+                href={selectedProject.figmaProto || figmaProtoUrl}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  flex: 1,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '12px 18px',
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  fontSize: '0.9rem',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 14px rgba(16, 185, 129, 0.35)'
+                }}
+              >
+                <Play size={16} fill="#ffffff" />
+                <span>Launch Figma Prototype</span>
+              </a>
+
+              <a
+                href={selectedProject.figmaDesign || figmaDesignUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-secondary"
+                style={{
+                  flex: 1,
+                  justifyContent: 'center',
+                  padding: '12px 18px',
+                  fontSize: '0.9rem'
+                }}
+              >
+                <span>Inspect in Figma</span>
+                <ExternalLink size={16} />
+              </a>
+            </div>
+
             <button 
               className="btn-primary" 
               style={{ width: '100%', justifyContent: 'center' }}
@@ -251,3 +459,4 @@ export default function ProjectsSection() {
     </section>
   );
 }
+
