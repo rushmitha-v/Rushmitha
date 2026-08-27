@@ -153,6 +153,7 @@ export default function ScrollyOverlay({ progress }) {
       {/* SECTION 1: NAME CARD (Appears ONLY as user scrolls, NOT directly first)    */}
       {/* ========================================================================= */}
       <div
+        className="scrolly-card-stage scrolly-card-section1"
         style={{
           position: 'absolute',
           bottom: 'clamp(2rem, 5vh, 4.5rem)',
@@ -169,16 +170,19 @@ export default function ScrollyOverlay({ progress }) {
           pointerEvents: op1 > 0.4 ? 'auto' : 'none'
         }}
       >
-        <div style={{
-          background: 'rgba(7, 9, 14, 0.68)',
-          backdropFilter: 'blur(18px)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
-          borderRadius: '1.75rem',
-          padding: '24px 36px',
-          maxWidth: '820px',
-          width: '100%',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(139, 92, 246, 0.25)'
-        }}>
+        <div 
+          className="scrolly-card-inner"
+          style={{
+            background: 'rgba(7, 9, 14, 0.68)',
+            backdropFilter: 'blur(18px)',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            borderRadius: '1.75rem',
+            padding: '24px 36px',
+            maxWidth: '820px',
+            width: '100%',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(139, 92, 246, 0.25)'
+          }}
+        >
           {/* Status & Location Pill */}
           <div style={{
             display: 'inline-flex',
