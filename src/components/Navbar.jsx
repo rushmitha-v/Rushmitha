@@ -350,6 +350,33 @@ export default function Navbar() {
           {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
         </button>
 
+        {/* Resume Download CTA Link (Desktop) */}
+        <a
+          href="/Rushmitha_Varshini_Resume.pdf"
+          download="Rushmitha_Varshini_Resume.pdf"
+          className="nav-contact-desktop"
+          title="Download Official Resume (PDF)"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '5px',
+            padding: '6px 12px',
+            borderRadius: '9999px',
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            marginLeft: '4px',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+            background: 'rgba(255, 255, 255, 0.08)',
+            border: '1px solid var(--border-subtle)',
+            color: 'inherit'
+          }}
+        >
+          <Download size={12} style={{ color: 'var(--color-secondary)' }} />
+          <span>Resume</span>
+        </a>
+
         {/* Contact CTA Button (Desktop) */}
         <button
           onClick={() => scrollTo('contact')}
@@ -532,11 +559,34 @@ export default function Navbar() {
           </div>
 
           {/* Quick Action CTAs */}
-          <div style={{ display: 'flex', gap: '8px', marginTop: '6px' }}>
+          <div style={{ display: 'flex', gap: '8px', marginTop: '6px', flexWrap: 'wrap' }}>
+            <a
+              href="/Rushmitha_Varshini_Resume.pdf"
+              download="Rushmitha_Varshini_Resume.pdf"
+              style={{
+                flex: '1 1 100%',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '11px 16px',
+                borderRadius: '9999px',
+                background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+                color: '#ffffff',
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                textDecoration: 'none',
+                boxShadow: '0 4px 15px rgba(139, 92, 246, 0.35)'
+              }}
+            >
+              <Download size={15} />
+              <span>Download Resume (PDF)</span>
+            </a>
+
             <button
               onClick={() => scrollTo('contact')}
               className="btn-primary"
-              style={{ flex: 1, justifyContent: 'center', padding: '12px', fontSize: '0.9rem' }}
+              style={{ flex: 1, justifyContent: 'center', padding: '11px 14px', fontSize: '0.88rem' }}
             >
               <Send size={14} />
               <span>Get In Touch</span>
@@ -550,7 +600,7 @@ export default function Navbar() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '12px 18px',
+                padding: '11px 18px',
                 borderRadius: '9999px',
                 background: '#25D366',
                 color: '#fff',

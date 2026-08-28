@@ -109,6 +109,15 @@ export default function SkillsSection() {
         { name: 'Python for Data Science', level: '84%', desc: 'IBM certified data visualization & analysis' },
         { name: 'Full-Stack Integration', level: '82%', desc: 'Connecting frontend clients with database backends' }
       ]
+    },
+    {
+      id: 'operations', label: 'Operations & Enterprise', icon: Sparkles,
+      skills: [
+        { name: 'ERP & CRM Systems', level: '92%', desc: 'Order tracking, customer lifecycle, invoicing & data control' },
+        { name: 'Operations & Sales Admin', level: '94%', desc: 'Quote preparation, purchase orders & documentation' },
+        { name: 'Supply Chain & Dispatch', level: '88%', desc: 'Inventory coordination, stock verification & shipping logistics' },
+        { name: 'Cross-Functional Coordination', level: '90%', desc: 'Liaising across sales, warehouse, technicians & leadership' }
+      ]
     }
   ];
 

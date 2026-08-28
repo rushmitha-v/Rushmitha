@@ -415,31 +415,40 @@ export default function ScrollyOverlay({ progress }) {
             lineHeight: 1.65,
             marginBottom: '18px'
           }}>
-            Hands-on technical solutions at <strong>GEE KAY VEE HYDRAULICS</strong> and enterprise platform development at <strong>Cognizant</strong>. Graduated from <strong>RMK Engineering College (BE ECE)</strong>.
+            Operations & CRM administration at <strong>Accent Aluminium Windows and Doors (Melbourne)</strong>, industrial HMI systems at <strong>GEE KAY VEE HYDRAULICS</strong>, and enterprise engineering at <strong>Cognizant</strong>.
           </p>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '10px'
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '8px'
           }}>
             <div style={{
               background: 'rgba(255, 255, 255, 0.05)',
-              padding: '10px 14px',
+              padding: '8px 10px',
               borderRadius: '10px',
               border: '1px solid rgba(255, 255, 255, 0.1)'
             }}>
-              <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>Engineering</div>
-              <div style={{ color: '#ffffff', fontWeight: 600, fontSize: '0.875rem' }}>GEE KAY VEE</div>
+              <div style={{ fontSize: '0.65rem', color: '#94a3b8', textTransform: 'uppercase' }}>Melbourne</div>
+              <div style={{ color: '#10b981', fontWeight: 700, fontSize: '0.8rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Accent Windows</div>
             </div>
             <div style={{
               background: 'rgba(255, 255, 255, 0.05)',
-              padding: '10px 14px',
+              padding: '8px 10px',
               borderRadius: '10px',
               border: '1px solid rgba(255, 255, 255, 0.1)'
             }}>
-              <div style={{ fontSize: '0.7rem', color: '#94a3b8', textTransform: 'uppercase' }}>Trainee</div>
-              <div style={{ color: '#38bdf8', fontWeight: 600, fontSize: '0.875rem' }}>Cognizant</div>
+              <div style={{ fontSize: '0.65rem', color: '#94a3b8', textTransform: 'uppercase' }}>Engineering</div>
+              <div style={{ color: '#ffffff', fontWeight: 700, fontSize: '0.8rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>GEE KAY VEE</div>
+            </div>
+            <div style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              padding: '8px 10px',
+              borderRadius: '10px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{ fontSize: '0.65rem', color: '#94a3b8', textTransform: 'uppercase' }}>Trainee</div>
+              <div style={{ color: '#38bdf8', fontWeight: 700, fontSize: '0.8rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Cognizant</div>
             </div>
           </div>
         </div>

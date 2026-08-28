@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, Check, Copy, MessageSquare, AlertCircle, Loader2, MessageCircle, Phone } from 'lucide-react';
+import { Send, Mail, MapPin, Check, Copy, MessageSquare, AlertCircle, Loader2, MessageCircle, Phone, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import emailjs from '@emailjs/browser';
 import { useTheme } from '../context/ThemeContext';
+
+const LinkedInIcon = ({ size = 20, color = 'currentColor' }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke={color} 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 // EmailJS Configuration
 const EMAILJS_SERVICE_ID = 'service_d3hltdr';
@@ -20,6 +37,7 @@ export default function ContactSection() {
 
   const email = 'Rushmithavarshini33@gmail.com';
   const phone = '+61 434 455 126';
+  const linkedinUrl = 'https://www.linkedin.com/in/rushmitha-varshini-ys-5039b4283';
   const location = 'Melbourne, Victoria, Australia';
 
   const handleCopyEmail = () => {
@@ -128,6 +146,69 @@ export default function ContactSection() {
             <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '24px' }}>
               I am open to full-time engineering & design roles, contract collaborations, and consulting opportunities.
             </p>
+
+            {/* LinkedIn Direct Card */}
+            <div style={{
+              background: 'rgba(10, 102, 194, 0.08)',
+              border: '1px solid rgba(10, 102, 194, 0.28)',
+              borderRadius: '12px',
+              padding: '16px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '16px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', overflow: 'hidden' }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: 'rgba(10, 102, 194, 0.18)',
+                  border: '1px solid rgba(10, 102, 194, 0.35)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#0a66c2',
+                  flexShrink: 0
+                }}>
+                  <LinkedInIcon size={20} color="#0a66c2" />
+                </div>
+                <div style={{ overflow: 'hidden' }}>
+                  <div style={{ fontSize: '0.72rem', color: '#0a66c2', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Professional Network</div>
+                  <a
+                    href={linkedinUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', wordBreak: 'break-all' }}
+                  >
+                    LinkedIn Profile
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href={linkedinUrl}
+                target="_blank" 
+                rel="noreferrer"
+                style={{
+                  background: '#0a66c2',
+                  color: '#ffffff',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  fontWeight: 700,
+                  fontSize: '0.82rem',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  boxShadow: '0 2px 10px rgba(10, 102, 194, 0.25)',
+                  flexShrink: 0
+                }}
+              >
+                <ExternalLink size={14} />
+                <span>Connect</span>
+              </a>
+            </div>
 
             {/* Email Card with Copy button */}
             <div style={{

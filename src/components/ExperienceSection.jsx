@@ -1,52 +1,100 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, CheckCircle } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, CheckCircle, Download } from 'lucide-react';
 
 export default function ExperienceSection() {
+  const resumeUrl = '/Rushmitha_Varshini_Resume.pdf';
+
   const experiences = [
+    {
+      role: 'Admin Support',
+      company: 'Accent Aluminium Windows and Doors',
+      type: 'Full-time',
+      duration: 'Jan 2026 – June 2026',
+      location: 'Melbourne, VIC, Australia',
+      description: 'Managed customer service, order processing, and sales administration for architectural aluminium window and door fabrication systems.',
+      highlights: [
+        'Customer Service & Order Administration: Managed customer relationship management, order processing, quote preparation, and invoicing.',
+        'ERP & CRM System Control: Maintained high-accuracy data entry, record management, and documentation control across enterprise CRM & ERP platforms.',
+        'Cross-Functional Team Collaboration: Coordinated daily workflows between sales, warehouse, logistics, finance, and on-site service teams.',
+        'Supply Chain & Dispatch Support: Handled inventory coordination, stock verification, picking, packing, shipment preparation, and transport documentation.',
+        'Service Scheduling & Issue Resolution: Scheduled technician and customer appointments, proactively resolving order changes, returns, and customer requests with high attention to detail in a fast-paced environment.'
+      ],
+      skills: ['Customer Service', 'Order Management', 'ERP / CRM Systems', 'Logistics & Dispatch Support', 'Service Scheduling', 'MS Office Suite', 'Problem Solving'],
+      accent: 'var(--color-emerald)'
+    },
     {
       role: 'Designing Engineer',
       company: 'GEE KAY VEE HYDRAULICS PRIVATE LIMITED',
       type: 'Full-time',
-      duration: 'Jun 2023 - Jan 2025 · 1 yr 8 mos',
+      duration: 'Jun 2023 – Jan 2025 · 1 yr 8 mos',
       location: 'Chennai, Tamil Nadu, India',
       description: 'Led user experience (UX) research and high-fidelity interface design using Figma for industrial hydraulic systems and technical machinery interfaces.',
       highlights: [
-        'Designed human-machine interface (HMI) dashboards in Figma to streamline machine diagnostics and pressure telemetry.',
-        'Conducted contextual inquiry and usability reviews with plant operators to reduce input errors and speed up cycle configuration.',
-        'Collaborated with hardware and software engineering teams to guarantee production feasibility and technical accuracy.',
-        'Developed standardized UI component libraries and design tokens in Figma for cross-project consistency.'
+        'Collaborated with product managers and developers to translate user requirements into intuitive user flows, wireframes, and interactive prototypes.',
+        'Designed visual assets and developed low-to-high fidelity wireframes balancing user needs with business goals.',
+        'Led user research and usability testing to validate design choices; analyzed operator feedback to optimize UI/UX and the user journey.',
+        'Partnered with developers to ensure design feasibility and consistency, and conducted competitive analysis to inform best practices.'
       ],
-      skills: ['User Experience (UX)', 'Figma', 'Product Design', 'Industrial HMI', 'System Telemetry', 'Prototyping'],
+      skills: ['User Experience (UX)', 'Figma', 'Product Design', 'Industrial HMI', 'Usability Testing (HFI)', 'Design Systems', 'Competitive Analysis'],
       accent: 'var(--color-primary)'
     },
     {
       role: 'Programmer Analyst Trainee',
-      company: 'Cognizant',
+      company: 'Cognizant Technology Solutions',
       type: 'Apprenticeship',
-      duration: 'Jan 2022 - Jun 2022 · 6 mos',
-      location: 'Remote',
-      description: 'Underwent intensive technical training and contributed to programming analysis, software engineering, and database verification for enterprise applications.',
+      duration: 'Jan 2022 – Jun 2022 · 6 mos',
+      location: 'India',
+      description: 'Contributed to programming analysis, software engineering, and database verification for enterprise applications.',
       highlights: [
-        'Analyzed technical specifications and built software modules using Python and web technologies.',
+        'Reviewed business requirements and authored understanding documents to align development with stakeholder needs.',
+        'Developed, tested, debugged, and deployed code per requirement specifications as part of a project team.',
         'Engineered structured MySQL relational database queries and data validation routines.',
-        'Participated in agile sprints, code reviews, automated unit testing, and technical documentation.',
-        'Strengthened analytical problem-solving and software architecture best practices.'
+        'Participated in agile sprints, code reviews, automated unit testing, and technical documentation.'
       ],
-      skills: ['Python', 'SQL / MySQL', 'Data Structures', 'Software Engineering', 'Analytical Thinking', 'Agile'],
+      skills: ['Python', 'SQL / MySQL', 'Data Structures', 'Software Engineering', 'Analytical Thinking', 'Agile Sprints'],
       accent: 'var(--color-secondary)'
     }
   ];
 
   return (
     <section id="experience" className="portfolio-section">
-      <div className="section-badge">
-        <Briefcase size={14} />
-        Career Journey
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '10px' }}>
+        <div>
+          <div className="section-badge">
+            <Briefcase size={14} />
+            Career Journey
+          </div>
+          <h2 className="section-title">Professional Experience</h2>
+        </div>
+
+        <a
+          href={resumeUrl}
+          download="Rushmitha_Varshini_Resume.pdf"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '9px 18px',
+            borderRadius: '9999px',
+            background: 'rgba(255, 255, 255, 0.06)',
+            border: '1px solid var(--border-glow)',
+            color: 'var(--text-main)',
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            cursor: 'pointer',
+            textDecoration: 'none',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+            transition: 'all 0.25s ease'
+          }}
+        >
+          <Download size={15} style={{ color: 'var(--color-primary)' }} />
+          <span>Download Resume (PDF)</span>
+        </a>
       </div>
-      <h2 className="section-title">Professional Experience</h2>
+
       <p className="section-subtitle">
-        Proven track record of engineering solutions, user-centered interface designs, and rigorous software development.
+        Proven track record of engineering solutions, user-centered interface designs, and rigorous operations management across Australia and India.
       </p>
 
       {/* Glowing vertical timeline */}
@@ -54,7 +102,7 @@ export default function ExperienceSection() {
         {/* Spine */}
         <div style={{
           position: 'absolute', left: '15px', top: '8px', bottom: '8px', width: '2px',
-          background: 'linear-gradient(var(--color-primary), var(--color-secondary), transparent)'
+          background: 'linear-gradient(var(--color-emerald), var(--color-primary), var(--color-secondary), transparent)'
         }} />
 
         {experiences.map((exp, idx) => (
